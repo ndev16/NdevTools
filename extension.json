@@ -2,7 +2,7 @@
   "builtin": "False",
   "type": "extension",
   "name": "NdevTools",
-  "description": "pyRevit tools for Revit sheet and view management.",
+  "description": "pyRevit tools for Revit annotation, sheet management, and model workflows.",
   "author": "Nataraj Devaraj",
   "dependencies": []
 }

@@ -1,135 +1,165 @@
+# NdevTools | Smart BIM Tools
 
-# NdevTools
+![NdevTools ribbon layout](media/NdevTools-Ribbon.png)
 
-![NdevTools tool overview](NdevTools-Overview.png)
+**NdevTools** is a collection of Autodesk Revit productivity commands built for **pyRevit**. The extension combines model-based detailing, view and sheet management, and architectural-link wall tracing in one ribbon tab. It is developed by **Nataraj Devaraj**.
 
-A pyRevit extension for managing Autodesk Revit views and sheets, developed by Nataraj Devaraj.
+**GitHub:** [ndev16/NdevTools](https://github.com/ndev16/NdevTools)  
+**Feedback and feature requests:** [GitHub Issues](https://github.com/ndev16/NdevTools/issues)
 
-NdevTools provides tools designed to simplify repetitive Revit tasks, improve productivity and streamline sheet and view management.
+## Ribbon layout
 
-## Included tools
+| Panel | Ribbon button | Purpose |
+| --- | --- | --- |
+| **Welcome** | Welcome | Show NdevTools information, useful links and contact details. |
+| **Annotation** | Vulcraft Deck Region | Create a concrete filled region that follows a selected Vulcraft structural deck profile in section. |
+| **Annotation** | Auto Detail Generator | Trace selected host-model geometry into 2D filled regions, lines and supported detail components. |
+| **Sheets** | Place Views on Sheet | Place multiple unplaced views on a chosen sheet using saved coordinates. |
+| **Sheets** | Sheet Manager | Create sheets in bulk or rename existing sheets. |
+| **Sheets** | Match Crop Regions | Apply one plan view's crop region to multiple compatible plan views. |
+| **Sheets** | Viewport Position Manager | Save, rename, manage and reuse named sheet viewport positions. |
+| **3D Model** | Wall Tracing | Re-create supported structural wall geometry in the host model from a linked architectural model. |
 
-All four tools appear in the **NdevTools > Sheets** panel.
+## Tools and usage
 
-| Button | Description |
-|---|---|
-| Place Views on Sheet | Place multiple unplaced views on a selected sheet using saved viewport positions and a selected viewport type. |
-| Match Crop Regions | Copy a source plan view's model crop extents to selected target plan views. |
-| Sheet Manager | Create multiple sheets or batch rename existing sheets, with duplicate sheet-number checks. |
-| Crop Position Manager | Save and apply named viewport positions using sheet X/Y coordinates. |
+### Welcome
+
+Open the **Welcome** button in the Welcome panel to view the extension's information and the developer's GitHub, LinkedIn and feedback links. The Welcome command is for information and navigation; it does not modify the open Revit model.
+
+### Annotation → Vulcraft Deck Region
+
+Create a static **concrete filled region** based on the corrugated profile of structural metal decking in a straight Revit section view.
+
+**Supported deck configurations:** Vulcraft **1.5C-36, 2C-36 and 3C-36**, with the selectable gages offered by the command. The profile uses deck dimensions such as depth, pitch, upper and lower flats.
+
+**Typical workflow:** Open a straight section, select the structural floor, choose the deck profile and gage, pick the **left end of a lower flat** as the profile anchor, and select the desired Revit filled-region type. The command generates a concrete region aligned to the deck geometry, with profile extent clipped to the selected floor boundaries.
+
+**Scope:** Requires a valid selected structural floor, visible deck geometry and an accurately picked anchor. The result is 2D view-specific annotation, not replacement 3D geometry.
+
+### Annotation → Auto Detail Generator
+
+Create 2D construction-detail representations from visible, supported host-model elements in **plan views and straight sections**.
+
+**Supported model categories:** floors, walls, roofs, structural foundations and structural framing.
+
+**Typical workflow:** Open a supported view, launch Auto Detail Generator, choose a filled-region type and outline style for each model category, select the model elements, and create the view-specific detailing. Choose **No Fill** with a line style where you prefer detail lines instead of filled regions.
+
+**Additional detailing options:**
+
+- **Roofs:** place compatible line-based detail components along straight roof slopes in sections or roof top-face edges in plans.
+- **Floors:** place line-based detail components along traced horizontal floor segments, splitting at openings where applicable.
+- **Structural framing:** choose a loaded point-based or line-based detail component, or **None**, and align detail components with the traced framing center.
+- **CMU walls:** replicate repeating-detail instances horizontally or vertically in sections using an existing instance as a template.
+
+**Scope:** Creates static 2D representations. Curved roof edges are not supported. The command traces host-model elements; plan wall tracing uses the main view cut height, not the cut heights of individual plan regions.
+
+### Sheets → Place Views on Sheet
+
+Place several **unplaced views** on a chosen sheet using named X/Y positions saved through Viewport Position Manager. Select the desired viewport type, assign a unique saved position to each view, then place the views together.
+
+**Typical workflow:** First save positions in Viewport Position Manager. Open Place Views on Sheet, select unplaced views, choose the target sheet and viewport type, assign saved positions, confirm the layout, and review the result. The command can be repeated to place more views.
+
+**Visibility handling:** The command records original visibility states for supported model, annotation, imported and analytical category groups and Revit links. It temporarily hides them during placement, then restores previous settings and view templates. A failed hide, placement or restoration step rolls back that view's placement. The viewport is not automatically recentered after restoring visibility.
+
+### Sheets → Sheet Manager
+
+Two workflows are available within one command:
+
+**Create Sheets:** Choose a title block, enter multiple sheet records such as `S1.1 - FOUNDATION SLAB PLAN`, and create them in a batch.
+
+**Rename Sheets:** Select existing sheets, change their numbers or names, and apply the changes together. Validation catches duplicate or invalid sheet numbers; the rename workflow also supports number swaps and reports results.
+
+Built-in help links provide access to the project's GitHub and developer information.
+
+### Sheets → Match Crop Regions
+
+Match model crop boundaries from one reference plan view to several target plan views.
+
+**Typical workflow:** Choose a compatible reference plan with an enabled, **unsplit** crop region; select the target plan views; decide whether to copy the source view scale; and apply the crop regions. Target scales are preserved if scale copying is disabled.
+
+The command uses model coordinates, handles compatible crop visibility and annotation-crop offsets, and removes target split crops where possible. Targets with scope-box-controlled crops are skipped. View-specific failures are reported without stopping the remaining targets.
+
+### Sheets → Viewport Position Manager
+
+Use named positions to standardize sheet layouts. The command supports **Apply Saved Position**, **Save New Position**, **Capture New Position + Apply**, **Show Saved Positions**, **Rename**, **Overwrite** and **Delete**.
+
+**Typical workflow:** Start with a reference viewport already placed on a sheet. Save its X/Y coordinates as a named position, then apply that position to one or more selected viewports. You can also capture and immediately apply a new position.
+
+The command stores up to **10 positions per Revit version** and maintains separate position sets for different Revit versions. When applying coordinates, it temporarily adjusts supported category and link visibility, then restores original visibility, templates and pinned state.
+
+### 3D Model → Wall Tracing
+
+Trace supported architectural **Basic Walls** from a loaded Revit link into structural walls in the active host project.
+
+**Typical workflow:** Open a host project in a plan or 3D view; select a loaded architectural link; select source levels; map each to host bottom and top levels; review suggested host Basic Wall types; and click **Create Walls**. Set a source type to **None** to skip it. Review the created, duplicate, skipped and error results.
+
+**Geometry and alignment:** Only straight, vertical Basic Walls with an identifiable positive-width structural layer are eligible. The thickest `Structure [1]` layer controls alignment; type suggestions are based on thickness, not a material-equivalence guarantee. Selected host levels and applicable source offsets are used.
+
+**Safety behavior:** The source link is read-only. Wall creation runs inside a host transaction group and skips matching host walls. Curved, slanted, tapered, attached and edited-profile source walls are skipped. The command does not analyze or reconstruct wall openings. Automatic joins are managed during creation; to allow joins on existing selected host walls, select them and launch **Wall Tracing** again.
+
+For more details, see the [Wall Tracing usage guide](NdevTools.tab/3D%20Model.Panel/Create%20walls.pushbutton/README_Wall_Tracing.md).
 
 ## Installation
 
-1. Install a compatible version of Autodesk Revit.
-2. Install pyRevit.
-3. Download or clone this repository.
-4. Place the repository files inside a folder named `NdevTools.extension` in a directory registered with pyRevit as a custom extension location.
-5. Reload pyRevit in Revit.
+1. Install **Autodesk Revit** and **pyRevit**.
+2. Download this repository as a ZIP (or clone it).
+3. Extract the repository files into a folder named **`NdevTools.extension`** inside a pyRevit extensions location. The `NdevTools.tab` folder and `extension.json` must sit directly inside `NdevTools.extension`.
+4. If your folder is not already registered with pyRevit, add its parent extensions location using pyRevit's settings or extension configuration.
+5. Reload pyRevit or restart Revit. The **NdevTools** ribbon tab displays the Welcome, Annotation, Sheets and 3D Model panels.
 
-The **NdevTools** tab should appear in the Revit ribbon.
+**Folder structure (abbreviated):**
 
-## Repository layout
+```text
+NdevTools.extension/
+├── extension.json
+├── NdevTools.tab/
+│   ├── bundle.yaml
+│   ├── Welcome.panel/
+│   │   └── Welcome.pushbutton/
+│   ├── Annotation.panel/
+│   │   └── col1.stack/
+│   │       ├── Conc Slab on metal deck.pushbutton/
+│   │       └── Detail Generator.pushbutton/
+│   ├── Sheets.panel/
+│   │   ├── col1.stack/
+│   │   │   ├── BulkPlaceViews.pushbutton/
+│   │   │   └── Rename Sheets.pushbutton/
+│   │   └── col2.stack/
+│   │       ├── Crop Extents.pushbutton/
+│   │       └── Viewport Position Manager.pushbutton/
+│   └── 3D Model.Panel/
+│       └── Create walls.pushbutton/
+├── README.md
+└── LICENSE
+```
 
-    NdevTools.tab/          pyRevit tab and four tools
-    media/                 Tool icons for documentation
-    NdevTools-Overview.png  Illustrated tool overview
-    README.md              Project documentation
-    extension.json         Extension metadata
-    .gitignore             Git exclusions
-    LICENSE                GNU GPL v3 license
+Each command includes the script and icon, plus its bundle configuration and any additional XAML, images or support modules it uses. Keep the button folders intact.
 
-Each tool folder inside `NdevTools.tab/Sheets.panel/` contains its corresponding `script.py`, `bundle.yaml` and `icon.png`.
+## Compatibility
 
-No separate `lib/` directory is included because the existing tools do not require shared code.
+Commands are written for **pyRevit** and the IronPython 2.7 runtime, using Revit API patterns for **Revit 2022–2027** where supported by the individual tools. Some commands have view, family, category or loaded-link prerequisites; review each tool's usage section above.
 
-## Compatibility and testing
+## What's new
 
-All four NdevTools tools have been functionally tested inside Autodesk Revit using pyRevit.
+The current ribbon expands the original sheet-management-focused repository with:
 
-### Tested Autodesk Revit versions
+- A **Welcome** and contact/about experience.
+- **Vulcraft Deck Region** and **Auto Detail Generator** in the Annotation panel.
+- An expanded **Sheets** panel with two stacked button columns and viewport visibility handling.
+- **Wall Tracing** in the 3D Model panel.
+- Updated ribbon layout, icons, and documentation.
 
-- Autodesk Revit 2023
-- Autodesk Revit 2024
-- Autodesk Revit 2025
-- Autodesk Revit 2026
-- Autodesk Revit 2027
+See [CHANGELOG.md](CHANGELOG.md) for the summary of this update.
 
-### Tested pyRevit version
+## Support and feedback
 
-- pyRevit 6.0.0
+Use [GitHub Issues](https://github.com/ndev16/NdevTools/issues/new) for bug reports and feature suggestions. When describing an issue, include the Revit and pyRevit versions, tool name, steps and any useful screenshots or error messages.
 
-### Verified functionality
-
-- Place Views on Sheet
-- Match Crop Regions
-- Sheet Manager
-- Crop Position Manager
-
-All four tools have been tested and confirmed working in the Revit versions listed above.
-
-Compatibility with other Revit and pyRevit versions has not yet been verified.
-
-## Publishing
-
-NdevTools is publicly available on GitHub.
-
-**Repository:**
-https://github.com/ndev16/NdevTools
-
-NdevTools has been proposed for inclusion in the official pyRevit Extensions Manager.
-
-Listing is subject to review and approval by the pyRevit maintainers.
-
-## Issues, feedback and feature requests
-
-If you encounter any problems while using NdevTools, please feel free to report them.
-
-Your feedback is valuable and helps improve the extension for the entire Revit community.
-
-**Report an issue:**
-
-https://github.com/ndev16/NdevTools/issues/new
-
-When reporting a problem, please provide:
-
-- Autodesk Revit version
-- pyRevit version
-- Name of the affected tool
-- Description of the problem
-- Steps to reproduce the issue
-- Screenshots or error messages, if available
-
-Suggestions for improvements and requests for new features are also welcome.
-
-## Support and contact
-
-If you experience any issues, have questions or need assistance with NdevTools, please don't hesitate to contact me.
-
-You can reach me through GitHub, LinkedIn or email. I'll do my best to help resolve any issues and welcome your suggestions for improving the tools.
-
-**Developer:** Nataraj Devaraj
-
-**GitHub:**
-https://github.com/ndev16
-
-**LinkedIn:**
-https://www.linkedin.com/in/nataraj016/
-
-**Email:**
-devnataraj39@gmail.com
-
-For bug reports and feature requests, please use GitHub Issues so they can be tracked and discussed publicly.
-
-For other inquiries or direct assistance, feel free to connect with me on LinkedIn or send me an email.
-
-Thank you for using NdevTools!
+**Developer:** Nataraj Devaraj  
+**GitHub:** https://github.com/ndev16  
+**LinkedIn:** https://www.linkedin.com/in/nataraj016/  
+**Email:** devnataraj39@gmail.com
 
 ## License
 
-Copyright (C) 2026 Nataraj Devaraj.
-
-NdevTools is released under the **GNU General Public License, version 3 (GPL-3.0-only)**.
-
-You may use, share and modify this extension under the conditions of that license.
-
-See the [LICENSE](LICENSE) file in this repository for the full license terms.
+Copyright (C) 2026 Nataraj Devaraj. Released under the **GNU General Public License v3 (GPL-3.0-only)**. See [LICENSE](LICENSE) for details.
