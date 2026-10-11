@@ -1,0 +1,7 @@
+
+title: "Sheet\nManager"
+author: "Nataraj Devaraj"
+
+tooltip: "NDEV TOOLS | SHEET MANAGER\n\nCreate multiple Revit sheets or rename existing sheets using one convenient tool.\n\nCREATE SHEETS\n1. Open the Create Sheets tab.\n2. Select a title block type.\n3. Enter one sheet per line:\n   S1.1 - FOUNDATION SLAB PLAN\n   S1.2 - LEVEL 1 FRAMING PLAN\n4. Click Create Sheets and confirm.\n\nRENAME SHEETS\n1. Open the Rename Sheets tab.\n2. Click Select Sheets to Rename.\n3. Select one or more existing sheets.\n4. Edit sheet numbers and/or names.\n5. Click Apply Rename and confirm.\n\nFEATURES\n- Batch create and rename Revit sheets.\n- Select title block types.\n- Detect duplicate sheet numbers.\n- Validate sheet numbers and names.\n- Support sheet number swapping.\n- Display success and error reports.\n- Integrated Help, GitHub and LinkedIn links.\n\nCOMPATIBILITY\nRevit 2022-2027\npyRevit / IronPython 2.7\n\nCreated by Nataraj Devaraj."
+
+help_url: "https://github.com/ndev16"

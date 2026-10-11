@@ -1,0 +1,11 @@
+
+title: "Viewport\nPosition\nManager"
+
+tooltip: "NDEV TOOLS | VIEWPORT POSITION MANAGER\n\nSave, manage, and apply exact viewport positions on Revit sheets.\n\nFEATURES:\n\n1. Apply Saved Position\n2. Save New Position\n3. Capture New Position + Apply\n4. Show Saved Positions\n5. Rename Saved Position\n6. Overwrite Saved Position\n7. Delete Saved Position\n\nAUTOMATIC VISIBILITY HANDLING:\n\n- Temporarily hide Model Categories\n- Temporarily hide Annotation Categories\n- Temporarily hide Imported Categories\n- Temporarily hide Analytical Model Categories\n- Temporarily hide Revit Links\n- Apply the exact saved viewport position\n- Restore original visibility settings\n- Restore the original view template\n- Preserve the viewport pinned state\n\nADDITIONAL FEATURES:\n\n- Apply positions to multiple viewports\n- Save up to 10 positions per Revit version\n- Separate saved positions for each Revit version\n- Built-in Help with GitHub and LinkedIn links\n\nCOMPATIBILITY:\nRevit 2022-2027\nIronPython 2.7\n\nDeveloped by Nataraj Devaraj\nNdev Tools | Smart BIM Tools"
+
+author: "Nataraj Devaraj"
+
+help_url: "https://github.com/ndev16"
+
+min_revit_ver: 2022
+max_revit_ver: 2027

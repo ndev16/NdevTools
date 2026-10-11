@@ -1,0 +1,7 @@
+
+title: "Match Crop\nRegions"
+author: "Nataraj Devaraj"
+
+tooltip: "NDEV TOOLS | MATCH CROP REGIONS\n\nMatch crop boundaries across multiple Revit plan views using one reference view.\n\nWORKFLOW\n1. Select a reference plan view with Crop View enabled.\n2. Select one or more target plan views.\n3. Choose whether to apply the reference view scale.\n   YES = Copy crop and scale.\n   NO = Copy crop only; retain target scales.\n4. Confirm and review the results.\n\nFEATURES\n- Matches model crop boundaries using model coordinates.\n- Supports multiple target plan views in one run.\n- Optionally copies the reference view scale.\n- Copies crop visibility and annotation crop offsets where supported.\n- Removes split crops from target views when possible.\n- Skips target views with scope-box-controlled crops.\n- Processes each target in its own transaction and reports failures.\n\nNOTES\n- The reference view must have an active, single (unsplit) crop region.\n- Only compatible non-template plan views are listed.\n\nCOMPATIBILITY\nRevit 2022-2027 | pyRevit / IronPython 2.7\n\nCreated by Nataraj Devaraj."
+
+help_url: "https://github.com/ndev16"

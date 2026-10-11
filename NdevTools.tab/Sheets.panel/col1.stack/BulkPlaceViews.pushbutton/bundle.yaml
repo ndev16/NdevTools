@@ -1,0 +1,7 @@
+
+title: "Place Views\non Sheet"
+author: "Nataraj Devaraj"
+
+tooltip: "NDEV TOOLS | PLACE VIEWS ON SHEET\n\nPlace one or more unplaced Revit views on a selected sheet using previously saved X/Y viewport positions.\n\nWORKFLOW:\n1. Load saved positions from Viewport Position Manager (or Crop Position Manager).\n2. Select the unplaced views.\n3. Choose a target sheet and viewport type.\n4. Assign a unique saved position to each view.\n5. Confirm placement and review the results.\n6. Choose whether to place more views.\n\n VISIBILITY PROTECTION:\n- Saves original model, annotation, import, and analytical category-group visibility.\n- Temporarily hides those groups and visible Revit links before each placement.\n- Restores the original settings and view template after placement.\n- Rolls back that view's placement if hiding, placement, or restoration fails.\n- Does not recenter the viewport after visibility is restored.\n\nRevit 2022-2027 | pyRevit / IronPython 2.7\n\nCreated by Nataraj Devaraj."
+
+help_url: "https://github.com/ndev16"
