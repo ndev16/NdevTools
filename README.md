@@ -14,7 +14,7 @@
 | **Welcome** | Welcome | Show NdevTools information, useful links and contact details. |
 | **Annotation** | Vulcraft Deck Region | Create a concrete filled region that follows a selected Vulcraft structural deck profile in section. |
 | **Annotation** | Auto Detail Generator | Trace selected host-model geometry into 2D filled regions, lines and supported detail components. |
-| **Sheets** | Place Views on Sheet | Place multiple unplaced views on a chosen sheet using saved coordinates. |
+| **Sheets** | Sheet Pilot | Configure and place up to 25 unplaced views per sheet across multiple sheets using saved viewport positions. |
 | **Sheets** | Sheet Manager | Create sheets in bulk or rename existing sheets. |
 | **Sheets** | Match Crop Regions | Apply one plan view's crop region to multiple compatible plan views. |
 | **Sheets** | Viewport Position Manager | Save, rename, manage and reuse named sheet viewport positions. |
@@ -53,13 +53,19 @@ Create 2D construction-detail representations from visible, supported host-model
 
 **Scope:** Creates static 2D representations. Curved roof edges are not supported. The command traces host-model elements; plan wall tracing uses the main view cut height, not the cut heights of individual plan regions.
 
-### Sheets → Place Views on Sheet
+### Sheets → Sheet Pilot (Place Views on Sheet)
 
-Place several **unplaced views** on a chosen sheet using named X/Y positions saved through Viewport Position Manager. Select the desired viewport type, assign a unique saved position to each view, then place the views together.
+**Sheet Pilot** automates placing unplaced views on multiple Revit sheets using named X/Y positions saved by **Viewport Position Manager** (or the compatible Crop Position Manager). Configure multiple sheets in one window, with up to **25 views per sheet**.
 
-**Typical workflow:** First save positions in Viewport Position Manager. Open Place Views on Sheet, select unplaced views, choose the target sheet and viewport type, assign saved positions, confirm the layout, and review the result. The command can be repeated to place more views.
+**Prerequisites — save a sheet position first:**
 
-**Visibility handling:** The command records original visibility states for supported model, annotation, imported and analytical category groups and Revit links. It temporarily hides them during placement, then restores previous settings and view templates. A failed hide, placement or restoration step rolls back that view's placement. The viewport is not automatically recentered after restoring visibility.
+1. Manually place a reference view on a Revit sheet and arrange its viewport where you want it.
+2. Open **Viewport Position Manager**, select the placed viewport, and use **Save New Position** or **Capture New Position + Apply** to acquire and save the viewport's X/Y sheet position under a recognizable name.
+3. Repeat for any additional sheet locations needed. **At least one saved position is required** for Sheet Pilot. Saved positions are maintained separately by Revit version.
+
+**Typical workflow:** Open Sheet Pilot, expand a target sheet, select **+ Add View**, choose an available unplaced view, its viewport type, and a saved position. Repeat for other views and sheets, then click **PLACE ALL VIEWS**. The same saved position can be selected again where appropriate; review placements to prevent overlaps.
+
+**Placement and safety:** For standard viewports, the tool first creates a viewport at a temporary sheet location, then moves the existing viewport to the selected saved X/Y coordinate. For supported plan views it temporarily hides the four visibility category groups and Revit links during repositioning, then restores the original visibility and view template without repositioning again. Three-dimensional views, drafting views, legends and schedules bypass that visibility procedure; schedules use their insertion point. Each view's placement is independently rollback-protected on failure.
 
 ### Sheets → Sheet Manager
 
@@ -122,7 +128,7 @@ NdevTools.extension/
 │   │       └── Detail Generator.pushbutton/
 │   ├── Sheets.panel/
 │   │   ├── col1.stack/
-│   │   │   ├── BulkPlaceViews.pushbutton/
+│   │   │   ├── BulkPlaceViews.pushbutton/   # Sheet Pilot
 │   │   │   └── Rename Sheets.pushbutton/
 │   │   └── col2.stack/
 │   │       ├── Crop Extents.pushbutton/
@@ -145,7 +151,7 @@ The current ribbon expands the original sheet-management-focused repository with
 
 - A **Welcome** and contact/about experience.
 - **Vulcraft Deck Region** and **Auto Detail Generator** in the Annotation panel.
-- An expanded **Sheets** panel with two stacked button columns and viewport visibility handling.
+- An expanded **Sheets** panel with two stacked button columns, multi-sheet Sheet Pilot placement, and viewport visibility handling.
 - **Wall Tracing** in the 3D Model panel.
 - Updated ribbon layout, icons, and documentation.
 

@@ -2,7 +2,7 @@
   "builtin": "False",
   "type": "extension",
   "name": "NdevTools",
-  "description": "pyRevit tools for Revit annotation, sheet management, and model workflows.",
+  "description": "NdevTools pyRevit automation for multi-sheet Sheet Pilot view placement, viewport positions, sheet management, 2D detailing, and linked-model wall tracing.",
   "author": "Nataraj Devaraj",
   "dependencies": []
 }

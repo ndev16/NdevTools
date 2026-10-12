@@ -578,8 +578,9 @@ def _ndev_show_help(owner):
         'Save New Position: record a reference viewport location.\n'
         'Capture New Position + Apply: use a reference immediately.\n'
         'Show, Rename, Overwrite, Delete: manage up to 10 positions.\n\n'
-        'When applying, Ndev Tools temporarily hides the V/G groups and '
-        'Revit Links, moves the viewport, then restores the original settings.'
+        'When capturing or applying X/Y, Ndev Tools temporarily hides the '
+        'Model, Annotation, Analytical, Imported categories and Revit Links. '
+        'Original visibility and view templates are restored afterward.'
     )
     info.TextWrapping = TextWrapping.Wrap
     info.Margin = Thickness(0, 0, 0, 14)
@@ -1040,11 +1041,12 @@ def capture_reference_position():
     ]
 
 
-    center = (
-        get_viewport_position(
-            viewport
-        )
-    )
+    # Match the same hidden-visibility reference used when APPLYING X/Y.
+    # Otherwise saved coordinates include visible annotations/links while
+    # target viewport coordinates are measured with those elements hidden.
+    center = capture_viewport_position_with_hidden_v8(viewport, view)
+    if center is None:
+        return None
 
 
     return {
@@ -1260,8 +1262,8 @@ def save_new_position():
 # ============================================================
 
 # ============================================================
-# V8 VISIBILITY: APPLIED ONLY WHILE MOVING EXISTING VIEWPORTS
-# All other Viewport Position Manager options remain unchanged.
+# V8 VISIBILITY: USED WHILE READING AND MOVING VIEWPORT COORDINATES
+# Capturing and applying saved X/Y now use the same hidden-state basis.
 # ============================================================
 
 _V8_VISIBILITY_FLAGS = (
@@ -1425,6 +1427,72 @@ def _finish_transaction(tx, stage):
     if tx.Commit() != DB.TransactionStatus.Committed:
         raise Exception('Could not commit: {}'.format(stage))
 
+
+
+# ============================================================
+# CAPTURE SAVED X/Y WITH THE SAME V8 VISIBILITY AS APPLY
+# ============================================================
+
+def capture_viewport_position_with_hidden_v8(viewport, view):
+    """Read the reference viewport center with all V8 groups/links hidden.
+
+    Used by Save New, Overwrite, and Capture + Apply. A separate transaction
+    group ensures original visibility/template are restored and prevents
+    partial edits if the capture fails. This function does NOT move viewport.
+    """
+    group = DB.TransactionGroup(doc, 'Capture Viewport Position - V8 - {}'.format(view.Name))
+    group_active = False
+    tx = None
+    stage = 'Starting reference capture'
+    try:
+        if group.Start() != DB.TransactionStatus.Started:
+            raise Exception('Cannot start reference capture transaction group')
+        group_active = True
+
+        stage = 'Temporarily hiding V/G categories and Revit links'
+        tx = _begin_transaction('1 - Hide V/G and links for reference capture')
+        state = save_and_hide_view_for_placement(view)
+        _finish_transaction(tx, stage)
+        tx = None
+
+        stage = 'Reading viewport X/Y with visibility hidden'
+        tx = _begin_transaction('2 - Read hidden-visibility viewport center')
+        doc.Regenerate()
+        center = get_viewport_position(viewport)
+        _finish_transaction(tx, stage)
+        tx = None
+
+        stage = 'Restoring original V/G, links, and view template'
+        tx = _begin_transaction('3 - Restore view after reference capture')
+        restore_view_after_placement(view, state)
+        _finish_transaction(tx, stage)
+        tx = None
+
+        stage = 'Finishing reference capture'
+        if group.Assimilate() != DB.TransactionStatus.Committed:
+            raise Exception('Could not complete reference capture transaction group')
+        group_active = False
+        return center
+
+    except Exception as error:
+        if tx is not None:
+            try:
+                if tx.GetStatus() == DB.TransactionStatus.Started:
+                    tx.RollBack()
+            except Exception:
+                pass
+        if group_active:
+            try:
+                if group.GetStatus() == DB.TransactionStatus.Started:
+                    group.RollBack()
+            except Exception as rollback_error:
+                error = '{}; IMPORTANT: rollback failed: {}'.format(error, rollback_error)
+        forms.alert(
+            'Reference viewport position was NOT captured.\n\n'
+            'Stage: {}\n\n{}'.format(stage, error),
+            title='Viewport Position Manager - Capture Error'
+        )
+        return None
 
 
 def apply_position_to_targets(x, y, position_name, exclude_viewport_id=None):

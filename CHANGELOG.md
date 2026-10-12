@@ -1,5 +1,16 @@
 # Changelog
 
+## October 13, 2026 — Sheet Pilot documentation and metadata update
+
+### Sheets panel
+
+- **Sheet Pilot (BulkPlaceViews):** Documented multi-sheet configuration and batch placement of up to 25 views per sheet.
+- **Prerequisite:** Manually place a reference viewport on a sheet, then capture and save its X/Y position with **Viewport Position Manager** before using Sheet Pilot.
+- **Placement:** Choose a target sheet, unplaced view, viewport type and saved position for each row, then select **PLACE ALL VIEWS**.
+- **Protection:** Clarified temporary visibility handling, view-template restoration and independent rollback of failed placements.
+- **Repository metadata:** Updated the extension description to include Sheet Pilot and other model/detailing tools. No Revit automation behavior changed by these documentation files.
+
+
 ## October 11, 2026 — Expanded NdevTools ribbon
 
 This update organizes NdevTools into four ribbon panels and documents all eight buttons.
