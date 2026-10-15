@@ -1,11 +1,46 @@
-
-title: "Viewport\nPosition\nManager"
-
-tooltip: "NDEV TOOLS | VIEWPORT POSITION MANAGER\n\nSave, manage, and apply exact viewport positions on Revit sheets.\n\nFEATURES:\n\n1. Apply Saved Position\n2. Save New Position\n3. Capture New Position + Apply\n4. Show Saved Positions\n5. Rename Saved Position\n6. Overwrite Saved Position\n7. Delete Saved Position\n\nAUTOMATIC VISIBILITY HANDLING:\n\n- Temporarily hide Model Categories\n- Temporarily hide Annotation Categories\n- Temporarily hide Imported Categories\n- Temporarily hide Analytical Model Categories\n- Temporarily hide Revit Links\n- Apply the exact saved viewport position\n- Restore original visibility settings\n- Restore the original view template\n- Preserve the viewport pinned state\n\nADDITIONAL FEATURES:\n\n- Apply positions to multiple viewports\n- Save up to 10 positions per Revit version\n- Separate saved positions for each Revit version\n- Built-in Help with GitHub and LinkedIn links\n\nCOMPATIBILITY:\nRevit 2022-2027\nIronPython 2.7\n\nDeveloped by Nataraj Devaraj\nNdev Tools | Smart BIM Tools"
-
-author: "Nataraj Devaraj"
-
-help_url: "https://github.com/ndev16"
-
+title:
+  en_us: "Viewport\nPosition\nManager"
+  en_gb: "Viewport\nPosition\nManager"
+  fr_fr: "Positions des\nfenêtres"
+  de_de: "Ansichtsfenster-\nPositionen"
+  it_it: "Posizioni\ndelle viste"
+  es_es: "Posiciones\nde ventanas"
+  ar: "مدير\nمواضع المنفذ"
+  bg: "Диспечер\nпозиции изглед"
+  chinese_s: "视口位置\n管理器"
+  chinese_t: "視埠位置\n管理器"
+  cs: "Správce\npozic viewportu"
+  fa: "مدیر\nموقعیت ویوپورت"
+  hu: "Nézetablak\npozíciókezelő"
+  ja: "ビューポート位置\nマネージャ"
+  ko: "뷰포트 위치\n관리자"
+  nl_nl: "Viewportpositie\nbeheer"
+  pl: "Menedżer pozycji\nwidoku"
+  pt_br: "Gerenciador\nde posições"
+  ru: "Менеджер позиций\nвидового экрана"
+  uk: "Менеджер позицій\nвікна виду"
+tooltip:
+  en_us: "NDEV TOOLS | VIEWPORT POSITION MANAGER\n\nSave, manage, and apply exact viewport positions on Revit sheets.\n\nFEATURES:\n\n1. Apply Saved Position\n2. Save New Position\n3. Capture New Position + Apply\n4. Show Saved Positions\n5. Rename Saved Position\n6. Overwrite Saved Position\n7. Delete Saved Position\n\nAUTOMATIC VISIBILITY HANDLING:\n\n- Temporarily hide Model Categories\n- Temporarily hide Annotation Categories\n- Temporarily hide Imported Categories\n- Temporarily hide Analytical Model Categories\n- Temporarily hide Revit Links\n- Apply the exact saved viewport position\n- Restore original visibility settings\n- Restore the original view template\n- Preserve the viewport pinned state\n\nADDITIONAL FEATURES:\n\n- Apply positions to multiple viewports\n- Save up to 10 positions per Revit version\n- Separate saved positions for each Revit version\n- Built-in Help with GitHub and LinkedIn links\n\nCOMPATIBILITY:\nRevit 2022-2027\nIronPython 2.7\n\nDeveloped by Nataraj Devaraj\nNdev Tools | Smart BIM Tools"
+  en_gb: "Save, rename, apply, overwrite or delete exact viewport positions on sheets. Up to 10 positions are stored per Revit version. Original view visibility, templates and pinned state are restored as supported.\n\nNdevTools | Smart BIM Tools"
+  fr_fr: "Enregistre, renomme, applique, remplace ou supprime les positions exactes des fenêtres sur les feuilles. Jusqu'à 10 positions par version Revit. Les paramètres d'affichage, gabarits et verrouillages sont préservés.\n\nNdevTools | Smart BIM Tools"
+  de_de: "Speichert, benennt um, übernimmt, überschreibt oder löscht genaue Ansichtsfensterpositionen auf Planblättern. Bis zu zehn Positionen pro Revit-Version. Sichtbarkeit, Ansichtsvorlagen und Fixierungen werden wiederhergestellt.\n\nNdevTools | Smart BIM Tools"
+  it_it: "Salva, rinomina, applica, sovrascrive o elimina posizioni esatte delle finestre nelle tavole. Fino a 10 posizioni per versione di Revit. Visibilità, modelli di vista e stato di blocco vengono ripristinati.\n\nNdevTools | Smart BIM Tools"
+  es_es: "Guarda, cambia el nombre, aplica, sobrescribe o elimina posiciones exactas de ventanas en planos. Hasta 10 posiciones por versión de Revit. Se restauran visibilidad, plantillas y estado de fijación.\n\nNdevTools | Smart BIM Tools"
+  ar: "احفظ مواضع X/Y الدقيقة لإطارات العرض على لوحات Revit أو التقطها وطبّقها وأعد تسميتها أو استبدلها أو احذفها. يمكن حفظ 10 مواضع لكل إصدار Revit وتطبيقها على عدة إطارات. تُستعاد الرؤية والقالب وحالة التثبيت بعد التحريك.\n\nNdevTools | Smart BIM Tools"
+  bg: "Запазвайте, заснемайте, прилагайте, преименувайте, презаписвайте и изтривайте точни X/Y позиции на изгледи в листове. До 10 позиции за версия на Revit; могат да се прилагат към няколко изгледа. Видимостта, шаблонът и фиксираното състояние се възстановяват.\n\nNdevTools | Smart BIM Tools"
+  chinese_s: "保存、捕获、应用、重命名、覆盖或删除 Revit 图纸视口的精确 X/Y 位置。每个 Revit 版本最多保存 10 个位置，可应用到多个视口。完成后恢复可见性、视图样板和锁定状态。\n\nNdevTools | Smart BIM Tools"
+  chinese_t: "儲存、擷取、套用、重新命名、覆寫或刪除 Revit 圖紙視埠的精確 X/Y 位置。每個 Revit 版本最多儲存 10 個位置，可套用至多個視埠。操作後會還原可見性、視圖樣板及釘選狀態。\n\nNdevTools | Smart BIM Tools"
+  cs: "Ukládejte, snímejte, používejte, přejmenovávejte, přepisujte a mažte přesné X/Y pozice výřezů na listech. Pro jednu verzi Revitu lze uložit až 10 pozic a použít je pro více výřezů. Viditelnost, šablona a připnutí se obnovují.\n\nNdevTools | Smart BIM Tools"
+  fa: "موقعیت دقیق X/Y ویوپورت‌های شیت را ذخیره، دریافت، اعمال، تغییرنام، بازنویسی یا حذف کنید. برای هر نسخهٔ Revit حداکثر ۱۰ موقعیت ذخیره می‌شود و روی چند ویوپورت اعمال می‌گردد. دید، الگوی نما و حالت سنجاق‌شده بازگردانده می‌شوند.\n\nNdevTools | Smart BIM Tools"
+  hu: "Mentse, rögzítse, alkalmazza, nevezze át, írja felül vagy törölje a lapokon lévő nézetablakok pontos X/Y pozícióját. Revit-verziónként legfeljebb 10 pozíció tárolható, több nézetablakon is használhatók. A láthatóság, a sablon és a rögzítés visszaáll.\n\nNdevTools | Smart BIM Tools"
+  ja: "Revit シート上のビューポート X/Y 位置を保存・取得・適用・名前変更・上書き・削除します。Revit バージョンごとに最大 10 件保存でき、複数のビューポートに適用できます。表示設定、ビューテンプレート、ピン固定状態は復元されます。\n\nNdevTools | Smart BIM Tools"
+  ko: "Revit 시트의 뷰포트 X/Y 위치를 저장, 캡처, 적용, 이름 변경, 덮어쓰기 또는 삭제합니다. Revit 버전마다 최대 10개를 저장하여 여러 뷰포트에 적용할 수 있습니다. 가시성, 뷰 템플릿, 핀 고정 상태를 복원합니다.\n\nNdevTools | Smart BIM Tools"
+  nl_nl: "Bewaar, leg vast, pas toe, hernoem, overschrijf of verwijder exacte X/Y-posities van viewports op Revit-bladen. Tot 10 posities per Revit-versie kunnen op meerdere viewports worden toegepast. Zichtbaarheid, viewtemplate en vastgepinde status worden hersteld.\n\nNdevTools | Smart BIM Tools"
+  pl: "Zapisuj, przechwytuj, stosuj, zmieniaj nazwy, nadpisuj i usuwaj dokładne pozycje X/Y rzutni na arkuszach. Do 10 pozycji na wersję Revit, z możliwością zastosowania do wielu rzutni. Widoczność, szablon i przypięcie są przywracane.\n\nNdevTools | Smart BIM Tools"
+  pt_br: "Salve, capture, aplique, renomeie, substitua ou exclua posições X/Y de viewports em folhas do Revit. São até 10 posições por versão do Revit, aplicáveis a várias viewports. Visibilidade, modelo de vista e estado de fixação são restaurados.\n\nNdevTools | Smart BIM Tools"
+  ru: "Сохраняйте, захватывайте, применяйте, переименовывайте, перезаписывайте и удаляйте точные X/Y позиции видовых экранов на листах. До 10 позиций на версию Revit; позиции можно применять к нескольким экранам. Видимость, шаблоны видов и закрепление восстанавливаются.\n\nNdevTools | Smart BIM Tools"
+  uk: "Зберігайте, захоплюйте, застосовуйте, перейменовуйте, перезаписуйте та видаляйте точні X/Y позиції видових вікон на аркушах. До 10 позицій на версію Revit, які можна застосовувати до кількох вікон. Видимість, шаблон виду і закріплення відновлюються.\n\nNdevTools | Smart BIM Tools"
+author: Nataraj Devaraj
+help_url: https://github.com/ndev16
 min_revit_ver: 2022
 max_revit_ver: 2027

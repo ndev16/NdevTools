@@ -1,4 +1,42 @@
-
-title: Vulcraft Deck Region
-
-tooltip: "Automatically generate a concrete filled region following the actual Vulcraft metal deck profile in Revit section views.\n\nSUPPORTED DECK TYPES\n• Vulcraft 1.5C-36\n• Vulcraft 2C-36\n• Vulcraft 3C-36\n\nFEATURES\n• Generate accurate corrugated deck profiles based on predefined Vulcraft dimensions.\n• Automatically create concrete filled regions above the metal deck profile.\n• Align the generated profile with the actual Revit deck geometry using a manually selected anchor point.\n• Match deck depth, pitch, bottom flat, and top flat dimensions.\n• Support multiple deck gages.\n• Automatically extend and clip the profile to the selected floor boundaries.\n• Select any available Revit filled region type.\n\nHOW TO USE\n1. Open a Revit section view.\n2. Select the structural deck floor.\n3. Choose the Vulcraft deck type and gage.\n4. Pick the LEFT END of a LOWER FLAT on the actual deck profile.\n5. Select the required filled region type.\n6. The tool generates and selects the concrete filled region.\n\nLIMITATIONS\n• Works in straight section views only.\n• Requires a valid structural floor and visible deck geometry.\n• The anchor point must be selected accurately.\n• Generated filled regions are static 2D annotations.\n\nCreated by Nataraj Devaraj."
+title:
+  en_us: Vulcraft Deck Region
+  en_gb: Vulcraft Deck Region
+  fr_fr: Région de bac Vulcraft
+  de_de: Vulcraft-Profilfläche
+  it_it: Regione solaio Vulcraft
+  es_es: Región de chapa Vulcraft
+  ar: "منطقة\nسطح Vulcraft"
+  bg: "Област на\nVulcraft Deck"
+  chinese_s: "Vulcraft\n楼承板区域"
+  chinese_t: "Vulcraft\n樓承板區域"
+  cs: "Oblast\nVulcraft Deck"
+  fa: "ناحیه\nعرشه Vulcraft"
+  hu: "Vulcraft\nlemezterület"
+  ja: "Vulcraft\nデッキ領域"
+  ko: "Vulcraft\n데크 영역"
+  nl_nl: "Vulcraft\nDeckgebied"
+  pl: "Obszar\npokładu Vulcraft"
+  pt_br: "Região de\nDeck Vulcraft"
+  ru: "Область\nнастила Vulcraft"
+  uk: "Область\nнастилу Vulcraft"
+tooltip:
+  en_us: "Automatically generate a concrete filled region following the actual Vulcraft metal deck profile in Revit section views.\n\nSUPPORTED DECK TYPES\n• Vulcraft 1.5C-36\n• Vulcraft 2C-36\n• Vulcraft 3C-36\n\nFEATURES\n• Generate accurate corrugated deck profiles based on predefined Vulcraft dimensions.\n• Automatically create concrete filled regions above the metal deck profile.\n• Align the generated profile with the actual Revit deck geometry using a manually selected anchor point.\n• Match deck depth, pitch, bottom flat, and top flat dimensions.\n• Support multiple deck gages.\n• Automatically extend and clip the profile to the selected floor boundaries.\n• Select any available Revit filled region type.\n\nHOW TO USE\n1. Open a Revit section view.\n2. Select the structural deck floor.\n3. Choose the Vulcraft deck type and gage.\n4. Pick the LEFT END of a LOWER FLAT on the actual deck profile.\n5. Select the required filled region type.\n6. The tool generates and selects the concrete filled region.\n\nLIMITATIONS\n• Works in straight section views only.\n• Requires a valid structural floor and visible deck geometry.\n• The anchor point must be selected accurately.\n• Generated filled regions are static 2D annotations.\n\nCreated by Nataraj Devaraj."
+  en_gb: "Generate a concrete filled region from a Vulcraft metal-deck profile in a straight Revit section. Select a structural floor, profile, gauge, anchor and filled-region type. Output is static 2D detailing.\n\nNdevTools | Smart BIM Tools"
+  fr_fr: "Créez une zone remplie de béton suivant le profil d'un bac acier Vulcraft dans une coupe droite Revit. Choisissez le plancher, le profil, l'épaisseur, un point d'ancrage et le type de zone. Le résultat est une annotation 2D statique.\n\nNdevTools | Smart BIM Tools"
+  de_de: "Erzeugt eine gefüllte Betonfläche entlang eines Vulcraft-Trapezblechprofils in einem geraden Revit-Schnitt. Geschossdecke, Profil, Blechdicke, Bezugspunkt und Füllbereichstyp wählen. Ergebnis ist eine statische 2D-Detaillierung.\n\nNdevTools | Smart BIM Tools"
+  it_it: "Genera una regione riempita di calcestruzzo dal profilo di una lamiera Vulcraft in una sezione Revit rettilinea. Selezionare solaio, profilo, spessore, punto di riferimento e tipo di regione. Il risultato è un dettaglio 2D statico.\n\nNdevTools | Smart BIM Tools"
+  es_es: "Genera una región rellenada de hormigón siguiendo el perfil de una chapa Vulcraft en una sección recta de Revit. Seleccione forjado, perfil, calibre, punto de anclaje y tipo de región. El resultado es un detalle 2D estático.\n\nNdevTools | Smart BIM Tools"
+  ar: "أنشئ منطقة تعبئة خرسانية ثنائية الأبعاد تتبع شكل صاج Vulcraft في مقطع Revit مستقيم. اختر بلاطة إنشائية ونوع الصاج وسماكته، ثم حدّد الطرف الأيسر من الجزء المسطح السفلي ونوع منطقة التعبئة. يدعم 1.5C-36 و2C-36 و3C-36؛ يجب تحديد نقطة الارتكاز بدقة والنتيجة تفصيل ثابت.\n\nNdevTools | Smart BIM Tools"
+  bg: "Създайте 2D запълнена бетонна област по профила на метална настилка Vulcraft в прав разрез на Revit. Изберете конструктивна плоча, профил и дебелина, после лявата точка на долния плосък участък и тип област. Поддържа 1.5C-36, 2C-36 и 3C-36; точността на опорната точка е важна. Резултатът е статичен детайл.\n\nNdevTools | Smart BIM Tools"
+  chinese_s: "在 Revit 直线剖面视图中，按 Vulcraft 金属楼承板轮廓创建二维混凝土填充区域。选择结构楼板、板型和厚度，再指定下部平直段的左端点及填充区域类型。支持 1.5C-36、2C-36、3C-36；定位点必须准确，生成的详图为静态二维图元。\n\nNdevTools | Smart BIM Tools"
+  chinese_t: "在 Revit 直線剖面視圖中，依 Vulcraft 金屬樓承板輪廓建立二維混凝土填滿區域。選擇結構樓板、板型與厚度，再指定下方平直段的左端點及區域類型。支援 1.5C-36、2C-36、3C-36；定位點須準確，結果為靜態二維詳圖。\n\nNdevTools | Smart BIM Tools"
+  cs: "Ve svislém přímém řezu Revitu vytvořte 2D vyplněnou betonovou oblast podle profilu plechu Vulcraft. Vyberte nosnou podlahu, profil, tloušťku, levý konec spodní rovné části a typ oblasti. Podporuje 1.5C-36, 2C-36 a 3C-36; referenční bod musí být přesný. Výstup je statický 2D detail.\n\nNdevTools | Smart BIM Tools"
+  fa: "در مقطع مستقیم Revit، ناحیهٔ پرشدهٔ بتنی دوبعدی را مطابق پروفیل عرشهٔ فولادی Vulcraft ایجاد کنید. کف سازه‌ای، پروفیل و ضخامت را انتخاب کنید، سپس انتهای چپ بخش مسطح زیرین و نوع ناحیه را مشخص کنید. پروفیل‌های 1.5C-36، 2C-36 و 3C-36 پشتیبانی می‌شوند؛ نقطهٔ مبنا باید دقیق باشد و خروجی ثابت است.\n\nNdevTools | Smart BIM Tools"
+  hu: "Hozzon létre 2D betonkitöltést a Vulcraft fémlemez profilja mentén egyenes Revit-metszetben. Válasszon szerkezeti födémet, profilt és lemezvastagságot, majd jelölje ki az alsó sík rész bal végét és a kitöltés típusát. Az 1.5C-36, 2C-36 és 3C-36 támogatott; a horgonypontot pontosan kell megadni. Az eredmény statikus.\n\nNdevTools | Smart BIM Tools"
+  ja: "Revit の直線断面ビューで、Vulcraft のデッキ形状に沿ったコンクリートの 2D 塗りつぶし領域を作成します。構造床、デッキ形状、板厚を選択し、下側の平坦部の左端と領域タイプを指定してください。1.5C-36、2C-36、3C-36 に対応します。基準点は正確に指定してください。結果は静的な 2D 詳細です。\n\nNdevTools | Smart BIM Tools"
+  ko: "Revit의 직선 단면에서 Vulcraft 금속 데크 형상에 맞는 2D 콘크리트 채우기 영역을 만듭니다. 구조 바닥, 데크 종류와 두께를 선택하고 하부 평탄부의 왼쪽 끝점과 영역 유형을 지정합니다. 1.5C-36, 2C-36, 3C-36을 지원합니다. 기준점을 정확히 선택해야 하며 결과는 정적 2D 상세입니다.\n\nNdevTools | Smart BIM Tools"
+  nl_nl: "Maak een 2D betonvulling volgens het profiel van een Vulcraft-staalplaat in een rechte Revit-doorsnede. Selecteer de constructieve vloer, het profiel en de dikte, daarna het linkereinde van het onderste vlakke deel en het type vulgebied. Ondersteunt 1.5C-36, 2C-36 en 3C-36; plaats het anker nauwkeurig. Het resultaat is statisch.\n\nNdevTools | Smart BIM Tools"
+  pl: "Utwórz w prostym przekroju Revit wypełniony obszar betonu 2D według profilu blachy Vulcraft. Wybierz strop konstrukcyjny, profil i grubość, następnie lewy koniec dolnego płaskiego odcinka oraz typ obszaru. Obsługuje 1.5C-36, 2C-36 i 3C-36; punkt bazowy musi być dokładny. Wynik jest statyczny.\n\nNdevTools | Smart BIM Tools"
+  pt_br: "Crie uma região preenchida de concreto 2D seguindo o perfil da fôrma metálica Vulcraft em um corte reto. Selecione o piso estrutural, o perfil e a espessura, marque a extremidade esquerda da mesa inferior e escolha o tipo de região. Suporta 1.5C-36, 2C-36 e 3C-36; posicione a referência com precisão. O detalhe é estático.\n\nNdevTools | Smart BIM Tools"
+  ru: "Создайте статическую 2D-заливку бетона по профилю металлического настила Vulcraft в прямом разрезе Revit. Выберите несущую плиту, профиль и толщину, затем левый конец нижней плоской части и тип заливки. Поддерживаются 1.5C-36, 2C-36, 3C-36; точка привязки должна быть задана точно.\n\nNdevTools | Smart BIM Tools"
+  uk: "Створіть статичну 2D-заливку бетону за профілем металевого настилу Vulcraft у прямому розрізі Revit. Виберіть несучу плиту, профіль і товщину, потім лівий кінець нижньої плоскої ділянки та тип заливки. Підтримуються 1.5C-36, 2C-36 і 3C-36; точка прив’язки має бути точною.\n\nNdevTools | Smart BIM Tools"

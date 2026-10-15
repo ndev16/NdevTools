@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+
 from pyrevit import revit, DB, forms, script
 from System.Collections.Generic import List
 from System.Windows import (Thickness, VerticalAlignment, FontWeights,
@@ -600,7 +602,7 @@ def _ndev_show_help(owner):
     content.Children.Add(linkedin)
 
     help_window.Content = content
-    help_window.ShowDialog()
+    _ndev_show_localized_dialog(help_window)
 
 
 def _ndev_attach_header(window, callback):
@@ -861,7 +863,7 @@ def _ndev_alert(message, **kwargs):
         yes=kwargs.get('yes', False),
         no=kwargs.get('no', False)
     )
-    win.ShowDialog()
+    _ndev_show_localized_dialog(win)
     if kwargs.get('exitscript', False):
         script.exit()
     return win.answer

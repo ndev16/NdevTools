@@ -1,4 +1,6 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+
+from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
 """Trace floors, walls, roofs, foundations, and framing as view-specific details.
 
 Regions are static snapshots. Plan footprints do not remove areas hidden by
@@ -102,7 +104,7 @@ def ndev_show_help(owner=None):
     scroller = ScrollViewer()
     scroller.Content = panel
     help_window.Content = scroller
-    help_window.ShowDialog()
+    _ndev_show_localized_dialog(help_window)
 
 
 def ndev_attach_help(window, title=None):
@@ -1033,7 +1035,7 @@ for symbol in (DB.FilteredElementCollector(doc).OfCategory(DB.BuiltInCategory.OS
             floor_detail_types[label] = symbol.Id
 settings = TraceSettings(groups, region_choices, sorted(line_types), sorted(repeat_types),
                          sorted(detail_types), sorted(floor_detail_types))
-settings.ShowDialog()
+_ndev_show_localized_dialog(settings)
 assignments = settings.result
 if not assignments:
     script.exit()

@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
 from pyrevit import revit, DB, forms, script
 from System.Collections.Generic import List
 import json
@@ -211,7 +213,7 @@ def ndev_show_help(owner=None):
     scrolling.Content = panel
     window.Content = scrolling
     ndev_attach_titlebar(window, include_help=False)
-    window.ShowDialog()
+    _ndev_show_localized_dialog(window)
 
 
 class NdevSelectFromList(forms.SelectFromList):
@@ -339,7 +341,7 @@ def ndev_alert(message, title=None, yes=False, no=False,
     content.Children.Add(scroll)
     window.Content = content
     ndev_attach_titlebar(window)
-    answer = window.ShowDialog()
+    answer = _ndev_show_localized_dialog(window)
 
     if exitscript:
         script.exit()
@@ -2478,7 +2480,7 @@ def main():
         saved_positions
     )
 
-    if window.ShowDialog() is not True:
+    if _ndev_show_localized_dialog(window) is not True:
         return
 
     assignments = window.result_assignments

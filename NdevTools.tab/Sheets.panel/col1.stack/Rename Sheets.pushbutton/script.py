@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+
 from pyrevit import revit, DB, forms
 
 import clr
@@ -292,7 +294,7 @@ def ndev_show_help():
     help_form.Controls.Add(panel)
     ndev_install_titlebar(help_form, show_help=False,
                           allow_maximize=False)
-    help_form.ShowDialog()
+    _ndev_show_localized_dialog(help_form)
 
 
 def ndev_message(text, title="Sheet Manager",
@@ -342,7 +344,7 @@ def ndev_message(text, title="Sheet Manager",
     layout.Controls.Add(footer, 0, 1)
     dialog.Controls.Add(layout)
     ndev_install_titlebar(dialog)
-    result = dialog.ShowDialog()
+    result = _ndev_show_localized_dialog(dialog)
     return result
 
 
@@ -2774,7 +2776,7 @@ try:
     )
 
 
-    window.ShowDialog()
+    _ndev_show_localized_dialog(window)
 
 
 except Exception as error:

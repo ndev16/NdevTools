@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
 """Two-page WPF wizard. No document mutations occur in this module."""
 import os
 from pyrevit import DB, UI, forms, script

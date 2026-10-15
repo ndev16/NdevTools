@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
 """Ndev Tools - Welcome & About.
 
 A display-only pyRevit ribbon command. Does not alter the Revit document.
@@ -162,7 +164,7 @@ class NdevWelcomeWindow(forms.WPFWindow):
 
 def main():
     window = NdevWelcomeWindow()
-    window.ShowDialog()
+    _ndev_show_localized_dialog(window)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,43 @@
-
-title: Sheet Pilot
-
+title:
+  en_us: Sheet Pilot
+  en_gb: Sheet Pilot
+  fr_fr: Placement sur feuilles
+  de_de: Planblatt-Assistent
+  it_it: Gestione tavole
+  es_es: Gestor de planos
+  ar: "مرشد\nاللوحات"
+  bg: "Пилот на\nлистове"
+  chinese_s: "图纸\n向导"
+  chinese_t: "圖紙\n精靈"
+  cs: "Pilot\nvýkresů"
+  fa: "پایلوت\nشیت"
+  hu: "Rajz\npilóta"
+  ja: "シート\nパイロット"
+  ko: "시트\n파일럿"
+  nl_nl: "Sheet\nPilot"
+  pl: "Pilot\narkuszy"
+  pt_br: "Assistente\nde folhas"
+  ru: "Пилот\nлистов"
+  uk: "Пілот\nаркушів"
 author: Nataraj Devaraj
-
-tooltip: "NDEVTOOLS | SHEET PILOT\n\nAutomate multi-sheet view placement using saved viewport positions in Autodesk Revit.\n\nPREREQUISITES:\n1. Manually place a reference view on a Revit sheet.\n2. Open Viewport Position Manager.\n3. Select the reference viewport.\n4. Capture and save its X/Y sheet position.\n5. Repeat to save additional positions if needed.\n\nHOW TO USE:\n1. Launch Sheet Pilot.\n2. Expand the sheet you want to configure.\n3. Click + Add View (maximum 25 views per sheet).\n4. Select an unplaced view.\n5. Select the required viewport type.\n6. Assign a previously saved sheet position.\n7. Repeat for other views and sheets.\n8. Click PLACE ALL VIEWS to execute.\n\nFEATURES:\n- Multi-sheet view placement.\n- Up to 25 views per sheet.\n- Reusable saved X/Y viewport positions.\n- Compatible plans, sections, 3D views, drafting views, legends and schedules.\n- Temporary visibility handling for supported views.\n- Restoration of original visibility and view templates.\n- Individual rollback protection for failed placements.\n\nIMPORTANT:\nAt least one saved viewport position is required before placing views. Saved positions are stored separately for each Revit version.\n\nCOMPATIBILITY:\nAutodesk Revit 2022-2027\npyRevit | IronPython 2.7\n\nDEVELOPER:\nNataraj Devaraj\nGitHub: https://github.com/ndev16/NdevTools\nLinkedIn: https://www.linkedin.com/in/nataraj016/"
+tooltip:
+  en_us: "NDEVTOOLS | SHEET PILOT\n\nAutomate multi-sheet view placement using saved viewport positions in Autodesk Revit.\n\nPREREQUISITES:\n1. Manually place a reference view on a Revit sheet.\n2. Open Viewport Position Manager.\n3. Select the reference viewport.\n4. Capture and save its X/Y sheet position.\n5. Repeat to save additional positions if needed.\n\nHOW TO USE:\n1. Launch Sheet Pilot.\n2. Expand the sheet you want to configure.\n3. Click + Add View (maximum 25 views per sheet).\n4. Select an unplaced view.\n5. Select the required viewport type.\n6. Assign a previously saved sheet position.\n7. Repeat for other views and sheets.\n8. Click PLACE ALL VIEWS to execute.\n\nFEATURES:\n- Multi-sheet view placement.\n- Up to 25 views per sheet.\n- Reusable saved X/Y viewport positions.\n- Compatible plans, sections, 3D views, drafting views, legends and schedules.\n- Temporary visibility handling for supported views.\n- Restoration of original visibility and view templates.\n- Individual rollback protection for failed placements.\n\nIMPORTANT:\nAt least one saved viewport position is required before placing views. Saved positions are stored separately for each Revit version.\n\nCOMPATIBILITY:\nAutodesk Revit 2022-2027\npyRevit | IronPython 2.7\n\nDEVELOPER:\nNataraj Devaraj\nGitHub: https://github.com/ndev16/NdevTools\nLinkedIn: https://www.linkedin.com/in/nataraj016/"
+  en_gb: "Place up to 25 unplaced views per sheet across multiple sheets with saved viewport positions. First place a reference view on a sheet and save its position in Viewport Position Manager. Review placements and overlaps.\n\nNdevTools | Smart BIM Tools"
+  fr_fr: "Place jusqu'à 25 vues non placées par feuille, sur plusieurs feuilles, à l'aide de positions enregistrées. Placez d'abord une vue de référence sur une feuille et enregistrez sa position avec le gestionnaire de fenêtres. Vérifiez les chevauchements.\n\nNdevTools | Smart BIM Tools"
+  de_de: "Platziert bis zu 25 noch nicht platzierte Ansichten je Planblatt auf mehreren Blättern mithilfe gespeicherter Ansichtsfensterpositionen. Zuerst eine Referenzansicht platzieren und deren Position im Positionsmanager speichern. Überlappungen prüfen.\n\nNdevTools | Smart BIM Tools"
+  it_it: "Posiziona fino a 25 viste non ancora inserite per tavola, su più tavole, utilizzando le posizioni salvate delle finestre. Inserire prima una vista di riferimento e salvarne la posizione nel gestore posizioni. Verificare le sovrapposizioni.\n\nNdevTools | Smart BIM Tools"
+  es_es: "Coloca hasta 25 vistas sin colocar por plano, en varios planos, con posiciones de ventana guardadas. Primero coloque una vista de referencia y guarde su posición en el gestor de posiciones. Revise los solapes.\n\nNdevTools | Smart BIM Tools"
+  ar: "احفظ أولاً موضع X/Y لإطار عرض موجود على لوحة بواسطة مدير مواضع إطارات العرض. بعد ذلك أضف حتى 25 عرضاً غير موضوع لكل لوحة، وحدّد نوع إطار العرض والموضع المحفوظ واضغط وضع جميع العروض. تُستعاد إعدادات الرؤية والقوالب بعد النقل وتُعالج أخطاء الوضع بشكل منفصل.\n\nNdevTools | Smart BIM Tools"
+  bg: "Първо запазете X/Y позицията на вече поставен изглед чрез мениджъра за позиции. Добавете до 25 непоставени изгледа на лист, изберете тип прозорец и запазена позиция, после поставете всички. Видимостта и шаблоните се възстановяват; грешките се обработват поотделно.\n\nNdevTools | Smart BIM Tools"
+  chinese_s: "先使用视口位置管理器保存已放置视口的 X/Y 位置。然后在每张图纸中添加最多 25 个未放置视图，选择视口类型和保存的位置，再单击“放置所有视图”。移动后恢复原有可见性和视图样板；各项失败单独处理。\n\nNdevTools | Smart BIM Tools"
+  chinese_t: "先用視埠位置管理器儲存已放置視埠的 X/Y 位置。每張圖紙可加入最多 25 個未放置視圖，選擇視埠類型及儲存位置後按「放置所有視圖」。移動後會還原可見性及視圖樣板；失敗項目個別處理。\n\nNdevTools | Smart BIM Tools"
+  cs: "Nejprve uložte X/Y pozici již umístěného výřezu pomocí správce pozic. Poté přidejte až 25 neumístěných pohledů na list, zvolte typ výřezu a uloženou pozici a umístěte všechny pohledy. Viditelnost i šablony se obnoví; chyby jednotlivých umístění se řeší odděleně.\n\nNdevTools | Smart BIM Tools"
+  fa: "ابتدا موقعیت X/Y یک ویوپورت قرارگرفته را با مدیر موقعیت ذخیره کنید. سپس حداکثر ۲۵ نمای قرارنگرفته در هر شیت اضافه کنید، نوع ویوپورت و موقعیت ذخیره‌شده را برگزینید و همه را قرار دهید. تنظیمات دید و الگوی نما بازگردانده می‌شوند و خطاها جداگانه بررسی می‌شوند.\n\nNdevTools | Smart BIM Tools"
+  hu: "Először mentse egy már elhelyezett nézetablak X/Y pozícióját a Pozíciókezelővel. Ezután laponként legfeljebb 25 el nem helyezett nézetet adhat hozzá; válasszon típust és mentett pozíciót, majd helyezze el mindet. A láthatóság és a nézetsablon visszaáll; a hibák külön kezelődnek.\n\nNdevTools | Smart BIM Tools"
+  ja: "まず配置済みビューポートの X/Y 位置を位置マネージャーで保存します。各シートに未配置ビューを最大 25 個追加し、ビューポートタイプと保存位置を選んで一括配置します。処理後は表示設定とビューテンプレートを復元し、配置エラーは個別に処理します。\n\nNdevTools | Smart BIM Tools"
+  ko: "먼저 뷰포트 위치 관리자에서 배치된 뷰포트의 X/Y 위치를 저장합니다. 시트마다 최대 25개의 미배치 뷰를 추가하고 유형과 저장 위치를 선택한 뒤 모두 배치합니다. 작업 후 가시성과 뷰 템플릿을 복원하며 개별 배치 오류를 따로 처리합니다.\n\nNdevTools | Smart BIM Tools"
+  nl_nl: "Sla eerst de X/Y-positie van een bestaand viewport op met Viewport Position Manager. Voeg daarna maximaal 25 nog niet geplaatste aanzichten per blad toe, selecteer het viewporttype en de opgeslagen positie en plaats alle aanzichten. Zichtbaarheid en viewtemplates worden hersteld; fouten worden afzonderlijk afgehandeld.\n\nNdevTools | Smart BIM Tools"
+  pl: "Najpierw zapisz pozycję X/Y istniejącej rzutni przez Menedżer pozycji. Następnie dodaj do 25 nieumieszczonych widoków na arkusz, wybierz typ rzutni i zapisaną pozycję, po czym umieść wszystkie widoki. Widoczność i szablon widoku zostaną przywrócone; błędy są obsługiwane oddzielnie.\n\nNdevTools | Smart BIM Tools"
+  pt_br: "Primeiro salve uma posição X/Y de uma viewport já colocada usando o Gerenciador de Posições. Depois adicione até 25 vistas ainda não colocadas por folha, escolha o tipo de viewport e a posição salva e clique em COLOCAR TODAS AS VISTAS. A visibilidade e o modelo de vista são restaurados; falhas são isoladas.\n\nNdevTools | Smart BIM Tools"
+  ru: "Сначала сохраните координаты X/Y размещённого видового экрана в Менеджере позиций. Затем добавьте до 25 неразмещённых видов на лист, выберите тип экрана и сохранённую позицию и разместите все виды. Исходная видимость и шаблон вида восстанавливаются; ошибки размещения обрабатываются отдельно.\n\nNdevTools | Smart BIM Tools"
+  uk: "Спочатку збережіть координати X/Y розміщеного видового вікна у Менеджері позицій. Далі додайте до 25 нерозміщених видів на аркуш, виберіть тип вікна і збережену позицію та розмістіть усі види. Видимість і шаблон виду відновлюються; помилки обробляються окремо.\n\nNdevTools | Smart BIM Tools"

@@ -1,8 +1,43 @@
-title: "Welcome"
-tooltip: |
-  Ndev Tools - Welcome & About
-
-  Open the Ndev Tools welcome page, version information,
-  GitHub, LinkedIn, and feedback email.
-
-author: "Ndev Tools"
+title:
+  en_us: Welcome
+  en_gb: Welcome
+  fr_fr: Bienvenue
+  de_de: Willkommen
+  it_it: Benvenuto
+  es_es: Bienvenida
+  ar: مرحباً
+  bg: Добре дошли
+  chinese_s: 欢迎
+  chinese_t: 歡迎
+  cs: Vítejte
+  fa: خوش‌آمد
+  hu: Üdvözlet
+  ja: ようこそ
+  ko: 환영
+  nl_nl: Welkom
+  pl: Witamy
+  pt_br: Bem-vindo
+  ru: Добро пожаловать
+  uk: Ласкаво просимо
+tooltip:
+  en_us: "Ndev Tools - Welcome & About\n\nOpen the Ndev Tools welcome page, version information,\nGitHub, LinkedIn, and feedback email.\n"
+  en_gb: "Open the NdevTools welcome page to see tool information, version details and developer support links.\n\nNdevTools | Smart BIM Tools"
+  fr_fr: "Ouvrez la page d'accueil de NdevTools pour consulter les outils, les versions et les liens d'assistance.\n\nNdevTools | Smart BIM Tools"
+  de_de: "Öffnet die NdevTools-Startseite mit Informationen zu Werkzeugen, Versionen und Support-Links.\n\nNdevTools | Smart BIM Tools"
+  it_it: "Apre la pagina introduttiva di NdevTools con informazioni, versioni e collegamenti di supporto.\n\nNdevTools | Smart BIM Tools"
+  es_es: "Abre la página de bienvenida de NdevTools con información, versiones y enlaces de soporte.\n\nNdevTools | Smart BIM Tools"
+  ar: "افتح صفحة الترحيب في NdevTools لعرض معلومات الأدوات والإصدار وروابط GitHub وLinkedIn والتواصل مع المطوّر. هذه النافذة لا تغيّر نموذج Revit.\n\nNdevTools | Smart BIM Tools"
+  bg: "Отворете началния екран на NdevTools за информация за инструментите, версията, GitHub, LinkedIn и обратна връзка. Този прозорец не променя модела в Revit.\n\nNdevTools | Smart BIM Tools"
+  chinese_s: "打开 NdevTools 欢迎页面，查看工具介绍、版本信息、GitHub、LinkedIn 和反馈联系方式。此页面不会修改 Revit 模型。\n\nNdevTools | Smart BIM Tools"
+  chinese_t: "開啟 NdevTools 歡迎頁面，查看工具介紹、版本資訊、GitHub、LinkedIn 和意見回饋聯絡方式。此頁面不會修改 Revit 模型。\n\nNdevTools | Smart BIM Tools"
+  cs: "Otevřete úvodní stránku NdevTools s informacemi o nástrojích a verzi, odkazy na GitHub, LinkedIn a kontaktem pro zpětnou vazbu. Tato stránka nemění model Revitu.\n\nNdevTools | Smart BIM Tools"
+  fa: "صفحهٔ خوش‌آمد NdevTools را برای مشاهدهٔ اطلاعات ابزارها، نسخه، پیوندهای GitHub و LinkedIn و راه تماس باز کنید. این صفحه مدل Revit را تغییر نمی‌دهد.\n\nNdevTools | Smart BIM Tools"
+  hu: "Nyissa meg az NdevTools üdvözlőoldalát az eszközök, a verzió, a GitHub, a LinkedIn és a visszajelzési elérhetőségek megtekintéséhez. Ez az ablak nem módosítja a Revit modellt.\n\nNdevTools | Smart BIM Tools"
+  ja: "NdevTools のウェルカム画面を開き、ツールの説明、バージョン、GitHub、LinkedIn、お問い合わせ先を確認します。この画面から Revit モデルは変更されません。\n\nNdevTools | Smart BIM Tools"
+  ko: "NdevTools 시작 화면에서 도구 정보, 버전, GitHub, LinkedIn 및 문의 링크를 확인합니다. 이 화면은 Revit 모델을 수정하지 않습니다.\n\nNdevTools | Smart BIM Tools"
+  nl_nl: "Open de welkomstpagina van NdevTools voor gereedschapinformatie, versiegegevens, GitHub, LinkedIn en contact voor feedback. Dit venster wijzigt het Revit-model niet.\n\nNdevTools | Smart BIM Tools"
+  pl: "Otwórz stronę powitalną NdevTools, aby zobaczyć opis narzędzi, wersję, odnośniki do GitHub i LinkedIn oraz kontakt do zgłaszania uwag. To okno nie modyfikuje modelu Revit.\n\nNdevTools | Smart BIM Tools"
+  pt_br: "Abra a página inicial do NdevTools para consultar ferramentas, versão, GitHub, LinkedIn e contatos de suporte. Esta janela não altera o modelo do Revit.\n\nNdevTools | Smart BIM Tools"
+  ru: "Откройте приветственную страницу NdevTools, чтобы просмотреть сведения об инструментах, версии, ссылки GitHub и LinkedIn и контакты для обратной связи. Это окно не изменяет модель Revit.\n\nNdevTools | Smart BIM Tools"
+  uk: "Відкрийте сторінку привітання NdevTools, щоб переглянути відомості про інструменти, версію, посилання GitHub і LinkedIn та контакти для відгуків. Це вікно не змінює модель Revit.\n\nNdevTools | Smart BIM Tools"
+author: Ndev Tools

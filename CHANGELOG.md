@@ -1,5 +1,12 @@
 # Changelog
 
+## October 16, 2026 — 20-language support preview and documentation
+
+- Added the NdevTools 20-language banner to `media/NdevTools-20-Language-Support.png` and displayed it prominently in `README.md`.
+- Documented all 20 supported pyRevit locale options for command titles and concise bundle tooltip descriptions.
+- Clarified automatic Revit-interface language selection, English fallback for untranslated dialog text, and the matching black/white light/dark theme icon pairs.
+- Documentation and preview-image update only; no Revit command logic or ribbon metadata was changed in this patch.
+
 ## October 13, 2026 — Sheet Pilot documentation and metadata update
 
 ### Sheets panel

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+
 from pyrevit import revit, DB, forms
 
 # ============================================================
@@ -232,7 +234,7 @@ def ndev_show_help(owner=None):
     scroll.Content = stack
     help_window.Content = scroll
     ndev_attach_titlebar(help_window, include_help=False)
-    help_window.ShowDialog()
+    _ndev_show_localized_dialog(help_window)
 
 
 def ndev_alert(message, title=None, exitscript=False,
@@ -295,7 +297,7 @@ def ndev_alert(message, title=None, exitscript=False,
     body.Children.Add(scroller)
     window.Content = body
     ndev_attach_titlebar(window)
-    window.ShowDialog()
+    _ndev_show_localized_dialog(window)
 
     if exitscript:
         script.exit()

@@ -1,4 +1,42 @@
-
-title: Auto Detail Generator
-
-tooltip: "Automatically trace 3D Revit model elements to generate 2D construction details in plan and straight section views.\n\nSUPPORTED ELEMENTS\n• Floors\n• Walls\n• Roofs\n• Structural Foundations\n• Structural Framing\n\nFEATURES\n• Assign filled-region types and outline styles by category.\n• Select No Fill and a line style to generate detail lines.\n\nROOFS\n• Place line-based detail components along roof slopes in sections or top-face edges in plans.\n• Curved roof edges are not supported.\n\nFLOORS\n• Place line-based detail components horizontally along traced floor segments, split at openings.\n\nSTRUCTURAL FRAMING\n• Select a loaded detail component or None.\n• Align the component's bounding-box center with the traced framing center.\n• Point-based and line-based detail families are supported.\n\nCMU WALLS\n• Place repeating details horizontally or vertically in sections.\n• Requires an existing repeating-detail instance as a copy template.\n\nLIMITATIONS\n• Plan walls use the main view cut height.\n• Local plan-region cut heights are not applied.\n• Host-model elements only.\n\nCreated by Nataraj Devaraj."
+title:
+  en_us: Auto Detail Generator
+  en_gb: Auto Detail Generator
+  fr_fr: Générateur de détails
+  de_de: Detailgenerator
+  it_it: Generatore di dettagli
+  es_es: Generador de detalles
+  ar: "مولد\nالتفاصيل"
+  bg: "Генератор на\nдетайли"
+  chinese_s: "详图\n生成器"
+  chinese_t: "詳圖\n產生器"
+  cs: "Generátor\ndetailů"
+  fa: "تولیدگر\nجزئیات"
+  hu: "Részlet\ngenerátor"
+  ja: "詳細\nジェネレータ"
+  ko: "상세\n생성기"
+  nl_nl: "Detail\ngenerator"
+  pl: "Generator\ndetali"
+  pt_br: "Gerador de\ndetalhes"
+  ru: "Генератор\nдеталей"
+  uk: "Генератор\nдеталей"
+tooltip:
+  en_us: "Automatically trace 3D Revit model elements to generate 2D construction details in plan and straight section views.\n\nSUPPORTED ELEMENTS\n• Floors\n• Walls\n• Roofs\n• Structural Foundations\n• Structural Framing\n\nFEATURES\n• Assign filled-region types and outline styles by category.\n• Select No Fill and a line style to generate detail lines.\n\nROOFS\n• Place line-based detail components along roof slopes in sections or top-face edges in plans.\n• Curved roof edges are not supported.\n\nFLOORS\n• Place line-based detail components horizontally along traced floor segments, split at openings.\n\nSTRUCTURAL FRAMING\n• Select a loaded detail component or None.\n• Align the component's bounding-box center with the traced framing center.\n• Point-based and line-based detail families are supported.\n\nCMU WALLS\n• Place repeating details horizontally or vertically in sections.\n• Requires an existing repeating-detail instance as a copy template.\n\nLIMITATIONS\n• Plan walls use the main view cut height.\n• Local plan-region cut heights are not applied.\n• Host-model elements only.\n\nCreated by Nataraj Devaraj."
+  en_gb: "Generate 2D construction details from supported host-model walls, floors, roofs, foundations and framing in plans and straight sections. Choose filled regions, line styles or compatible detail components. Review results before issuing drawings.\n\nNdevTools | Smart BIM Tools"
+  fr_fr: "Crée des détails de construction 2D à partir des murs, planchers, toitures, fondations et ossatures du modèle hôte, en plan ou en coupe droite. Choisissez les zones remplies, les styles de ligne ou les composants de détail compatibles. Vérifiez les résultats.\n\nNdevTools | Smart BIM Tools"
+  de_de: "Erzeugt 2D-Baudetails aus Wänden, Decken, Dächern, Fundamenten und Tragwerk des Host-Modells in Grundrissen oder geraden Schnitten. Füllbereiche, Linienstile oder kompatible Detailbauteile wählen. Ergebnisse prüfen.\n\nNdevTools | Smart BIM Tools"
+  it_it: "Genera dettagli costruttivi 2D da muri, solai, coperture, fondazioni e strutture del modello host in piante e sezioni rettilinee. Scegliere regioni riempite, stili di linea o componenti di dettaglio compatibili. Verificare i risultati.\n\nNdevTools | Smart BIM Tools"
+  es_es: "Genera detalles constructivos 2D a partir de muros, forjados, cubiertas, cimentaciones y estructuras del modelo anfitrión en plantas y secciones rectas. Seleccione regiones, estilos de línea o componentes de detalle compatibles. Revise los resultados.\n\nNdevTools | Smart BIM Tools"
+  ar: "حوّل عناصر النموذج المضيف المرئية إلى تفاصيل ثنائية الأبعاد في المخططات والمقاطع المستقيمة: الأرضيات والجدران والأسقف والأساسات والعناصر الإنشائية. اختر التعبئة ونمط الخط أو عنصر التفصيل المناسب لكل فئة. حواف الأسقف المنحنية غير مدعومة، وتُستخدم قيمة القطع الرئيسية للمخطط.\n\nNdevTools | Smart BIM Tools"
+  bg: "Генерирайте 2D детайли от плочи, стени, покриви, фундаменти и конструктивни елементи в планове и прави разрези на основния модел. Задайте запълнени области, линии и детайлни компоненти по категории. Извити ръбове на покриви не се поддържат; в план се използва основната височина на среза.\n\nNdevTools | Smart BIM Tools"
+  chinese_s: "从主体模型的楼板、墙、屋顶、结构基础及结构框架生成平面或直线剖面中的二维施工详图。可按类别选择填充区域、线型及详图构件。不支持弯曲屋顶边线；平面视图使用主视图的剖切高度。\n\nNdevTools | Smart BIM Tools"
+  chinese_t: "從主體模型的樓板、牆、屋頂、結構基礎及結構構架建立平面或直線剖面中的二維施工詳圖。可依類別選擇填滿區域、線型與詳圖元件。不支援彎曲屋頂邊線；平面視圖採用主要視圖的剖切高度。\n\nNdevTools | Smart BIM Tools"
+  cs: "Vytvářejte 2D stavební detaily z podlah, stěn, střech, základů a nosných prvků hostitelského modelu v půdorysech a přímých řezech. Nastavte výplně, čáry a detailní komponenty podle kategorií. Zakřivené hrany střech nejsou podporovány; půdorys používá hlavní výšku řezu.\n\nNdevTools | Smart BIM Tools"
+  fa: "از کف‌ها، دیوارها، بام‌ها، پی‌ها و اعضای سازه‌ای مدل میزبان، جزئیات ساختمانی دوبعدی در پلان و مقاطع مستقیم بسازید. نوع ناحیهٔ پر، سبک خط و اجزای جزئیات را برای هر دسته انتخاب کنید. لبهٔ خمیدهٔ بام پشتیبانی نمی‌شود و در پلان، ارتفاع برش اصلی استفاده می‌شود.\n\nNdevTools | Smart BIM Tools"
+  hu: "Készítsen 2D építési részleteket a gazdamodell födémeiből, falaiból, tetőiből, alapozásából és tartószerkezeti elemeiből alaprajzokon és egyenes metszeteken. Kategóriánként állítson be kitöltést, vonalstílust vagy részletelemet. Ívelt tetőélek nem támogatottak; alaprajzban a fő metszősík magassága érvényes.\n\nNdevTools | Smart BIM Tools"
+  ja: "ホストモデルの床、壁、屋根、基礎、構造フレームから、平面ビューや直線断面ビューに 2D 施工詳細を作成します。カテゴリごとに塗りつぶし領域、線種、詳細コンポーネントを選択できます。曲線状の屋根端部には非対応です。平面ではメインビューの切断高さを使用します。\n\nNdevTools | Smart BIM Tools"
+  ko: "호스트 모델의 바닥, 벽, 지붕, 구조 기초 및 구조 프레이밍에서 평면도와 직선 단면의 2D 시공 상세를 생성합니다. 카테고리별 채우기 영역, 선 스타일 및 상세 구성요소를 선택합니다. 곡선 지붕 가장자리는 지원되지 않으며 평면도에서는 기본 뷰의 절단 높이를 사용합니다.\n\nNdevTools | Smart BIM Tools"
+  nl_nl: "Genereer 2D-bouwdetails uit vloeren, wanden, daken, funderingen en draagconstructies van het hostmodel in plattegronden en rechte doorsneden. Kies vulgebieden, lijnstijlen en detailcomponenten per categorie. Gebogen dakranden worden niet ondersteund; plattegronden gebruiken de hoofd-snedehoogte.\n\nNdevTools | Smart BIM Tools"
+  pl: "Twórz detale konstrukcyjne 2D ze stropów, ścian, dachów, fundamentów i elementów konstrukcji modelu głównego na rzutach i prostych przekrojach. Wybierz wypełnienia, style linii i komponenty detali dla kategorii. Łukowe krawędzie dachów nie są obsługiwane; rzuty używają głównej wysokości cięcia.\n\nNdevTools | Smart BIM Tools"
+  pt_br: "Gere detalhes 2D de pisos, paredes, telhados, fundações e estruturas do modelo hospedeiro em plantas ou cortes retos. Escolha a região preenchida, o estilo de linha e os componentes de detalhe por categoria. Bordas curvas de telhados não são suportadas; a altura principal de corte é usada nas plantas.\n\nNdevTools | Smart BIM Tools"
+  ru: "Создавайте строительные 2D-узлы из перекрытий, стен, крыш, фундаментов и несущих элементов основной модели в планах и прямых разрезах. Для категорий выбираются области заливки, стили линий и компоненты узлов. Изогнутые края крыш не поддерживаются; на планах используется основная высота сечения.\n\nNdevTools | Smart BIM Tools"
+  uk: "Створюйте будівельні 2D-вузли з перекриттів, стін, дахів, фундаментів і несучих елементів головної моделі у планах та прямих розрізах. Обирайте заливки, стилі ліній і компоненти вузлів для кожної категорії. Криволінійні краї дахів не підтримуються; на планах використовується основна висота розрізу.\n\nNdevTools | Smart BIM Tools"

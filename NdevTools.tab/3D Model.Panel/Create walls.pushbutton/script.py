@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
 """NdevTools Wall Tracing - pyRevit command entry point."""
 import os
 import sys
@@ -36,7 +38,7 @@ def main():
         forms.alert('Start Wall Tracing from a plan or 3D view.', title='Wall Tracing')
         return
     window = WallTracingWindow(doc, revit.uidoc, ROOT)
-    window.ShowDialog()
+    _ndev_show_localized_dialog(window)
     if window.result is None:
         return
     link, configurations = window.result

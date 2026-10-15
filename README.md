@@ -1,13 +1,40 @@
 # NdevTools | Smart BIM Tools
 
-![NdevTools ribbon layout](media/NdevTools-Ribbon.png)
+![NdevTools: 20-language support and black-and-white theme icons](media/NdevTools-20-Language-Support.png)
+
+**NdevTools supports 20 language options** for pyRevit ribbon button titles and bundle tooltip descriptions, with black icons for light themes and white icons for dark themes. The tool commands remain the same across languages.
 
 **NdevTools** is a collection of Autodesk Revit productivity commands built for **pyRevit**. The extension combines model-based detailing, view and sheet management, and architectural-link wall tracing in one ribbon tab. It is developed by **Nataraj Devaraj**.
 
 **GitHub:** [ndev16/NdevTools](https://github.com/ndev16/NdevTools)  
 **Feedback and feature requests:** [GitHub Issues](https://github.com/ndev16/NdevTools/issues)
 
+## Multilingual support — 20 languages
+
+NdevTools includes localized **ribbon titles and bundle tooltip descriptions for all eight commands** in the following 20 pyRevit locale options:
+
+| Language | Locale code | Language | Locale code |
+| --- | --- | --- | --- |
+| Arabic | `ar` | Brazilian Portuguese | `pt_br` |
+| Bulgarian | `bg` | Chinese (Simplified) | `chinese_s` |
+| Chinese (Traditional) | `chinese_t` | Czech | `cs` |
+| Dutch | `nl_nl` | English (Great Britain) | `en_gb` |
+| English (USA) | `en_us` | Farsi (Persian) | `fa` |
+| French | `fr_fr` | German | `de_de` |
+| Hungarian | `hu` | Italian | `it_it` |
+| Japanese | `ja` | Korean | `ko` |
+| Polish | `pl` | Russian | `ru` |
+| Spanish | `es_es` | Ukrainian | `uk` |
+
+**Language selection:** This version of NdevTools follows the active **Revit interface language**, rather than a separate pyRevit language override. Where a locale or individual UI string is not available, the tool uses English as a fallback. Revit's spelling-dictionary preference does not change its interface language.
+
+**Localization scope:** The 20-language coverage applies to button titles and concise bundle tooltip summaries. Some longer, dynamically generated messages and custom dialog text may remain in English. Translations, especially specialized engineering terminology and right-to-left presentation, should be reviewed by native speakers. See [Bundle translations](BUNDLE_TRANSLATIONS.md) for details.
+
+**Theme icons:** Each of the eight commands includes `icon.png` (dark/black artwork for a light background) and `icon.dark.png` (white artwork for a dark background). Availability of theme switching depends on the Revit/pyRevit version.
+
 ## Ribbon layout
+
+![NdevTools ribbon layout](media/NdevTools-Ribbon.png)
 
 | Panel | Ribbon button | Purpose |
 | --- | --- | --- |
