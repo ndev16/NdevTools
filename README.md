@@ -181,10 +181,13 @@ Embedded browsing requires an internet connection and the active Revit installat
 ## Installation
 
 1. Install **Autodesk Revit** and **pyRevit**.
-2. Download this repository as a ZIP (or clone it).
-3. Extract the repository files into a folder named **`NdevTools.extension`** inside a pyRevit extensions location. The `NdevTools.tab` folder and `extension.json` must sit directly inside `NdevTools.extension`.
-4. If your folder is not already registered with pyRevit, add its parent extensions location using pyRevit's settings or extension configuration.
-5. Reload pyRevit or restart Revit. The **NdevTools** ribbon tab displays the Welcome, Annotation, Sheets, 3D Model and Handy panels.
+2. **Install directly from Extension Manager:** Open **pyRevit Extension Manager**, find **NdevTools**, and click **Install**. Then continue at step 6.
+3. **Manual alternative:** Download this repository as a ZIP (or clone it).
+4. Extract the repository files into a folder named **`NdevTools.extension`** inside a pyRevit extensions location. The `NdevTools.tab` folder and `extension.json` must sit directly inside `NdevTools.extension`.
+5. If your folder is not already registered with pyRevit, add its parent extensions location using pyRevit's settings or extension configuration.
+6. Reload pyRevit or restart Revit. The **NdevTools** ribbon tab displays the Welcome, Annotation, Sheets, 3D Model and Handy panels.
+
+**Note:** NdevTools is registered in [pyRevit's official extension package registry](https://github.com/pyrevitlabs/pyRevit/blob/develop/extensions/extensions.json), so you can install the package directly through pyRevit Extension Manager. Steps 3-5 are only needed for manual installation.
 
 **Folder structure (abbreviated):**
 
