@@ -1,0 +1,747 @@
+# Localized ribbon metadata; ViewPilot remains the product name.
+title:
+  ar: "ViewPilot"
+  pt_br: "ViewPilot"
+  bg: "ViewPilot"
+  chinese_s: "ViewPilot"
+  chinese_t: "ViewPilot"
+  cs: "ViewPilot"
+  nl_nl: "ViewPilot"
+  en_gb: "ViewPilot"
+  en_us: "ViewPilot"
+  fa: "ViewPilot"
+  fr_fr: "ViewPilot"
+  de_de: "ViewPilot"
+  hu: "ViewPilot"
+  it_it: "ViewPilot"
+  ja: "ViewPilot"
+  ko: "ViewPilot"
+  pl: "ViewPilot"
+  ru: "ViewPilot"
+  es_es: "ViewPilot"
+  uk: "ViewPilot"
+author: "Nataraj Devaraj"
+min_revit_version: "2022"
+max_revit_version: "2027"
+tooltip:
+  ar: |-
+    NDEV TOOLS | VIEWPILOT
+
+    أعد تسمية عروض Revit وكررها دفعة واحدة، وأدر التعيينات المتوافقة، وراجع التغييرات قبل تطبيقها.
+
+    طريقة الاستخدام
+    1. افتح مشروع Revit وانقر على ViewPilot.
+    2. صفِّ قائمة Project Views أو ابحث فيها وحدد العروض المصدر.
+    3. أدخل الأسماء الجديدة وطبّق قواعد التسمية واضبط النسخ والإعدادات.
+    4. افتح Review Changes وراجع التحذيرات وحدد العمليات المطلوبة.
+    5. انقر على Apply Checked Changes وأكّد، أو ارجع عبر Back to Editing.
+
+    الخيارات والسلوك
+    - إعادة التسمية: بحث واستبدال، بادئة ولاحقة، تحويل حالة الأحرف ومطابقتها، RegEx وترقيم مع معاينة مباشرة.
+    - التكرار: نسخة مستقلة، أو مع التفاصيل، أو تابعة، مع تعديل أسماء النسخ وأعدادها.
+    - الإعدادات المشتركة: قوالب العرض ومربعات النطاق وطريقة التكرار ومقاييس العرض المتوافقة، مع تخصيص كل نسخة عند السماح بذلك.
+    - Common Duplication Method: يثبت العدد عند نسخة واحدة لكل عرض مصدر متوافق محدد.
+    - Reset Copies to 0: يصفر النسخ المعلقة للعروض المحددة أو لجميع العروض الظاهرة بعد تعطيل طريقة التكرار المشتركة.
+    - المراجعة: صفحة تمرير كاملة لاختيار العمليات أو العودة إلى التحرير مع الاحتفاظ بالمدخلات.
+    - Scope Boxes وView Templates: جهّز تعيينات العروض المتوافقة في علامتي التبويب المخصصتين.
+    - Cleanup Tools: تقرير حالة المشروع للقراءة فقط.
+    - Saved Setups وHelp: احفظ الإعدادات وأعد استخدامها وافتح إرشادات الاستخدام.
+    - فكاهة BIM: نكات محلية كل 60 ثانية، مع حفظ تفضيل التشغيل والإيقاف وزر Next Joke.
+
+    الأمان
+    - المراجعة وتصفير النسخ المعلقة لا يغيّران عروض Revit.
+    - إعادة التسمية والتكرار والتعيينات تتطلب تطبيقًا صريحًا وتأكيدًا.
+    - تستخدم الكتابة إلى Revit معاملات قابلة للتراجع ضمن سير العمل الحالي.
+    - ترث العروض التابعة إعدادات الأصل؛ قد تكون المعلمات التي يتحكم بها القالب للقراءة فقط.
+    - يعمل دون اتصال؛ الروابط الخارجية تُفتح باختيارك فقط.
+
+    التوافق:
+    Revit 2022–2027
+    IronPython 2.7
+
+    إعداد Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Renomeie e duplique vistas do Revit em lote, gerencie atribuições compatíveis e revise as alterações antes de aplicá-las.
+
+    COMO USAR
+    1. Abra um projeto do Revit e clique em ViewPilot.
+    2. Filtre ou pesquise em Project Views e marque as vistas de origem.
+    3. Insira novos nomes, aplique regras de renomeação e configure cópias e opções.
+    4. Abra Review Changes, confira os avisos e marque as operações desejadas.
+    5. Clique em Apply Checked Changes e confirme, ou volte por Back to Editing.
+
+    OPÇÕES E COMPORTAMENTO
+    - Renomear: localizar e substituir, prefixo, sufixo, maiúsculas/minúsculas, correspondência de caixa, RegEx e numeração com prévia ao vivo.
+    - Duplicar: cópia independente, com detalhamento ou dependente, com nomes e quantidades editáveis.
+    - Configurações comuns: modelos de vista, caixas de escopo, métodos de duplicação e escalas compatíveis, com ajustes por cópia quando disponíveis.
+    - Common Duplication Method: fixa uma cópia por vista de origem compatível marcada.
+    - Reset Copies to 0: zera as cópias pendentes das vistas selecionadas ou de todas as visíveis após desativar o método comum.
+    - Revisão: página inteira rolável para escolher operações ou voltar à edição preservando os dados.
+    - Scope Boxes e View Templates: prepare atribuições compatíveis nas abas próprias.
+    - Cleanup Tools: relatório de integridade do projeto somente para leitura.
+    - Saved Setups e Help: salve e reutilize configurações e consulte as instruções.
+    - Humor BIM: piadas offline a cada 60 segundos, preferência de ativação salva e botão Next Joke.
+
+    SEGURANÇA
+    - Revisar e zerar cópias pendentes não altera vistas do Revit.
+    - Renomeações, duplicações e atribuições exigem aplicação explícita e confirmação.
+    - As alterações usam o fluxo existente de transações que podem ser desfeitas.
+    - Vistas dependentes herdam as configurações da origem; parâmetros controlados por modelo podem ser somente leitura.
+    - Funciona offline; links externos abrem apenas quando você os escolhe.
+
+    COMPATIBILIDADE:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Criado por Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Преименувайте и дублирайте пакетно изгледи в Revit, управлявайте съвместими назначения и преглеждайте промените преди прилагане.
+
+    НАЧИН НА ИЗПОЛЗВАНЕ
+    1. Отворете проект в Revit и натиснете ViewPilot.
+    2. Филтрирайте или търсете в Project Views и отметнете изходните изгледи.
+    3. Въведете нови имена, приложете правила и настройте копията.
+    4. Отворете Review Changes, проверете предупрежденията и изберете операциите.
+    5. Натиснете Apply Checked Changes и потвърдете или се върнете с Back to Editing.
+
+    ОПЦИИ И ПОВЕДЕНИЕ
+    - Преименуване: търсене и замяна, префикс, суфикс, регистър на буквите, точно съвпадение, RegEx и номериране с преглед в реално време.
+    - Дублиране: независимо копие, с детайли или като зависим изглед; имената и броят се редактират.
+    - Общи настройки: съвместими шаблони, обхватни кутии, методи за дублиране и мащаби с индивидуални настройки, когато са достъпни.
+    - Common Duplication Method: задава точно едно копие за всеки отметнат съвместим изходен изглед.
+    - Reset Copies to 0: нулира чакащите копия за избраните или всички видими изгледи след изключване на общия метод.
+    - Преглед: превърта се цялата страница; изберете операции или се върнете към редактиране със запазени данни.
+    - Scope Boxes и View Templates: подгответе съвместими назначения в отделните раздели.
+    - Cleanup Tools: отчет за състоянието на проекта само за четене.
+    - Saved Setups и Help: запазвайте и използвайте повторно настройки и отваряйте указанията.
+    - BIM хумор: офлайн шеги на всеки 60 секунди, запазен избор за включване/изключване и Next Joke.
+
+    БЕЗОПАСНОСТ
+    - Прегледът и нулирането на чакащите копия не променят изгледите в Revit.
+    - Преименуването, дублирането и назначенията изискват изрично прилагане и потвърждение.
+    - Записите използват съществуващия работен поток с отменяеми транзакции.
+    - Зависимите изгледи наследяват настройките на родителския изглед; параметри, управлявани от шаблон, може да са само за четене.
+    - Работи офлайн; външни връзки се отварят само по ваш избор.
+
+    СЪВМЕСТИМОСТ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Създадено от Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | VIEWPILOT
+
+    批量重命名和复制 Revit 视图，管理兼容的分配，并在应用前检查拟议更改。
+
+    使用方法
+    1. 打开 Revit 项目并单击 ViewPilot。
+    2. 在 Project Views 中筛选或搜索，并勾选源视图。
+    3. 输入新名称，应用命名规则，并设置副本及相关选项。
+    4. 打开 Review Changes，检查警告并勾选要执行的操作。
+    5. 单击 Apply Checked Changes 并确认，或通过 Back to Editing 返回修改。
+
+    选项与行为
+    - 重命名：查找和替换、前缀、后缀、大小写转换、区分大小写、RegEx 和编号，支持实时预览。
+    - 复制：独立复制、带详图复制或作为相关视图复制，可编辑副本名称和数量。
+    - 通用设置：兼容的视图样板、范围框、复制方式和视图比例；允许时可单独调整每个副本。
+    - Common Duplication Method：将每个已勾选且兼容的源视图锁定为一个副本。
+    - Reset Copies to 0：关闭通用复制方式后，将所选视图或全部可见视图的待创建副本数归零。
+    - 更改检查：整页滚动，可选择单项操作，或返回编辑并保留待处理输入。
+    - Scope Boxes 与 View Templates：在各自选项卡中暂存兼容的视图分配。
+    - Cleanup Tools：运行只读的项目健康报告。
+    - Saved Setups 与 Help：保存并复用配置，查看使用说明。
+    - BIM 幽默：每 60 秒切换本地笑话，保存开关偏好，并提供 Next Joke 按钮。
+
+    安全说明
+    - 检查更改和清零待创建副本不会修改 Revit 视图。
+    - 重命名、复制及分配更改必须明确应用并确认。
+    - 写入 Revit 时使用现有的可撤销事务流程。
+    - 相关视图继承主体视图设置；由样板控制的参数可能为只读。
+    - 完全离线运行；仅在主动选择时打开外部链接。
+
+    兼容性:
+    Revit 2022–2027
+    IronPython 2.7
+
+    由 Nataraj Devaraj 创建。
+  chinese_t: |-
+    NDEV TOOLS | VIEWPILOT
+
+    批次重新命名及複製 Revit 視圖、管理相容的指派，並在套用前檢查預定變更。
+
+    使用方式
+    1. 開啟 Revit 專案並按一下 ViewPilot。
+    2. 在 Project Views 中篩選或搜尋，並勾選來源視圖。
+    3. 輸入新名稱、套用命名規則，並設定複本與相關選項。
+    4. 開啟 Review Changes，檢查警告並勾選要執行的操作。
+    5. 按一下 Apply Checked Changes 並確認，或透過 Back to Editing 返回修改。
+
+    選項與行為
+    - 重新命名：尋找與取代、字首、字尾、大小寫轉換、區分大小寫、RegEx 與編號，支援即時預覽。
+    - 複製：獨立複製、包含詳圖複製，或作為相依視圖複製，可編輯複本名稱與數量。
+    - 共用設定：相容的視圖樣板、範圍框、複製方式與視圖比例；允許時可個別調整複本。
+    - Common Duplication Method：將每個已勾選且相容的來源視圖鎖定為一個複本。
+    - Reset Copies to 0：關閉共用複製方式後，將所選視圖或全部可見視圖的待建立複本數歸零。
+    - 變更檢查：整頁捲動，可選擇個別操作，或返回編輯並保留待處理的輸入。
+    - Scope Boxes 與 View Templates：在各自頁籤中暫存相容的視圖指派。
+    - Cleanup Tools：執行唯讀的專案健全狀況報告。
+    - Saved Setups 與 Help：儲存並重複使用組態，查看使用說明。
+    - BIM 幽默：每 60 秒切換離線笑話、儲存開關偏好，並提供 Next Joke 按鈕。
+
+    安全說明
+    - 檢查變更與清零待建立複本不會修改 Revit 視圖。
+    - 重新命名、複製及指派變更必須明確套用並確認。
+    - 寫入 Revit 時使用現有的可復原交易流程。
+    - 相依視圖繼承主要視圖設定；由樣板控制的參數可能為唯讀。
+    - 完全離線運作；僅在主動選取時開啟外部連結。
+
+    相容性:
+    Revit 2022–2027
+    IronPython 2.7
+
+    由 Nataraj Devaraj 建立。
+  cs: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Hromadně přejmenovávejte a duplikujte pohledy Revitu, spravujte kompatibilní přiřazení a před použitím zkontrolujte změny.
+
+    JAK POUŽÍVAT
+    1. Otevřete projekt Revitu a klikněte na ViewPilot.
+    2. Filtrujte nebo prohledávejte Project Views a zaškrtněte zdrojové pohledy.
+    3. Zadejte nové názvy, použijte pravidla a nastavte kopie i další možnosti.
+    4. Otevřete Review Changes, zkontrolujte upozornění a vyberte operace.
+    5. Klikněte na Apply Checked Changes a potvrďte, nebo se vraťte přes Back to Editing.
+
+    MOŽNOSTI A CHOVÁNÍ
+    - Přejmenování: najít a nahradit, předpona, přípona, velikost písmen, rozlišování velikosti, RegEx a číslování s živým náhledem.
+    - Duplikování: samostatná kopie, s detaily nebo jako závislý pohled; názvy a počty kopií lze upravit.
+    - Společná nastavení: kompatibilní šablony pohledů, vymezovací kvádry, způsoby duplikování a měřítka s individuálními úpravami, pokud jsou dostupné.
+    - Common Duplication Method: uzamkne počet na jednu kopii pro každý zaškrtnutý kompatibilní zdroj.
+    - Reset Copies to 0: po vypnutí společného způsobu vynuluje čekající kopie vybraných nebo všech viditelných pohledů.
+    - Kontrola: posouvá se celá stránka; vyberte operace nebo se vraťte k úpravám se zachováním vstupů.
+    - Scope Boxes a View Templates: připravte kompatibilní přiřazení v samostatných kartách.
+    - Cleanup Tools: zpráva o stavu projektu pouze pro čtení.
+    - Saved Setups a Help: ukládejte a opakovaně používejte nastavení a zobrazte návod.
+    - BIM humor: offline vtipy každých 60 sekund, uložené zapnutí/vypnutí a tlačítko Next Joke.
+
+    BEZPEČNOST
+    - Kontrola a vynulování čekajících kopií nemění pohledy v Revitu.
+    - Přejmenování, duplikování a přiřazení vyžadují výslovné použití a potvrzení.
+    - Zápisy do Revitu používají stávající postup s vratnými transakcemi.
+    - Závislé pohledy dědí nastavení nadřazeného pohledu; parametry řízené šablonou mohou být jen pro čtení.
+    - Funguje offline; externí odkazy se otevírají pouze na vaši žádost.
+
+    KOMPATIBILITA:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Vytvořil Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Hernoem en dupliceer Revit-weergaven in batches, beheer compatibele toewijzingen en controleer wijzigingen voordat u ze toepast.
+
+    GEBRUIK
+    1. Open een Revit-project en klik op ViewPilot.
+    2. Filter of doorzoek Project Views en vink de bronweergaven aan.
+    3. Voer nieuwe namen in, pas naamregels toe en stel kopieën en opties in.
+    4. Open Review Changes, controleer waarschuwingen en selecteer de bewerkingen.
+    5. Klik op Apply Checked Changes en bevestig, of keer terug via Back to Editing.
+
+    OPTIES EN WERKING
+    - Hernoemen: zoeken en vervangen, voorvoegsel, achtervoegsel, hoofdletters/kleine letters, hoofdlettergevoelig zoeken, RegEx en nummering met direct voorbeeld.
+    - Dupliceren: onafhankelijk, met detaillering of als afhankelijke weergave, met bewerkbare namen en aantallen.
+    - Algemene instellingen: compatibele weergavesjablonen, Scope Boxes, duplicatiemethoden en schalen, met individuele aanpassingen waar beschikbaar.
+    - Common Duplication Method: vergrendelt elke aangevinkte compatibele bron op één kopie.
+    - Reset Copies to 0: zet wachtende kopieën voor geselecteerde of alle zichtbare weergaven op nul nadat de algemene methode is uitgeschakeld.
+    - Controle: de hele pagina scrolt; kies bewerkingen of ga terug naar bewerken met behoud van de invoer.
+    - Scope Boxes en View Templates: bereid compatibele toewijzingen voor op de afzonderlijke tabbladen.
+    - Cleanup Tools: voer een alleen-lezen rapport over de projectstatus uit.
+    - Saved Setups en Help: sla instellingen op, gebruik ze opnieuw en raadpleeg de instructies.
+    - BIM-humor: offline grappen om de 60 seconden, een opgeslagen aan/uit-voorkeur en Next Joke.
+
+    VEILIGHEID
+    - Controleren en wachtende kopieën op nul zetten wijzigen geen Revit-weergaven.
+    - Hernoemen, dupliceren en toewijzen vereisen expliciet toepassen en bevestigen.
+    - Revit-wijzigingen gebruiken de bestaande transactiewerkwijze en kunnen ongedaan worden gemaakt.
+    - Afhankelijke weergaven nemen instellingen van de hoofdweergave over; sjabloongestuurde parameters kunnen alleen-lezen zijn.
+    - Werkt offline; externe links openen alleen wanneer u daarvoor kiest.
+
+    COMPATIBILITEIT:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Gemaakt door Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Batch rename and duplicate Revit views, manage compatible assignments, and review proposed changes before applying them.
+
+    HOW TO USE
+    1. Open a Revit project and click ViewPilot.
+    2. Filter or search Project Views and check the source views to process.
+    3. Enter new names, apply rename rules, and configure copies and settings.
+    4. Open Review Changes, inspect warnings, and check the operations to apply.
+    5. Click Apply Checked Changes and confirm, or use Back to Editing to revise your selections.
+
+    OPTIONS & BEHAVIOUR
+    - Rename: Find and Replace, Prefix, Suffix, case conversion, Match Case, RegEx, and numbering with live previews.
+    - Duplicate: Duplicate, With Detailing, or As Dependent, with editable copy names and quantities.
+    - Common Settings: apply compatible View Templates, Scope Boxes, duplication methods, and View Scales, with individual copy overrides when available.
+    - Common Duplication Method: locks each checked compatible source to one copy.
+    - Reset Copies to 0: clear pending copies for Selected Views Only or All Visible Views after turning off Common Duplication Method.
+    - Review Changes: use the full scrolling page, select individual operations, or return to editing with pending entries preserved.
+    - Scope Boxes and View Templates: stage compatible view assignments in their dedicated tabs.
+    - Cleanup Tools: run a read-only Project Health Report.
+    - Saved Setups and Help: reuse configurations and access usage guidance.
+    - BIM Humor: offline footer jokes every 60 seconds, a saved On/Off preference, and Next Joke.
+
+    SAFETY
+    - Reviewing and resetting pending copies do not modify Revit views.
+    - Rename, duplicate, and assignment changes require an explicit Apply action and confirmation.
+    - Revit writes use the existing undoable transaction workflow.
+    - Dependent views inherit parent settings; template-controlled parameters may be read-only.
+    - Runs offline; external links open only when you choose them.
+
+    COMPATIBILITY:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  en_us: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Batch rename and duplicate Revit views, manage compatible assignments, and review proposed changes before applying them.
+
+    HOW TO USE
+    1. Open a Revit project and click ViewPilot.
+    2. Filter or search Project Views and check the source views to process.
+    3. Enter new names, apply rename rules, and configure copies and settings.
+    4. Open Review Changes, inspect warnings, and check the operations to apply.
+    5. Click Apply Checked Changes and confirm, or use Back to Editing to revise your selections.
+
+    OPTIONS & BEHAVIOR
+    - Rename: Find and Replace, Prefix, Suffix, case conversion, Match Case, RegEx, and numbering with live previews.
+    - Duplicate: Duplicate, With Detailing, or As Dependent, with editable copy names and quantities.
+    - Common Settings: apply compatible View Templates, Scope Boxes, duplication methods, and View Scales, with individual copy overrides when available.
+    - Common Duplication Method: locks each checked compatible source to one copy.
+    - Reset Copies to 0: clear pending copies for Selected Views Only or All Visible Views after turning off Common Duplication Method.
+    - Review Changes: use the full scrolling page, select individual operations, or return to editing with pending entries preserved.
+    - Scope Boxes and View Templates: stage compatible view assignments in their dedicated tabs.
+    - Cleanup Tools: run a read-only Project Health Report.
+    - Saved Setups and Help: reuse configurations and access usage guidance.
+    - BIM Humor: offline footer jokes every 60 seconds, a saved On/Off preference, and Next Joke.
+
+    SAFETY
+    - Reviewing and resetting pending copies do not modify Revit views.
+    - Rename, duplicate, and assignment changes require an explicit Apply action and confirmation.
+    - Revit writes use the existing undoable transaction workflow.
+    - Dependent views inherit parent settings; template-controlled parameters may be read-only.
+    - Runs offline; external links open only when you choose them.
+
+    COMPATIBILITY:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | VIEWPILOT
+
+    نماهای Revit را گروهی تغییر نام دهید و تکثیر کنید، تخصیص‌های سازگار را مدیریت کنید و تغییرات را پیش از اعمال بررسی کنید.
+
+    روش استفاده
+    1. یک پروژه Revit باز کنید و روی ViewPilot کلیک کنید.
+    2. در Project Views فیلتر یا جست‌وجو کنید و نماهای مبدأ را علامت بزنید.
+    3. نام‌های جدید را وارد کنید، قواعد نام‌گذاری را اعمال کنید و نسخه‌ها و تنظیمات را مشخص کنید.
+    4. Review Changes را باز کنید، هشدارها را بررسی کنید و عملیات موردنظر را انتخاب کنید.
+    5. روی Apply Checked Changes کلیک و تأیید کنید یا با Back to Editing به ویرایش برگردید.
+
+    گزینه‌ها و عملکرد
+    - تغییر نام: جست‌وجو و جایگزینی، پیشوند، پسوند، تبدیل و تطبیق حروف بزرگ و کوچک، RegEx و شماره‌گذاری با پیش‌نمایش زنده.
+    - تکثیر: نسخه مستقل، همراه جزئیات یا به‌صورت نمای وابسته؛ نام و تعداد نسخه‌ها قابل ویرایش است.
+    - تنظیمات مشترک: الگوهای نما، کادرهای محدوده، روش تکثیر و مقیاس‌های سازگار، با تنظیم جداگانه هر نسخه در صورت امکان.
+    - Common Duplication Method: تعداد را برای هر نمای مبدأ سازگار و علامت‌خورده روی یک نسخه قفل می‌کند.
+    - Reset Copies to 0: پس از خاموش‌کردن روش مشترک، تعداد نسخه‌های در انتظار را برای نماهای انتخاب‌شده یا همه نماهای قابل‌مشاهده صفر می‌کند.
+    - بازبینی: پیمایش در کل صفحه؛ عملیات را انتخاب کنید یا با حفظ ورودی‌ها به ویرایش برگردید.
+    - Scope Boxes و View Templates: تخصیص‌های سازگار را در زبانه‌های مربوط آماده کنید.
+    - Cleanup Tools: گزارش وضعیت پروژه را فقط برای خواندن اجرا کنید.
+    - Saved Setups و Help: تنظیمات را ذخیره و دوباره استفاده کنید و راهنما را ببینید.
+    - طنز BIM: لطیفه‌های آفلاین هر 60 ثانیه، تنظیم روشن/خاموش ذخیره‌شده و دکمه Next Joke.
+
+    ایمنی
+    - بازبینی و صفرکردن نسخه‌های در انتظار، نماهای Revit را تغییر نمی‌دهد.
+    - تغییر نام، تکثیر و تخصیص نیازمند اعمال صریح و تأیید است.
+    - نوشتن در Revit از روند فعلی تراکنش‌های قابل بازگردانی استفاده می‌کند.
+    - نماهای وابسته تنظیمات نمای اصلی را به ارث می‌برند؛ پارامترهای تحت کنترل الگو ممکن است فقط خواندنی باشند.
+    - آفلاین کار می‌کند؛ پیوندهای بیرونی فقط با انتخاب شما باز می‌شوند.
+
+    سازگاری:
+    Revit 2022–2027
+    IronPython 2.7
+
+    ساخته‌شده توسط Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Renommez et dupliquez des vues Revit par lots, gérez les affectations compatibles et examinez les modifications avant de les appliquer.
+
+    MODE D’EMPLOI
+    1. Ouvrez un projet Revit et cliquez sur ViewPilot.
+    2. Filtrez ou recherchez dans Project Views et cochez les vues sources.
+    3. Saisissez les nouveaux noms, appliquez les règles et configurez les copies.
+    4. Ouvrez Review Changes, vérifiez les avertissements et cochez les opérations.
+    5. Cliquez sur Apply Checked Changes et confirmez, ou revenez avec Back to Editing.
+
+    OPTIONS ET FONCTIONNEMENT
+    - Renommer : rechercher et remplacer, préfixe, suffixe, conversion et respect de la casse, RegEx et numérotation avec aperçu en direct.
+    - Dupliquer : copie indépendante, avec détails ou en tant que vue dépendante, avec noms et quantités modifiables.
+    - Paramètres communs : gabarits de vue, zones de définition, méthodes de duplication et échelles compatibles, avec réglages individuels si disponibles.
+    - Common Duplication Method : verrouille chaque source compatible cochée à une copie.
+    - Reset Copies to 0 : remet à zéro les copies en attente des vues sélectionnées ou de toutes les vues visibles après désactivation de la méthode commune.
+    - Vérification : défilement de toute la page, sélection des opérations ou retour à l’édition en conservant les saisies.
+    - Scope Boxes et View Templates : préparez les affectations compatibles dans les onglets dédiés.
+    - Cleanup Tools : lancez un rapport de santé du projet en lecture seule.
+    - Saved Setups et Help : enregistrez et réutilisez les configurations, et consultez l’aide.
+    - Humour BIM : blagues hors ligne toutes les 60 secondes, préférence activée/désactivée mémorisée et bouton Next Joke.
+
+    SÉCURITÉ
+    - La vérification et la remise à zéro des copies en attente ne modifient pas les vues Revit.
+    - Les changements de nom, duplications et affectations exigent une application explicite et une confirmation.
+    - Les écritures Revit utilisent le processus existant de transactions annulables.
+    - Les vues dépendantes héritent des paramètres de la vue principale ; les paramètres contrôlés par un gabarit peuvent être en lecture seule.
+    - Fonctionne hors ligne ; les liens externes s’ouvrent uniquement à votre demande.
+
+    COMPATIBILITÉ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Benennen und duplizieren Sie Revit-Ansichten stapelweise, verwalten Sie kompatible Zuweisungen und prüfen Sie Änderungen vor dem Anwenden.
+
+    ANWENDUNG
+    1. Öffnen Sie ein Revit-Projekt und klicken Sie auf ViewPilot.
+    2. Filtern oder durchsuchen Sie Project Views und markieren Sie die Quellansichten.
+    3. Geben Sie neue Namen ein, wenden Sie Namensregeln an und konfigurieren Sie Kopien.
+    4. Öffnen Sie Review Changes, prüfen Sie Warnungen und wählen Sie Vorgänge aus.
+    5. Klicken Sie auf Apply Checked Changes und bestätigen Sie, oder kehren Sie mit Back to Editing zurück.
+
+    OPTIONEN UND VERHALTEN
+    - Umbenennen: Suchen und Ersetzen, Präfix, Suffix, Groß-/Kleinschreibung, exakter Zeichenvergleich, RegEx und Nummerierung mit Live-Vorschau.
+    - Duplizieren: unabhängig, mit Detaillierung oder als abhängige Ansicht; Namen und Anzahl sind bearbeitbar.
+    - Gemeinsame Einstellungen: kompatible Ansichtsvorlagen, Bereichsrahmen, Dupliziermethoden und Maßstäbe mit individuellen Anpassungen, sofern verfügbar.
+    - Common Duplication Method: sperrt jede markierte kompatible Quelle auf genau eine Kopie.
+    - Reset Copies to 0: setzt ausstehende Kopien für ausgewählte oder alle sichtbaren Ansichten nach dem Abschalten der gemeinsamen Methode auf null.
+    - Prüfung: Die gesamte Seite lässt sich scrollen; wählen Sie Vorgänge oder kehren Sie mit erhaltenen Eingaben zur Bearbeitung zurück.
+    - Scope Boxes und View Templates: bereiten Sie kompatible Zuweisungen in eigenen Registerkarten vor.
+    - Cleanup Tools: erstellt einen schreibgeschützten Bericht zum Projektzustand.
+    - Saved Setups und Help: speichern und verwenden Sie Konfigurationen erneut und öffnen Sie die Anleitung.
+    - BIM-Humor: Offline-Witze alle 60 Sekunden, gespeicherte Ein/Aus-Einstellung und Next Joke.
+
+    SICHERHEIT
+    - Prüfen und Zurücksetzen ausstehender Kopien verändern keine Revit-Ansichten.
+    - Umbenennungen, Duplikate und Zuweisungen erfordern ausdrückliches Anwenden und Bestätigung.
+    - Revit-Schreibvorgänge verwenden den bestehenden Ablauf mit rückgängig machbaren Transaktionen.
+    - Abhängige Ansichten erben die Einstellungen der Hauptansicht; vorlagengesteuerte Parameter können schreibgeschützt sein.
+    - Funktioniert offline; externe Links öffnen sich nur auf Ihre Anforderung.
+
+    KOMPATIBILITÄT:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Erstellt von Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Nevezze át és másolja a Revit-nézeteket csoportosan, kezelje a kompatibilis hozzárendeléseket, és ellenőrizze a módosításokat alkalmazás előtt.
+
+    HASZNÁLAT
+    1. Nyisson meg egy Revit-projektet, és kattintson a ViewPilot gombra.
+    2. Szűrjön vagy keressen a Project Views listában, és jelölje be a forrásnézeteket.
+    3. Adjon meg új neveket, alkalmazzon elnevezési szabályokat, és állítsa be a másolatokat.
+    4. Nyissa meg a Review Changes lapot, ellenőrizze a figyelmeztetéseket, és jelölje ki a műveleteket.
+    5. Kattintson az Apply Checked Changes gombra, és erősítse meg, vagy térjen vissza a Back to Editing gombbal.
+
+    BEÁLLÍTÁSOK ÉS MŰKÖDÉS
+    - Átnevezés: keresés és csere, előtag, utótag, kis- és nagybetűk átalakítása és megkülönböztetése, RegEx és számozás élő előnézettel.
+    - Másolás: önálló, részletezéssel együtt vagy függő nézetként; a nevek és darabszámok szerkeszthetők.
+    - Közös beállítások: kompatibilis nézetsablonok, határolódobozok, másolási módok és léptékek, ahol lehetséges, egyedi felülbírálással.
+    - Common Duplication Method: minden bejelölt kompatibilis forrást pontosan egy másolatra rögzít.
+    - Reset Copies to 0: a közös mód kikapcsolása után nullázza a kijelölt vagy az összes látható nézet függőben lévő másolatait.
+    - Ellenőrzés: a teljes oldal görgethető; válasszon műveleteket, vagy térjen vissza a szerkesztéshez a megadott adatok megtartásával.
+    - Scope Boxes és View Templates: készítse elő a kompatibilis hozzárendeléseket a külön lapokon.
+    - Cleanup Tools: csak olvasható jelentés a projekt állapotáról.
+    - Saved Setups és Help: mentse és használja újra a beállításokat, és nyissa meg az útmutatót.
+    - BIM-humor: offline viccek 60 másodpercenként, mentett be-/kikapcsolás és Next Joke gomb.
+
+    BIZTONSÁG
+    - Az ellenőrzés és a függőben lévő másolatok nullázása nem módosítja a Revit-nézeteket.
+    - Az átnevezés, másolás és hozzárendelés kifejezett alkalmazást és megerősítést igényel.
+    - A Revit-módosítások a meglévő, visszavonható tranzakciós folyamatot használják.
+    - A függő nézetek öröklik a főnézet beállításait; a sablon által vezérelt paraméterek csak olvashatók lehetnek.
+    - Offline működik; külső hivatkozások csak az Ön választására nyílnak meg.
+
+    KOMPATIBILITÁS:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Készítette: Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Rinomina e duplica viste Revit in gruppo, gestisci assegnazioni compatibili e verifica le modifiche prima di applicarle.
+
+    COME USARE
+    1. Apri un progetto Revit e fai clic su ViewPilot.
+    2. Filtra o cerca in Project Views e seleziona le viste di origine.
+    3. Inserisci nuovi nomi, applica le regole e configura copie e impostazioni.
+    4. Apri Review Changes, controlla gli avvisi e seleziona le operazioni.
+    5. Fai clic su Apply Checked Changes e conferma, oppure torna con Back to Editing.
+
+    OPZIONI E COMPORTAMENTO
+    - Rinomina: trova e sostituisci, prefisso, suffisso, conversione e distinzione maiuscole/minuscole, RegEx e numerazione con anteprima in tempo reale.
+    - Duplica: copia indipendente, con dettagli o come vista dipendente, con nomi e quantità modificabili.
+    - Impostazioni comuni: modelli di vista, riquadri di definizione, metodi di duplicazione e scale compatibili, con modifiche individuali quando disponibili.
+    - Common Duplication Method: blocca ogni origine compatibile selezionata su una sola copia.
+    - Reset Copies to 0: azzera le copie in sospeso delle viste selezionate o di tutte quelle visibili dopo aver disattivato il metodo comune.
+    - Revisione: scorrimento dell’intera pagina; scegli le operazioni o torna alla modifica mantenendo i dati inseriti.
+    - Scope Boxes e View Templates: prepara assegnazioni compatibili nelle schede dedicate.
+    - Cleanup Tools: esegue un rapporto sullo stato del progetto in sola lettura.
+    - Saved Setups e Help: salva e riutilizza le configurazioni e consulta la guida.
+    - Umorismo BIM: battute offline ogni 60 secondi, preferenza On/Off salvata e pulsante Next Joke.
+
+    SICUREZZA
+    - La revisione e l’azzeramento delle copie in sospeso non modificano le viste Revit.
+    - Rinomina, duplicazione e assegnazioni richiedono un’applicazione esplicita e una conferma.
+    - Le scritture in Revit usano il flusso esistente con transazioni annullabili.
+    - Le viste dipendenti ereditano le impostazioni della vista principale; i parametri controllati dal modello possono essere di sola lettura.
+    - Funziona offline; i collegamenti esterni si aprono solo quando li scegli.
+
+    COMPATIBILITÀ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Creato da Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Revit ビューの名前変更と複製を一括で行い、互換性のある割り当てを管理して、適用前に変更内容を確認します。
+
+    使い方
+    1. Revit プロジェクトを開き、ViewPilot をクリックします。
+    2. Project Views で絞り込みや検索を行い、元のビューにチェックを入れます。
+    3. 新しい名前を入力し、命名ルールを適用して、複製数と各種設定を指定します。
+    4. Review Changes を開き、警告を確認して、適用する操作を選択します。
+    5. Apply Checked Changes をクリックして確認するか、Back to Editing で編集に戻ります。
+
+    オプションと動作
+    - 名前変更：検索と置換、接頭辞、接尾辞、大文字・小文字の変換と区別、RegEx、連番に対応し、結果を即時プレビューします。
+    - 複製：独立した複製、詳細を含む複製、従属ビューとしての複製。名前と複製数を個別に編集できます。
+    - 共通設定：互換性のあるビューテンプレート、スコープボックス、複製方法、ビュー尺度を指定し、可能な場合は複製ごとに調整できます。
+    - Common Duplication Method：チェック済みの互換性のある元ビューごとに、複製数を 1 に固定します。
+    - Reset Copies to 0：共通の複製方法をオフにした後、選択したビューまたは表示中の全ビューの作成予定数を 0 にします。
+    - 変更確認：ページ全体をスクロールして操作を選択できます。入力内容を保持したまま編集に戻れます。
+    - Scope Boxes と View Templates：専用タブで互換性のあるビュー割り当てを準備します。
+    - Cleanup Tools：読み取り専用のプロジェクト健全性レポートを実行します。
+    - Saved Setups と Help：設定を保存・再利用し、操作ガイドを表示します。
+    - BIM ユーモア：オフラインのジョークを 60 秒ごとに切り替えます。オン／オフ設定を保存し、Next Joke で次のジョークを表示します。
+
+    安全性
+    - 確認操作や作成予定数のリセットで Revit ビューが変更されることはありません。
+    - 名前変更、複製、割り当てには、明示的な適用操作と確認が必要です。
+    - Revit への書き込みは、既存の元に戻せるトランザクション処理を使用します。
+    - 従属ビューは親ビューの設定を継承します。テンプレートで制御されるパラメータは読み取り専用の場合があります。
+    - オフラインで動作します。外部リンクは選択した場合のみ開きます。
+
+    互換性:
+    Revit 2022–2027
+    IronPython 2.7
+
+    作成者：Nataraj Devaraj。
+  ko: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Revit 뷰의 이름을 일괄 변경하고 복제하며, 호환되는 할당을 관리하고 적용 전에 변경 사항을 검토합니다.
+
+    사용 방법
+    1. Revit 프로젝트를 열고 ViewPilot을 클릭합니다.
+    2. Project Views에서 필터링하거나 검색한 후 원본 뷰를 선택합니다.
+    3. 새 이름을 입력하고 이름 규칙을 적용한 후 복사 수와 설정을 지정합니다.
+    4. Review Changes에서 경고를 확인하고 적용할 작업을 선택합니다.
+    5. Apply Checked Changes를 클릭하고 확인하거나 Back to Editing으로 돌아갑니다.
+
+    옵션 및 동작
+    - 이름 변경: 찾기 및 바꾸기, 접두사, 접미사, 대소문자 변환 및 구분, RegEx와 번호 매기기를 실시간 미리 보기로 확인합니다.
+    - 복제: 독립 복제, 상세정보 포함 복제 또는 종속 뷰로 복제하며 이름과 수량을 수정할 수 있습니다.
+    - 공통 설정: 호환되는 뷰 템플릿, 범위 상자, 복제 방법과 뷰 축척을 적용하고 가능한 경우 복사본별로 조정합니다.
+    - Common Duplication Method: 선택된 호환 원본 뷰마다 복사 수를 하나로 고정합니다.
+    - Reset Copies to 0: 공통 복제 방법을 끈 후 선택한 뷰 또는 현재 표시된 모든 뷰의 대기 중인 복사 수를 0으로 바꿉니다.
+    - 변경 검토: 전체 페이지를 스크롤하여 작업을 선택하거나 입력 내용을 유지한 채 편집으로 돌아갑니다.
+    - Scope Boxes 및 View Templates: 전용 탭에서 호환되는 뷰 할당을 준비합니다.
+    - Cleanup Tools: 읽기 전용 프로젝트 상태 보고서를 실행합니다.
+    - Saved Setups 및 Help: 설정을 저장하고 재사용하며 사용 안내를 엽니다.
+    - BIM 유머: 60초마다 오프라인 농담을 바꾸고 켜기/끄기 설정을 저장합니다. Next Joke로 다음 농담을 표시합니다.
+
+    안전
+    - 검토 및 대기 중인 복사 수 초기화는 Revit 뷰를 변경하지 않습니다.
+    - 이름 변경, 복제 및 할당에는 명시적인 적용과 확인이 필요합니다.
+    - Revit 쓰기 작업은 기존의 실행 취소 가능한 트랜잭션 절차를 사용합니다.
+    - 종속 뷰는 상위 뷰의 설정을 상속하며 템플릿이 제어하는 매개변수는 읽기 전용일 수 있습니다.
+    - 오프라인으로 동작하며 외부 링크는 선택할 때만 열립니다.
+
+    호환성:
+    Revit 2022–2027
+    IronPython 2.7
+
+    제작: Nataraj Devaraj.
+  pl: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Zbiorczo zmieniaj nazwy i powielaj widoki Revit, zarządzaj zgodnymi przypisaniami i sprawdzaj zmiany przed zastosowaniem.
+
+    SPOSÓB UŻYCIA
+    1. Otwórz projekt Revit i kliknij ViewPilot.
+    2. Filtruj lub przeszukuj Project Views i zaznacz widoki źródłowe.
+    3. Wprowadź nowe nazwy, zastosuj reguły i ustaw kopie oraz opcje.
+    4. Otwórz Review Changes, sprawdź ostrzeżenia i zaznacz operacje.
+    5. Kliknij Apply Checked Changes i potwierdź lub wróć przez Back to Editing.
+
+    OPCJE I DZIAŁANIE
+    - Zmiana nazw: znajdź i zamień, przedrostek, przyrostek, zmiana i rozróżnianie wielkości liter, RegEx oraz numeracja z podglądem na żywo.
+    - Powielanie: kopia niezależna, ze szczegółami lub jako widok zależny; nazwy i liczby kopii można edytować.
+    - Ustawienia wspólne: zgodne szablony widoków, Scope Boxes, metody powielania i skale, z indywidualnymi zmianami, gdy są dostępne.
+    - Common Duplication Method: blokuje liczbę na jednej kopii dla każdego zaznaczonego zgodnego źródła.
+    - Reset Copies to 0: zeruje oczekujące kopie wybranych lub wszystkich widocznych widoków po wyłączeniu wspólnej metody.
+    - Przegląd: przewijana jest cała strona; wybierz operacje lub wróć do edycji z zachowaniem wprowadzonych danych.
+    - Scope Boxes i View Templates: przygotuj zgodne przypisania w osobnych kartach.
+    - Cleanup Tools: uruchamia raport stanu projektu tylko do odczytu.
+    - Saved Setups i Help: zapisuj i ponownie wykorzystuj konfiguracje oraz otwieraj instrukcje.
+    - Humor BIM: żarty offline co 60 sekund, zapamiętane włączenie/wyłączenie i przycisk Next Joke.
+
+    BEZPIECZEŃSTWO
+    - Przeglądanie i zerowanie oczekujących kopii nie zmienia widoków Revit.
+    - Zmiany nazw, powielanie i przypisania wymagają jawnego zastosowania oraz potwierdzenia.
+    - Zapisy w Revit korzystają z istniejącego procesu transakcji, które można cofnąć.
+    - Widoki zależne dziedziczą ustawienia widoku głównego; parametry sterowane szablonem mogą być tylko do odczytu.
+    - Działa offline; odnośniki zewnętrzne otwierają się wyłącznie na Twoje żądanie.
+
+    ZGODNOŚĆ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Autor: Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Пакетно переименовывайте и дублируйте виды Revit, управляйте совместимыми назначениями и проверяйте изменения перед применением.
+
+    КАК ИСПОЛЬЗОВАТЬ
+    1. Откройте проект Revit и нажмите ViewPilot.
+    2. Отфильтруйте или найдите виды в Project Views и отметьте исходные виды.
+    3. Введите новые имена, примените правила и настройте копии и параметры.
+    4. Откройте Review Changes, проверьте предупреждения и выберите операции.
+    5. Нажмите Apply Checked Changes и подтвердите либо вернитесь через Back to Editing.
+
+    ПАРАМЕТРЫ И ПОВЕДЕНИЕ
+    - Переименование: поиск и замена, префикс, суффикс, преобразование и учёт регистра, RegEx и нумерация с предварительным просмотром.
+    - Дублирование: независимая копия, с детализацией или как зависимый вид; имена и количество копий редактируются.
+    - Общие настройки: совместимые шаблоны видов, области видимости, методы дублирования и масштабы с индивидуальными настройками, когда они доступны.
+    - Common Duplication Method: фиксирует ровно одну копию для каждого отмеченного совместимого исходного вида.
+    - Reset Copies to 0: обнуляет ожидающие копии выбранных или всех видимых видов после отключения общего метода.
+    - Проверка: прокручивается вся страница; выберите операции или вернитесь к редактированию с сохранением введённых данных.
+    - Scope Boxes и View Templates: подготовьте совместимые назначения на отдельных вкладках.
+    - Cleanup Tools: отчёт о состоянии проекта в режиме только для чтения.
+    - Saved Setups и Help: сохраняйте и повторно используйте настройки, открывайте инструкции.
+    - BIM-юмор: офлайн-шутки каждые 60 секунд, сохранённое включение/выключение и кнопка Next Joke.
+
+    БЕЗОПАСНОСТЬ
+    - Проверка и обнуление ожидающих копий не изменяют виды Revit.
+    - Переименование, дублирование и назначения требуют явного применения и подтверждения.
+    - Запись в Revit использует существующий процесс с отменяемыми транзакциями.
+    - Зависимые виды наследуют настройки основного вида; параметры, управляемые шаблоном, могут быть доступны только для чтения.
+    - Работает офлайн; внешние ссылки открываются только по вашему выбору.
+
+    СОВМЕСТИМОСТЬ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Создано Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Renombra y duplica vistas de Revit por lotes, gestiona asignaciones compatibles y revisa los cambios antes de aplicarlos.
+
+    CÓMO USAR
+    1. Abre un proyecto de Revit y haz clic en ViewPilot.
+    2. Filtra o busca en Project Views y marca las vistas de origen.
+    3. Introduce nombres nuevos, aplica reglas y configura las copias y sus opciones.
+    4. Abre Review Changes, comprueba los avisos y marca las operaciones.
+    5. Haz clic en Apply Checked Changes y confirma, o vuelve con Back to Editing.
+
+    OPCIONES Y COMPORTAMIENTO
+    - Renombrar: buscar y reemplazar, prefijo, sufijo, conversión y distinción de mayúsculas/minúsculas, RegEx y numeración con vista previa en directo.
+    - Duplicar: copia independiente, con detalles o como vista dependiente, con nombres y cantidades editables.
+    - Ajustes comunes: plantillas de vista, cajas de referencia, métodos de duplicación y escalas compatibles, con ajustes individuales cuando estén disponibles.
+    - Common Duplication Method: bloquea cada origen compatible marcado en una sola copia.
+    - Reset Copies to 0: pone a cero las copias pendientes de las vistas seleccionadas o de todas las visibles tras desactivar el método común.
+    - Revisión: desplazamiento de toda la página; elige operaciones o vuelve a editar conservando los datos introducidos.
+    - Scope Boxes y View Templates: prepara asignaciones compatibles en sus pestañas.
+    - Cleanup Tools: ejecuta un informe del estado del proyecto de solo lectura.
+    - Saved Setups y Help: guarda y reutiliza configuraciones y consulta las instrucciones.
+    - Humor BIM: chistes sin conexión cada 60 segundos, preferencia de activación guardada y botón Next Joke.
+
+    SEGURIDAD
+    - Revisar y poner a cero las copias pendientes no modifica las vistas de Revit.
+    - Renombrar, duplicar y asignar requieren una aplicación explícita y confirmación.
+    - Las escrituras en Revit utilizan el flujo existente de transacciones que se pueden deshacer.
+    - Las vistas dependientes heredan los ajustes de la vista principal; los parámetros controlados por una plantilla pueden ser de solo lectura.
+    - Funciona sin conexión; los enlaces externos se abren solo cuando los eliges.
+
+    COMPATIBILIDAD:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Creado por Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | VIEWPILOT
+
+    Пакетно перейменовуйте й дублюйте види Revit, керуйте сумісними призначеннями та перевіряйте зміни перед застосуванням.
+
+    ЯК КОРИСТУВАТИСЯ
+    1. Відкрийте проєкт Revit і натисніть ViewPilot.
+    2. Відфільтруйте або знайдіть види в Project Views і позначте вихідні види.
+    3. Введіть нові назви, застосуйте правила та налаштуйте копії й параметри.
+    4. Відкрийте Review Changes, перевірте попередження та виберіть операції.
+    5. Натисніть Apply Checked Changes і підтвердьте або поверніться через Back to Editing.
+
+    ПАРАМЕТРИ ТА ПОВЕДІНКА
+    - Перейменування: пошук і заміна, префікс, суфікс, перетворення та врахування регістру, RegEx і нумерація з попереднім переглядом.
+    - Дублювання: незалежна копія, з деталізацією або як залежний вид; назви та кількість копій можна змінювати.
+    - Спільні налаштування: сумісні шаблони видів, області видимості, методи дублювання та масштаби з індивідуальними змінами, коли вони доступні.
+    - Common Duplication Method: фіксує рівно одну копію для кожного позначеного сумісного вихідного виду.
+    - Reset Copies to 0: обнуляє очікувані копії вибраних або всіх видимих видів після вимкнення спільного методу.
+    - Перевірка: прокручується вся сторінка; вибирайте операції або повертайтеся до редагування зі збереженням введених даних.
+    - Scope Boxes та View Templates: підготуйте сумісні призначення на окремих вкладках.
+    - Cleanup Tools: звіт про стан проєкту лише для читання.
+    - Saved Setups та Help: зберігайте й повторно використовуйте налаштування та відкривайте інструкції.
+    - BIM-гумор: офлайн-жарти кожні 60 секунд, збережене ввімкнення/вимкнення та кнопка Next Joke.
+
+    БЕЗПЕКА
+    - Перевірка й обнулення очікуваних копій не змінюють види Revit.
+    - Перейменування, дублювання та призначення потребують явного застосування й підтвердження.
+    - Запис у Revit використовує наявний процес зі зворотними транзакціями.
+    - Залежні види успадковують налаштування головного виду; параметри під керуванням шаблону можуть бути лише для читання.
+    - Працює офлайн; зовнішні посилання відкриваються лише за вашим вибором.
+
+    СУМІСНІСТЬ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Створено Nataraj Devaraj.
+icon: "icon.png"

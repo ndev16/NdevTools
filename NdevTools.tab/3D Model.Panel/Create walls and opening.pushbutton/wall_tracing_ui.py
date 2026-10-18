@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-
-from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
 """Two-page WPF wizard. No document mutations occur in this module."""
 import os
+import clr
+import math
 from pyrevit import DB, UI, forms, script
 from Autodesk.Revit.UI.Selection import ObjectType, ISelectionFilter
 from Autodesk.Revit.Exceptions import OperationCanceledException
-from System import Uri
+from System import Uri, Double
 from System.Windows import Thickness, GridLength, GridUnitType, Visibility, TextWrapping, SystemParameters
 from System.Windows.Controls import Grid, ColumnDefinition, TextBlock, ComboBox, CheckBox, StackPanel, Border
 from System.Windows.Media import BrushConverter
@@ -68,6 +68,7 @@ class WallTracingWindow(forms.WPFWindow):
         self.page = 1
         self.checks, self.config_controls = [], []
         self.saved = {}
+        self.maximum_gap.Text = self.length(0.0)
         self.host_levels, self.wall_types = levels(doc), host_types(doc)
         self.links = sorted(DB.FilteredElementCollector(doc).OfClass(DB.RevitLinkInstance), key=lambda l: l.Name)
         self.brand_logo.Source = BitmapImage(Uri(os.path.join(root, 'reference', 'NdevTools_Logo.png')))
@@ -259,6 +260,16 @@ class WallTracingWindow(forms.WPFWindow):
                 self.set_page(2)
                 return
             configs = []
+            combine = bool(self.combine_openings.IsChecked)
+            maximum_gap = 0.0
+            if combine:
+                parsed = clr.Reference[Double]()
+                if not DB.UnitFormatUtils.TryParse(self.doc.GetUnits(), DB.SpecTypeId.Length,
+                                                  self.maximum_gap.Text, parsed):
+                    raise ValueError('Enter Maximum Gap as a valid length in project units, or include units such as 150 mm or 6".')
+                maximum_gap = float(parsed.Value)
+                if math.isnan(maximum_gap) or math.isinf(maximum_gap) or maximum_gap < 0:
+                    raise ValueError('Maximum Gap must be zero or greater.')
             for level,bottom,top,mappings in self.config_controls:
                 if bottom.SelectedIndex < 0 or top.SelectedIndex < 0:
                     raise ValueError('Choose host bottom and top levels for ' + level.Name)
@@ -269,7 +280,8 @@ class WallTracingWindow(forms.WPFWindow):
                     values[type_key] = self.wall_types[control.SelectedIndex-1].Id if control.SelectedIndex > 0 else None
                 configs.append(dict(source_level=level.Id,label=level.Name,
                                     bottom=self.host_levels[bottom.SelectedIndex].Id,
-                                    top=self.host_levels[top.SelectedIndex].Id,mapping=values))
+                                    top=self.host_levels[top.SelectedIndex].Id,mapping=values,
+                                    combine_openings=combine, maximum_gap=maximum_gap))
             validate(self.doc,self.link,configs)
             self.result = (self.link,configs)
             self.Close()

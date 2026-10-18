@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NdevTools | ViewPilot</title><style>/* INLINE_STYLE */</style></head>
+<body><div class="app">
+<header class="topbar">
+  <div class="brand"><img class="brand-img" src="data:image/png;base64,INLINE_LOGO_DATA" alt="NdevTools logo"><div class="brand-line"></div>
+  <div><div class="product-name">View<span>Pilot</span></div><div class="subheading">MANAGE &bull; RENAME &bull; DUPLICATE &bull; CLEAN UP VIEWS</div></div></div>
+  <div class="header-actions"><button onclick="refreshProject()" title="Refresh project data">&#8635; Refresh</button><button class="help-top" onclick="showHelp()" title="Open ViewPilot Help">? Help</button><button onclick="windowMinimize()" title="Minimize">&#8211;</button><button onclick="host('close',{})" title="Close">&#10005;</button></div>
+</header>
+<nav class="tabs" id="tabs"><button class="tab active" data-tab="rename" onclick="tabSelect('rename')">Rename &amp; Duplicate</button><button class="tab" data-tab="review" onclick="tabSelect('review')">Review Changes</button><button class="tab" data-tab="scope" onclick="tabSelect('scope')">Scope Boxes</button><button class="tab" data-tab="templates" onclick="tabSelect('templates')">View Templates</button><button class="tab" data-tab="health" onclick="tabSelect('health')">Cleanup Tools</button><button class="tab" data-tab="settings" onclick="tabSelect('settings')">Settings</button></nav>
+
+<div id="renamePage" class="page active-page">
+ <section class="filter-panel panel"><div class="filter-left"><div class="section-head filter-heading">VIEW TYPE FILTER <span class="muted tiny">(controls visibility, not selection)</span></div><div id="categoryFilters" class="filters"></div></div>
+   <div class="filter-search"><label class="small-label">SEARCH VIEWS</label><input id="searchInput" placeholder="Search names, view type, sheet..." onkeyup="renderRows()"><div class="stats" id="filterStats">Loading views...</div></div></section>
+ <section class="panel tools" id="renameTools"><div class="section-head">QUICK RENAME RULES <span class="muted tiny">Apply to checked original views or generated-copy names</span></div>
+ <div class="tool-grid"><label>Find <input id="findText" type="text" placeholder="Find..."></label><label>Replace <input id="replaceText" type="text" placeholder="Replace..."></label><label>Prefix <input id="prefixText" type="text" placeholder="Prefix..."></label><label>Suffix <input id="suffixText" type="text" placeholder="Suffix..."></label>
+ <label>Case <select id="caseMode"><option value="none">No Change</option><option value="upper">UPPERCASE</option><option value="lower">lowercase</option><option value="title">Title Case</option></select></label><label>Numbering <select id="numberMode"><option value="none">None</option><option value="prefix">At Start</option><option value="suffix">At End</option></select></label><label>Start <input id="numberStart" type="number" min="0" value="1" style="width:65px"></label><button class="bright" onclick="applyRenameRules()">Apply Rules</button></div>
+ <div class="row rename-flags"><label><input id="caseSensitive" type="checkbox"> Match case</label><label><input id="regexToggle" type="checkbox"> RegEx <span class="explain">(Pattern search: \d+ matches 01, 02, 100.)</span></label><label><input id="ruleCopies" type="checkbox"> Apply Rename Rules to New Copies <span class="explain">(Adds Prefix, Suffix and Find &amp; Replace to new copies.)</span></label></div></section>
+
+ <section class="panel common-settings" id="commonTools">
+  <div class="section-head">COMMON SETTINGS <span class="muted tiny">Defaults for new copies; apply to selected views when needed</span></div>
+  <div class="common-grid">
+   <div class="common-control"><label class="common-label" for="commonScopeOn"><input type="checkbox" id="commonScopeOn" onchange="v5ToggleCommon()"> Scope Box</label><select id="commonScope" onchange="v5CommonChanged()"></select></div>
+   <div class="common-control"><label class="common-label" for="commonTemplateOn"><input type="checkbox" id="commonTemplateOn" onchange="v5ToggleCommon()"> View Template</label><select id="commonTemplate" onchange="v5CommonChanged()"></select></div>
+   <div class="common-control"><label class="common-label" for="commonMethodOn"><input type="checkbox" id="commonMethodOn" onchange="v5ToggleCommon()"> Duplication Method</label><select id="commonMethod" onchange="v5CommonChanged()"><option value="duplicate">Duplicate</option><option value="detailing">Duplicate with Detailing</option><option value="dependent">Duplicate as Dependent</option></select></div>
+   <div class="common-control"><label class="common-label" for="commonScaleOn"><input type="checkbox" id="commonScaleOn" onchange="v5ToggleCommon()"> View Scale</label><select id="commonScale" onchange="v5CommonChanged()"></select></div>
+   <button class="bright" onclick="applyCommonToSelection()" title="Apply only checked common settings to all selected new copies">Apply Checked Settings</button>
+  </div>
+  <div class="common-hint">(Common Duplication Method creates exactly one copy per checked source view. Turn it off to configure individual copy counts and methods.)</div>
+  <div class="common-hint" id="commonHint">Common values are defaults for new copies. Each copy can be customized individually.</div>
+ </section>
+ <section class="panel table-panel"><div class="table-caption"><strong>PROJECT VIEWS <span id="tableCount"></span></strong><span class="muted tiny" id="projectName"></span><div class="spacer"></div><div class="copies-management"><label for="copiesResetScope">Scope:</label><select id="copiesResetScope" aria-label="Reset copies scope"><option value="selected">Selected Views Only</option><option value="visible">All Visible Views</option></select><button class="small" id="copiesResetButton" onclick="resetCopies()" aria-describedby="copiesResetHint">Reset Copies to 0</button></div><button class="small" onclick="checkVisible(true)">Select Visible</button><button class="small" onclick="checkVisible(false)">Clear Visible</button><span class="common-hint" id="copiesResetHint" style="display:none">Turn off Common Duplication Method to reset or configure individual copy counts.</span></div>
+ <div class="table-scroll"><table class="views-table"><thead><tr><th class="checkcol"><input type="checkbox" id="selectAll" onclick="checkVisible(this.checked)"></th><th class="typecol">VIEW TYPE</th><th>CURRENT NAME</th><th>NEW NAME (LIVE PREVIEW)</th><th class="methodcol">DUPLICATION DEFAULT</th><th class="copiescol">COPIES</th><th class="scopecol">SCOPE BOX</th><th class="statuscol">STATUS</th></tr></thead><tbody id="viewRows"></tbody></table></div></section>
+
+</div>
+
+<div id="reviewPage" class="page">
+ <section class="panel review-workspace"><div class="review-heading"><div><h2>Review Changes</h2><p class="muted">Choose exactly which rename and duplicate operations ViewPilot should commit. Reviewing does not change Revit.</p></div><button onclick="tabSelect('rename')">Back to Editing</button></div>
+ <div class="review-toolbar"><button onclick="v5ReviewCheckAll(true)">Select All Valid</button><button onclick="v5ReviewCheckAll(false)">Deselect All</button><span class="muted" id="reviewCount">No changes reviewed yet</span></div>
+ <div class="review-list" id="reviewRows"><p class="muted">Click Review Changes to populate the operations.</p></div><div id="reviewWarnings"></div>
+ </section>
+</div>
+
+<div id="scopePage" class="page"><div class="page-intro panel"><div><h2>Scope Boxes</h2><p>Select a project scope box, then add compatible Structural, Floor or Area Plan views using checkboxes. A view already assigned to another box will not appear in the next box's picker.</p></div><div class="status-info" id="scopeStatus">0 pending changes</div></div>
+ <div class="assignment-layout"><section class="panel assignment-list"><div class="section-head">PROJECT SCOPE BOXES <span id="scopeCount"></span></div><input id="scopeSearch" placeholder="Find scope box..." onkeyup="renderScopeList()"><div id="scopeList" class="assignment-items"></div></section>
+ <section class="panel assignment-main"><div class="assignment-head"><div><h2 id="scopeTitle">Choose a scope box</h2><span class="muted" id="scopeHint">Assignments are staged until you click Apply Scope Changes.</span></div><div class="entity-actions"><button class="small" onclick="v5ManageEntity('scope','rename')">Rename</button><button class="small" onclick="v5ManageEntity('scope','edit')">Edit</button><button class="small" onclick="v5ManageEntity('scope','duplicate')">Duplicate</button><button id="scopeAddBtn" class="bright" onclick="togglePicker('scope')">+ Select Views</button></div></div><div id="scopeAssigned" class="assignment-members"></div><div id="scopePicker" class="picker" style="display:none"></div></section></div>
+</div>
+
+<div id="templatesPage" class="page"><div class="page-intro panel"><div><h2>View Templates</h2><p>Choose a project view template, select multiple compatible views, and apply their assignments together. Each view can be staged under one template only.</p></div><div class="status-info" id="templateStatus">0 pending changes</div></div>
+ <div class="assignment-layout"><section class="panel assignment-list"><div class="section-head">PROJECT VIEW TEMPLATES <span id="templateCount"></span></div><input id="templateSearch" placeholder="Find view template..." onkeyup="renderTemplateList()"><div id="templateList" class="assignment-items"></div></section>
+ <section class="panel assignment-main"><div class="assignment-head"><div><h2 id="templateTitle">Choose a view template</h2><span class="muted" id="templateHint">Only API-compatible views are available in the picker.</span></div><div class="entity-actions"><button class="small" onclick="v5ManageEntity('template','rename')">Rename</button><button class="small" onclick="v5ManageEntity('template','edit')">Edit</button><button class="small" onclick="v5ManageEntity('template','duplicate')">Duplicate</button><button id="templateAddBtn" class="bright" onclick="togglePicker('template')">+ Select Views</button></div></div><div id="templateAssigned" class="assignment-members"></div><div id="templatePicker" class="picker" style="display:none"></div></section></div>
+</div>
+
+<div id="healthPage" class="page"><section class="page-intro panel"><div><h2>Cleanup / Health Checker</h2><p>Identify common BIM view-management issues in the current Revit model. Running a health check does not edit or delete anything.</p></div><button class="bright" onclick="runHealth()">&#9654; Run Health Check</button></section>
+ <section class="panel health-workspace"><div class="section-head">PROJECT HEALTH REPORT</div><div id="healthResults" class="health-results"><p class="muted">Click Run Health Check to scan project views.</p></div><p class="muted">Resolve findings using Rename &amp; Duplicate, Scope Boxes, or View Templates. Different view scales and unassigned templates may be intentional.</p></section></div>
+
+<div id="settingsPage" class="page"><section class="panel settings-workspace"><h2>ViewPilot Settings</h2><div class="setting-row"><div><h3>BIM Humor</h3><p>Show offline BIM jokes in the footer, changing every 60 seconds. Use Next Joke for another, or turn humor off here or in the footer.</p></div><label class="switch-label"><input type="checkbox" id="humorToggle" checked onchange="saveSettings(this.checked)"> Enabled</label></div>
+ <div class="setting-row"><div><h3>Offline operation</h3><p>No cloud services, automatic updates, or telemetry. Saved setups live on your computer. The GitHub link opens only when you click it.</p></div><span class="status-ok">Local</span></div>
+ <div class="setting-row"><div><h3>Saved Setups</h3><p>Reuse your view filters, naming rules, default duplicate method, and copy count. Use the Saved Setups bar at the bottom.</p></div></div>
+ <div class="setting-row"><div><h3>Need help?</h3><p>Open the separate Help window for instructions and a duplicate-method guide.</p></div><button onclick="showHelp()">Open Help</button></div></section></div>
+
+<div id="globalApplyBar" class="global-apply-bar panel">
+ <div class="global-status"><strong id="globalApplyTitle">RENAME &amp; DUPLICATE</strong><span id="globalApplyHint" aria-live="polite">0 selected · 0 renames · 0 new views</span></div>
+ <button class="global-review" id="globalReviewButton" onclick="previewRename()">Review Changes</button>
+ <button id="globalApplyButton" class="bright global-apply" onclick="applyCurrentWorkspace()">&#9654; Apply Changes</button>
+</div>
+<footer class="footer"><div class="footer-group preset-group"><strong>Saved Setups</strong><select id="presetSelect" onchange="loadSelectedPreset()"><option value="">Choose a setup...</option></select><button onclick="savePreset()">Save My Setup</button><button onclick="deletePreset()">Delete</button></div>
+ <div class="footer-group bim-humor"><span id="footerJoke" class="footer-joke"></span><div class="humor-controls"><label for="footerHumorToggle"><input type="checkbox" id="footerHumorToggle" checked onchange="saveSettings(this.checked)"> BIM Humor <span id="footerHumorStatus">On</span></label><button class="small" id="nextJokeButton" onclick="nextBimJoke()" title="Display the next offline BIM joke">Next Joke</button></div></div>
+ <div class="footer-group github-group"><button title="Open GitHub in your default browser" onclick="host('github',{})">&#9733; Star NdevTools on GitHub</button><span class="muted">github.com/ndev16/NdevTools</span></div></footer>
+<div class="assignment-dialog-backdrop" id="assignmentDialog" style="display:none" role="dialog" aria-modal="true" aria-label="Select views">
+  <div class="assignment-dialog" id="assignmentDialogBox">
+   <div class="assignment-dialog-head"><div><h2 id="assignmentDialogTitle">Select Views</h2><p id="assignmentDialogSubtitle">Select compatible views with checkboxes</p></div><button onclick="closeAssignmentPicker()" title="Close selection window">&#10005;</button></div>
+   <div class="assignment-dialog-toolbar"><button onclick="pickAllAvailable(true)">Select All</button><button onclick="pickAllAvailable(false)">Deselect All</button><span id="assignmentDialogCount" class="muted"></span><div class="spacer"></div><input id="assignmentDialogSearch" type="text" placeholder="Optional: filter view names" onkeyup="filterPicker()"></div>
+   <div class="assignment-dialog-list" id="assignmentDialogList"></div>
+   <div class="assignment-dialog-actions"><button onclick="closeAssignmentPicker()">Cancel</button><button class="bright" onclick="stageSelectedFromDialog()">Add Selected Views</button></div>
+  </div>
+ </div>
+ <div class="toast" id="toast" style="display:none"></div><div class="overlay" id="overlay" style="display:none"><div class="modal"><h2 id="modalTitle">ViewPilot</h2><div id="modalMessage"></div><button class="bright" onclick="hideModal()">Close</button></div></div>
+<div class="processing" id="processing" style="display:none"><div class="processing-card"><h2>&#9881; ViewPilot is creating views...</h2><div class="progress-track"><div class="progress-fill"></div></div><p id="processingQuote"></p><span class="muted">Please wait while Revit finishes the operation.</span></div></div>
+<div id="bridge_payload" style="display:none"></div>
+</div><script>/* INLINE_SCRIPT */</script></body></html>

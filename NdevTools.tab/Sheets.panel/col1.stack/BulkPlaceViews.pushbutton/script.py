@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+from ndev_sheet_theme import apply_wpf as _ndev_theme
 from pyrevit import revit, DB, forms, script
 from System.Collections.Generic import List
 import json
@@ -139,6 +140,10 @@ def ndev_attach_titlebar(window, include_help=True):
         window.Height += 38
     except Exception:
         pass
+
+
+    _ndev_theme(window, bar, caption, ('Sheet', 'Pilot'),
+                'PLACE | POSITION | ORGANIZE VIEWS')
 
 
 def ndev_open_link(url):
@@ -1569,12 +1574,12 @@ def _ndev_brush(red, green, blue):
     )
 
 
-_NDEV_BG = _ndev_brush(17, 27, 41)
-_NDEV_NAVY = _ndev_brush(28, 42, 61)
-_NDEV_PANEL = _ndev_brush(34, 49, 67)
-_NDEV_CYAN = _ndev_brush(0, 165, 194)
-_NDEV_MUTED = _ndev_brush(188, 208, 218)
-_NDEV_LIGHT = _ndev_brush(242, 248, 251)
+_NDEV_BG = _ndev_brush(5, 18, 32)
+_NDEV_NAVY = _ndev_brush(9, 36, 58)
+_NDEV_PANEL = _ndev_brush(5, 32, 57)
+_NDEV_CYAN = _ndev_brush(13, 199, 231)
+_NDEV_MUTED = _ndev_brush(139, 184, 206)
+_NDEV_LIGHT = _ndev_brush(222, 239, 251)
 
 
 def _ndev_label(value, size=12, color=None, bold=False):
@@ -1805,8 +1810,8 @@ class MultiSheetPlacementWindow(Window):
         combo = ComboBox()
         combo.Height = 31
         combo.Margin = Thickness(4, 3, 4, 3)
-        combo.Background = _NDEV_LIGHT
-        combo.Foreground = Brushes.Black
+        combo.Background = _ndev_brush(9, 41, 64)
+        combo.Foreground = _NDEV_LIGHT
         combo.IsEditable = bool(searchable)
         combo.IsTextSearchEnabled = True
         combo.MaxDropDownHeight = 400
@@ -2205,6 +2210,7 @@ class SheetPilotSheetProgressWindow(Window):
         )
         footer.Margin = Thickness(0, 10, 0, 0)
         content.Children.Add(footer)
+        _ndev_theme(self)
 
     def start_sheet(self, current_index, sheet_total, sheet_number,
                     sheet_name, joke, sheet_views, finished_views):

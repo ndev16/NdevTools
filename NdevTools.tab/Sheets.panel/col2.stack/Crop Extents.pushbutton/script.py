@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+from ndev_sheet_theme import apply_wpf as _ndev_theme
 
 from pyrevit import revit, DB, forms
 
@@ -170,6 +171,10 @@ def ndev_attach_titlebar(window, include_help=True):
             window.Height += 38
     except Exception:
         pass
+
+
+    _ndev_theme(window, titlebar, title_label, ('Crop', 'Extents'),
+                'MATCH | ALIGN | APPLY CROP REGIONS')
 
 
 class NdevSelectFromList(forms.SelectFromList):

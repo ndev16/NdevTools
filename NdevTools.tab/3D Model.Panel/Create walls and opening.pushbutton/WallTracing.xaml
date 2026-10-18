@@ -83,7 +83,13 @@
     </Grid>
     <Grid Grid.Row="2" x:Name="page_two" Visibility="Collapsed" Margin="0,8,0,8"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
       <Border Style="{StaticResource Card}" Margin="0,0,0,12"><StackPanel>
-        <TextBlock Text="Host types are suggested by structural-layer thickness. Review every type; amber notes flag a nearest-width match.&#10;Width alone does not establish material or structural equivalence. Choose None to skip a source type.&#10;Existing matching walls are skipped; this tool creates walls only and does not create or change openings." TextWrapping="Wrap" Foreground="#A6C6D9"/>
+        <TextBlock Text="Host types are suggested by structural-layer thickness. Review every type; amber notes flag a nearest-width match.&#10;Width alone does not establish material or structural equivalence. Choose None only to skip that type.&#10;Matching existing walls receive missing rectangular openings; matching existing openings are retained.&#10;Source offsets are retained; opening elevations remain at their actual linked-model position." TextWrapping="Wrap" Foreground="#A6C6D9"/>
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+          <CheckBox x:Name="combine_openings" Content="Combine Nearby Openings" IsChecked="False" ToolTip="Combine openings on each wall by horizontal clear edge-to-edge gap, using the lowest bottom and highest top."/>
+          <TextBlock Text="Maximum Gap" Margin="20,0,10,0"/>
+          <TextBox x:Name="maximum_gap" Width="125" IsEnabled="{Binding IsChecked, ElementName=combine_openings}" ToolTip="Project length units; explicit units such as 150 mm or 6 inches are also accepted. Zero combines touching or overlapping intervals."/>
+          <TextBlock Text="(project units)" Margin="10,0,0,0" Foreground="#8DB6CC"/>
+        </StackPanel>
       </StackPanel></Border>
       <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"><StackPanel x:Name="mapping_panels" MinWidth="810"/></ScrollViewer>
     </Grid>

@@ -1,0 +1,704 @@
+title:
+  en_us: "Wall\nTracing"
+  en_gb: "Wall\nTracing"
+  fr_fr: "Tracer les\nmurs"
+  de_de: "Wände\nnachzeichnen"
+  it_it: "Tracciamento\nmuri"
+  es_es: "Trazado\nde muros"
+  ar: "تتبع\nالجدران"
+  bg: "Проследяване\nна стени"
+  chinese_s: "墙体\n追踪"
+  chinese_t: "牆體\n追蹤"
+  cs: "Trasování\nstěn"
+  fa: "ردیابی\nدیوار"
+  hu: "Fal\nkövetés"
+  ja: "壁\nトレース"
+  ko: "벽체\n추적"
+  nl_nl: "Wanden\ntraceren"
+  pl: "Śledzenie\nścian"
+  pt_br: "Rastrear\nparedes"
+  ru: "Трассировка\nстен"
+  uk: "Трасування\nстін"
+tooltip:
+  en_us: |-
+    NDEV TOOLS | WALL TRACING
+
+    Create structural host-model walls and native rectangular openings from a loaded architectural Revit link, with level mapping and wall-type selection.
+
+    HOW TO USE
+    1. Open a project plan or 3D view and run Wall Tracing.
+    2. Select a loaded architectural link and one or more source levels.
+    3. Map each source level to host bottom and top levels.
+    4. Review suggested host Basic Wall types. Verify thickness and materials; choose None to skip a source type.
+    5. Set opening options, click Create Walls, and review the summary and per-item diagnostics.
+
+    OPENINGS
+    - Detects verified rectangular cuts from source wall inserts; eligible Door/Window inserts can use a validated parameter fallback.
+    - Matching host walls are reused for missing openings; matching existing openings are retained.
+    - Combine Nearby Openings is off by default. Enable it and enter Maximum Gap in project units or explicit units such as 150 mm.
+    - Combines geometry-detected cuts on the same wall by horizontal clear gap into a bounding rectangle. Parameter-fallback cuts remain separate. Existing openings are not deleted.
+
+    OPTIONS & BEHAVIOR
+    - Supports straight, vertical Basic Walls; skips curved, slanted, tapered, attached, and edited-profile walls.
+    - Aligns walls to the thickest Structure [1] layer. Type suggestions use thickness only; review material suitability.
+    - Preserves applicable source base/top offsets. Opening elevations follow the linked geometry and must fit the mapped host wall.
+    - To allow joins on existing host walls, select them and run the tool again.
+
+    SAFETY
+    - Reads the linked model without changing it; writes only to the active host project.
+    - Rolls back failed creation items; fatal errors or cancellation roll back the creation group.
+    - New wall joins are temporarily disabled during creation and enabled afterward. Review warnings and results.
+
+    COMPATIBILITY
+    Revit 2022 or later
+    pyRevit | IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | WALL TRACING
+
+    Create structural host-model walls and native rectangular openings from a loaded architectural Revit link, with level mapping and wall-type selection.
+
+    HOW TO USE
+    1. Open a project plan or 3D view and run Wall Tracing.
+    2. Select a loaded architectural link and one or more source levels.
+    3. Map each source level to host bottom and top levels.
+    4. Review suggested host Basic Wall types. Verify thickness and materials; choose None to skip a source type.
+    5. Set opening options, click Create Walls, and review the summary and per-item diagnostics.
+
+    OPENINGS
+    - Detects verified rectangular cuts from source wall inserts; eligible Door/Window inserts can use a validated parameter fallback.
+    - Matching host walls are reused for missing openings; matching existing openings are retained.
+    - Combine Nearby Openings is off by default. Enable it and enter Maximum Gap in project units or explicit units such as 150 mm.
+    - Combines geometry-detected cuts on the same wall by horizontal clear gap into a bounding rectangle. Parameter-fallback cuts remain separate. Existing openings are not deleted.
+
+    OPTIONS & BEHAVIOR
+    - Supports straight, vertical Basic Walls; skips curved, slanted, tapered, attached, and edited-profile walls.
+    - Aligns walls to the thickest Structure [1] layer. Type suggestions use thickness only; review material suitability.
+    - Preserves applicable source base/top offsets. Opening elevations follow the linked geometry and must fit the mapped host wall.
+    - To allow joins on existing host walls, select them and run the tool again.
+
+    SAFETY
+    - Reads the linked model without changing it; writes only to the active host project.
+    - Rolls back failed creation items; fatal errors or cancellation roll back the creation group.
+    - New wall joins are temporarily disabled during creation and enabled afterward. Review warnings and results.
+
+    COMPATIBILITY
+    Revit 2022 or later
+    pyRevit | IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | TRACÉ DE MURS
+
+    Créez des murs structurels dans le modèle hôte et des ouvertures rectangulaires natives depuis un lien Revit architectural chargé, avec correspondance des niveaux et choix des types de murs.
+
+    UTILISATION
+    1. Ouvrez un plan ou une vue 3D du projet et lancez Wall Tracing.
+    2. Sélectionnez un lien architectural chargé et un ou plusieurs niveaux sources.
+    3. Associez chaque niveau source aux niveaux inférieur et supérieur du modèle hôte.
+    4. Vérifiez les types de murs de base proposés, leurs épaisseurs et matériaux ; choisissez None pour ignorer un type source.
+    5. Réglez les options d’ouverture, cliquez sur Create Walls et consultez le résumé et les diagnostics détaillés.
+
+    OUVERTURES
+    - Détecte les découpes rectangulaires vérifiées des éléments insérés dans les murs sources ; certaines portes/fenêtres peuvent utiliser des paramètres de secours validés.
+    - Réutilise les murs hôtes correspondants pour ajouter les ouvertures manquantes ; conserve les ouvertures existantes correspondantes.
+    - Combine Nearby Openings est désactivé par défaut. Activez-le et saisissez Maximum Gap en unités du projet ou avec une unité explicite, par exemple 150 mm.
+    - Regroupe les découpes détectées par géométrie sur un même mur selon leur écart horizontal, dans un rectangle englobant. Les ouvertures issues des paramètres restent séparées. Aucune ouverture existante n’est supprimée.
+
+    OPTIONS ET COMPORTEMENT
+    - Accepte les murs de base droits et verticaux ; ignore les murs courbes, inclinés, effilés, attachés ou à profil modifié.
+    - Aligne les murs sur la couche Structure [1] la plus épaisse. Les suggestions utilisent uniquement l’épaisseur ; vérifiez les matériaux.
+    - Conserve les décalages de base/sommet applicables. Les altitudes des ouvertures suivent la géométrie liée et doivent rester dans le mur hôte associé.
+    - Pour autoriser les jonctions des murs hôtes existants, sélectionnez-les et relancez l’outil.
+
+    SÉCURITÉ
+    - Lit le modèle lié sans le modifier ; écrit uniquement dans le projet hôte actif.
+    - Annule chaque création échouée ; une erreur fatale ou une annulation annule le groupe de création.
+    - Désactive temporairement les jonctions des nouveaux murs puis les active après création. Consultez les avertissements et résultats.
+
+    COMPATIBILITÉ
+    Revit 2022 ou ultérieur
+    pyRevit | IronPython 2.7
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | WÄNDE NACHZEICHNEN
+
+    Erstellt tragende Wände im Hostmodell und native rechteckige Öffnungen aus einer geladenen architektonischen Revit-Verknüpfung, mit Ebenenzuordnung und Wandtypauswahl.
+
+    ANWENDUNG
+    1. Projektgrundriss oder 3D-Ansicht öffnen und Wall Tracing starten.
+    2. Geladene Architekturverknüpfung und eine oder mehrere Quellebenen wählen.
+    3. Jeder Quellebene eine untere und obere Hostebene zuordnen.
+    4. Vorgeschlagene Basiswandtypen, Dicken und Materialien prüfen; mit None einen Quelltyp überspringen.
+    5. Öffnungsoptionen einstellen, auf Create Walls klicken und Zusammenfassung sowie Einzeldiagnosen prüfen.
+
+    ÖFFNUNGEN
+    - Erkennt geprüfte rechteckige Ausschnitte anhand eingefügter Elemente der Quellwand; geeignete Türen/Fenster können validierte Ersatzparameter verwenden.
+    - Verwendet passende Hostwände für fehlende Öffnungen weiter; passende vorhandene Öffnungen bleiben erhalten.
+    - Combine Nearby Openings ist standardmäßig ausgeschaltet. Zum Aktivieren Maximum Gap in Projekteinheiten oder mit expliziten Einheiten wie 150 mm eingeben.
+    - Fasst geometrisch erkannte Ausschnitte derselben Wand anhand des lichten horizontalen Abstands zu einem umschließenden Rechteck zusammen. Parameterbasierte Ausschnitte bleiben getrennt. Vorhandene Öffnungen werden nicht gelöscht.
+
+    OPTIONEN UND VERHALTEN
+    - Unterstützt gerade, vertikale Basiswände; überspringt gekrümmte, geneigte, verjüngte, angehängte Wände und bearbeitete Profile.
+    - Richtet Wände an der dicksten Schicht Structure [1] aus. Typvorschläge beruhen nur auf der Dicke; Materialeignung prüfen.
+    - Übernimmt anwendbare Quellversätze unten/oben. Öffnungshöhen folgen der verknüpften Geometrie und müssen in die zugeordnete Hostwand passen.
+    - Zum Zulassen von Verbindungen vorhandene Hostwände auswählen und das Werkzeug erneut starten.
+
+    SICHERHEIT
+    - Liest das verknüpfte Modell unverändert; schreibt nur in das aktive Hostprojekt.
+    - Macht fehlgeschlagene Einzelerstellungen rückgängig; schwere Fehler oder Abbruch rollen die Erstellungsgruppe zurück.
+    - Deaktiviert Verbindungen neuer Wände vorübergehend und aktiviert sie nach der Erstellung. Warnungen und Ergebnisse prüfen.
+
+    KOMPATIBILITÄT
+    Revit 2022 oder neuer
+    pyRevit | IronPython 2.7
+
+    Erstellt von Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | TRACCIAMENTO MURI
+
+    Crea muri strutturali nel modello host e aperture rettangolari native da un collegamento Revit architettonico caricato, con associazione dei livelli e selezione dei tipi di muro.
+
+    COME USARE
+    1. Aprire una pianta o una vista 3D del progetto e avviare Wall Tracing.
+    2. Selezionare un collegamento architettonico caricato e uno o più livelli sorgente.
+    3. Associare ogni livello sorgente ai livelli inferiore e superiore del modello host.
+    4. Verificare i tipi di muro di base suggeriti, gli spessori e i materiali; scegliere None per ignorare un tipo sorgente.
+    5. Impostare le opzioni delle aperture, fare clic su Create Walls e controllare il riepilogo e la diagnostica dei singoli elementi.
+
+    APERTURE
+    - Rileva tagli rettangolari verificati dagli inserti dei muri sorgente; porte/finestre idonee possono usare parametri alternativi convalidati.
+    - Riutilizza i muri host corrispondenti per aggiungere le aperture mancanti; mantiene le aperture esistenti corrispondenti.
+    - Combine Nearby Openings è disattivato per impostazione predefinita. Attivarlo e inserire Maximum Gap nelle unità del progetto o con unità esplicite, ad esempio 150 mm.
+    - Unisce i tagli rilevati dalla geometria sullo stesso muro in un rettangolo di ingombro, in base alla distanza libera orizzontale. I tagli ricavati dai parametri restano separati. Le aperture esistenti non vengono eliminate.
+
+    OPZIONI E COMPORTAMENTO
+    - Supporta muri di base rettilinei e verticali; ignora muri curvi, inclinati, rastremati, associati o con profilo modificato.
+    - Allinea i muri allo strato Structure [1] più spesso. I suggerimenti usano solo lo spessore; verificare l’idoneità dei materiali.
+    - Conserva gli offset sorgente inferiore/superiore applicabili. Le quote delle aperture seguono la geometria collegata e devono rientrare nel muro host associato.
+    - Per consentire le unioni dei muri host esistenti, selezionarli e riavviare lo strumento.
+
+    SICUREZZA
+    - Legge il modello collegato senza modificarlo; scrive solo nel progetto host attivo.
+    - Annulla le singole creazioni non riuscite; errori irreversibili o annullamento ripristinano l’intero gruppo di creazione.
+    - Disattiva temporaneamente le unioni dei nuovi muri e le attiva dopo la creazione. Controllare avvisi e risultati.
+
+    COMPATIBILITÀ
+    Revit 2022 o successivo
+    pyRevit | IronPython 2.7
+
+    Creato da Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | TRAZADO DE MUROS
+
+    Cree muros estructurales en el modelo anfitrión y huecos rectangulares nativos desde un vínculo Revit arquitectónico cargado, con asignación de niveles y selección de tipos de muro.
+
+    CÓMO USAR
+    1. Abra una planta o vista 3D del proyecto y ejecute Wall Tracing.
+    2. Seleccione un vínculo arquitectónico cargado y uno o varios niveles de origen.
+    3. Asigne cada nivel de origen a los niveles inferior y superior del anfitrión.
+    4. Revise los tipos de muro básico sugeridos, sus espesores y materiales; elija None para omitir un tipo de origen.
+    5. Configure las opciones de huecos, pulse Create Walls y revise el resumen y los diagnósticos por elemento.
+
+    HUECOS
+    - Detecta cortes rectangulares verificados de los elementos insertados en el muro de origen; las puertas/ventanas aptas pueden utilizar parámetros alternativos validados.
+    - Reutiliza los muros anfitriones coincidentes para añadir huecos que faltan; conserva los huecos existentes coincidentes.
+    - Combine Nearby Openings está desactivado inicialmente. Actívelo e introduzca Maximum Gap en unidades del proyecto o con unidades explícitas, como 150 mm.
+    - Combina cortes detectados por geometría en un mismo muro según la separación horizontal libre, formando un rectángulo envolvente. Los cortes obtenidos mediante parámetros permanecen separados. No elimina huecos existentes.
+
+    OPCIONES Y COMPORTAMIENTO
+    - Admite muros básicos rectos y verticales; omite muros curvos, inclinados, ahusados, enlazados por su parte superior/inferior o con perfil editado.
+    - Alinea los muros con la capa Structure [1] más gruesa. Las sugerencias solo usan el espesor; compruebe los materiales.
+    - Conserva los desfases de origen inferior/superior aplicables. Las elevaciones de los huecos siguen la geometría vinculada y deben caber en el muro anfitrión asignado.
+    - Para permitir uniones en muros anfitriones existentes, selecciónelos y vuelva a ejecutar la herramienta.
+
+    SEGURIDAD
+    - Lee el modelo vinculado sin modificarlo; escribe únicamente en el proyecto anfitrión activo.
+    - Revierte las creaciones individuales fallidas; los errores fatales o la cancelación revierten el grupo de creación.
+    - Desactiva temporalmente las uniones de muros nuevos y las activa después. Revise las advertencias y los resultados.
+
+    COMPATIBILIDAD
+    Revit 2022 o posterior
+    pyRevit | IronPython 2.7
+
+    Creado por Nataraj Devaraj.
+  ar: |-
+    NDEV TOOLS | تتبع الجدران
+
+    أنشئ جدرانًا إنشائية في النموذج المضيف وفتحات مستطيلة أصلية من رابط Revit معماري محمّل، مع تعيين المناسيب واختيار أنواع الجدران.
+
+    طريقة الاستخدام
+    1. افتح مسقطًا أو عرضًا ثلاثي الأبعاد للمشروع وشغّل Wall Tracing.
+    2. اختر رابطًا معماريًا محمّلًا ومنسوبًا واحدًا أو أكثر من المصدر.
+    3. عيّن لكل منسوب مصدر منسوبي القاعدة والقمة في النموذج المضيف.
+    4. راجع أنواع الجدران الأساسية المقترحة وسماكاتها وموادها؛ اختر None لتخطي نوع مصدر.
+    5. اضبط خيارات الفتحات، وانقر على Create Walls، ثم راجع الملخص وتشخيص كل عنصر.
+
+    الفتحات
+    - يكتشف القطوع المستطيلة المتحقق منها من العناصر المدرجة في الجدار المصدر؛ يمكن للأبواب والنوافذ المؤهلة استخدام معلمات بديلة تم التحقق منها.
+    - يعيد استخدام الجدران المضيفة المطابقة لإضافة الفتحات الناقصة، ويحتفظ بالفتحات الموجودة المطابقة.
+    - يكون Combine Nearby Openings معطلًا افتراضيًا. فعّله وأدخل Maximum Gap بوحدات المشروع أو بوحدات صريحة مثل 150 mm.
+    - يدمج القطوع المكتشفة هندسيًا في الجدار نفسه حسب الفجوة الأفقية الصافية ضمن مستطيل محيط. تبقى القطوع المستخرجة من المعلمات منفصلة. لا يحذف الفتحات الموجودة.
+
+    الخيارات والسلوك
+    - يدعم الجدران الأساسية المستقيمة والرأسية؛ يتخطى الجدران المنحنية والمائلة والمتدرجة السماكة والمرتبطة من الأعلى أو الأسفل وذات المقطع المعدّل.
+    - يحاذي الجدران مع أسمك طبقة Structure [1]. تعتمد اقتراحات الأنواع على السماكة فقط؛ تحقق من ملاءمة المواد.
+    - يحتفظ بإزاحات القاعدة والقمة القابلة للتطبيق من المصدر. تتبع ارتفاعات الفتحات الهندسة المرتبطة ويجب أن تقع ضمن الجدار المضيف المعيّن.
+    - للسماح بوصل الجدران المضيفة الموجودة، حددها وشغّل الأداة مجددًا.
+
+    السلامة
+    - يقرأ النموذج المرتبط دون تغييره، ويكتب في المشروع المضيف النشط فقط.
+    - يتراجع عن إنشاء العناصر التي تفشل؛ يتراجع عن مجموعة الإنشاء عند حدوث خطأ جسيم أو الإلغاء.
+    - يعطّل وصل الجدران الجديدة مؤقتًا أثناء الإنشاء ثم يفعّله بعده. راجع التحذيرات والنتائج.
+
+    التوافق
+    Revit 2022 أو أحدث
+    pyRevit | IronPython 2.7
+
+    إعداد Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | ПРОСЛЕДЯВАНЕ НА СТЕНИ
+
+    Създава конструктивни стени в приемащия модел и стандартни правоъгълни отвори от заредена архитектурна Revit връзка, със съпоставяне на нива и избор на типове стени.
+
+    НАЧИН НА ИЗПОЛЗВАНЕ
+    1. Отворете план или 3D изглед на проекта и стартирайте Wall Tracing.
+    2. Изберете заредена архитектурна връзка и едно или повече изходни нива.
+    3. Съпоставете всяко изходно ниво с долно и горно ниво в приемащия модел.
+    4. Прегледайте предложените типове основни стени, дебелините и материалите; изберете None, за да пропуснете изходен тип.
+    5. Задайте опциите за отвори, натиснете Create Walls и прегледайте обобщението и диагностиката за всеки елемент.
+
+    ОТВОРИ
+    - Открива проверени правоъгълни изрязвания от вложени елементи в изходната стена; подходящи врати/прозорци могат да използват валидирани резервни параметри.
+    - Използва повторно съответстващи приемащи стени за липсващи отвори; запазва съответстващите съществуващи отвори.
+    - Combine Nearby Openings е изключено по подразбиране. Включете го и въведете Maximum Gap в проектни единици или с изрични единици, например 150 mm.
+    - Обединява геометрично открити изрязвания на една стена според чистото хоризонтално разстояние в обхващащ правоъгълник. Изрязванията от резервни параметри остават отделни. Съществуващи отвори не се изтриват.
+
+    ОПЦИИ И ПОВЕДЕНИЕ
+    - Поддържа прави вертикални основни стени; пропуска извити, наклонени, стесняващи се, прикрепени стени и стени с редактиран профил.
+    - Подравнява стените по най-дебелия слой Structure [1]. Предложенията са само по дебелина; проверете материалите.
+    - Запазва приложимите изходни долни/горни отмествания. Котите на отворите следват свързаната геометрия и трябва да попадат в съпоставената приемаща стена.
+    - За да разрешите съединявания на съществуващи приемащи стени, изберете ги и стартирайте инструмента отново.
+
+    БЕЗОПАСНОСТ
+    - Чете свързания модел без промени; записва само в активния приемащ проект.
+    - Отменя неуспешните отделни създавания; критична грешка или отказ отменя групата за създаване.
+    - Временно забранява съединяванията на новите стени и ги разрешава след създаването. Прегледайте предупрежденията и резултатите.
+
+    СЪВМЕСТИМОСТ
+    Revit 2022 или по-нова версия
+    pyRevit | IronPython 2.7
+
+    Създадено от Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | 墙体追踪
+
+    从已加载的建筑 Revit 链接创建主体模型的结构墙和原生矩形洞口，支持标高映射及墙类型选择。
+
+    使用方法
+    1. 打开项目平面或三维视图，运行 Wall Tracing。
+    2. 选择已加载的建筑链接及一个或多个源标高。
+    3. 将各源标高映射到主体模型的底部和顶部标高。
+    4. 检查建议的基本墙类型、厚度及材料；选择 None 可跳过某个源类型。
+    5. 设置洞口选项，单击 Create Walls，并查看汇总及逐项诊断。
+
+    洞口
+    - 从源墙插入构件检测经过验证的矩形切口；符合条件的门窗可采用经验证的参数回退方案。
+    - 复用匹配的主体墙以补充缺失洞口；保留匹配的现有洞口。
+    - Combine Nearby Openings 默认关闭。启用后，以项目单位或明确单位（如 150 mm）输入 Maximum Gap。
+    - 按水平净间距将同一墙上通过几何检测的切口合并为外包矩形。参数回退得到的切口保持独立，不删除现有洞口。
+
+    选项与行为
+    - 支持竖直的直线基本墙；跳过曲墙、倾斜墙、变截面墙、顶部或底部已附着的墙及编辑过轮廓的墙。
+    - 沿最厚的 Structure [1] 层对齐墙体。类型建议仅基于厚度，请核对材料适用性。
+    - 保留适用的源底部/顶部偏移。洞口标高遵循链接几何，且必须位于映射后的主体墙范围内。
+    - 若要允许现有主体墙连接，请选中这些墙并重新运行工具。
+
+    安全
+    - 只读链接模型，仅修改当前主体项目。
+    - 单个创建失败时回滚该项；发生严重错误或取消时回滚整个创建组。
+    - 创建期间暂时禁用新墙连接，创建后再启用。请检查警告和结果。
+
+    兼容性
+    Revit 2022 或更高版本
+    pyRevit | IronPython 2.7
+
+    创建者：Nataraj Devaraj。
+  chinese_t: |-
+    NDEV TOOLS | 牆體追蹤
+
+    從已載入的建築 Revit 連結建立主體模型的結構牆和原生矩形開口，支援樓層對應及牆類型選擇。
+
+    使用方法
+    1. 開啟專案平面或三維視圖，執行 Wall Tracing。
+    2. 選取已載入的建築連結及一個或多個來源樓層。
+    3. 將各來源樓層對應至主體模型的底部和頂部樓層。
+    4. 檢查建議的基本牆類型、厚度及材料；選擇 None 可略過某個來源類型。
+    5. 設定開口選項，按一下 Create Walls，並查看摘要及逐項診斷。
+
+    開口
+    - 從來源牆插入構件偵測經過驗證的矩形切口；符合條件的門窗可採用經驗證的參數備援方案。
+    - 重複使用相符的主體牆以補上缺少的開口；保留相符的現有開口。
+    - Combine Nearby Openings 預設關閉。啟用後，以專案單位或明確單位（例如 150 mm）輸入 Maximum Gap。
+    - 依水平淨間距將同一牆上透過幾何偵測的切口合併為外包矩形。參數備援取得的切口保持獨立，不刪除現有開口。
+
+    選項與行為
+    - 支援垂直的直線基本牆；略過曲牆、傾斜牆、變截面牆、頂部或底部已貼附的牆，以及編輯過輪廓的牆。
+    - 沿最厚的 Structure [1] 層對齊牆體。類型建議僅依厚度，請核對材料適用性。
+    - 保留適用的來源底部/頂部偏移。開口高程依循連結幾何，且必須位於對應後的主體牆範圍內。
+    - 若要允許現有主體牆接合，請選取這些牆並重新執行工具。
+
+    安全
+    - 唯讀連結模型，僅修改目前的主體專案。
+    - 單一建立失敗時復原該項；發生嚴重錯誤或取消時復原整個建立群組。
+    - 建立期間暫時停用新牆接合，建立後再啟用。請檢查警告和結果。
+
+    相容性
+    Revit 2022 或更新版本
+    pyRevit | IronPython 2.7
+
+    建立者：Nataraj Devaraj。
+  cs: |-
+    NDEV TOOLS | TRASOVÁNÍ STĚN
+
+    Vytváří konstrukční stěny v hostitelském modelu a nativní obdélníkové otvory z načteného architektonického připojení Revit, s přiřazením podlaží a výběrem typů stěn.
+
+    POUŽITÍ
+    1. Otevřete půdorys nebo 3D pohled projektu a spusťte Wall Tracing.
+    2. Vyberte načtené architektonické připojení a jedno nebo více zdrojových podlaží.
+    3. Každému zdrojovému podlaží přiřaďte dolní a horní podlaží hostitelského modelu.
+    4. Zkontrolujte navržené typy základních stěn, tloušťky a materiály; volbou None přeskočíte zdrojový typ.
+    5. Nastavte možnosti otvorů, klikněte na Create Walls a zkontrolujte souhrn i diagnostiku jednotlivých prvků.
+
+    OTVORY
+    - Zjišťuje ověřené obdélníkové výřezy z vložených prvků zdrojové stěny; vhodné dveře/okna mohou využít ověřené náhradní parametry.
+    - Pro chybějící otvory znovu používá odpovídající hostitelské stěny; odpovídající existující otvory zachovává.
+    - Combine Nearby Openings je standardně vypnuto. Zapněte jej a zadejte Maximum Gap v projektových jednotkách nebo s výslovnou jednotkou, například 150 mm.
+    - Sloučí geometricky zjištěné výřezy na jedné stěně podle světlé vodorovné mezery do obalového obdélníku. Výřezy z náhradních parametrů zůstanou samostatné. Existující otvory se nemažou.
+
+    MOŽNOSTI A CHOVÁNÍ
+    - Podporuje přímé svislé základní stěny; přeskakuje zakřivené, šikmé, zužující se, připojené stěny a upravené profily.
+    - Zarovnává stěny k nejtlustší vrstvě Structure [1]. Návrhy typů vycházejí jen z tloušťky; ověřte vhodnost materiálů.
+    - Zachovává příslušná dolní/horní zdrojová odsazení. Výšky otvorů sledují připojenou geometrii a musí se vejít do přiřazené hostitelské stěny.
+    - Chcete-li povolit spoje existujících hostitelských stěn, vyberte je a spusťte nástroj znovu.
+
+    BEZPEČNOST
+    - Připojený model pouze čte; zapisuje jen do aktivního hostitelského projektu.
+    - Vrací neúspěšná jednotlivá vytvoření; při závažné chybě nebo zrušení vrací celou skupinu vytváření.
+    - Při vytváření dočasně zakáže spoje nových stěn a poté je povolí. Zkontrolujte upozornění a výsledky.
+
+    KOMPATIBILITA
+    Revit 2022 nebo novější
+    pyRevit | IronPython 2.7
+
+    Vytvořil Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | ترسیم دیوار
+
+    از یک پیوند معماری بارگذاری‌شده Revit، دیوارهای سازه‌ای در مدل میزبان و بازشوهای مستطیلی بومی ایجاد کنید؛ با نگاشت ترازها و انتخاب نوع دیوار.
+
+    روش استفاده
+    1. نمای پلان یا سه‌بعدی پروژه را باز کنید و Wall Tracing را اجرا کنید.
+    2. یک پیوند معماری بارگذاری‌شده و یک یا چند تراز مبدأ را انتخاب کنید.
+    3. هر تراز مبدأ را به ترازهای پایین و بالای مدل میزبان نگاشت کنید.
+    4. انواع پیشنهادی دیوار پایه، ضخامت‌ها و مصالح را بررسی کنید؛ برای رد کردن یک نوع مبدأ، None را انتخاب کنید.
+    5. گزینه‌های بازشو را تنظیم کنید، روی Create Walls کلیک کنید و خلاصه و گزارش تک‌تک عناصر را بررسی کنید.
+
+    بازشوها
+    - برش‌های مستطیلی تأییدشده را از عناصر درج‌شده در دیوار مبدأ تشخیص می‌دهد؛ درها/پنجره‌های واجد شرایط می‌توانند از پارامترهای جایگزین اعتبارسنجی‌شده استفاده کنند.
+    - برای افزودن بازشوهای مفقود از دیوارهای میزبان منطبق استفاده مجدد می‌کند؛ بازشوهای موجود منطبق حفظ می‌شوند.
+    - گزینه Combine Nearby Openings به‌طور پیش‌فرض خاموش است. آن را فعال کنید و Maximum Gap را با واحد پروژه یا واحد صریح مانند 150 mm وارد کنید.
+    - برش‌های هندسی یک دیوار را بر اساس فاصله خالص افقی در یک مستطیل محاط‌کننده ادغام می‌کند. برش‌های حاصل از پارامترهای جایگزین جدا می‌مانند. بازشوهای موجود حذف نمی‌شوند.
+
+    گزینه‌ها و رفتار
+    - از دیوارهای پایه مستقیم و قائم پشتیبانی می‌کند؛ دیوارهای منحنی، مایل، با ضخامت متغیر، متصل از بالا/پایین و دارای پروفیل ویرایش‌شده را رد می‌کند.
+    - دیوارها را با ضخیم‌ترین لایه Structure [1] هم‌راستا می‌کند. پیشنهاد نوع فقط بر اساس ضخامت است؛ تناسب مصالح را بررسی کنید.
+    - آفست‌های قابل اعمال پایین/بالای مبدأ را حفظ می‌کند. ارتفاع بازشوها از هندسه پیوندی پیروی می‌کند و باید در محدوده دیوار میزبان نگاشت‌شده باشد.
+    - برای مجاز کردن اتصال دیوارهای میزبان موجود، آن‌ها را انتخاب و ابزار را دوباره اجرا کنید.
+
+    ایمنی
+    - مدل پیوندی را بدون تغییر می‌خواند؛ فقط در پروژه میزبان فعال می‌نویسد.
+    - ایجاد ناموفق هر عنصر را برمی‌گرداند؛ خطای جدی یا لغو، کل گروه ایجاد را برمی‌گرداند.
+    - اتصال دیوارهای جدید را هنگام ایجاد موقتاً غیرفعال و سپس فعال می‌کند. هشدارها و نتایج را بررسی کنید.
+
+    سازگاری
+    Revit 2022 یا جدیدتر
+    pyRevit | IronPython 2.7
+
+    ساخته Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | FALAK KÖVETÉSE
+
+    Teherhordó falakat hoz létre a fogadó modellben, valamint natív téglalap alakú nyílásokat egy betöltött építészeti Revit-csatolásból, szintmegfeleltetéssel és faltípusválasztással.
+
+    HASZNÁLAT
+    1. Nyissa meg a projekt alaprajzi vagy 3D nézetét, és indítsa el a Wall Tracing eszközt.
+    2. Válasszon betöltött építészeti csatolást és egy vagy több forrásszintet.
+    3. Minden forrásszinthez rendeljen alsó és felső szintet a fogadó modellből.
+    4. Ellenőrizze a javasolt alapfaltípusokat, vastagságokat és anyagokat; a None választásával kihagyhat egy forrástípust.
+    5. Állítsa be a nyílások opcióit, kattintson a Create Walls gombra, majd tekintse át az összesítést és az elemenkénti diagnosztikát.
+
+    NYÍLÁSOK
+    - Ellenőrzött téglalap alakú kivágásokat észlel a forrásfal beillesztett elemeiből; megfelelő ajtók/ablakok ellenőrzött tartalék paramétereket használhatnak.
+    - A hiányzó nyílásokhoz újra felhasználja az egyező fogadó falakat; a megfelelő meglévő nyílásokat megtartja.
+    - A Combine Nearby Openings alapértelmezés szerint ki van kapcsolva. Engedélyezze, és adja meg a Maximum Gap értékét projektmértékegységben vagy kifejezett egységgel, például 150 mm.
+    - A geometria alapján észlelt kivágásokat ugyanazon a falon a szabad vízszintes hézag szerint befoglaló téglalappá egyesíti. A tartalék paraméterekből származó kivágások külön maradnak. Meglévő nyílásokat nem töröl.
+
+    BEÁLLÍTÁSOK ÉS MŰKÖDÉS
+    - Egyenes, függőleges alapfalakat támogat; kihagyja az íves, ferde, változó vastagságú, felül/alul csatolt és módosított profilú falakat.
+    - A falakat a legvastagabb Structure [1] réteghez igazítja. A típusjavaslat csak a vastagságon alapul; ellenőrizze az anyagok megfelelőségét.
+    - Megtartja az alkalmazható alsó/felső forráseltolásokat. A nyílások magassága a csatolt geometriát követi, és a hozzárendelt fogadó falon belül kell maradnia.
+    - Meglévő fogadó falak csatlakozásának engedélyezéséhez jelölje ki azokat, majd indítsa újra az eszközt.
+
+    BIZTONSÁG
+    - A csatolt modellt változtatás nélkül olvassa; csak az aktív fogadó projektbe ír.
+    - Visszavonja a sikertelen egyedi létrehozásokat; súlyos hiba vagy megszakítás visszavonja a teljes létrehozási csoportot.
+    - Létrehozáskor ideiglenesen letiltja az új falak csatlakozását, majd engedélyezi azt. Ellenőrizze a figyelmeztetéseket és eredményeket.
+
+    KOMPATIBILITÁS
+    Revit 2022 vagy újabb
+    pyRevit | IronPython 2.7
+
+    Készítette: Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | 壁トレース
+
+    ロード済みの建築 Revit リンクから、ホストモデルの構造壁とネイティブの長方形開口を作成します。レベルの対応付けと壁タイプの選択が可能です。
+
+    使用方法
+    1. プロジェクトの平面図または 3D ビューを開き、Wall Tracing を実行します。
+    2. ロード済みの建築リンクと、1 つ以上の参照元レベルを選択します。
+    3. 各参照元レベルをホストの下端・上端レベルに対応付けます。
+    4. 推奨された基本壁タイプ、厚さ、材料を確認します。参照元タイプを除外する場合は None を選択します。
+    5. 開口オプションを設定して Create Walls をクリックし、概要と要素ごとの診断を確認します。
+
+    開口
+    - 参照元壁の挿入要素から、検証済みの長方形切欠きを検出します。条件を満たすドア・窓には、検証済みパラメータによる代替処理を使用できます。
+    - 一致するホスト壁を再利用して不足する開口を追加し、一致する既存開口は保持します。
+    - Combine Nearby Openings は既定で無効です。有効にする場合は、Maximum Gap をプロジェクト単位または 150 mm などの明示的な単位で入力します。
+    - 同一壁の形状から検出した切欠きを、水平方向の内法間隔に基づいて外接長方形に結合します。代替パラメータによる切欠きは個別に扱い、既存開口は削除しません。
+
+    オプションと動作
+    - 直線かつ垂直な基本壁をサポートします。曲線壁、傾斜壁、テーパ壁、上下がアタッチされた壁、プロファイル編集済みの壁はスキップします。
+    - 最も厚い Structure [1] 層に壁を合わせます。タイプの推奨は厚さのみに基づくため、材料の適合性を確認してください。
+    - 適用可能な参照元の下端・上端オフセットを保持します。開口の高さはリンク形状に従い、対応付けたホスト壁の範囲内に収まる必要があります。
+    - 既存ホスト壁の結合を許可するには、その壁を選択してツールを再実行します。
+
+    安全性
+    - リンクモデルは変更せずに読み取り、アクティブなホストプロジェクトのみに書き込みます。
+    - 個別の作成失敗をロールバックします。重大なエラーまたはキャンセル時には、作成グループ全体をロールバックします。
+    - 作成中は新しい壁の結合を一時的に無効にし、作成後に有効にします。警告と結果を確認してください。
+
+    互換性
+    Revit 2022 以降
+    pyRevit | IronPython 2.7
+
+    作成者：Nataraj Devaraj。
+  ko: |-
+    NDEV TOOLS | 벽체 추적
+
+    로드된 건축 Revit 링크에서 호스트 모델의 구조 벽과 기본 직사각형 개구부를 생성합니다. 레벨 매핑과 벽 유형 선택을 지원합니다.
+
+    사용 방법
+    1. 프로젝트 평면 또는 3D 뷰를 열고 Wall Tracing을 실행합니다.
+    2. 로드된 건축 링크와 하나 이상의 원본 레벨을 선택합니다.
+    3. 각 원본 레벨을 호스트의 하단 및 상단 레벨에 매핑합니다.
+    4. 제안된 기본 벽 유형, 두께 및 재료를 확인합니다. 원본 유형을 제외하려면 None을 선택합니다.
+    5. 개구부 옵션을 설정하고 Create Walls를 클릭한 다음 요약과 요소별 진단을 검토합니다.
+
+    개구부
+    - 원본 벽의 삽입 요소에서 검증된 직사각형 절단부를 감지합니다. 조건에 맞는 문/창에는 검증된 매개변수 대체 처리를 사용할 수 있습니다.
+    - 일치하는 호스트 벽을 재사용하여 누락된 개구부를 추가하고, 일치하는 기존 개구부는 유지합니다.
+    - Combine Nearby Openings는 기본적으로 꺼져 있습니다. 활성화한 뒤 Maximum Gap을 프로젝트 단위 또는 150 mm와 같은 명시적 단위로 입력합니다.
+    - 동일한 벽에서 형상으로 감지된 절단부를 수평 순 간격에 따라 외접 직사각형으로 결합합니다. 매개변수 대체 처리의 절단부는 개별 유지하며 기존 개구부를 삭제하지 않습니다.
+
+    옵션 및 동작
+    - 직선 수직 기본 벽을 지원하며 곡선, 경사, 테이퍼, 상단/하단 부착 벽 및 프로파일 편집 벽은 건너뜁니다.
+    - 가장 두꺼운 Structure [1] 레이어에 벽을 정렬합니다. 유형 제안은 두께만 기준으로 하므로 재료 적합성을 확인해야 합니다.
+    - 적용 가능한 원본 하단/상단 간격띄우기를 유지합니다. 개구부 높이는 링크 형상을 따르며 매핑된 호스트 벽 범위에 들어가야 합니다.
+    - 기존 호스트 벽의 결합을 허용하려면 해당 벽을 선택하고 도구를 다시 실행합니다.
+
+    안전
+    - 링크 모델을 변경하지 않고 읽으며 활성 호스트 프로젝트에만 기록합니다.
+    - 개별 생성 실패를 롤백하며 심각한 오류 또는 취소 시 전체 생성 그룹을 롤백합니다.
+    - 생성 중 새 벽의 결합을 일시적으로 비활성화한 다음 활성화합니다. 경고와 결과를 검토하십시오.
+
+    호환성
+    Revit 2022 이상
+    pyRevit | IronPython 2.7
+
+    제작: Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | WANDEN TRACEREN
+
+    Maak constructieve wanden in het hostmodel en native rechthoekige openingen vanuit een geladen architecturale Revit-koppeling, met niveautoewijzing en wandtypeselectie.
+
+    GEBRUIK
+    1. Open een plattegrond of 3D-aanzicht van het project en start Wall Tracing.
+    2. Selecteer een geladen architecturale koppeling en een of meer bronniveaus.
+    3. Koppel elk bronniveau aan een onderste en bovenste hostniveau.
+    4. Controleer de voorgestelde basiswandtypen, diktes en materialen; kies None om een brontype over te slaan.
+    5. Stel de openingsopties in, klik op Create Walls en bekijk de samenvatting en diagnose per element.
+
+    OPENINGEN
+    - Detecteert gecontroleerde rechthoekige uitsparingen vanuit ingevoegde elementen in de bronwand; geschikte deuren/ramen kunnen gevalideerde terugvalparameters gebruiken.
+    - Gebruikt overeenkomende hostwanden opnieuw voor ontbrekende openingen; behoudt overeenkomende bestaande openingen.
+    - Combine Nearby Openings staat standaard uit. Schakel dit in en voer Maximum Gap in met projecteenheden of expliciete eenheden, zoals 150 mm.
+    - Combineert geometrisch gedetecteerde uitsparingen in dezelfde wand op basis van de vrije horizontale tussenruimte tot een omhullende rechthoek. Uitsparingen uit terugvalparameters blijven apart. Bestaande openingen worden niet verwijderd.
+
+    OPTIES EN GEDRAG
+    - Ondersteunt rechte, verticale basiswanden; slaat gebogen, schuine, taps toelopende, bovenaan/onderaan gekoppelde wanden en bewerkte profielen over.
+    - Lijnt wanden uit op de dikste Structure [1]-laag. Typevoorstellen gebruiken alleen de dikte; controleer de geschiktheid van materialen.
+    - Behoudt toepasselijke onderste/bovenste bronverschuivingen. Openingshoogten volgen de gekoppelde geometrie en moeten binnen de toegewezen hostwand passen.
+    - Selecteer bestaande hostwanden en start het hulpmiddel opnieuw om verbindingen toe te staan.
+
+    VEILIGHEID
+    - Leest het gekoppelde model zonder wijzigingen; schrijft alleen naar het actieve hostproject.
+    - Draait mislukte afzonderlijke aanmaakacties terug; fatale fouten of annulering draaien de hele aanmaakgroep terug.
+    - Schakelt verbindingen van nieuwe wanden tijdens het aanmaken tijdelijk uit en daarna in. Controleer waarschuwingen en resultaten.
+
+    COMPATIBILITEIT
+    Revit 2022 of nieuwer
+    pyRevit | IronPython 2.7
+
+    Gemaakt door Nataraj Devaraj.
+  pl: |-
+    NDEV TOOLS | ŚLEDZENIE ŚCIAN
+
+    Tworzy ściany konstrukcyjne w modelu nadrzędnym i natywne prostokątne otwory z wczytanego architektonicznego połączenia Revit, z przypisywaniem poziomów i wyborem typów ścian.
+
+    SPOSÓB UŻYCIA
+    1. Otwórz rzut lub widok 3D projektu i uruchom Wall Tracing.
+    2. Wybierz wczytane połączenie architektoniczne oraz co najmniej jeden poziom źródłowy.
+    3. Przypisz każdemu poziomowi źródłowemu dolny i górny poziom modelu nadrzędnego.
+    4. Sprawdź proponowane typy ścian podstawowych, grubości i materiały; wybierz None, aby pominąć typ źródłowy.
+    5. Ustaw opcje otworów, kliknij Create Walls i sprawdź podsumowanie oraz diagnostykę poszczególnych elementów.
+
+    OTWORY
+    - Wykrywa zweryfikowane prostokątne wycięcia z elementów osadzonych w ścianie źródłowej; odpowiednie drzwi/okna mogą korzystać ze zweryfikowanych parametrów zastępczych.
+    - Ponownie wykorzystuje pasujące ściany nadrzędne dla brakujących otworów; zachowuje pasujące istniejące otwory.
+    - Combine Nearby Openings jest domyślnie wyłączone. Włącz tę opcję i podaj Maximum Gap w jednostkach projektu lub z jawną jednostką, np. 150 mm.
+    - Łączy wycięcia wykryte z geometrii na tej samej ścianie według poziomego odstępu w świetle w prostokąt obejmujący. Wycięcia z parametrów zastępczych pozostają osobne. Istniejące otwory nie są usuwane.
+
+    OPCJE I DZIAŁANIE
+    - Obsługuje proste, pionowe ściany podstawowe; pomija ściany łukowe, pochylone, o zmiennej grubości, dołączone górą/dołem i z edytowanym profilem.
+    - Wyrównuje ściany do najgrubszej warstwy Structure [1]. Propozycje typów bazują tylko na grubości; sprawdź przydatność materiałów.
+    - Zachowuje odpowiednie dolne/górne odsunięcia źródłowe. Rzędne otworów wynikają z geometrii połączenia i muszą mieścić się w przypisanej ścianie nadrzędnej.
+    - Aby zezwolić na połączenia istniejących ścian nadrzędnych, zaznacz je i ponownie uruchom narzędzie.
+
+    BEZPIECZEŃSTWO
+    - Odczytuje model połączony bez zmian; zapisuje tylko w aktywnym projekcie nadrzędnym.
+    - Wycofuje nieudane pojedyncze operacje tworzenia; błąd krytyczny lub anulowanie wycofuje całą grupę tworzenia.
+    - Tymczasowo wyłącza połączenia nowych ścian podczas tworzenia, a następnie je włącza. Sprawdź ostrzeżenia i wyniki.
+
+    ZGODNOŚĆ
+    Revit 2022 lub nowszy
+    pyRevit | IronPython 2.7
+
+    Autor: Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | RASTREAMENTO DE PAREDES
+
+    Crie paredes estruturais no modelo hospedeiro e aberturas retangulares nativas a partir de um vínculo Revit arquitetônico carregado, com mapeamento de níveis e seleção de tipos de parede.
+
+    COMO USAR
+    1. Abra uma planta ou vista 3D do projeto e execute Wall Tracing.
+    2. Selecione um vínculo arquitetônico carregado e um ou mais níveis de origem.
+    3. Mapeie cada nível de origem para os níveis inferior e superior do hospedeiro.
+    4. Revise os tipos de parede básica sugeridos, suas espessuras e materiais; escolha None para ignorar um tipo de origem.
+    5. Configure as opções de aberturas, clique em Create Walls e revise o resumo e os diagnósticos por elemento.
+
+    ABERTURAS
+    - Detecta recortes retangulares verificados a partir de elementos inseridos na parede de origem; portas/janelas aptas podem usar parâmetros alternativos validados.
+    - Reutiliza paredes hospedeiras correspondentes para adicionar aberturas ausentes; preserva aberturas existentes correspondentes.
+    - Combine Nearby Openings fica desativado por padrão. Ative-o e informe Maximum Gap em unidades do projeto ou com unidades explícitas, como 150 mm.
+    - Combina recortes detectados pela geometria na mesma parede conforme a distância horizontal livre, formando um retângulo envolvente. Recortes obtidos por parâmetros alternativos permanecem separados. Aberturas existentes não são excluídas.
+
+    OPÇÕES E COMPORTAMENTO
+    - Suporta paredes básicas retas e verticais; ignora paredes curvas, inclinadas, afiladas, anexadas no topo/base e com perfil editado.
+    - Alinha as paredes à camada Structure [1] mais espessa. As sugestões usam apenas a espessura; confira a adequação dos materiais.
+    - Preserva os deslocamentos inferior/superior de origem aplicáveis. As elevações das aberturas seguem a geometria vinculada e devem caber na parede hospedeira mapeada.
+    - Para permitir uniões em paredes hospedeiras existentes, selecione-as e execute a ferramenta novamente.
+
+    SEGURANÇA
+    - Lê o modelo vinculado sem alterá-lo; grava somente no projeto hospedeiro ativo.
+    - Reverte criações individuais que falham; erros fatais ou cancelamento revertem o grupo de criação.
+    - Desativa temporariamente as uniões das novas paredes durante a criação e as ativa depois. Revise os avisos e resultados.
+
+    COMPATIBILIDADE
+    Revit 2022 ou posterior
+    pyRevit | IronPython 2.7
+
+    Criado por Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | ТРАССИРОВКА СТЕН
+
+    Создаёт несущие стены в основной модели и штатные прямоугольные проёмы из загруженной архитектурной связи Revit, с сопоставлением уровней и выбором типов стен.
+
+    ПОРЯДОК РАБОТЫ
+    1. Откройте план или 3D-вид проекта и запустите Wall Tracing.
+    2. Выберите загруженную архитектурную связь и один или несколько исходных уровней.
+    3. Сопоставьте каждому исходному уровню нижний и верхний уровни основной модели.
+    4. Проверьте предложенные типы базовых стен, толщины и материалы; выберите None, чтобы пропустить исходный тип.
+    5. Настройте параметры проёмов, нажмите Create Walls и проверьте сводку и диагностику каждого элемента.
+
+    ПРОЁМЫ
+    - Обнаруживает проверенные прямоугольные вырезы по вставленным элементам исходной стены; подходящие двери/окна могут использовать проверенные резервные параметры.
+    - Повторно использует совпадающие стены основной модели для недостающих проёмов; сохраняет совпадающие существующие проёмы.
+    - Combine Nearby Openings по умолчанию выключено. Включите его и задайте Maximum Gap в единицах проекта или с явными единицами, например 150 mm.
+    - Объединяет геометрически обнаруженные вырезы одной стены по чистому горизонтальному зазору в охватывающий прямоугольник. Вырезы из резервных параметров остаются отдельными. Существующие проёмы не удаляются.
+
+    ПАРАМЕТРЫ И ПОВЕДЕНИЕ
+    - Поддерживает прямые вертикальные базовые стены; пропускает криволинейные, наклонные, сужающиеся, присоединённые сверху/снизу стены и изменённые профили.
+    - Выравнивает стены по самому толстому слою Structure [1]. Типы предлагаются только по толщине; проверьте пригодность материалов.
+    - Сохраняет применимые исходные нижние/верхние смещения. Отметки проёмов следуют геометрии связи и должны помещаться в сопоставленной стене основной модели.
+    - Чтобы разрешить соединения существующих стен основной модели, выберите их и запустите инструмент снова.
+
+    БЕЗОПАСНОСТЬ
+    - Читает связанную модель без изменений; записывает только в активный основной проект.
+    - Откатывает неудачные отдельные создания; критическая ошибка или отмена откатывает всю группу создания.
+    - Временно запрещает соединения новых стен при создании, затем разрешает их. Проверьте предупреждения и результаты.
+
+    СОВМЕСТИМОСТЬ
+    Revit 2022 или новее
+    pyRevit | IronPython 2.7
+
+    Автор: Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | ТРАСУВАННЯ СТІН
+
+    Створює несучі стіни в основній моделі та штатні прямокутні прорізи із завантаженого архітектурного зв’язку Revit, із зіставленням рівнів і вибором типів стін.
+
+    ПОРЯДОК ВИКОРИСТАННЯ
+    1. Відкрийте план або 3D-вид проєкту й запустіть Wall Tracing.
+    2. Виберіть завантажений архітектурний зв’язок і один або кілька вихідних рівнів.
+    3. Зіставте кожному вихідному рівню нижній і верхній рівні основної моделі.
+    4. Перевірте запропоновані типи базових стін, товщини й матеріали; виберіть None, щоб пропустити вихідний тип.
+    5. Налаштуйте параметри прорізів, натисніть Create Walls і перевірте зведення та діагностику кожного елемента.
+
+    ПРОРІЗИ
+    - Виявляє перевірені прямокутні вирізи за вставленими елементами вихідної стіни; відповідні двері/вікна можуть використовувати перевірені резервні параметри.
+    - Повторно використовує відповідні стіни основної моделі для відсутніх прорізів; зберігає відповідні наявні прорізи.
+    - Combine Nearby Openings типово вимкнено. Увімкніть його та задайте Maximum Gap в одиницях проєкту або з явними одиницями, наприклад 150 mm.
+    - Об’єднує геометрично виявлені вирізи однієї стіни за чистим горизонтальним проміжком в охоплювальний прямокутник. Вирізи з резервних параметрів залишаються окремими. Наявні прорізи не видаляються.
+
+    ПАРАМЕТРИ ТА ПОВЕДІНКА
+    - Підтримує прямі вертикальні базові стіни; пропускає криволінійні, похилі, зі змінною товщиною, приєднані зверху/знизу стіни та змінені профілі.
+    - Вирівнює стіни за найтовстішим шаром Structure [1]. Типи пропонуються лише за товщиною; перевірте придатність матеріалів.
+    - Зберігає застосовні вихідні нижні/верхні зміщення. Відмітки прорізів відповідають геометрії зв’язку та мають уміщуватися в зіставленій стіні основної моделі.
+    - Щоб дозволити з’єднання наявних стін основної моделі, виберіть їх і запустіть інструмент знову.
+
+    БЕЗПЕКА
+    - Читає пов’язану модель без змін; записує лише в активний основний проєкт.
+    - Відкочує невдалі окремі створення; критична помилка або скасування відкочує всю групу створення.
+    - Тимчасово забороняє з’єднання нових стін під час створення, а потім дозволяє їх. Перевірте попередження та результати.
+
+    СУМІСНІСТЬ
+    Revit 2022 або новіший
+    pyRevit | IronPython 2.7
+
+    Автор: Nataraj Devaraj.
+author: Nataraj Devaraj
+min_revit_version: 2022

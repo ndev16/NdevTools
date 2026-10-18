@@ -1,0 +1,80 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NdevTools | FramePilot - Help"
+        Width="620" Height="610" MinWidth="560" MinHeight="560"
+        WindowStartupLocation="CenterOwner" ResizeMode="CanResize"
+        Background="#051220" Foreground="#DEEFFB"
+        FontFamily="Segoe UI" FontSize="12">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#09243A"/>
+            <Setter Property="Foreground" Value="#D5EDFA"/>
+            <Setter Property="BorderBrush" Value="#176282"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="13,7"/>
+            <Setter Property="MinHeight" Value="34"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#124264"/>
+                                <Setter Property="BorderBrush" Value="#02D8F5"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#0FE0FB"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#0A354B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="16,16,16,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="NDEV TOOLS | FRAMEPILOT"
+                   Foreground="#06D8FB" FontWeight="Bold" FontSize="13"
+                   Margin="0,0,0,14"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel>
+            <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"
+                       Text="1. Choose Roof, Flat Truss, Floor or Ceiling in the thin properties panel. Keep working in Revit while the panel stays open."/>
+            <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"
+                       Text="2. Search framing types directly in the dropdown. Ridge type is available for Roof mode."/>
+            <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"
+                       Text="3. Choose or type Workplane (Top/Bottom) and Z Justification (Top/Center/Origin/Bottom). These choices are independent and are saved for next time. Switching purpose restores that purpose's defaults."/>
+            <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"
+                       Text="4. Choose 12-inch, 16-inch, 24-inch, or Custom from the spacing dropdown. Comments default to ROOF (Roof/Flat Truss), FLOOR (Floor), or CEIL (Ceiling); you can customize them."/>
+            <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"
+                       Text="5. Select matching hosts directly in Revit or use Select Hosts, then click FRAME. The panel stays open after framing. Defaults: Roof/Ceiling use Bottom/Bottom; Floor/Flat Truss use Top/Top. Your dropdown selections override these defaults. Revit may lock Z Justification on beam-system members; check reported warnings."/>
+            <TextBlock Foreground="#88ADC2" TextWrapping="Wrap" Margin="0,12,0,0"
+                       Text="Important: unsupported roofs are skipped. Eave, rim, fascia, ledger and bracket members are not created."/>
+            <TextBlock Text="Created by Nataraj Devaraj." Foreground="#88ADC2" Margin="0,16,0,6"/>
+        </StackPanel>
+        </ScrollViewer>
+        <Button Grid.Row="2" x:Name="btn_help_github"
+                Content="GitHub  |  github.com/ndev16" Height="34" Margin="0,7,0,5"
+                Background="#09243A" Foreground="#D5EDFA" BorderBrush="#176282"/>
+        <Button Grid.Row="3" x:Name="btn_help_linkedin"
+                Content="LinkedIn  |  linkedin.com/in/nataraj016" Height="34" Margin="0,0,0,0"
+                Background="#09243A" Foreground="#D5EDFA" BorderBrush="#176282"/>
+    </Grid>
+</Window>

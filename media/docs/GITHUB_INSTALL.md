@@ -21,7 +21,7 @@ files. **Do not create a second nested `NdevTools.extension` folder.**
 Restart Revit and reload pyRevit.
 
 The root `startup.py` supports automatic language synchronization with
-Revit; the ribbon and translations live under `NdevTools.tab`.
+the selected pyRevit/Revit language; the ribbon and translations live under `NdevTools.tab`.
 The black light-mode and white dark-mode icons are in each `.pushbutton`.
 
 *Note:* 20 locale codes are recognized in the metadata; not every

@@ -1,0 +1,137 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NdevTools | Notes" Width="1240" Height="880" MinWidth="1000" MinHeight="650"
+        Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource TextBrush}"
+        FontFamily="Segoe UI" FontSize="14" WindowStartupLocation="CenterScreen">
+  <Grid Margin="12">
+    <Grid.RowDefinitions><RowDefinition Height="54"/><RowDefinition Height="*"/><RowDefinition Height="20"/><RowDefinition Height="Auto"/><RowDefinition Height="40"/></Grid.RowDefinitions>
+    <Grid Margin="0,0,0,7">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <Image x:Name="brand_logo" Width="34" Height="34" Stretch="Uniform"/>
+        <Border Width="1" Height="30" Background="#176282" Margin="8,0"/>
+        <TextBlock Text="Notes" FontSize="23" FontWeight="Bold" Margin="0,0,12,0"/>
+      </StackPanel>
+      <WrapPanel Grid.Column="1" VerticalAlignment="Center">
+        <Button x:Name="new_button" Content="+ New note" ToolTip="New note (Ctrl+N)" Padding="10,5" MinHeight="32" Margin="0,0,6,0"/>
+        <Button x:Name="save_button" Content="Save" Style="{DynamicResource PrimaryButton}" ToolTip="Save note (Ctrl+S)" Padding="12,5" MinHeight="32" Margin="0,0,6,0"/>
+        <Button x:Name="export_button" Content="Export" ToolTip="Export all sheets as A4 Word-compatible RTF or plain text" Padding="10,5" MinHeight="32" Margin="0,0,6,0"/>
+        <Button x:Name="delete_button" Content="Delete" ToolTip="Move this note to Deleted" Padding="10,5" MinHeight="32"/>
+      </WrapPanel>
+      <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+        <Button x:Name="notes_toggle_button" Content="Hide notes" ToolTip="Show or hide the notes list for more writing space" Padding="10,5" MinHeight="32" Margin="0,0,6,0"/>
+        <Button x:Name="folder_button" Content="Notes folder" ToolTip="Open your saved notes folder" Padding="10,5" MinHeight="32" Margin="0,0,6,0"/>
+        <Button x:Name="help_button" Content="?  Help" ToolTip="Notes instructions and developer links" Padding="10,5" MinHeight="32"/>
+      </StackPanel>
+    </Grid>
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions><ColumnDefinition x:Name="sidebar_column" Width="200" MinWidth="150" MaxWidth="400"/><ColumnDefinition x:Name="splitter_column" Width="8"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+      <Border x:Name="notes_sidebar" Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" CornerRadius="5" Padding="8">
+        <Grid>
+          <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+          <TextBlock Text="YOUR NOTES" FontSize="11" Foreground="{DynamicResource MutedBrush}" Margin="2,2,0,10"/>
+          <Grid Grid.Row="1" Margin="0,0,0,10">
+            <TextBox x:Name="search_box" ToolTip="Search note titles and text"/>
+            <TextBlock Text="Search notes..." IsHitTestVisible="False" Margin="12,0,0,0" Foreground="{DynamicResource MutedBrush}">
+              <TextBlock.Style><Style TargetType="TextBlock"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Text, ElementName=search_box}" Value=""><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></TextBlock.Style>
+            </TextBlock>
+          </Grid>
+          <ListBox Grid.Row="2" x:Name="note_list"/>
+          <TextBlock Grid.Row="3" x:Name="note_count" Text="0 notes" FontSize="12" Foreground="{DynamicResource MutedBrush}" Margin="2,10,0,0"/>
+        </Grid>
+      </Border>
+      <GridSplitter x:Name="sidebar_splitter" Grid.Column="1" Width="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" Background="Transparent" ToolTip="Drag to resize the notes list"/>
+      <Border Grid.Column="2" Background="{DynamicResource CardBrush}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" CornerRadius="5" Padding="8">
+        <Grid>
+          <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+          <TextBox x:Name="title_editor" FontSize="16" FontWeight="SemiBold" MaxLength="200" Padding="8,5" ToolTip="Note title"/>
+          <Border Grid.Row="1" Background="#0B2B40" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" Padding="5,5,0,0" Margin="0,5,0,4">
+            <WrapPanel>
+              <WrapPanel.Resources>
+                <Style TargetType="Button">
+                  <Setter Property="Focusable" Value="False"/><Setter Property="Padding" Value="7,4"/>
+                  <Setter Property="Margin" Value="0,0,5,5"/><Setter Property="MinHeight" Value="28"/>
+                  <Setter Property="Background" Value="#0B2B40"/><Setter Property="Foreground" Value="#E9F6FF"/><Setter Property="BorderBrush" Value="#21516A"/>
+                  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+                    <Border x:Name="chrome" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="4" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                    <ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="chrome" Property="Opacity" Value="0.8"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="chrome" Property="Opacity" Value="0.4"/></Trigger></ControlTemplate.Triggers>
+                  </ControlTemplate></Setter.Value></Setter>
+                </Style>
+                <Style TargetType="ComboBox"><Setter Property="Foreground" Value="#152E42"/><Setter Property="Background" Value="#F2F7FA"/><Setter Property="Padding" Value="6,4"/><Setter Property="Margin" Value="0,0,6,5"/><Setter Property="MinHeight" Value="28"/></Style>
+                <Style TargetType="ComboBoxItem"><Setter Property="Foreground" Value="#152E42"/><Setter Property="Background" Value="#F2F7FA"/></Style>
+              </WrapPanel.Resources>
+                <ComboBox x:Name="sheet_combo" Width="112" ToolTip="Switch between sheets in this note"/>
+                <Button x:Name="add_sheet_button" Content="+ Add sheet" ToolTip="Append a new sheet to this note"/>
+                <ComboBox x:Name="orientation_combo" Width="108" ToolTip="A4 orientation for the selected sheet">
+                  <ComboBoxItem Content="Portrait"/><ComboBoxItem Content="Landscape"/>
+                </ComboBox>
+                <CheckBox x:Name="fill_window_toggle" Content="Fill window" IsChecked="False" Foreground="#00C6E8"
+                          FontSize="12" VerticalContentAlignment="Center" Margin="4,0,10,5"
+                          ToolTip="Use the whole writing area. Turn off to see the selected A4 page orientation."/>
+                <ComboBox x:Name="font_combo" Width="150" ToolTip="Font family"/>
+                <ComboBox x:Name="size_combo" Width="62" IsEditable="True" ToolTip="Font size in points; press Enter to apply a custom size"/>
+                <Button Content="B" FontWeight="Bold" Command="EditingCommands.ToggleBold" CommandTarget="{Binding ElementName=body_editor}" ToolTip="Bold (Ctrl+B)"/>
+                <Button Content="I" FontStyle="Italic" Command="EditingCommands.ToggleItalic" CommandTarget="{Binding ElementName=body_editor}" ToolTip="Italic (Ctrl+I)"/>
+                <Button Command="EditingCommands.ToggleUnderline" CommandTarget="{Binding ElementName=body_editor}" ToolTip="Underline (Ctrl+U)"><TextBlock Text="U" TextDecorations="Underline"/></Button>
+                <Button x:Name="text_color_button" Content="Text color"/>
+                <Button x:Name="highlight_button" Content="Highlight"/>
+                <Button x:Name="clear_highlight_button" Content="Clear highlight"/>
+                <Button x:Name="page_color_button" Content="Page color"/>
+                <Button Content="Left" Command="EditingCommands.AlignLeft" CommandTarget="{Binding ElementName=body_editor}" ToolTip="Align left"/>
+                <Button Content="Center" Command="EditingCommands.AlignCenter" CommandTarget="{Binding ElementName=body_editor}" ToolTip="Center align"/>
+                <Button Content="Right" Command="EditingCommands.AlignRight" CommandTarget="{Binding ElementName=body_editor}" ToolTip="Align right"/>
+                <Button Content="Justify" Command="EditingCommands.AlignJustify" CommandTarget="{Binding ElementName=body_editor}"/>
+                <Button Content="Bullets" Command="EditingCommands.ToggleBullets" CommandTarget="{Binding ElementName=body_editor}"/>
+                <Button Content="Numbered" Command="EditingCommands.ToggleNumbering" CommandTarget="{Binding ElementName=body_editor}"/>
+                <Button Content="Undo" Command="ApplicationCommands.Undo" CommandTarget="{Binding ElementName=body_editor}"/>
+                <Button Content="Redo" Command="ApplicationCommands.Redo" CommandTarget="{Binding ElementName=body_editor}"/>
+                <Button x:Name="image_button" Content="Insert image"/>
+                <Button x:Name="paste_image_button" Content="Paste image" ToolTip="Paste a copied image or screenshot"/>
+                <TextBlock Text="Image width" FontSize="12" Foreground="{DynamicResource MutedBrush}" Margin="8,0,6,5"/>
+                <TextBox x:Name="image_width" Text="480" Width="60" Padding="6,4" Margin="0,0,6,5" ToolTip="Select an image, set its width, then click Resize"/>
+                <Button x:Name="resize_image_button" Content="Resize"/>
+            </WrapPanel>
+          </Border>
+          <ScrollViewer Grid.Row="2" x:Name="sheet_scroll" Background="#153342" Padding="10"
+                        VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanContentScroll="False">
+            <RichTextBox x:Name="body_editor" AcceptsReturn="True" AcceptsTab="True"
+                         Width="21cm" MinHeight="29.7cm" HorizontalAlignment="Center" VerticalAlignment="Top"
+                         Background="White" Foreground="#202C35" BorderBrush="#AABCC5" BorderThickness="1" Padding="0"
+                         VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" SpellCheck.IsEnabled="True"
+                         IsInactiveSelectionHighlightEnabled="True" ToolTip="A4 sheet with the selected orientation. Use Fill window for extra writing space."/>
+          </ScrollViewer>
+          <Grid Grid.Row="3" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock x:Name="character_count" Text="0 characters" FontSize="12" Foreground="{DynamicResource MutedBrush}" TextTrimming="CharacterEllipsis"/>
+            <TextBlock Grid.Column="1" x:Name="page_size_label" Text="A4 portrait | 210 × 297 mm" FontSize="11" Foreground="{DynamicResource MutedBrush}" Margin="12,0,0,0"/>
+          </Grid>
+        </Grid>
+      </Border>
+    </Grid>
+    <Grid Grid.Row="2" Margin="0,3,0,0">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <TextBlock x:Name="status_text" Text="Ready" FontSize="12" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource AccentBrush}"/>
+      <TextBlock Grid.Column="1" Text="Text, colors and images  |  Autosave on" FontSize="12" Foreground="{DynamicResource MutedBrush}" Margin="12,0,0,0"/>
+    </Grid>
+    <Border Grid.Row="3" Background="#082335" BorderBrush="#176282" BorderThickness="1" CornerRadius="4" Padding="7,4" Margin="0,3,0,0">
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <TextBlock x:Name="humor_text" Text="Revit knows what you want. It just refuses to cooperate." Foreground="#88BED5" FontSize="11" TextWrapping="Wrap" Margin="0,0,12,0"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+          <CheckBox x:Name="humor_toggle" Content="BIM Humor On" IsChecked="True" Foreground="#00C6E8" FontSize="11" VerticalContentAlignment="Center" Margin="0,0,10,0"/>
+          <Button x:Name="humor_next_button" Content="Next Joke" Padding="8,3" MinHeight="26" FontSize="11" ToolTip="Show another BIM joke"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <Grid Grid.Row="4" Margin="1,3,1,0">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <StackPanel VerticalAlignment="Center">
+        <TextBlock Text="Created by Nataraj Devaraj.  |  Revit 2022–2027 · IronPython 2.7" Foreground="#88ADC2" FontSize="11"/>
+      </StackPanel>
+      <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+        <Border Background="#082335" BorderBrush="#176282" BorderThickness="1" CornerRadius="6" Padding="4">
+          <Button x:Name="github_button" Content="★ Star NdevTools on GitHub" MinHeight="29" Padding="8,4" FontSize="11" FontWeight="SemiBold" Foreground="#00C6E8" BorderBrush="#176282" ToolTip="Visit NdevTools on GitHub to star the repository"/>
+        </Border>
+      </StackPanel>
+    </Grid>
+  </Grid>
+</Window>

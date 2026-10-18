@@ -1,0 +1,747 @@
+# FramePilot ribbon localization; runtime resources remain in this bundle.
+title:
+  ar: "FramePilot"
+  pt_br: "FramePilot"
+  bg: "FramePilot"
+  chinese_s: "FramePilot"
+  chinese_t: "FramePilot"
+  cs: "FramePilot"
+  nl_nl: "FramePilot"
+  en_gb: "FramePilot"
+  en_us: "FramePilot"
+  fa: "FramePilot"
+  fr_fr: "FramePilot"
+  de_de: "FramePilot"
+  hu: "FramePilot"
+  it_it: "FramePilot"
+  ja: "FramePilot"
+  ko: "FramePilot"
+  pl: "FramePilot"
+  ru: "FramePilot"
+  es_es: "FramePilot"
+  uk: "FramePilot"
+author: "Nataraj Devaraj"
+engine:
+  persistent: "true"
+tooltip:
+  ar: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    أنشئ تأطيرًا إنشائيًا للأسقف والأرضيات والأسقف المستعارة ووضع Flat Truss، مع بحث في أنواع العناصر وإعدادات تموضع مستقلة.
+
+    طريقة الاستخدام
+    1. افتح مشروع Revit واختر غرض التأطير.
+    2. ابحث عن أنواع التأطير المحمّلة وحددها؛ اختر نوع عنصر القمة لوضع Roof.
+    3. اختر أو اكتب Workplane: Top/Bottom وZ Justification: Top/Center/Origin/Bottom بصورة مستقلة.
+    4. اختر 12 أو 16 أو 24 بوصة أو Custom من قائمة التباعد؛ أدخل التباعد بالبوصة للخيار المخصص وعدّل Comments.
+    5. انقر على FRAME وحدد العناصر المضيفة المطابقة عند الطلب وراجع التقرير.
+
+    SKETCH BEAM SYSTEM — رسم نظام كمرات
+    1. أدخل Elevation from Level بوحدات المشروع أو بالقدم والبوصة. القيمة إزاحة عن مستوى العمل الحالي في Revit؛ لا توجد قائمة لاختيار المنسوب ولا يُعاد تعيين المنسوب.
+    2. انقر Sketch Beam System، واختر وضع الرسم الأصلي في Revit، وارسم الحدود ثم أنهِ الرسم.
+    3. يُطبَّق نوع التأطير والتباعد وWorkplane وZ Justification والإزاحة الحالية في FramePilot عند اكتمال الرسم وإتاحة Revit للتعديل.
+    4. تُكتب Custom Comments في نظام الكمرات الجديد وعناصره. إذا كان الحقل فارغًا، تُستخدم ROOF لوضعي Roof/Flat Truss وFLOOR لوضع Floor وCEIL لوضع Ceiling.
+    5. يستخدم Top/Bottom سياق المضيف الحالي ذي الوجه الواحد؛ وإلا يُحتفظ بمستوى العمل الحالي في Revit. نوع عنصر القمة خاص بالتأطير التلقائي للأسقف.
+    6. يحدّث زر التحديث الأنواع المحمّلة، ويفتح زر ? المساعدة. تظل اللوحة مفتوحة أثناء العمل، وتُحفظ الإزاحة مع إعدادات التأطير للمرة التالية.
+
+    الخيارات والسلوك
+    - الافتراضيات: Roof/Ceiling تستخدم Bottom/Bottom؛ وFloor/Flat Truss تستخدم Top/Top. تغيير الغرض يعيد الافتراضيات ويمكن تعديلها من القوائم.
+    - تُحفظ خيارات التموضع والأنواع والتباعد للاستخدام التالي.
+    - يستخدم Flat Truss أنظمة كمرات Structural Framing وليس عائلات Revit Truss الأصلية.
+    - عناصر القمة للأسقف متعددة الميول فقط. تُستبعد عناصر الحافة والإفريز والواجهة والربط والحوامل.
+
+    الأمان
+    - تغييرات النموذج ضمن معاملة قابلة للتراجع لكل عنصر مضيف.
+    - يُستبدل التأطير المتتبَّع فقط بعد إعداد خطة صالحة؛ فشل معاملة المضيف يعيدها إلى حالتها السابقة.
+    - قد يقفل Revit محاذاة Z للعناصر؛ راجع التحذيرات وخصائص العناصر.
+
+    التوافق:
+    Revit 2022–2027
+    IronPython 2.7
+
+    إعداد Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Crie estruturas para coberturas, pisos, forros e o modo Flat Truss, com busca de tipos e ajustes independentes de posicionamento.
+
+    COMO USAR
+    1. Abra um projeto Revit e escolha a finalidade da estrutura.
+    2. Pesquise e selecione tipos carregados; escolha o tipo de cumeeira no modo Roof.
+    3. Escolha ou digite Workplane (Top/Bottom) e Z Justification (Top/Center/Origin/Bottom) de forma independente.
+    4. Escolha 12, 16 ou 24 polegadas ou Custom na lista de espaçamento; informe polegadas para Custom e edite Comments.
+    5. Clique em FRAME, selecione os hospedeiros correspondentes quando solicitado e confira o relatório.
+
+    SKETCH BEAM SYSTEM — ESBOÇAR SISTEMA DE VIGAS
+    1. Informe Elevation from Level nas unidades do projeto ou em pés e polegadas. O valor é um deslocamento em relação ao plano de trabalho atual do Revit; não há seleção nem reatribuição de nível.
+    2. Clique em Sketch Beam System, escolha o modo de esboço nativo do Revit, desenhe o contorno e conclua o esboço.
+    3. O tipo de estrutura, o espaçamento, Workplane, Z Justification e a elevação atuais do FramePilot são aplicados após concluir o esboço, quando o Revit permite alterações.
+    4. Custom Comments são gravados no novo sistema e em suas vigas. Se o campo estiver vazio, os padrões são ROOF para Roof/Flat Truss, FLOOR para Floor e CEIL para Ceiling.
+    5. Top/Bottom usa o contexto atual de um hospedeiro com uma única face; caso contrário, o plano de trabalho atual do Revit é mantido. O tipo de cumeeira aplica-se apenas à estrutura automática da cobertura.
+    6. Atualizar recarrega os tipos disponíveis e ? abre a ajuda. O painel permanece aberto durante o trabalho; a elevação e as configurações de estrutura são salvas para a próxima execução.
+
+    OPÇÕES E COMPORTAMENTO
+    - Padrões: Roof/Ceiling usam Bottom/Bottom; Floor/Flat Truss usam Top/Top. Mudar a finalidade restaura esses padrões; as listas permitem substituí-los.
+    - As opções de posicionamento, tipos e espaçamento ficam salvas para a próxima execução.
+    - Flat Truss usa sistemas de vigas Structural Framing, não famílias nativas de treliças do Revit.
+    - Cumeeiras apenas em coberturas com múltiplas inclinações. Beirais, peças de borda, testeiras, apoios laterais e suportes são excluídos.
+
+    SEGURANÇA
+    - As alterações usam a transação existente, que pode ser desfeita, por hospedeiro.
+    - Só a estrutura rastreada é substituída após um plano válido; falhas revertem a transação do hospedeiro.
+    - O Revit pode bloquear a justificativa Z dos membros. Confira os avisos e as propriedades.
+
+    COMPATIBILIDADE:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Criado por Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Създавайте конструктивни елементи за покриви, подове, тавани и режим Flat Truss с търсене на типове и независими настройки за разполагане.
+
+    НАЧИН НА ИЗПОЛЗВАНЕ
+    1. Отворете проект в Revit и изберете предназначението.
+    2. Потърсете и изберете заредени типове; за Roof изберете и тип за билото.
+    3. Изберете или въведете независимо Workplane (Top/Bottom) и Z Justification (Top/Center/Origin/Bottom).
+    4. Изберете 12, 16 или 24 инча или Custom от списъка за разстояние; въведете инчове за Custom и редактирайте Comments.
+    5. Натиснете FRAME, изберете съответните основи при подкана и прегледайте отчета.
+
+    SKETCH BEAM SYSTEM — СКИЦИРАНЕ НА ГРЕДОВА СИСТЕМА
+    1. Въведете Elevation from Level в единиците на проекта или във футове и инчове. Стойността е отместване спрямо текущата работна равнина на Revit; няма избор или преназначаване на ниво.
+    2. Натиснете Sketch Beam System, изберете вградения режим за скициране в Revit, начертайте контура и завършете скицата.
+    3. Текущите тип, разстояние, Workplane, Z Justification и отместване от FramePilot се прилагат след завършване на скицата, когато Revit разреши промени.
+    4. Custom Comments се записват в новата система и нейните греди. При празно поле се използва ROOF за Roof/Flat Truss, FLOOR за Floor и CEIL за Ceiling.
+    5. Top/Bottom използва текущия контекст на основа с едно лице; иначе се запазва текущата работна равнина на Revit. Типът за билото е само за автоматично покривно рамкиране.
+    6. Обновяването презарежда наличните типове, а ? отваря помощта. Панелът остава отворен; отместването и настройките за рамкиране се запазват за следващия път.
+
+    ОПЦИИ И ПОВЕДЕНИЕ
+    - По подразбиране: Roof/Ceiling използват Bottom/Bottom; Floor/Flat Truss използват Top/Top. Смяната на предназначението ги възстановява; списъците позволяват промяна.
+    - Изборът за разполагане, типовете и разстоянието се запазват за следващо използване.
+    - Flat Truss използва гредови системи Structural Framing, а не собствени фамилии Revit Truss.
+    - Билни елементи се добавят само за многоскатни покриви. Стрехи, периферни дъски, челни дъски, опорни дъски и конзоли са изключени.
+
+    БЕЗОПАСНОСТ
+    - Промените използват съществуващата отменяема транзакция за всяка основа.
+    - Само проследените елементи се заменят след валиден план; неуспех връща транзакцията за съответната основа.
+    - Revit може да заключи Z подравняването. Проверете предупрежденията и свойствата на елементите.
+
+    СЪВМЕСТИМОСТ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Създадено от Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    为屋顶、楼板、天花板及 Flat Truss 模式创建结构框架，支持类型搜索和独立的放置设置。
+
+    使用方法
+    1. 打开 Revit 项目并选择框架用途。
+    2. 搜索并选择已载入的框架类型；Roof 模式还需选择屋脊构件类型。
+    3. 独立选择或输入 Workplane（Top/Bottom）和 Z Justification（Top/Center/Origin/Bottom）。
+    4. 从间距下拉列表中选择 12、16、24 英寸或 Custom；自定义间距以英寸输入，并编辑 Comments。
+    5. 单击 FRAME，按提示选择相应主体，然后检查报告。
+
+    SKETCH BEAM SYSTEM — 绘制梁系统
+    1. 在 Elevation from Level 中按项目单位或英尺和英寸输入偏移量。该值相对于 Revit 当前工作平面；不再提供标高选择，也不会重新指定标高。
+    2. 单击 Sketch Beam System，进入 Revit 原生的梁系统草图模式，绘制边界并完成草图。
+    3. 草图完成且 Revit 允许修改时，将应用 FramePilot 当前的框架类型、间距、Workplane、Z Justification 和高程偏移量。
+    4. Custom Comments 会写入新建的梁系统及其梁构件。字段为空时，Roof/Flat Truss 使用 ROOF，Floor 使用 FLOOR，Ceiling 使用 CEIL。
+    5. Top/Bottom 使用当前单面主体的上下文；没有对应主体时保留 Revit 当前工作平面。屋脊类型仅用于自动屋顶框架。
+    6. 刷新按钮重新载入可用类型，? 打开帮助。工作期间面板保持打开；高程偏移和框架设置会保存供下次使用。
+
+    选项与行为
+    - 默认值：Roof/Ceiling 为 Bottom/Bottom；Floor/Flat Truss 为 Top/Top。切换用途会恢复默认值，可通过下拉列表改选。
+    - 放置选项、框架类型及间距会保存供下次使用。
+    - Flat Truss 使用 Structural Framing 梁系统，并非原生 Revit Truss 桁架族。
+    - 仅多坡屋顶考虑屋脊构件；不创建檐口、边框、封檐、托梁板及支架构件。
+
+    安全说明
+    - 每个主体沿用现有的可撤销事务流程修改模型。
+    - 仅在有效方案完成后替换已追踪的框架；主体事务失败时回滚。
+    - Revit 可能锁定构件的 Z 对正。请查看警告并核验构件属性。
+
+    兼容性:
+    Revit 2022–2027
+    IronPython 2.7
+
+    由 Nataraj Devaraj 创建。
+  chinese_t: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    為屋頂、樓板、天花板及 Flat Truss 模式建立結構構架，支援類型搜尋與獨立的放置設定。
+
+    使用方式
+    1. 開啟 Revit 專案並選擇構架用途。
+    2. 搜尋並選取已載入的構架類型；Roof 模式另需選擇屋脊構件類型。
+    3. 獨立選擇或輸入 Workplane（Top/Bottom）與 Z Justification（Top/Center/Origin/Bottom）。
+    4. 從間距下拉清單選擇 12、16、24 英吋或 Custom；自訂間距以英吋輸入，並編輯 Comments。
+    5. 按一下 FRAME，依提示選取對應主體，然後檢查報告。
+
+    SKETCH BEAM SYSTEM — 繪製梁系統
+    1. 在 Elevation from Level 中依專案單位或英呎與英吋輸入偏移量。此值相對於 Revit 目前的工作平面；不再提供樓層選擇，也不會重新指定樓層。
+    2. 按一下 Sketch Beam System，進入 Revit 原生的梁系統草圖模式，繪製邊界並完成草圖。
+    3. 草圖完成且 Revit 允許修改時，將套用 FramePilot 目前的構架類型、間距、Workplane、Z Justification 與高程偏移量。
+    4. Custom Comments 會寫入新建的梁系統及其梁構件。欄位空白時，Roof/Flat Truss 使用 ROOF，Floor 使用 FLOOR，Ceiling 使用 CEIL。
+    5. Top/Bottom 使用目前單一平面主體的內容；沒有對應主體時保留 Revit 目前的工作平面。屋脊類型僅用於自動屋頂構架。
+    6. 重新整理按鈕會重新載入可用類型，? 開啟說明。工作期間面板保持開啟；高程偏移與構架設定會儲存供下次使用。
+
+    選項與行為
+    - 預設值：Roof/Ceiling 為 Bottom/Bottom；Floor/Flat Truss 為 Top/Top。切換用途會恢復預設值，可透過下拉清單改選。
+    - 放置選項、構架類型及間距會儲存供下次使用。
+    - Flat Truss 使用 Structural Framing 梁系統，而非原生 Revit Truss 桁架族群。
+    - 僅多坡屋頂考慮屋脊構件；不建立屋簷、邊框、封簷、托梁板與支架構件。
+
+    安全說明
+    - 每個主體沿用現有的可復原交易流程修改模型。
+    - 僅在有效方案完成後取代已追蹤的構架；主體交易失敗時回復。
+    - Revit 可能鎖定構件的 Z 對正。請查看警告並核對構件性質。
+
+    相容性:
+    Revit 2022–2027
+    IronPython 2.7
+
+    由 Nataraj Devaraj 建立。
+  cs: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Vytvářejte nosné rámy pro střechy, podlahy, podhledy a režim Flat Truss s vyhledáváním typů a nezávislým nastavením umístění.
+
+    JAK POUŽÍVAT
+    1. Otevřete projekt Revitu a vyberte účel rámování.
+    2. Vyhledejte a vyberte načtené typy; pro Roof také typ hřebenového prvku.
+    3. Nezávisle vyberte nebo zadejte Workplane (Top/Bottom) a Z Justification (Top/Center/Origin/Bottom).
+    4. V seznamu roztečí vyberte 12, 16 nebo 24 palců nebo Custom; pro vlastní rozteč zadejte palce a upravte Comments.
+    5. Klikněte na FRAME, na výzvu vyberte odpovídající hostitele a zkontrolujte zprávu.
+
+    SKETCH BEAM SYSTEM — NÁČRT TRÁMOVÉHO SYSTÉMU
+    1. Zadejte Elevation from Level v jednotkách projektu nebo ve stopách a palcích. Jde o odsazení od aktuální pracovní roviny Revitu; podlaží se nevybírá ani nepřiřazuje znovu.
+    2. Klikněte na Sketch Beam System, zvolte nativní režim náčrtu v Revitu, nakreslete hranici a dokončete náčrt.
+    3. Aktuální typ, rozteč, Workplane, Z Justification a výškové odsazení z FramePilot se použijí po dokončení náčrtu, jakmile Revit umožní úpravy.
+    4. Custom Comments se zapisují do nového systému i jeho trámů. Při prázdném poli se použije ROOF pro Roof/Flat Truss, FLOOR pro Floor a CEIL pro Ceiling.
+    5. Top/Bottom používá aktuální kontext hostitele s jednou plochou; jinak zůstane aktuální pracovní rovina Revitu. Hřebenový typ se týká pouze automatického rámování střech.
+    6. Obnovení znovu načte dostupné typy a ? otevře nápovědu. Panel zůstává při práci otevřený; odsazení a nastavení rámování se ukládají pro příště.
+
+    MOŽNOSTI A CHOVÁNÍ
+    - Výchozí hodnoty: Roof/Ceiling používají Bottom/Bottom; Floor/Flat Truss používají Top/Top. Změna účelu je obnoví; seznamy umožňují vlastní volbu.
+    - Volby umístění, typy a rozteč se ukládají pro další použití.
+    - Flat Truss používá trámové systémy Structural Framing, nikoli nativní rodiny Revit Truss.
+    - Hřebenové prvky jen u vícespádových střech. Okapové, obvodové, čelní a připojovací prvky ani konzoly se nevytvářejí.
+
+    BEZPEČNOST
+    - Změny používají stávající vratnou transakci pro každého hostitele.
+    - Jen sledované rámování se nahrazuje až po platném návrhu; selhání vrátí transakci hostitele.
+    - Revit může uzamknout zarovnání Z. Zkontrolujte upozornění a vlastnosti prvků.
+
+    KOMPATIBILITA:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Vytvořil Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Maak constructieve balklagen voor daken, vloeren, plafonds en de modus Flat Truss, met doorzoekbare typen en onafhankelijke plaatsingsinstellingen.
+
+    GEBRUIK
+    1. Open een Revit-project en kies het doel van de balklaag.
+    2. Zoek en selecteer geladen typen; kies voor Roof ook een nokbalktype.
+    3. Kies of typ Workplane (Top/Bottom) en Z Justification (Top/Center/Origin/Bottom) onafhankelijk.
+    4. Kies 12, 16 of 24 inch of Custom in de keuzelijst voor de afstand; voer bij Custom inches in en bewerk Comments.
+    5. Klik op FRAME, selecteer de bijbehorende hosts wanneer gevraagd en bekijk het rapport.
+
+    SKETCH BEAM SYSTEM — BALKENSYSTEEM SCHETSEN
+    1. Voer Elevation from Level in de projecteenheden of in voet en inch in. Dit is een verschuiving ten opzichte van het huidige Revit-werkvlak; er is geen niveaukeuze of nieuwe niveautoewijzing.
+    2. Klik op Sketch Beam System, kies de oorspronkelijke schetsmodus in Revit, teken de begrenzing en voltooi de schets.
+    3. Het huidige FramePilot-type, de afstand, Workplane, Z Justification en hoogteverschuiving worden na het voltooien toegepast zodra Revit wijzigingen toestaat.
+    4. Custom Comments worden in het nieuwe systeem en de bijbehorende balken geschreven. Bij een leeg veld gelden ROOF voor Roof/Flat Truss, FLOOR voor Floor en CEIL voor Ceiling.
+    5. Top/Bottom gebruikt de huidige context van een host met één vlak; anders blijft het huidige Revit-werkvlak behouden. Het noktype geldt alleen voor automatische dakbalklagen.
+    6. Vernieuwen laadt de beschikbare typen opnieuw en ? opent de hulp. Het paneel blijft open tijdens het werken; de hoogteverschuiving en balklaaginstellingen worden opgeslagen.
+
+    OPTIES EN WERKING
+    - Standaard: Roof/Ceiling gebruiken Bottom/Bottom; Floor/Flat Truss gebruiken Top/Top. Een ander doel herstelt deze waarden; de lijsten laten eigen keuzes toe.
+    - Plaatsingskeuzes, typen en afstand worden voor de volgende keer opgeslagen.
+    - Flat Truss gebruikt Structural Framing-balksystemen, geen oorspronkelijke Revit Truss-families.
+    - Nokbalken worden alleen bij daken met meerdere hellingen overwogen. Dakrand-, rand-, boeiboord-, opleg- en console-elementen zijn uitgesloten.
+
+    VEILIGHEID
+    - Wijzigingen gebruiken de bestaande ongedaan te maken transactie per host.
+    - Alleen gevolgde balklagen worden na een geldig plan vervangen; een fout draait de hosttransactie terug.
+    - Revit kan de Z-uitlijning vergrendelen. Controleer waarschuwingen en elementeigenschappen.
+
+    COMPATIBILITEIT:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Gemaakt door Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Create structural framing for Roof, Flat Truss, Floor and Ceiling hosts, with searchable framing types and independent placement settings.
+
+    HOW TO USE
+    1. Open a Revit project and choose a framing purpose.
+    2. Search and select loaded framing types; choose a ridge type for Roof mode.
+    3. Choose or type Workplane (Top/Bottom) and Z Justification (Top/Center/Origin/Bottom) independently.
+    4. Choose 12, 16 or 24 inches or Custom from the spacing dropdown; enter inches for Custom and edit Comments.
+    5. Click FRAME, select matching hosts when prompted, and review the report.
+
+    SKETCH BEAM SYSTEM
+    1. Enter Elevation from Level in project units or feet and inches. This is an offset from the current Revit work plane; there is no level selector or level reassignment.
+    2. Click Sketch Beam System, use Revit's native sketch mode, draw the boundary and finish the sketch.
+    3. The current FramePilot framing type, spacing, Workplane, Z Justification and elevation offset apply after Finish when Revit allows changes.
+    4. Custom Comments are written to the new structural beam system and its beam members. An empty field uses ROOF for Roof/Flat Truss, FLOOR for Floor or CEIL for Ceiling.
+    5. Top/Bottom uses the existing single-face host context; otherwise the current Revit work plane is retained. The ridge type applies only to automatic roof framing.
+    6. Refresh reloads available framing types; ? opens Help. The panel stays open while you work, and the elevation offset and framing settings are saved for next time.
+
+    OPTIONS & BEHAVIOUR
+    - Defaults: Roof/Ceiling use Bottom/Bottom; Floor/Flat Truss use Top/Top. Purpose changes restore those defaults; the dropdowns allow overrides.
+    - Placement choices, framing types and spacing are saved for next time.
+    - Flat Truss uses Structural Framing beam systems, not native Revit Truss families.
+    - Ridge boards apply only to multi-slope roofs. Eave, rim, fascia, ledger and bracket members are excluded.
+
+    SAFETY
+    - Model writes use the existing undoable transaction for each host.
+    - Only tracked framing is replaced after a valid plan; a failed host transaction rolls back.
+    - Revit may lock member Z Justification. Review warnings and verify member properties.
+
+    COMPATIBILITY:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  en_us: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Create structural framing for Roof, Flat Truss, Floor and Ceiling hosts, with searchable framing types and independent placement settings.
+
+    HOW TO USE
+    1. Open a Revit project and choose a framing purpose.
+    2. Search and select loaded framing types; choose a ridge type for Roof mode.
+    3. Choose or type Workplane (Top/Bottom) and Z Justification (Top/Center/Origin/Bottom) independently.
+    4. Choose 12, 16 or 24 inches or Custom from the spacing dropdown; enter inches for Custom and edit Comments.
+    5. Click FRAME, select matching hosts when prompted, and review the report.
+
+    SKETCH BEAM SYSTEM
+    1. Enter Elevation from Level in project units or feet and inches. This is an offset from the current Revit work plane; there is no level selector or level reassignment.
+    2. Click Sketch Beam System, use Revit's native sketch mode, draw the boundary and finish the sketch.
+    3. The current FramePilot framing type, spacing, Workplane, Z Justification and elevation offset apply after Finish when Revit allows changes.
+    4. Custom Comments are written to the new structural beam system and its beam members. An empty field uses ROOF for Roof/Flat Truss, FLOOR for Floor or CEIL for Ceiling.
+    5. Top/Bottom uses the existing single-face host context; otherwise the current Revit work plane is retained. The ridge type applies only to automatic roof framing.
+    6. Refresh reloads available framing types; ? opens Help. The panel stays open while you work, and the elevation offset and framing settings are saved for next time.
+
+    OPTIONS & BEHAVIOR
+    - Defaults: Roof/Ceiling use Bottom/Bottom; Floor/Flat Truss use Top/Top. Purpose changes restore those defaults; the dropdowns allow overrides.
+    - Placement choices, framing types and spacing are saved for next time.
+    - Flat Truss uses Structural Framing beam systems, not native Revit Truss families.
+    - Ridge boards apply only to multi-slope roofs. Eave, rim, fascia, ledger and bracket members are excluded.
+
+    SAFETY
+    - Model writes use the existing undoable transaction for each host.
+    - Only tracked framing is replaced after a valid plan; a failed host transaction rolls back.
+    - Revit may lock member Z Justification. Review warnings and verify member properties.
+
+    COMPATIBILITY:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    برای بام، کف، سقف کاذب و حالت Flat Truss اعضای سازه‌ای ایجاد کنید؛ همراه با جست‌وجوی تیپ‌ها و تنظیم مستقل جانمایی.
+
+    روش استفاده
+    1. پروژه Revit را باز کنید و هدف قاب‌بندی را انتخاب کنید.
+    2. تیپ‌های بارگذاری‌شده را جست‌وجو و انتخاب کنید؛ برای Roof تیپ عضو خط‌الرأس را نیز تعیین کنید.
+    3. Workplane (Top/Bottom) و Z Justification (Top/Center/Origin/Bottom) را مستقل انتخاب یا تایپ کنید.
+    4. از فهرست فاصله‌گذاری، 12، 16 یا 24 اینچ یا Custom را انتخاب کنید؛ مقدار سفارشی را بر حسب اینچ وارد و Comments را ویرایش کنید.
+    5. روی FRAME کلیک کنید، میزبان‌های مناسب را هنگام درخواست انتخاب کنید و گزارش را بررسی کنید.
+
+    SKETCH BEAM SYSTEM — ترسیم سیستم تیر
+    1. مقدار Elevation from Level را با واحدهای پروژه یا فوت و اینچ وارد کنید. این مقدار فاصله از صفحه کاری فعلی Revit است؛ انتخاب یا تخصیص مجدد تراز انجام نمی‌شود.
+    2. روی Sketch Beam System کلیک کنید، حالت ترسیم بومی Revit را انتخاب کنید، مرز را رسم و ترسیم را تکمیل کنید.
+    3. تیپ، فاصله، Workplane، Z Justification و فاصله ارتفاعی فعلی FramePilot پس از پایان ترسیم و هنگامی که Revit اجازه تغییر بدهد اعمال می‌شوند.
+    4. Custom Comments روی سیستم تیر جدید و اعضای تیر آن نوشته می‌شود. برای فیلد خالی، ROOF در Roof/Flat Truss، مقدار FLOOR در Floor و CEIL در Ceiling استفاده می‌شود.
+    5. Top/Bottom از زمینه فعلی میزبان تک‌سطحی استفاده می‌کند؛ در غیر این صورت صفحه کاری فعلی Revit حفظ می‌شود. تیپ خط‌الرأس فقط برای قاب‌بندی خودکار بام است.
+    6. دکمه تازه‌سازی تیپ‌های موجود را دوباره بارگذاری می‌کند و ? راهنما را باز می‌کند. پنل هنگام کار باز می‌ماند و فاصله ارتفاعی و تنظیمات قاب‌بندی ذخیره می‌شوند.
+
+    گزینه‌ها و عملکرد
+    - پیش‌فرض‌ها: Roof/Ceiling برابر Bottom/Bottom و Floor/Flat Truss برابر Top/Top است. تغییر هدف این مقادیر را بازمی‌گرداند؛ فهرست‌ها انتخاب دلخواه را ممکن می‌کنند.
+    - گزینه‌های جانمایی، تیپ‌ها و فاصله برای اجرای بعدی ذخیره می‌شوند.
+    - Flat Truss از سیستم تیر Structural Framing استفاده می‌کند، نه خانواده‌های بومی Revit Truss.
+    - اعضای خط‌الرأس فقط برای بام‌های چندشیب بررسی می‌شوند؛ اعضای لبه، پیشانی، تکیه‌گاهی و براکت ایجاد نمی‌شوند.
+
+    ایمنی
+    - تغییرات از تراکنش قابل بازگردانی موجود برای هر میزبان استفاده می‌کنند.
+    - فقط اعضای ردیابی‌شده پس از طرح معتبر جایگزین می‌شوند؛ شکست، تراکنش همان میزبان را بازمی‌گرداند.
+    - Revit ممکن است تراز Z اعضا را قفل کند. هشدارها و ویژگی اعضا را بررسی کنید.
+
+    سازگاری:
+    Revit 2022–2027
+    IronPython 2.7
+
+    ساخته‌شده توسط Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Créez des ossatures pour toitures, sols, plafonds et le mode Flat Truss, avec recherche des types et réglages de positionnement indépendants.
+
+    MODE D’EMPLOI
+    1. Ouvrez un projet Revit et choisissez la destination de l’ossature.
+    2. Recherchez et sélectionnez les types chargés ; choisissez aussi un type de faîtage pour Roof.
+    3. Choisissez ou saisissez séparément Workplane (Top/Bottom) et Z Justification (Top/Center/Origin/Bottom).
+    4. Choisissez 12, 16 ou 24 pouces ou Custom dans la liste d’espacement ; saisissez les pouces pour Custom et modifiez Comments.
+    5. Cliquez sur FRAME, sélectionnez les hôtes correspondants à l’invite et examinez le rapport.
+
+    SKETCH BEAM SYSTEM — ESQUISSER UN SYSTÈME DE POUTRES
+    1. Saisissez Elevation from Level dans les unités du projet ou en pieds et pouces. Il s’agit d’un décalage par rapport au plan de construction actuel de Revit ; aucun niveau n’est sélectionné ni réaffecté.
+    2. Cliquez sur Sketch Beam System, utilisez le mode d’esquisse natif de Revit, tracez le contour puis terminez l’esquisse.
+    3. Le type d’ossature, l’espacement, Workplane, Z Justification et le décalage actuels de FramePilot sont appliqués après la fin de l’esquisse, lorsque Revit autorise les modifications.
+    4. Custom Comments est inscrit sur le nouveau système et ses poutres. Si le champ est vide, les valeurs sont ROOF pour Roof/Flat Truss, FLOOR pour Floor et CEIL pour Ceiling.
+    5. Top/Bottom utilise le contexte actuel d’un hôte à une seule face ; sinon, le plan de construction actuel de Revit est conservé. Le type de faîtage concerne uniquement l’ossature automatique des toitures.
+    6. L’actualisation recharge les types disponibles et ? ouvre l’aide. Le panneau reste ouvert pendant le travail ; le décalage et les réglages d’ossature sont mémorisés.
+
+    OPTIONS ET FONCTIONNEMENT
+    - Valeurs par défaut : Roof/Ceiling utilisent Bottom/Bottom ; Floor/Flat Truss utilisent Top/Top. Changer la destination les rétablit ; les listes permettent de les modifier.
+    - Les choix de positionnement, types et espacements sont mémorisés.
+    - Flat Truss utilise des systèmes de poutres Structural Framing, pas des familles Revit Truss natives.
+    - Faîtages uniquement pour les toitures à plusieurs pentes. Les éléments de rive, d’avant-toit, de bordure, d’appui latéral et les consoles sont exclus.
+
+    SÉCURITÉ
+    - Les modifications utilisent la transaction annulable existante pour chaque hôte.
+    - Seule l’ossature suivie est remplacée après un plan valide ; un échec annule la transaction de l’hôte.
+    - Revit peut verrouiller la justification Z. Vérifiez les avertissements et les propriétés des éléments.
+
+    COMPATIBILITÉ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Erstellen Sie Tragwerke für Dächer, Geschossdecken, Decken und den Modus Flat Truss mit durchsuchbaren Typen und unabhängigen Platzierungseinstellungen.
+
+    ANWENDUNG
+    1. Öffnen Sie ein Revit-Projekt und wählen Sie den Verwendungszweck.
+    2. Suchen und wählen Sie geladene Tragwerkstypen; wählen Sie für Roof auch einen Firstträgertyp.
+    3. Wählen oder tippen Sie Workplane (Top/Bottom) und Z Justification (Top/Center/Origin/Bottom) unabhängig voneinander.
+    4. Wählen Sie 12, 16 oder 24 Zoll oder Custom aus der Abstandsliste; geben Sie für Custom Zoll ein und bearbeiten Sie Comments.
+    5. Klicken Sie auf FRAME, wählen Sie die passenden Basisbauteile und prüfen Sie den Bericht.
+
+    SKETCH BEAM SYSTEM — TRÄGERSYSTEM SKIZZIEREN
+    1. Geben Sie Elevation from Level in Projekteinheiten oder Fuß und Zoll ein. Der Wert ist ein Versatz zur aktuellen Revit-Arbeitsebene; eine Ebene wird weder ausgewählt noch neu zugewiesen.
+    2. Klicken Sie auf Sketch Beam System, verwenden Sie den nativen Revit-Skizzenmodus, zeichnen Sie die Begrenzung und schließen Sie die Skizze ab.
+    3. Der aktuelle FramePilot-Trägertyp, Abstand, Workplane, Z Justification und Höhenversatz werden nach Abschluss angewendet, sobald Revit Änderungen zulässt.
+    4. Custom Comments wird in das neue Trägersystem und seine Träger geschrieben. Bei leerem Feld gelten ROOF für Roof/Flat Truss, FLOOR für Floor und CEIL für Ceiling.
+    5. Top/Bottom nutzt den vorhandenen Kontext eines Basisbauteils mit einer Fläche; andernfalls bleibt die aktuelle Revit-Arbeitsebene erhalten. Der Firsttyp gilt nur für die automatische Dachkonstruktion.
+    6. Aktualisieren lädt die verfügbaren Typen neu, ? öffnet die Hilfe. Die Palette bleibt beim Arbeiten geöffnet; Höhenversatz und Konstruktionseinstellungen werden gespeichert.
+
+    OPTIONEN UND VERHALTEN
+    - Standardwerte: Roof/Ceiling verwenden Bottom/Bottom; Floor/Flat Truss verwenden Top/Top. Ein Zweckwechsel stellt diese Werte wieder her; die Listen erlauben eigene Einstellungen.
+    - Platzierungsoptionen, Typen und Abstand werden für die nächste Ausführung gespeichert.
+    - Flat Truss verwendet Structural Framing-Trägersysteme, keine nativen Revit Truss-Familien.
+    - Firstträger nur bei Dächern mit mehreren Neigungen. Trauf-, Rand-, Blenden-, Auflager- und Konsolenelemente sind ausgeschlossen.
+
+    SICHERHEIT
+    - Änderungen verwenden die bestehende rückgängig machbare Transaktion je Basisbauteil.
+    - Nur nachverfolgte Tragwerke werden nach gültiger Planung ersetzt; ein Fehler rollt die zugehörige Transaktion zurück.
+    - Revit kann die Z-Ausrichtung sperren. Prüfen Sie Warnungen und Elementeigenschaften.
+
+    KOMPATIBILITÄT:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Erstellt von Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Készítsen tartószerkezetet tetőkhöz, födémekhez, mennyezetekhez és Flat Truss módban, kereshető típusokkal és független elhelyezési beállításokkal.
+
+    HASZNÁLAT
+    1. Nyisson meg egy Revit-projektet, és válassza ki a szerkezet célját.
+    2. Keresse meg és válassza ki a betöltött típusokat; Roof módban a gerincelem típusát is.
+    3. Válassza ki vagy írja be egymástól függetlenül a Workplane (Top/Bottom) és Z Justification (Top/Center/Origin/Bottom) értékét.
+    4. Válasszon 12, 16 vagy 24 hüvelyket vagy Custom értéket a térközlistából; egyéni térköznél adja meg a hüvelykértéket, és szerkessze a Comments mezőt.
+    5. Kattintson a FRAME gombra, kérésre válassza ki a megfelelő gazdaelemeket, majd ellenőrizze a jelentést.
+
+    SKETCH BEAM SYSTEM — GERENDARENDSZER VÁZLATA
+    1. Adja meg az Elevation from Level értékét a projekt mértékegységében vagy lábban és hüvelykben. Ez az aktuális Revit-munkasíkhoz viszonyított eltolás; nincs szintválasztás vagy új szint-hozzárendelés.
+    2. Kattintson a Sketch Beam System gombra, használja a Revit saját vázlatmódját, rajzolja meg a határvonalat, majd fejezze be a vázlatot.
+    3. A FramePilot aktuális szerkezeti típusa, kiosztása, Workplane, Z Justification és magassági eltolása a vázlat befejezése után érvényesül, amikor a Revit engedélyezi a módosítást.
+    4. A Custom Comments az új gerendarendszerhez és a gerendáihoz kerül. Üres mezőnél Roof/Flat Truss esetén ROOF, Floor esetén FLOOR, Ceiling esetén CEIL az alapérték.
+    5. A Top/Bottom a meglévő, egyetlen felületű gazdaelem környezetét használja; enélkül az aktuális Revit-munkasík marad meg. A gerinctípus csak az automatikus tetőszerkezethez tartozik.
+    6. A frissítés újratölti az elérhető típusokat, a ? megnyitja a súgót. A panel munka közben nyitva marad; az eltolás és a szerkezeti beállítások megőrződnek.
+
+    BEÁLLÍTÁSOK ÉS MŰKÖDÉS
+    - Alapértékek: Roof/Ceiling esetén Bottom/Bottom; Floor/Flat Truss esetén Top/Top. A cél váltása visszaállítja ezeket; a listákban felülírhatók.
+    - Az elhelyezési beállítások, típusok és távolság mentésre kerülnek.
+    - A Flat Truss Structural Framing gerendarendszereket használ, nem natív Revit Truss családokat.
+    - Gerincelemek csak több lejtősíkú tetőkhöz készülnek. Eresz-, perem-, homlok-, felfekvő és konzolelemek nem készülnek.
+
+    BIZTONSÁG
+    - A módosítások gazdaelemenként a meglévő visszavonható tranzakciót használják.
+    - Csak a követett szerkezet cserélődik érvényes terv után; hiba esetén a gazdaelem tranzakciója visszaáll.
+    - A Revit zárolhatja a Z-igazítást. Ellenőrizze a figyelmeztetéseket és az elemek tulajdonságait.
+
+    KOMPATIBILITÁS:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Készítette: Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Crea strutture per tetti, pavimenti, controsoffitti e modalità Flat Truss, con ricerca dei tipi e impostazioni di posizionamento indipendenti.
+
+    COME USARE
+    1. Apri un progetto Revit e scegli lo scopo della struttura.
+    2. Cerca e seleziona i tipi caricati; scegli anche il tipo di colmo per Roof.
+    3. Scegli o digita separatamente Workplane (Top/Bottom) e Z Justification (Top/Center/Origin/Bottom).
+    4. Scegli 12, 16 o 24 pollici oppure Custom dall’elenco degli interassi; per Custom inserisci i pollici e modifica Comments.
+    5. Fai clic su FRAME, seleziona gli host corrispondenti quando richiesto e controlla il rapporto.
+
+    SKETCH BEAM SYSTEM — DISEGNO DEL SISTEMA DI TRAVI
+    1. Immettere Elevation from Level nelle unità del progetto oppure in piedi e pollici. Il valore è uno scostamento dal piano di lavoro corrente di Revit; non si seleziona né si riassegna un livello.
+    2. Fare clic su Sketch Beam System, utilizzare la modalità di disegno nativa di Revit, tracciare il contorno e terminare il disegno.
+    3. Il tipo strutturale, la spaziatura, Workplane, Z Justification e lo scostamento correnti di FramePilot vengono applicati al termine del disegno, quando Revit consente le modifiche.
+    4. Custom Comments viene scritto nel nuovo sistema e nelle relative travi. Se il campo è vuoto, i valori sono ROOF per Roof/Flat Truss, FLOOR per Floor e CEIL per Ceiling.
+    5. Top/Bottom usa il contesto esistente di un elemento ospitante con una sola faccia; altrimenti viene mantenuto il piano di lavoro corrente di Revit. Il tipo di colmo riguarda solo la struttura automatica del tetto.
+    6. Aggiorna ricarica i tipi disponibili e ? apre la guida. Il pannello resta aperto durante il lavoro; lo scostamento e le impostazioni strutturali vengono salvati.
+
+    OPZIONI E COMPORTAMENTO
+    - Valori predefiniti: Roof/Ceiling usano Bottom/Bottom; Floor/Flat Truss usano Top/Top. Cambiare scopo ripristina questi valori; gli elenchi consentono di modificarli.
+    - Le opzioni di posizionamento, i tipi e la spaziatura vengono salvati per il prossimo uso.
+    - Flat Truss usa sistemi di travi Structural Framing, non famiglie Revit Truss native.
+    - Elementi di colmo solo per tetti a più falde. Sono esclusi elementi di gronda, perimetrali, fasce, appoggi laterali e staffe.
+
+    SICUREZZA
+    - Le modifiche usano la transazione annullabile esistente per ogni host.
+    - Solo la struttura tracciata viene sostituita dopo un piano valido; un errore annulla la transazione dell’host.
+    - Revit può bloccare la giustificazione Z. Controlla gli avvisi e le proprietà degli elementi.
+
+    COMPATIBILITÀ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Creato da Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    屋根、床、天井、および Flat Truss モードの構造フレームを作成します。タイプを検索し、配置設定を個別に指定できます。
+
+    使い方
+    1. Revit プロジェクトを開き、フレームの用途を選択します。
+    2. 読み込み済みのタイプを検索して選択します。Roof では棟材タイプも選択します。
+    3. Workplane（Top/Bottom）と Z Justification（Top/Center/Origin/Bottom）を独立して選択または入力します。
+    4. 間隔のドロップダウンで 12、16、24 インチまたは Custom を選択します。Custom はインチで入力し、Comments を編集します。
+    5. FRAME をクリックし、指示に従って対応するホストを選択して、レポートを確認します。
+
+    SKETCH BEAM SYSTEM — 梁システムのスケッチ
+    1. Elevation from Level にプロジェクト単位、またはフィートとインチで値を入力します。値は Revit の現在の作業面からのオフセットです。レベルの選択や再割り当ては行いません。
+    2. Sketch Beam System をクリックし、Revit 標準のスケッチモードで境界を描いてスケッチを完了します。
+    3. スケッチ完了後、Revit が変更可能になった時点で、FramePilot の現在の構造フレームタイプ、間隔、Workplane、Z Justification、高さオフセットが適用されます。
+    4. Custom Comments は新しい梁システムと各梁部材に書き込まれます。空欄の場合、Roof/Flat Truss は ROOF、Floor は FLOOR、Ceiling は CEIL を使用します。
+    5. Top/Bottom は既存の単一面ホストの情報を使用します。該当ホストがない場合は Revit の現在の作業面を維持します。棟部材タイプは自動屋根フレームのみに使用します。
+    6. 更新ボタンで使用可能なタイプを再読み込みし、? でヘルプを開きます。作業中もパネルは開いたままで、高さオフセットとフレーム設定は次回用に保存されます。
+
+    オプションと動作
+    - 既定値：Roof/Ceiling は Bottom/Bottom、Floor/Flat Truss は Top/Top。用途を変更すると既定値に戻ります。ドロップダウンで上書きできます。
+    - 配置設定、タイプ、間隔は次回用に保存されます。
+    - Flat Truss は Structural Framing の梁システムを使用し、ネイティブの Revit Truss ファミリは使用しません。
+    - 棟材は複数勾配の屋根のみが対象です。軒先、外周、鼻隠し、受け材、ブラケットは作成しません。
+
+    安全性
+    - モデル変更は、既存のホストごとの元に戻せるトランザクションを使用します。
+    - 有効な計画の後に追跡済みフレームのみを置換します。失敗したホストのトランザクションはロールバックされます。
+    - Revit が部材の Z 位置合わせをロックする場合があります。警告と部材プロパティを確認してください。
+
+    互換性:
+    Revit 2022–2027
+    IronPython 2.7
+
+    作成者：Nataraj Devaraj。
+  ko: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    지붕, 바닥, 천장 및 Flat Truss 모드용 구조 프레임을 만듭니다. 유형을 검색하고 배치 설정을 독립적으로 지정할 수 있습니다.
+
+    사용 방법
+    1. Revit 프로젝트를 열고 프레임 용도를 선택합니다.
+    2. 로드된 유형을 검색하여 선택합니다. Roof 모드에서는 용마루 부재 유형도 선택합니다.
+    3. Workplane(Top/Bottom)과 Z Justification(Top/Center/Origin/Bottom)을 각각 선택하거나 입력합니다.
+    4. 간격 드롭다운에서 12, 16, 24인치 또는 Custom을 선택하세요. Custom은 인치로 입력하고 Comments를 편집하세요.
+    5. FRAME을 클릭하고 메시지에 따라 해당 호스트를 선택한 후 보고서를 확인합니다.
+
+    SKETCH BEAM SYSTEM — 보 시스템 스케치
+    1. Elevation from Level에 프로젝트 단위 또는 피트와 인치로 값을 입력합니다. 이 값은 Revit의 현재 작업 기준면에 대한 간격띄우기이며, 레벨을 선택하거나 다시 지정하지 않습니다.
+    2. Sketch Beam System을 클릭하고 Revit 기본 스케치 모드에서 경계를 그린 후 스케치를 완료합니다.
+    3. 스케치가 완료되고 Revit에서 수정이 가능해지면 현재 FramePilot의 구조 프레임 유형, 간격, Workplane, Z Justification 및 높이 간격띄우기가 적용됩니다.
+    4. Custom Comments는 새 구조 보 시스템과 해당 보 부재에 기록됩니다. 필드가 비어 있으면 Roof/Flat Truss는 ROOF, Floor는 FLOOR, Ceiling은 CEIL을 사용합니다.
+    5. Top/Bottom은 기존 단일 면 호스트의 컨텍스트를 사용하며, 해당 호스트가 없으면 Revit의 현재 작업 기준면을 유지합니다. 용마루 유형은 자동 지붕 프레임에만 사용됩니다.
+    6. 새로 고침은 사용 가능한 유형을 다시 불러오고 ?는 도움말을 엽니다. 작업 중에도 패널은 열린 상태를 유지하며 높이 간격띄우기와 프레임 설정은 다음 사용을 위해 저장됩니다.
+
+    옵션 및 동작
+    - 기본값: Roof/Ceiling은 Bottom/Bottom, Floor/Flat Truss는 Top/Top입니다. 용도를 바꾸면 기본값으로 돌아가며 드롭다운에서 변경할 수 있습니다.
+    - 배치 옵션, 유형 및 간격은 다음 실행을 위해 저장됩니다.
+    - Flat Truss는 Structural Framing 보 시스템을 사용하며 기본 Revit Truss 패밀리를 사용하지 않습니다.
+    - 용마루 부재는 다중 경사 지붕에만 적용됩니다. 처마, 테두리, 파시아, 받침 및 브래킷 부재는 제외됩니다.
+
+    안전
+    - 모델 변경은 호스트별로 기존의 실행 취소 가능한 트랜잭션을 사용합니다.
+    - 유효한 계획 후 추적된 프레임만 교체하며 실패한 호스트의 트랜잭션은 롤백됩니다.
+    - Revit이 부재의 Z 맞춤을 잠글 수 있습니다. 경고와 부재 속성을 확인하세요.
+
+    호환성:
+    Revit 2022–2027
+    IronPython 2.7
+
+    제작: Nataraj Devaraj.
+  pl: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Twórz konstrukcje dla dachów, podłóg, sufitów i trybu Flat Truss z wyszukiwaniem typów oraz niezależnymi ustawieniami położenia.
+
+    SPOSÓB UŻYCIA
+    1. Otwórz projekt Revit i wybierz przeznaczenie konstrukcji.
+    2. Wyszukaj i wybierz wczytane typy; dla Roof wybierz także typ elementu kalenicowego.
+    3. Niezależnie wybierz lub wpisz Workplane (Top/Bottom) i Z Justification (Top/Center/Origin/Bottom).
+    4. Wybierz 12, 16 lub 24 cale albo Custom z listy rozstawu; dla Custom wpisz cale i edytuj Comments.
+    5. Kliknij FRAME, wybierz odpowiednich gospodarzy po wyświetleniu monitu i sprawdź raport.
+
+    SKETCH BEAM SYSTEM — SZKICOWANIE SYSTEMU BELEK
+    1. Wprowadź Elevation from Level w jednostkach projektu lub w stopach i calach. Jest to odsunięcie od bieżącej płaszczyzny roboczej programu Revit; poziom nie jest wybierany ani ponownie przypisywany.
+    2. Kliknij Sketch Beam System, użyj natywnego trybu szkicu programu Revit, narysuj obrys i zakończ szkic.
+    3. Bieżący typ konstrukcji, rozstaw, Workplane, Z Justification i odsunięcie wysokości z FramePilot zostaną zastosowane po zakończeniu szkicu, gdy Revit pozwoli na zmiany.
+    4. Custom Comments są zapisywane w nowym systemie i jego belkach. Puste pole oznacza ROOF dla Roof/Flat Truss, FLOOR dla Floor lub CEIL dla Ceiling.
+    5. Top/Bottom korzysta z istniejącego kontekstu obiektu nadrzędnego z jedną powierzchnią; w przeciwnym razie zachowuje bieżącą płaszczyznę roboczą Revit. Typ kalenicy dotyczy tylko automatycznej konstrukcji dachu.
+    6. Odświeżanie ponownie wczytuje dostępne typy, a ? otwiera pomoc. Panel pozostaje otwarty podczas pracy; odsunięcie i ustawienia konstrukcji są zapisywane na przyszłość.
+
+    OPCJE I DZIAŁANIE
+    - Domyślnie: Roof/Ceiling używają Bottom/Bottom; Floor/Flat Truss używają Top/Top. Zmiana przeznaczenia przywraca te wartości; listy pozwalają je zmienić.
+    - Ustawienia położenia, typy i rozstaw są zapisywane na następny raz.
+    - Flat Truss używa systemów belek Structural Framing, a nie natywnych rodzin Revit Truss.
+    - Elementy kalenicowe dotyczą tylko dachów wielospadowych. Okapy, elementy obwodowe, czołowe, podpierające i wsporniki są wykluczone.
+
+    BEZPIECZEŃSTWO
+    - Zmiany korzystają z istniejącej transakcji, którą można cofnąć, dla każdego gospodarza.
+    - Tylko śledzona konstrukcja jest zastępowana po poprawnym planie; błąd wycofuje transakcję gospodarza.
+    - Revit może zablokować wyrównanie Z elementów. Sprawdź ostrzeżenia i właściwości.
+
+    ZGODNOŚĆ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Autor: Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Создавайте каркасы для крыш, перекрытий, потолков и режима Flat Truss с поиском типоразмеров и независимыми настройками размещения.
+
+    КАК ИСПОЛЬЗОВАТЬ
+    1. Откройте проект Revit и выберите назначение каркаса.
+    2. Найдите и выберите загруженные типы; для Roof также выберите тип конькового элемента.
+    3. Независимо выберите или введите Workplane (Top/Bottom) и Z Justification (Top/Center/Origin/Bottom).
+    4. Выберите 12, 16 или 24 дюйма либо Custom в списке шага; для Custom введите дюймы и измените Comments.
+    5. Нажмите FRAME, по запросу выберите подходящие основы и проверьте отчёт.
+
+    SKETCH BEAM SYSTEM — ЭСКИЗ БАЛОЧНОЙ СИСТЕМЫ
+    1. Введите Elevation from Level в единицах проекта либо в футах и дюймах. Это смещение относительно текущей рабочей плоскости Revit; выбор и переназначение уровня не выполняются.
+    2. Нажмите Sketch Beam System, используйте стандартный режим эскиза Revit, начертите границу и завершите эскиз.
+    3. Текущие тип несущих конструкций, шаг, Workplane, Z Justification и высотное смещение из FramePilot применяются после завершения эскиза, когда Revit разрешает изменения.
+    4. Custom Comments записываются в новую балочную систему и её балки. Для пустого поля используются ROOF в Roof/Flat Truss, FLOOR в Floor и CEIL в Ceiling.
+    5. Top/Bottom использует существующий контекст основы с одной гранью; иначе сохраняется текущая рабочая плоскость Revit. Тип конькового элемента относится только к автоматическому каркасу крыши.
+    6. Обновление повторно загружает доступные типы, а ? открывает справку. Панель остаётся открытой во время работы; смещение и настройки каркаса сохраняются на следующий раз.
+
+    ПАРАМЕТРЫ И ПОВЕДЕНИЕ
+    - По умолчанию: Roof/Ceiling используют Bottom/Bottom; Floor/Flat Truss используют Top/Top. Смена назначения восстанавливает эти значения; списки позволяют их изменить.
+    - Настройки размещения, типы и шаг сохраняются для следующего запуска.
+    - Flat Truss использует балочные системы Structural Framing, а не стандартные семейства Revit Truss.
+    - Коньковые элементы рассматриваются только для многоскатных крыш. Карнизные, краевые, лобовые, опорные элементы и кронштейны исключены.
+
+    БЕЗОПАСНОСТЬ
+    - Изменения используют существующую отменяемую транзакцию для каждой основы.
+    - Только отслеживаемый каркас заменяется после корректного плана; ошибка откатывает транзакцию основы.
+    - Revit может заблокировать выравнивание Z. Проверьте предупреждения и свойства элементов.
+
+    СОВМЕСТИМОСТЬ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Создано Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Crea entramados para cubiertas, suelos, techos y el modo Flat Truss, con búsqueda de tipos y ajustes independientes de colocación.
+
+    CÓMO USAR
+    1. Abre un proyecto Revit y elige la finalidad del entramado.
+    2. Busca y selecciona tipos cargados; para Roof selecciona también el tipo de cumbrera.
+    3. Elige o escribe por separado Workplane (Top/Bottom) y Z Justification (Top/Center/Origin/Bottom).
+    4. Elige 12, 16 o 24 pulgadas o Custom en la lista de separación; introduce pulgadas para Custom y edita Comments.
+    5. Haz clic en FRAME, selecciona los anfitriones correspondientes cuando se solicite y revisa el informe.
+
+    SKETCH BEAM SYSTEM — BOCETO DE SISTEMA DE VIGAS
+    1. Introduce Elevation from Level en las unidades del proyecto o en pies y pulgadas. Es un desfase respecto al plano de trabajo actual de Revit; no se selecciona ni se reasigna ningún nivel.
+    2. Haz clic en Sketch Beam System, usa el modo de boceto nativo de Revit, dibuja el contorno y termina el boceto.
+    3. El tipo estructural, la separación, Workplane, Z Justification y el desfase actuales de FramePilot se aplican al terminar el boceto, cuando Revit permite los cambios.
+    4. Custom Comments se escribe en el nuevo sistema y sus vigas. Si el campo está vacío, se utiliza ROOF para Roof/Flat Truss, FLOOR para Floor y CEIL para Ceiling.
+    5. Top/Bottom usa el contexto existente de un anfitrión con una sola cara; en caso contrario, se conserva el plano de trabajo actual de Revit. El tipo de cumbrera solo se usa en el entramado automático de cubierta.
+    6. Actualizar vuelve a cargar los tipos disponibles y ? abre la ayuda. El panel permanece abierto mientras trabajas; el desfase y los ajustes del entramado se guardan para la próxima vez.
+
+    OPCIONES Y COMPORTAMIENTO
+    - Valores predeterminados: Roof/Ceiling usan Bottom/Bottom; Floor/Flat Truss usan Top/Top. Cambiar la finalidad los restaura; las listas permiten modificarlos.
+    - Las opciones de colocación, tipos y separación se guardan para la próxima vez.
+    - Flat Truss usa sistemas de vigas Structural Framing, no familias Revit Truss nativas.
+    - Cumbreras solo en cubiertas con varias pendientes. Se excluyen aleros, piezas de borde, impostas, apoyos laterales y ménsulas.
+
+    SEGURIDAD
+    - Los cambios usan la transacción existente, que se puede deshacer, por anfitrión.
+    - Solo se sustituye el entramado rastreado tras un plan válido; un fallo revierte la transacción del anfitrión.
+    - Revit puede bloquear la justificación Z. Revisa los avisos y las propiedades de los elementos.
+
+    COMPATIBILIDAD:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Creado por Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | FRAMEPILOT
+
+    Створюйте каркаси для дахів, перекриттів, стель і режиму Flat Truss із пошуком типорозмірів та незалежними налаштуваннями розміщення.
+
+    ЯК КОРИСТУВАТИСЯ
+    1. Відкрийте проєкт Revit і виберіть призначення каркаса.
+    2. Знайдіть і виберіть завантажені типи; для Roof також виберіть тип гребеневого елемента.
+    3. Незалежно виберіть або введіть Workplane (Top/Bottom) і Z Justification (Top/Center/Origin/Bottom).
+    4. Виберіть 12, 16 або 24 дюйми чи Custom у списку кроку; для Custom введіть дюйми та змініть Comments.
+    5. Натисніть FRAME, за запитом виберіть відповідні основи та перевірте звіт.
+
+    SKETCH BEAM SYSTEM — ЕСКІЗ БАЛКОВОЇ СИСТЕМИ
+    1. Введіть Elevation from Level в одиницях проєкту або у футах і дюймах. Це зміщення від поточної робочої площини Revit; рівень не вибирається й не перепризначається.
+    2. Натисніть Sketch Beam System, скористайтеся вбудованим режимом ескізу Revit, накресліть межу й завершіть ескіз.
+    3. Поточні тип конструкції, крок, Workplane, Z Justification і висотне зміщення з FramePilot застосовуються після завершення ескізу, коли Revit дозволить зміни.
+    4. Custom Comments записуються в нову балкову систему та її балки. Для порожнього поля використовуються ROOF у Roof/Flat Truss, FLOOR у Floor та CEIL у Ceiling.
+    5. Top/Bottom використовує наявний контекст основи з однією гранню; інакше зберігається поточна робоча площина Revit. Тип гребеневого елемента стосується лише автоматичного каркаса даху.
+    6. Оновлення повторно завантажує доступні типи, а ? відкриває довідку. Панель залишається відкритою під час роботи; зміщення та налаштування каркаса зберігаються на наступний раз.
+
+    ПАРАМЕТРИ ТА ПОВЕДІНКА
+    - Типові значення: Roof/Ceiling використовують Bottom/Bottom; Floor/Flat Truss використовують Top/Top. Зміна призначення відновлює їх; списки дозволяють змінити вибір.
+    - Налаштування розміщення, типи та крок зберігаються для наступного запуску.
+    - Flat Truss використовує балкові системи Structural Framing, а не стандартні сімейства Revit Truss.
+    - Гребеневі елементи розглядаються лише для багатоскатних дахів. Карнизні, крайові, лобові, опорні елементи та кронштейни виключені.
+
+    БЕЗПЕКА
+    - Зміни використовують наявну транзакцію, яку можна скасувати, для кожної основи.
+    - Лише відстежуваний каркас замінюється після коректного плану; помилка відкочує транзакцію основи.
+    - Revit може заблокувати вирівнювання Z. Перевіряйте попередження та властивості елементів.
+
+    СУМІСНІСТЬ:
+    Revit 2022–2027
+    IronPython 2.7
+
+    Створено Nataraj Devaraj.
+icon: "icon.png"

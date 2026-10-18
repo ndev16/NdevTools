@@ -245,6 +245,16 @@ def sync_ribbon_to_revit_language(uiapp=None):
                    'hu': 'Lapok', 'ja': 'シート',
                    'ko': '시트', 'pl': 'Arkusze',
                    'ru': 'Листы', 'uk': 'Аркуші'},
+        'Handy': {'en_us': 'Handy', 'en_gb': 'Handy',
+                  'fr_fr': 'Utilitaires', 'de_de': 'Helfer',
+                  'it_it': u'Utilità', 'es_es': 'Utilidades',
+                  'ar': u'أدوات مساعدة', 'pt_br': u'Utilitários',
+                  'bg': u'Помощни', 'chinese_s': u'便捷工具',
+                  'chinese_t': u'便利工具', 'cs': u'Pomůcky',
+                  'nl_nl': 'Handig', 'fa': u'ابزارهای کمکی',
+                  'hu': u'Segédeszközök', 'ja': u'便利ツール',
+                  'ko': u'편의 도구', 'pl': u'Narzędzia',
+                  'ru': u'Помощники', 'uk': u'Допоміжні'},
         '3D Model': {'en_us': '3D Model', 'en_gb': '3D Model',
                      'fr_fr': 'Modèle 3D', 'de_de': '3D-Modell',
                      'it_it': 'Modello 3D', 'es_es': 'Modelo 3D',
@@ -273,7 +283,11 @@ def sync_ribbon_to_revit_language(uiapp=None):
                 name = unicode(item.Name).lower()
             except Exception:
                 continue
-            for spec in registry:
+            # Resolve internal names across the full registry before using
+            # display text. Different commands can share translated labels.
+            name_matches = [spec for spec in registry
+                            if unicode(spec['folder']).lower() in name]
+            for spec in (name_matches or registry):
                 # Prefer matching the internal bundle name, then the current
                 # display text against any locale (covers older pyRevit builds).
                 hint = unicode(spec['folder']).lower()

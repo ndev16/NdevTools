@@ -4,14 +4,14 @@
 
 **NdevTools supports 20 language options** for pyRevit ribbon button titles and bundle tooltip descriptions, with black icons for light themes and white icons for dark themes. The tool commands remain the same across languages.
 
-**NdevTools** is a collection of Autodesk Revit productivity commands built for **pyRevit**. The extension combines model-based detailing, view and sheet management, and architectural-link wall tracing in one ribbon tab. It is developed by **Nataraj Devaraj**.
+**NdevTools** is a collection of Autodesk Revit productivity commands built for **pyRevit**. The extension combines model-based detailing, view and sheet management, linked-model wall/opening tracing, structural framing, and personal productivity tools in one ribbon tab. It is developed by **Nataraj Devaraj**.
 
 **GitHub:** [ndev16/NdevTools](https://github.com/ndev16/NdevTools)  
 **Feedback and feature requests:** [GitHub Issues](https://github.com/ndev16/NdevTools/issues)
 
 ## Multilingual support — 20 languages
 
-NdevTools includes localized **ribbon titles and bundle tooltip descriptions for all eight commands** in the following 20 pyRevit locale options:
+NdevTools includes localized **ribbon titles and bundle tooltip descriptions for all 12 commands** in the following 20 pyRevit locale options:
 
 | Language | Locale code | Language | Locale code |
 | --- | --- | --- | --- |
@@ -26,11 +26,11 @@ NdevTools includes localized **ribbon titles and bundle tooltip descriptions for
 | Polish | `pl` | Russian | `ru` |
 | Spanish | `es_es` | Ukrainian | `uk` |
 
-**Language selection:** This version of NdevTools follows the active **Revit interface language**, rather than a separate pyRevit language override. Where a locale or individual UI string is not available, the tool uses English as a fallback. Revit's spelling-dictionary preference does not change its interface language.
+**Language selection:** An explicit **pyRevit Settings → Language** choice takes priority. With no override, NdevTools follows the active Revit interface language. Unavailable UI strings fall back to English. Revit's spelling-dictionary preference does not change its interface language.
 
-**Localization scope:** The 20-language coverage applies to button titles and concise bundle tooltip summaries. Some longer, dynamically generated messages and custom dialog text may remain in English. Translations, especially specialized engineering terminology and right-to-left presentation, should be reviewed by native speakers. See [Bundle translations](BUNDLE_TRANSLATIONS.md) for details.
+**Localization scope:** The 20-language coverage applies to button titles and bundle tooltip descriptions for all 12 commands. Some longer, dynamically generated messages and custom dialog text may remain in English. Translations, especially specialized engineering terminology and right-to-left presentation, should be reviewed by native speakers. See [Bundle translations](BUNDLE_TRANSLATIONS.md) for details.
 
-**Theme icons:** Each of the eight commands includes `icon.png` (dark/black artwork for a light background) and `icon.dark.png` (white artwork for a dark background). Availability of theme switching depends on the Revit/pyRevit version.
+**Theme icons:** Each of the 12 commands includes `icon.png` (dark/black artwork for a light background) and `icon.dark.png` (white artwork for a dark background). Availability of theme switching depends on the Revit/pyRevit version.
 
 ## Ribbon layout
 
@@ -41,11 +41,15 @@ NdevTools includes localized **ribbon titles and bundle tooltip descriptions for
 | **Welcome** | Welcome | Show NdevTools information, useful links and contact details. |
 | **Annotation** | Vulcraft Deck Region | Create a concrete filled region that follows a selected Vulcraft structural deck profile in section. |
 | **Annotation** | Auto Detail Generator | Trace selected host-model geometry into 2D filled regions, lines and supported detail components. |
-| **Sheets** | Sheet Pilot | Configure and place up to 25 unplaced views per sheet across multiple sheets using saved viewport positions. |
+| **Sheets** | SheetPilot | Configure and place up to 25 unplaced views per sheet across multiple sheets using saved viewport positions. |
 | **Sheets** | Sheet Manager | Create sheets in bulk or rename existing sheets. |
 | **Sheets** | Match Crop Regions | Apply one plan view's crop region to multiple compatible plan views. |
 | **Sheets** | Viewport Position Manager | Save, rename, manage and reuse named sheet viewport positions. |
-| **3D Model** | Wall Tracing | Re-create supported structural wall geometry in the host model from a linked architectural model. |
+| **Sheets** | ViewPilot | Review and batch rename, duplicate, and assign compatible view settings. |
+| **3D Model** | Wall Tracing | Trace supported structural walls and verified rectangular openings from an architectural link. |
+| **3D Model** | FramePilot | Create structural framing for Roof, Flat Truss, Floor and Ceiling hosts, or sketch a beam system. |
+| **Handy** | Notes | Write formatted, illustrated notes with multiple A4 portrait/landscape sheets and local saving. |
+| **Handy** | Useful Links | Use Image to Text and Convert Case in a modeless embedded browser. |
 
 ## Tools and usage
 
@@ -80,7 +84,11 @@ Create 2D construction-detail representations from visible, supported host-model
 
 **Scope:** Creates static 2D representations. Curved roof edges are not supported. The command traces host-model elements; plan wall tracing uses the main view cut height, not the cut heights of individual plan regions.
 
-### Sheets → Sheet Pilot (Place Views on Sheet)
+### Sheets → SheetPilot (Place Views on Sheet)
+
+**Place and organize views.** Configure up to 25 views per sheet, choose viewport types, and reuse saved positions. Prepare multiple sheets in one window, then place the configured views together.
+
+![SheetPilot: multi-sheet view placement with viewport types and saved positions](media/screenshots/SheetPilot.png)
 
 **Sheet Pilot** automates placing unplaced views on multiple Revit sheets using named X/Y positions saved by **Viewport Position Manager** (or the compatible Crop Position Manager). Configure multiple sheets in one window, with up to **25 views per sheet**.
 
@@ -120,17 +128,55 @@ Use named positions to standardize sheet layouts. The command supports **Apply S
 
 The command stores up to **10 positions per Revit version** and maintains separate position sets for different Revit versions. When applying coordinates, it temporarily adjusts supported category and link visibility, then restores original visibility, templates and pinned state.
 
+### Sheets → ViewPilot
+
+**Manage views in one place.** Find, rename and duplicate project views with a live name preview. Manage scope boxes, view templates and common settings, then review your changes before applying them.
+
+![ViewPilot: view filters, live rename previews, duplication and common settings](media/screenshots/ViewPilot.png)
+
+Batch rename and duplicate views with previews, compatible View Template and Scope Box assignments, and a separate **Review Changes** step. Rename rules support Find/Replace, prefixes, suffixes, case changes, regular expressions, and numbering. Duplication supports Duplicate, With Detailing, and As Dependent where compatible.
+
+**Typical workflow:** Check source views, configure names, copies and settings, open Review Changes, then select **Apply Checked Changes** and confirm. Common Duplication Method locks each checked compatible source to one copy; turn it off to reset copy quantities for selected or visible views. Reviewing pending changes and the Project Health Report are read-only. Revit writes use the command's undoable transaction workflow; template-controlled and dependent-view settings can be read-only.
+
 ### 3D Model → Wall Tracing
 
-Trace supported architectural **Basic Walls** from a loaded Revit link into structural walls in the active host project.
+Create supported host-model structural Basic Walls and verified rectangular openings from a selected architectural Revit link.
 
-**Typical workflow:** Open a host project in a plan or 3D view; select a loaded architectural link; select source levels; map each to host bottom and top levels; review suggested host Basic Wall types; and click **Create Walls**. Set a source type to **None** to skip it. Review the created, duplicate, skipped and error results.
+**Typical workflow:** Select a loaded link and source levels, map host bottom/top levels, review suggested host Basic Wall types, optionally enable **Combine Nearby Openings** and set Maximum Gap, then click **Create Walls** and review the per-item report. Choose **None** to exclude a source type. Type suggestions use structural-layer thickness; review material and structural suitability yourself.
 
-**Geometry and alignment:** Only straight, vertical Basic Walls with an identifiable positive-width structural layer are eligible. The thickest `Structure [1]` layer controls alignment; type suggestions are based on thickness, not a material-equivalence guarantee. Selected host levels and applicable source offsets are used.
+The command reads the link without editing it. It supports straight vertical Basic Walls and horizontal translated, rotated or mirrored links; unsupported wall profiles and tilted/scaled links are skipped. Verified insert-local geometry is preferred for rectangular openings, with a controlled hosted Door/Window parameter fallback where geometry cannot resolve a cut. Nearby-opening combination is off by default and does not cross source walls. Matching host walls/openings are retained for reruns, while missing supported openings can be repaired.
 
-**Safety behavior:** The source link is read-only. Wall creation runs inside a host transaction group and skips matching host walls. Curved, slanted, tapered, attached and edited-profile source walls are skipped. The command does not analyze or reconstruct wall openings. Automatic joins are managed during creation; to allow joins on existing selected host walls, select them and launch **Wall Tracing** again.
+Wall creation precedes openings in one undo group, with per-item rollback and a full rollback on fatal failure or cancellation. Selected host walls can also be processed with **Allow joins on selected walls**. See the [Wall Tracing usage guide](NdevTools.tab/3D%20Model.Panel/Create%20walls%20and%20opening.pushbutton/README_Wall_Tracing.md) for detection rules, mapping details and limitations.
 
-For more details, see the [Wall Tracing usage guide](NdevTools.tab/3D%20Model.Panel/Create%20walls.pushbutton/README_Wall_Tracing.md).
+### 3D Model → FramePilot
+
+Create structural framing for **Roof, Flat Truss, Floor and Ceiling** hosts. Search loaded framing types, choose roof ridge framing when applicable, set Workplane and Z Justification independently, then choose **12, 16, 24 inches or Custom** spacing and edit Comments. Click **FRAME**, select matching hosts, and review the report.
+
+**Sketch Beam System** uses Revit's native sketch mode. Enter Elevation from Level in project units or feet/inches; this is an offset from the existing Revit work plane, not a level reassignment. After finishing the sketch, FramePilot applies the current framing settings where Revit permits it. Flat Truss creates Structural Framing beam systems rather than native Revit Truss families. Tracked framing is replaced only after a valid plan; failed host transactions roll back. Review warnings and member properties.
+
+### Handy → Notes
+
+**Your notebook, inside Revit.**
+
+**Ever wished you could write notes right inside Revit? Now you can.**
+
+Capture design ideas, coordination comments and reminders while you work. Format your text, apply colors and highlights, and insert images to make your notes clear.
+
+Create multiple A4 sheets within a single note, choosing portrait or landscape for each sheet. Search your notebook, save locally with autosave, and export notes in **Word-compatible RTF format**, including formatted text and images.
+
+![Notes: formatted text, an inserted image and multiple A4 sheets inside Revit](media/screenshots/Notes.png)
+
+**Sheet layout:** Use **+ Add sheet** to add sheets and the sheet dropdown to switch between them. Each sheet independently uses **A4 Portrait (210 × 297 mm)** or **Landscape (297 × 210 mm)**. Notes opens as a modeless window, with your notebook stored outside the Revit model.
+
+Orientation changes the visible paper dimensions and export settings. **Fill window** expands the writing area; **Hide notes** and the draggable sidebar give you more space. Save manually or with autosave. RTF export includes every sheet in order with its selected A4 orientation and 20 mm margins; text export includes sheet headings. Previous saved files and deleted notes remain recoverable. Existing plain-text and rich-text notes remain supported.
+
+Help includes usage and developer links. The footer has a GitHub button and optional BIM humor, enabled by default with a remembered On/Off choice. The Notes and Useful Links ribbon tooltips omit printed developer profile URLs. These tools do not modify the Revit model.
+
+### Handy → Useful Links
+
+Open **Image to Text** ([imagetotext.info](https://www.imagetotext.info/)) or **Convert Case** ([convertcase.net](https://convertcase.net/)) inside a modeless Revit window. Both pages stay open when switching tools. Back, Forward, Reload and **Open in browser** act on the selected site.
+
+Embedded browsing requires an internet connection and the active Revit installation's WebView2 components/runtime. If unavailable, use Open in browser. You choose what to submit on each website; NdevTools does not automatically send model data. Help, developer links, and the default-on humor switch are also available.
 
 ## Installation
 
@@ -138,7 +184,7 @@ For more details, see the [Wall Tracing usage guide](NdevTools.tab/3D%20Model.Pa
 2. Download this repository as a ZIP (or clone it).
 3. Extract the repository files into a folder named **`NdevTools.extension`** inside a pyRevit extensions location. The `NdevTools.tab` folder and `extension.json` must sit directly inside `NdevTools.extension`.
 4. If your folder is not already registered with pyRevit, add its parent extensions location using pyRevit's settings or extension configuration.
-5. Reload pyRevit or restart Revit. The **NdevTools** ribbon tab displays the Welcome, Annotation, Sheets and 3D Model panels.
+5. Reload pyRevit or restart Revit. The **NdevTools** ribbon tab displays the Welcome, Annotation, Sheets, 3D Model and Handy panels.
 
 **Folder structure (abbreviated):**
 
@@ -156,17 +202,22 @@ NdevTools.extension/
 │   ├── Sheets.panel/
 │   │   ├── col1.stack/
 │   │   │   ├── BulkPlaceViews.pushbutton/   # Sheet Pilot
-│   │   │   └── Rename Sheets.pushbutton/
+│   │   │   ├── Rename Sheets.pushbutton/
+│   │   │   └── ViewPilot.pushbutton/
 │   │   └── col2.stack/
 │   │       ├── Crop Extents.pushbutton/
 │   │       └── Viewport Position Manager.pushbutton/
-│   └── 3D Model.Panel/
-│       └── Create walls.pushbutton/
+│   ├── 3D Model.Panel/
+│   │   ├── Create walls and opening.pushbutton/
+│   │   └── FramePilot.pushbutton/
+│   └── Handy.panel/
+│       ├── Notes.pushbutton/
+│       └── Useful Links.pushbutton/
 ├── README.md
 └── LICENSE
 ```
 
-Each command includes the script and icon, plus its bundle configuration and any additional XAML, images or support modules it uses. Keep the button folders intact.
+Each command includes its script, theme icons, bundle configuration, and any XAML, browser UI, images or support modules it uses. Keep the button folders intact.
 
 ## Compatibility
 
@@ -174,12 +225,14 @@ Commands are written for **pyRevit** and the IronPython 2.7 runtime, using Revit
 
 ## What's new
 
-The current ribbon expands the original sheet-management-focused repository with:
+The current ribbon includes **12 commands across five panels**, expanding the original sheet-management-focused repository with:
 
 - A **Welcome** and contact/about experience.
 - **Vulcraft Deck Region** and **Auto Detail Generator** in the Annotation panel.
 - An expanded **Sheets** panel with two stacked button columns, multi-sheet Sheet Pilot placement, and viewport visibility handling.
-- **Wall Tracing** in the 3D Model panel.
+- **Wall Tracing** with supported rectangular openings and **FramePilot** in the 3D Model panel.
+- **ViewPilot** for reviewed view management.
+- A **Handy** panel with multi-sheet Notes and embedded Useful Links.
 - Updated ribbon layout, icons, and documentation.
 
 See [CHANGELOG.md](CHANGELOG.md) for the summary of this update.

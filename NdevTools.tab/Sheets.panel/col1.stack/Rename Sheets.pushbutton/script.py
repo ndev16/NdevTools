@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+from ndev_sheet_theme import apply_wpf as _ndev_theme
+from ndev_sheet_theme import apply_winforms as _ndev_winforms_theme
 
 from pyrevit import revit, DB, forms
 
@@ -232,6 +234,7 @@ def ndev_install_titlebar(window, caption=None, show_help=True,
         window.MinimumSize = Size(window.MinimumSize.Width,
                                   window.MinimumSize.Height + 38)
     window.ResumeLayout(True)
+    _ndev_winforms_theme(window, caption_panel, caption_layout, caption_label)
 
 
 def ndev_show_help():
@@ -456,6 +459,8 @@ def ndev_add_selection_titlebar(window):
     chrome.CornerRadius = WpfCornerRadius(0)
     WpfWindowChrome.SetWindowChrome(window, chrome)
     window.Height = window.Height + 38
+    _ndev_theme(window, bar, label, ('Sheet', 'Manager'),
+                'CREATE | RENAME | ORGANIZE SHEETS')
 
 
 class NdevSelectFromList(forms.SelectFromList):

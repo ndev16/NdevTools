@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+from ndev_annotation_theme import finish_detail_settings as _ndev_theme_settings
+from ndev_annotation_theme import attach_dialog as _ndev_attach_dialog
+from ndev_annotation_theme import show_detail_message as _ndev_alert
 """Trace floors, walls, roofs, foundations, and framing as view-specific details.
 
 Regions are static snapshots. Plan footprints do not remove areas hidden by
@@ -43,7 +46,7 @@ def ndev_open_profile(url):
         info.UseShellExecute = True
         Process.Start(info)
     except Exception as error:
-        forms.alert(
+        _ndev_alert(
             'Could not open your default browser.\n\n'
             'Copy and open this URL:\n{}\n\n{}'.format(url, error),
             title=TITLE + ' - Help')
@@ -104,91 +107,17 @@ def ndev_show_help(owner=None):
     scroller = ScrollViewer()
     scroller.Content = panel
     help_window.Content = scroller
+    _ndev_attach_dialog(help_window, ('Detail', 'Generator'),
+                        'TRACE | FILL | OUTLINE | DETAIL')
     _ndev_show_localized_dialog(help_window)
 
 
 def ndev_attach_help(window, title=None):
-    """Brand the window and place Help beside the settings heading.
-
-    For the XAML Trace Settings window, insert the button immediately after
-    'Choose fills, outlines, and detail components' on the SAME ROW.
-    For the pyRevit selection window, keep the existing upper-right Help row.
-    The original XAML tabs, controls, and tracing operations are not changed.
-    """
+    """Give the existing native mode picker the shared ViewPilot frame."""
     if title:
         window.Title = title
-
-    # Honor an explicitly defined Help button in another XAML version.
-    try:
-        existing = window.FindName('help_button')
-    except Exception:
-        existing = None
-    if existing is not None:
-        existing.Content = '? Help'
-        existing.ToolTip = 'Instructions, GitHub and LinkedIn'
-        existing.Click += lambda sender, args: ndev_show_help(window)
-        return
-
-    original = window.Content
-    if original is None:
-        return
-
-    help_button = Button()
-    help_button.Content = '? Help'
-    help_button.Width = 84
-    help_button.Height = 28
-    help_button.VerticalAlignment = VerticalAlignment.Center
-    help_button.ToolTip = 'Ndev Tools - Instructions, GitHub, LinkedIn'
-    help_button.Click += lambda sender, args: ndev_show_help(window)
-
-    # TRACE SETTINGS: use the existing XAML's heading row, avoiding any
-    # extra blank header above the settings text.
-    if isinstance(original, Grid):
-        for child in list(original.Children):
-            if (isinstance(child, TextBlock) and
-                    child.Text == 'Choose fills, outlines, and detail components'):
-                original.Children.Remove(child)
-
-                heading_row = DockPanel()
-                heading_row.LastChildFill = False
-                heading_row.VerticalAlignment = VerticalAlignment.Center
-
-                child.VerticalAlignment = VerticalAlignment.Center
-                DockPanel.SetDock(child, Dock.Left)
-                heading_row.Children.Add(child)
-
-                # Immediate neighbor to the heading, not at the window edge.
-                help_button.Margin = Thickness(14, 0, 0, 0)
-                DockPanel.SetDock(help_button, Dock.Left)
-                heading_row.Children.Add(help_button)
-
-                Grid.SetRow(heading_row, 0)
-                Grid.SetColumn(heading_row, 0)
-                original.Children.Add(heading_row)
-                return
-
-    # OTHER DIALOGS: retain the previous upper-right Help design.
-    outer = DockPanel()
-    outer.LastChildFill = True
-    header = DockPanel()
-    header.Height = 38
-    header.Margin = Thickness(12, 3, 12, 0)
-    header.LastChildFill = False
-    help_button.Margin = Thickness(4, 3, 105, 3)
-    DockPanel.SetDock(help_button, Dock.Right)
-    header.Children.Add(help_button)
-
-    window.Content = None
-    DockPanel.SetDock(header, Dock.Top)
-    outer.Children.Add(header)
-    outer.Children.Add(original)
-    window.Content = outer
-    try:
-        window.Height += 38
-        window.MinHeight += 38
-    except Exception:
-        pass
-
+    _ndev_attach_dialog(window, ('Detail', 'Generator'),
+                        'TRACE | FILL | OUTLINE | DETAIL', ndev_show_help)
 
 class NdevModeSelector(forms.CommandSwitchWindow):
     """Same native pyRevit mode selector, with Ndev Tools Help above it."""
@@ -199,7 +128,7 @@ class NdevModeSelector(forms.CommandSwitchWindow):
 
 
 def stop(message):
-    forms.alert(message, title=TITLE, exitscript=True)
+    _ndev_alert(message, title=TITLE, exitscript=True)
 
 
 def id_text(element_id):
@@ -599,6 +528,7 @@ class TraceSettings(forms.WPFWindow):
         chrome.GlassFrameThickness = Thickness(0)
         chrome.CornerRadius = CornerRadius(0)
         WindowChrome.SetWindowChrome(self, chrome)
+        _ndev_theme_settings(self)
 
     def _ndev_title_help(self, sender, args):
         ndev_show_help(self)
@@ -641,7 +571,7 @@ class TraceSettings(forms.WPFWindow):
         for key, controls in self.controls.items():
             for control in controls:
                 if control.IsEnabled and control.SelectedItem is None:
-                    forms.alert('Select a matching dropdown option, or choose None/default. '
+                    _ndev_alert('Select a matching dropdown option, or choose None/default. '
                                 'Typed search text is not yet a selection.', title=TITLE)
                     control.Focus()
                     control.IsDropDownOpen = True
@@ -661,7 +591,7 @@ class TraceSettings(forms.WPFWindow):
                                'detail': values[2] if framing or floor or roof else None,
                                'direction': 1 if controls[3].SelectedItem == 'Vertical' else 0}
         if not result:
-            forms.alert('Choose a filled region, line style, repeating detail, or floor/roof/framing detail component.', title=TITLE)
+            _ndev_alert('Choose a filled region, line style, repeating detail, or floor/roof/framing detail component.', title=TITLE)
             return
         self.result = result
         self.Close()
@@ -1152,7 +1082,7 @@ if failures:
         for element_id, reason in failures[:3])
     if len(failures) > 3:
         failure_details += '\n\nMore details are in the output window.'
-forms.alert('Traced {} element(s).\nCreated {} filled region(s), {} detail line(s), '
+_ndev_alert('Traced {} element(s).\nCreated {} filled region(s), {} detail line(s), '
             '{} repeating-detail run(s), and {} floor/roof/framing detail component(s).\n'
             'Excluded by None: {}. Failed: {}.{}\n\n'
             'Details are static copies; running again creates additional details.'.format(

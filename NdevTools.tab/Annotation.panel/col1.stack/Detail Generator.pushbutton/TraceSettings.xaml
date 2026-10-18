@@ -2,16 +2,46 @@
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Trace Elements - Filled Region Assignments" Width="1180" Height="620"
-        MinWidth="820" MinHeight="420" WindowStartupLocation="CenterOwner" WindowStyle="None" ResizeMode="CanResize" Background="#FFFFFF">
+        MinWidth="820" MinHeight="420" WindowStartupLocation="CenterOwner" WindowStyle="None" ResizeMode="CanResize" Background="#051220">
+  <Window.Resources>
+    <Style TargetType="TabControl">
+      <Setter Property="Background" Value="#052039"/>
+      <Setter Property="BorderBrush" Value="#075776"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="TabControl">
+        <Grid KeyboardNavigation.TabNavigation="Local">
+          <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+          <TabPanel Grid.Row="0" IsItemsHost="True" Margin="0,0,0,6" KeyboardNavigation.TabIndex="1"/>
+          <Border Grid.Row="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="5">
+            <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="2" KeyboardNavigation.TabIndex="2"/>
+          </Border>
+        </Grid>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="TabItem">
+      <Setter Property="Foreground" Value="#DEEFFB"/>
+      <Setter Property="Background" Value="#09243A"/>
+      <Setter Property="Padding" Value="16,10"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="TabItem">
+        <Border x:Name="tab" Background="{TemplateBinding Background}" BorderBrush="#176282" BorderThickness="1" CornerRadius="5,5,0,0" Margin="0,0,4,0" Padding="{TemplateBinding Padding}">
+          <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" RecognizesAccessKey="True"/>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="tab" Property="Background" Value="#124264"/><Setter TargetName="tab" Property="BorderBrush" Value="#02D8F5"/></Trigger>
+          <Trigger Property="IsSelected" Value="True"><Setter TargetName="tab" Property="Background" Value="#0DC7E7"/><Setter Property="Foreground" Value="#002032"/></Trigger>
+          <Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="tab" Property="BorderBrush" Value="#02D8F5"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+  </Window.Resources>
   <!-- Custom caption: Help lives BESIDE minimize / maximize / close. -->
   <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition Height="38"/>
+      <RowDefinition Height="78"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <Border x:Name="title_bar" Grid.Row="0" Background="#EAF0F6"
-            BorderBrush="#D4DEE8" BorderThickness="0,0,0,1">
+    <Border x:Name="title_bar" Grid.Row="0" Background="#04182B"
+            BorderBrush="#176282" BorderThickness="0,0,0,1">
       <Grid>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>
@@ -22,16 +52,16 @@
                    VerticalAlignment="Center" Margin="14,0,0,0"
                    FontSize="13" Foreground="#172A3A"/>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Stretch">
-          <Button x:Name="title_help_button" Content="? Help"
+          <Button x:Name="title_help_button" Content="? Help" Height="30"
                   Width="78" Margin="0,4,8,4" Padding="8,0"
                   ToolTip="Ndev Tools help, GitHub and LinkedIn"/>
-          <Button x:Name="title_minimize_button" Content="&#x2013;"
+          <Button x:Name="title_minimize_button" Content="&#x2013;" Height="30"
                   Width="44" Background="Transparent" BorderThickness="0"
                   ToolTip="Minimize"/>
-          <Button x:Name="title_maximize_button" Content="&#x25A1;"
+          <Button x:Name="title_maximize_button" Content="&#x25A1;" Height="30"
                   Width="44" Background="Transparent" BorderThickness="0"
                   ToolTip="Maximize"/>
-          <Button x:Name="title_close_button" Content="&#x2715;"
+          <Button x:Name="title_close_button" Content="&#x2715;" Height="30"
                   Width="46" Background="Transparent" BorderThickness="0"
                   ToolTip="Close"/>
         </StackPanel>
@@ -45,9 +75,11 @@
       <RowDefinition Height="*"/><RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
     <TextBlock Text="Choose fills, outlines, and detail components" FontSize="20" FontWeight="SemiBold"/>
-    <TextBlock Grid.Row="1" Margin="0,8,0,16" TextWrapping="Wrap"
+    <Expander Grid.Row="1" Header="Dropdown search and placement guide" Margin="0,8,0,14" IsExpanded="False" Padding="10,7">
+    <TextBlock Margin="6,10,6,6" TextWrapping="Wrap"
       Text="Type directly in any dropdown to see matching suggestions immediately. Click a match or press Enter to select; Escape restores the previous selection. Each row applies to that component type. A line style with no fill creates detail lines; with a fill it styles the region boundary. CMU repeats use an existing placed repeating detail as a template. In sections choose Horizontal or Vertical; plans follow wall length. Roof line-based details follow top slopes in sections and top-face edges in plans. Floor line-based details run horizontally along the traced floor, split at openings. Framing details align their bounding-box center with the traced framing center."/>
-    <TabControl Grid.Row="2">
+    </Expander>
+    <TabControl x:Name="category_tabs" Grid.Row="2">
       <TabItem Header="Walls"><ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"><StackPanel x:Name="walls_panel" Margin="12"/></ScrollViewer></TabItem>
       <TabItem Header="Floors"><ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"><StackPanel x:Name="floors_panel" Margin="12"/></ScrollViewer></TabItem>
       <TabItem Header="Roofs"><ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"><StackPanel x:Name="roofs_panel" Margin="12"/></ScrollViewer></TabItem>
@@ -56,7 +88,7 @@
     </TabControl>
     <Grid Grid.Row="3" Margin="0,16,0,0">
       <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-      <TextBlock VerticalAlignment="Center" Text="All choices empty = skip type. CMU paths stop at openings and crop limits."/>
+      <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,12,0" Text="All choices empty = skip type. CMU paths stop at openings and crop limits."/>
       <StackPanel Grid.Column="1" Orientation="Horizontal">
         <Button Content="Cancel" Width="90" Height="32" Margin="0,0,10,0" IsCancel="True"/>
         <Button x:Name="create_button" Content="Create Details" Width="130" Height="32" IsDefault="True"/>

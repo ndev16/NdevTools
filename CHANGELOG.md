@@ -1,5 +1,16 @@
 # Changelog
 
+## October 19, 2026 — Current ribbon and local testing sync
+
+- Synced the current local testing extension: 12 commands across Welcome, Annotation, Sheets, 3D Model and Handy.
+- Added ViewPilot, FramePilot, Notes and Useful Links, including their supporting browser/WPF resources and theme icons.
+- Replaced the old Wall Tracing bundle with `Create walls and opening.pushbutton`, including current rectangular-opening detection, fallback, optional combination and reports. Removed the obsolete bundle to prevent a duplicate ribbon command.
+- Included current Annotation/Sheets command implementations and shared themes from the testing folder.
+- Notes includes multiple A4 sheets, independent portrait/landscape orientations, visible page layout, Fill window, local saving/export, queued layout updates and the native-maximize height fix.
+- Regenerated the runtime ribbon translation catalog from all 12 bundles, including the URL-free Notes/Useful Links tooltips, and added Handy panel translations. Ribbon matching now prioritizes bundle identifiers before shared translated labels.
+- Updated the ribbon screenshot, 20-language support banner, documentation and extension description. Python caches are excluded.
+- Packaging checks validate metadata, Python syntax and offline regressions; they do not establish live-Revit stability. The separately observed native project-opening crash remains unresolved.
+
 ## October 16, 2026 — 20-language support preview and documentation
 
 - Added the NdevTools 20-language banner to `media/NdevTools-20-Language-Support.png` and displayed it prominently in `README.md`.

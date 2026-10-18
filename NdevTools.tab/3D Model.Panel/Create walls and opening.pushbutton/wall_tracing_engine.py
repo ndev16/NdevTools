@@ -9,7 +9,7 @@ import traceback
 import uuid
 from pyrevit import DB, forms
 from Autodesk.Revit.Exceptions import RegenerationFailedException
-from wall_tracing_math import TOL, structure_layer
+from wall_tracing_math import TOL, structure_layer, rectangle_bounds, opening_offsets, combine_opening_bounds
 
 
 def key(element_id):
@@ -174,6 +174,8 @@ def validate(doc, link, configurations):
         raise ValueError('Select at least one linked level.')
     linked = link.GetLinkDocument()
     for config in configurations:
+        if config.get('combine_openings', False):
+            combine_opening_bounds([], config.get('maximum_gap', 0.0))
         if not isinstance(linked.GetElement(config['source_level']), DB.Level):
             raise ValueError('A selected linked level no longer exists.')
         bottom, top = doc.GetElement(config['bottom']), doc.GetElement(config['top'])
@@ -210,6 +212,57 @@ def duplicate(candidates, curve, target, bottom, top):
         except Exception:
             continue
     return None
+
+
+def insert_ids(wall):
+    ids = dict((key(i), i) for i in wall.FindInserts(True, False, True, True))
+    for i in wall.GetDependentElements(DB.ElementClassFilter(DB.Opening)):
+        ids[key(i)] = i
+    return list(ids.values())
+
+
+def create_opening(doc, host, source, bounds, transform, bottom_level, base_z, top_z):
+    left, right, low, high = bounds
+    if right-left <= TOL or high-low <= TOL:
+        raise ValueError('Opening has zero width or height.')
+    if left < -TOL or right > source.Location.Curve.Length + TOL:
+        raise ValueError('Opening extends outside the source wall axis.')
+    src_axis = source.Location.Curve
+    a = src_axis.GetEndPoint(0).Add(src_axis.Direction.Multiply(left))
+    b = src_axis.GetEndPoint(0).Add(src_axis.Direction.Multiply(right))
+    a = transform.OfPoint(DB.XYZ(a.X, a.Y, low))
+    b = transform.OfPoint(DB.XYZ(b.X, b.Y, high))
+    if a.Z < base_z-TOL or b.Z > top_z+TOL:
+        raise ValueError('Opening is outside the mapped host wall vertical extent.')
+    # Project XY onto the new structural centerline, retaining actual source Z.
+    axis = host.Location.Curve
+    pa, pb = axis.Project(a).XYZPoint, axis.Project(b).XYZPoint
+    a, b = DB.XYZ(pa.X,pa.Y,a.Z), DB.XYZ(pb.X,pb.Y,b.Z)
+    # Re-runs can fill missing cuts on a matched existing wall. Never duplicate
+    # an existing rectangular opening at the same along-wall/elevation bounds.
+    for existing_id in host.GetDependentElements(DB.ElementClassFilter(DB.Opening)):
+        existing = doc.GetElement(existing_id)
+        if isinstance(existing, DB.Opening) and existing.IsRectBoundary:
+            p, q = list(existing.BoundaryRect)
+            def signature(x, y):
+                u = [v.Subtract(axis.GetEndPoint(0)).DotProduct(axis.Direction) for v in (x,y)]
+                return min(u), max(u), min(x.Z,y.Z), max(x.Z,y.Z)
+            if all(abs(x-y) <= TOL for x,y in zip(signature(a,b),signature(p,q))):
+                return None
+    opening = doc.Create.NewOpening(host, a, b)
+    # BOTH constraints refer to host bottom. The host wall top never participates.
+    low_offset, high_offset = opening_offsets(a.Z,b.Z,bottom_level.ProjectElevation)
+    set_param(opening, 'WALL_BASE_CONSTRAINT', bottom_level.Id)
+    set_param(opening, 'WALL_HEIGHT_TYPE', bottom_level.Id)
+    set_param(opening, 'WALL_BASE_OFFSET', low_offset)
+    set_param(opening, 'WALL_TOP_OFFSET', high_offset)
+    doc.Regenerate()
+    if (param(opening, 'WALL_BASE_CONSTRAINT').AsElementId() != bottom_level.Id
+            or param(opening, 'WALL_HEIGHT_TYPE').AsElementId() != bottom_level.Id
+            or abs(param(opening, 'WALL_BASE_OFFSET').AsDouble()-low_offset) > TOL
+            or abs(param(opening, 'WALL_TOP_OFFSET').AsDouble()-high_offset) > TOL):
+        raise ValueError('Revit did not retain the required opening level/offset references.')
+    return opening
 
 
 class RollbackErrors(DB.IFailuresPreprocessor):
@@ -283,17 +336,20 @@ def execute(doc, link, configs, progress=None):
     source_doc, transform = link.GetLinkDocument(), link.GetTotalTransform()
     grouped = collect_walls(source_doc, [key(c['source_level']) for c in configs])
     result = dict(levels=len(configs), found=sum(len(v) for v in grouped.values()), created=0,
-                  none=0, unsupported=0, duplicates=0, errors=0, details=[], wall_map={})
-    def log(config, wall, reason):
+                  none=0, unsupported=0, duplicates=0, detected=0, openings=0,
+                  skipped_openings=0, errors=0, details=[], wall_map={})
+    def log(config, wall, reason, insert=None):
         result['details'].append((config['label'], name(wall.WallType), key(wall.Id),
-                                  str(reason), wall_diagnostics(wall)))
+                                  key(insert.Id) if insert else '', str(reason), wall_diagnostics(wall)))
     existing = list(DB.FilteredElementCollector(doc).OfClass(DB.Wall).WhereElementIsNotElementType())
     created = []
+    opening_targets = []
+    missing_destinations = []
     processed = 0
     def tick(value, maximum):
         if progress:
             if progress.cancelled:
-                raise RuntimeError('Cancelled. All walls from this run were rolled back.')
+                raise RuntimeError('Cancelled. All walls and openings from this run were rolled back.')
             progress.update_progress(value, max(1, maximum))
     group = DB.TransactionGroup(doc, 'NdevTools - Wall Tracing')
     group.Start()
@@ -303,12 +359,12 @@ def execute(doc, link, configs, progress=None):
         for config in configs:
             bottom, top = doc.GetElement(config['bottom']), doc.GetElement(config['top'])
             for source in grouped[key(config['source_level'])]:
-                tick(processed, result['found'])
+                tick(processed, result['found'] * 2)
                 processed += 1
                 target = config['mapping'].get(key(source.GetTypeId()))
                 if target is None:
                     result['none'] += 1
-                    log(config, source, 'None mapping: wall skipped.')
+                    log(config, source, 'None mapping: wall and openings skipped.')
                     continue
                 try:
                     curve = corrected_curve(source, analyze_type(source.WallType), transform)
@@ -330,7 +386,10 @@ def execute(doc, link, configs, progress=None):
                 matched = duplicate(existing, curve, target, bottom.Id, top.Id)
                 if matched is not None:
                     result['duplicates'] += 1
-                    log(config, source, 'Existing host wall {} found; wall creation skipped.'.format(key(matched.Id)))
+                    log(config, source, 'Existing host wall {} reused for missing openings; wall creation skipped.'.format(key(matched.Id)))
+                    actual_base = bottom.ProjectElevation + param(matched, 'WALL_BASE_OFFSET').AsDouble()
+                    actual_top = top.ProjectElevation + param(matched, 'WALL_TOP_OFFSET').AsDouble()
+                    opening_targets.append((config, source, matched, bottom, actual_base, actual_top))
                     result['wall_map'][key(source.Id)] = key(matched.Id)
                     continue
                 sub = DB.SubTransaction(doc)
@@ -341,8 +400,8 @@ def execute(doc, link, configs, progress=None):
                     curve = DB.Line.CreateBound(DB.XYZ(a.X,a.Y,bottom.ProjectElevation), DB.XYZ(b.X,b.Y,bottom.ProjectElevation))
                     stage = 'Wall.Create'
                     host = DB.Wall.Create(doc, curve, target, bottom.Id, top_z-base_z, base_offset, False, True)
-                    # Keep ends stable while verifying the centerline.
-                    # Restore automatic joins after wall creation.
+                    # Keep ends stable only while validating centerlines and placing
+                    # openings. Enable both ends after all geometry has been created.
                     stage = 'temporarily disable wall joins during construction'
                     DB.WallUtils.DisallowWallJoinAtEnd(host, 0)
                     DB.WallUtils.DisallowWallJoinAtEnd(host, 1)
@@ -367,6 +426,7 @@ def execute(doc, link, configs, progress=None):
                     result['wall_map'][key(source.Id)] = key(host.Id)
                     existing.append(host)
                     created.append((config, source, host, bottom, base_z, top_z))
+                    opening_targets.append((config, source, host, bottom, base_z, top_z))
                 except RegenerationFailedException:
                     raise  # Revit requires aborting the enclosing transaction.
                 except Exception as error:
@@ -375,6 +435,68 @@ def execute(doc, link, configs, progress=None):
                     result['errors'] += 1
                     log(config, source, 'Wall creation [{}]: {}: {}\n{}'.format(
                         stage, type(error).__name__, error, traceback.format_exc()))
+                    missing_destinations.append(source)
+        commit(tx)
+        tx = transaction(doc, 'Create rectangular openings')
+        doc.Regenerate()
+        from wall_tracing_openings import scan_wall_openings, diagnostic_text
+        for source in missing_destinations:
+            for item in scan_wall_openings(source):
+                item['result'] = 'NO_DESTINATION_WALL'
+                result.setdefault('opening_diagnostics', []).append(
+                    diagnostic_text(item, key(source.Id), '-'))
+        for config, source, host, bottom, base_z, top_z in opening_targets:
+            tick(processed, result['found'] + len(opening_targets))
+            processed += 1
+            candidates = scan_wall_openings(source)
+            from wall_tracing_fallback import apply_parameter_fallbacks
+            candidates = apply_parameter_fallbacks(source, candidates)
+            jobs = []
+            for item in candidates:
+                if item['valid']:
+                    result['detected'] += 1
+                    jobs.append((item['bounds'], [item]))
+                elif item['result'] != 'DUPLICATE':
+                    result['skipped_openings'] += 1
+            if config.get('combine_openings', False):
+                # Preserve existing geometry-only combination. A fallback must
+                # never enlarge or replace a successful geometry result.
+                fallback_jobs = [job for job in jobs if job[1][0].get('detection_source') == 'PARAMETER_FALLBACK']
+                originals = [job for job in jobs if job[1][0].get('detection_source') != 'PARAMETER_FALLBACK']
+                jobs = [(envelope, [originals[i][1][0] for i in members])
+                        for envelope,members in combine_opening_bounds(
+                            [job[0] for job in originals],config['maximum_gap'])]
+                jobs.extend(fallback_jobs)
+            for bounds, members in jobs:
+                tick(processed, result['found'] + len(opening_targets))
+                sub = DB.SubTransaction(doc)
+                try:
+                    sub.Start()
+                    opening = create_opening(doc, host, source, bounds, transform, bottom, base_z, top_z)
+                    if sub.Commit() != DB.TransactionStatus.Committed:
+                        raise ValueError('Opening subtransaction failed.')
+                    if opening is not None:
+                        result['openings'] += 1
+                    else:
+                        result['existing_openings'] = result.get('existing_openings', 0) + 1
+                    for item in members:
+                        item['result'] = 'CREATED' if opening is not None else 'EXISTING'
+                        if len(members) > 1:
+                            item['reason'] += ' Combined output bounds: {}'.format(bounds)
+                except RegenerationFailedException:
+                    raise
+                except Exception as error:
+                    if sub.GetStatus() == DB.TransactionStatus.Started:
+                        sub.RollBack()
+                    result['errors'] += 1
+                    for item in members:
+                        item.update(result='GEOMETRY_FAILURE',reason=item['reason']+' Creation: '+str(error))
+            for item in candidates:
+                message = diagnostic_text(item,key(source.Id),key(host.Id))
+                result.setdefault('opening_diagnostics',[]).append(message)
+                if item['result'] not in ('CREATED','EXISTING','DUPLICATE'):
+                    log(config,source,'{}: {}'.format(item['result'],item['reason']))
+
         commit(tx)
         tx = transaction(doc, 'Allow joins on traced walls')
         for config, source, host, bottom, base_z, top_z in created:
@@ -393,7 +515,7 @@ def execute(doc, link, configs, progress=None):
                 result['errors'] += 1
                 log(config, source, 'Allow wall joins: {}'.format(error))
         commit(tx)
-        tick(result['found'], result['found'])
+        tick(result['found'] + len(opening_targets), result['found'] + len(opening_targets))
         if group.Assimilate() != DB.TransactionStatus.Committed:
             raise RuntimeError('Revit did not commit the creation group.')
     except Exception:
@@ -406,33 +528,37 @@ def execute(doc, link, configs, progress=None):
 
 
 def report(result, output):
-    labels = [('Selected levels', 'levels'), ('Architectural walls found', 'found'),
-              ('Structural walls created', 'created'), ('Walls skipped - None mapping', 'none'),
-              ('Walls skipped - unsupported geometry', 'unsupported'),
-              ('Duplicate walls skipped', 'duplicates'), ('Errors', 'errors')]
-    summary = '\n'.join('{}: {}'.format(label, result[k]) for label, k in labels)
+    labels = [('Selected levels','levels'), ('Architectural walls found','found'),
+              ('Structural walls created','created'), ('Walls skipped - None mapping','none'),
+              ('Walls skipped - unsupported geometry','unsupported'), ('Duplicate walls skipped','duplicates'),
+              ('Rectangular openings detected','detected'), ('Rectangular openings created','openings'),
+              ('Unsupported/non-rectangular openings skipped','skipped_openings'), ('Errors','errors')]
+    summary = '\n'.join('{}: {}'.format(label,result[k]) for label,k in labels)
+    summary += '\nExisting rectangular openings retained: {}'.format(result.get('existing_openings', 0))
     output.print_md('## NdevTools - Wall Tracing')
     print(summary)
     if result['details']:
-        output.print_table(result['details'], columns=['Linked level', 'Source wall type',
-            'Source wall ID', 'Reason', 'Wall diagnostics'])
+        output.print_table(result['details'], columns=['Linked level','Source wall type','Source wall ID','Insert ID','Reason','Wall diagnostics'])
+    for diagnostic in result.get('opening_diagnostics', []):
+        print(diagnostic)
     if result['wall_map']:
-        output.print_table(sorted(result['wall_map'].items()),
-                           columns=['Source linked wall ID', 'Created/reused host wall ID'])
+        output.print_table(sorted(result['wall_map'].items()), columns=['Source linked wall ID','Created/reused host wall ID'])
     reasons = {}
-    for level, wall_type, wall_id, reason, diagnostics in result['details']:
-        if reason.startswith('None mapping:'):
+    for level, wall_type, wall_id, insert_id, reason, diagnostics in result['details']:
+        if reason.startswith(('None mapping:', 'Combination group:')):
             continue
+        # Keep stack traces in expanded/saved details, not in the compact dialog.
         short_reason = reason.split('\n', 1)[0]
         reasons[short_reason] = reasons.get(short_reason, 0) + 1
     if reasons:
         summary += '\n\nMain skip/error reasons:\n' + '\n'.join(
             '{} item(s): {}'.format(count, reason)
             for reason, count in sorted(reasons.items(), key=lambda item: (-item[1], item[0]))[:5])
-    details = [summary, '\nPER-WALL DIAGNOSTICS (IDs refer to the linked model)']
-    for level, wall_type, wall_id, reason, diagnostics in result['details']:
-        details.append('\nLevel: {}\nWall type: {}\nSource wall ID: {}\nReason: {}\n{}'.format(
-            level, wall_type, wall_id, reason, diagnostics))
+    details = [summary, '\nPER-ITEM DIAGNOSTICS (IDs refer to the linked model)']
+    for level, wall_type, wall_id, insert_id, reason, diagnostics in result['details']:
+        details.append('\nLevel: {}\nWall type: {}\nSource wall ID: {}\nInsert ID: {}\nReason: {}\n{}'.format(
+            level, wall_type, wall_id, insert_id or '-', reason, diagnostics))
+    details.extend(['\nOPENING CANDIDATE DIAGNOSTICS'] + result.get('opening_diagnostics', []))
     full_report = '\n\n'.join(details)
     try:
         directory = os.path.join(tempfile.gettempdir(), 'NdevTools-WallTracing')

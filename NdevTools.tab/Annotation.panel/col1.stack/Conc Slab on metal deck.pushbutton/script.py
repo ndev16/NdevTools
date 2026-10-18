@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+from ndev_sheet_theme import apply_wpf as _ndev_theme
+from ndev_annotation_theme import attach_dialog as _ndev_attach_dialog
 
 from pyrevit import revit, DB, forms
 from Autodesk.Revit.UI.Selection import ObjectType
@@ -104,6 +106,8 @@ def ndev_show_help(owner=None):
     scroll = ScrollViewer()
     scroll.Content = body
     window.Content = scroll
+    _ndev_attach_dialog(window, ('Deck', 'Regions'),
+                        'PROFILE | GAGE | FILLED REGION')
     _ndev_show_localized_dialog(window)
 
 
@@ -196,6 +200,9 @@ def ndev_attach_titlebar(window):
     chrome.CornerRadius = CornerRadius(0)
     WindowChrome.SetWindowChrome(window, chrome)
     window.Height = window.Height + 38
+    _ndev_theme(window, bar, label, ('Deck', 'Regions'),
+                window.Title.replace('Ndev Tools - ', ''))
+    bar.ToolTip = window.Title
 
 
 class NdevSelectFromList(forms.SelectFromList):

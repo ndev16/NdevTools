@@ -1,0 +1,20 @@
+# This is a Revit shared parameter file.
+# Do not edit manually.
+*META	VERSION	MINVERSION
+META	2	1
+*GROUP	ID	NAME
+GROUP	1	NdevRoof
+*PARAM	GUID	NAME	DATATYPE	DATACATEGORY	GROUP	VISIBLE	DESCRIPTION	USERMODIFIABLE	HIDEWHENNOVALUE
+PARAM	0d716f6e-f38b-57e2-a690-c6c05362008c	NDEV_ROOF_IsGenerated	YESNO		1	1	Tracks framing instances managed by the NdevTools Roof Framing tool.	1	0
+PARAM	f1683931-2726-516c-a9f7-af6804aa6c48	NDEV_ROOF_HostKind	TEXT		1	1	Host category display name for grouped framing schedules.	1	1
+PARAM	8f604a92-9a45-57ce-bc90-b9ff88b3e4ce	NDEV_ROOF_HostId	TEXT		1	1	Stable host element id used to group framing schedule rows.	1	1
+PARAM	f7b7b49a-8547-58e7-a6bf-df37d75b3326	NDEV_ROOF_HostLabel	TEXT		1	1	Preferred host label for schedules, using Mark when available.	1	1
+PARAM	aec71e5d-7a45-5058-8f8c-601171ebdb32	NDEV_ROOF_MemberRole	TEXT		1	1	Normalized framing member role used by the BOM schedule.	1	1
+PARAM	2b7aecac-c1eb-552d-809c-e378f2daf80d	NDEV_ROOF_MemberLength	LENGTH		1	1	Length used for BOM totals.	1	0
+PARAM	cb0d152d-138b-5a68-a604-e82a37cd551f	NDEV_ROOF_SheathHostLabel	TEXT		1	1	Preferred host label for the sheathing schedule.	1	1
+PARAM	d2478d2f-dd7b-570f-96b7-c02cd90a7ecf	NDEV_ROOF_SheathFullSheets	INTEGER		1	1	Count of full 4x8 sheathing sheets.	1	0
+PARAM	5eacaaad-9dbc-5690-a202-5c4761c26669	NDEV_ROOF_SheathCutCount	INTEGER		1	1	Count of partial sheathing panels.	1	0
+PARAM	c174ddce-e6a3-5be2-9761-a3ef7c6d76e5	NDEV_ROOF_SheathCutArea	AREA		1	1	Total reusable partial-sheet area.	1	0
+PARAM	a976d26a-01a0-53a4-aaa3-14c268e3f589	NDEV_ROOF_SheathCutSheetEq	NUMBER		1	1	Partial-sheet total converted into 32 sf sheet equivalents.	1	0
+PARAM	012631de-ea62-5125-9609-6782173b9e0c	NDEV_ROOF_SheathTotalSheetEq	NUMBER		1	1	Full sheets plus reusable partial-sheet equivalents.	1	0
+PARAM	6c72e030-bab9-5e26-bc94-4ecd405fe7e5	NDEV_ROOF_SheathCutSummary	TEXT		1	1	Compact cut-size summary for the sheathing schedule.	1	1

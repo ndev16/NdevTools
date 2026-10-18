@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from ndev_i18n import show_localized_dialog as _ndev_show_localized_dialog
+from ndev_sheet_theme import apply_wpf as _ndev_theme
 
 from pyrevit import revit, DB, forms, script
 from System.Collections.Generic import List
@@ -602,6 +603,7 @@ def _ndev_show_help(owner):
     content.Children.Add(linkedin)
 
     help_window.Content = content
+    _ndev_theme(help_window)
     _ndev_show_localized_dialog(help_window)
 
 
@@ -723,6 +725,10 @@ def _ndev_attach_header(window, callback):
             window.Height += 38
     except Exception:
         pass
+
+
+    _ndev_theme(window, titlebar, caption, ('Viewport', 'Positions'),
+                'SAVE | CAPTURE | APPLY POSITIONS')
 
 
 class NdevSavedPositionSelector(_NATIVE_SELECT):

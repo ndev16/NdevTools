@@ -2,7 +2,7 @@
   "builtin": "False",
   "type": "extension",
   "name": "NdevTools",
-  "description": "NdevTools pyRevit automation for multi-sheet Sheet Pilot view placement, viewport positions, sheet management, 2D detailing, and linked-model wall tracing.",
+  "description": "NdevTools pyRevit tools for detailing, sheets and views, linked-wall/opening tracing, structural framing, multi-sheet notes, and useful web tools; 12 commands with 20-language ribbon metadata.",
   "author": "Nataraj Devaraj",
   "dependencies": []
 }

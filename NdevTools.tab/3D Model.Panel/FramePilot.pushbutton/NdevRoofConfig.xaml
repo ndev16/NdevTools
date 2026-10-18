@@ -1,0 +1,353 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="NdevTools | FramePilot"
+        Width="400" Height="940" MinWidth="340" MaxWidth="560" MinHeight="540"
+        ResizeMode="CanResize" WindowStyle="SingleBorderWindow" WindowState="Normal"
+        WindowStartupLocation="Manual" ShowInTaskbar="True" Background="#051220"
+        FontFamily="Segoe UI" FontSize="12" Foreground="#DEEFFB">
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="0" ResizeBorderThickness="6"
+                            GlassFrameThickness="0" UseAeroCaptionButtons="False"/>
+    </shell:WindowChrome.WindowChrome>
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#DEEFFB"/>
+        </Style>
+        <Style x:Key="SectionHeading" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#0BE7FC"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+        </Style>
+        <Style x:Key="MutedText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#88ADC2"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style x:Key="PanelCard" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#075776"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Padding" Value="16,14"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#052039" Offset="0"/>
+                        <GradientStop Color="#061B2F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#09243A"/>
+            <Setter Property="Foreground" Value="#D5EDFA"/>
+            <Setter Property="BorderBrush" Value="#176282"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="13,7"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#124264"/>
+                                <Setter Property="BorderBrush" Value="#02D8F5"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#0FE0FB"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#0A354B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#0DC7E7"/>
+            <Setter Property="Foreground" Value="#002032"/>
+            <Setter Property="BorderBrush" Value="#0FE0FB"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#6DEFFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#092940"/>
+            <Setter Property="Foreground" Value="#E5F4FF"/>
+            <Setter Property="BorderBrush" Value="#21536A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CaretBrush" Value="#06D8FB"/>
+            <Setter Property="Padding" Value="9,6"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="FieldBorder" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4" Padding="0">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter TargetName="FieldBorder" Property="BorderBrush" Value="#05D5EC"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Padding" Value="9,7"/>
+            <Setter Property="Foreground" Value="#E5F4FF"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter Property="Background" Value="#124264"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#0A3950"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="MaxDropDownHeight" Value="260"/>
+            <Setter Property="Foreground" Value="#E5F4FF"/>
+            <Setter Property="Background" Value="#092940"/>
+            <Setter Property="BorderBrush" Value="#21536A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,6,0,6"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <Border x:Name="ComboBorder" Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="4"/>
+                            <ToggleButton Focusable="False" ClickMode="Press"
+                                          IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border Background="Transparent">
+                                            <Path Data="M 0 0 L 5 5 L 10 0 Z" Fill="#ABD5E8"
+                                                  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter x:Name="SelectedContent" Margin="10,0,34,0"
+                                              VerticalAlignment="Center" IsHitTestVisible="False"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                            <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Visibility="Hidden"
+                                     Margin="10,1,34,1" Padding="0" BorderThickness="0"
+                                     Background="Transparent" Foreground="{TemplateBinding Foreground}"
+                                     CaretBrush="#06D8FB" VerticalContentAlignment="Center"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}" FocusVisualStyle="{x:Null}">
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"
+                                                      HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                            <Popup x:Name="PART_Popup" Placement="Bottom" AllowsTransparency="True"
+                                   Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" PopupAnimation="None">
+                                <Border Background="#08243B" BorderBrush="#176282" BorderThickness="1"
+                                        CornerRadius="4" Padding="4"
+                                        MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto"
+                                                  HorizontalScrollBarVisibility="Auto">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEditable" Value="True">
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="SelectedContent" Property="Visibility" Value="Hidden"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter TargetName="ComboBorder" Property="BorderBrush" Value="#05D5EC"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ComboBorder" Property="BorderBrush" Value="#02D8F5"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border BorderBrush="#165573" BorderThickness="1" Background="#051220">
+        <Grid Margin="8,0,8,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderBrush="#165573" BorderThickness="0,0,0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <Border x:Name="bd_title_drag" Background="Transparent">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image x:Name="img_brand" Width="36" Height="38" Stretch="Uniform"/>
+                            <Border Width="1" Height="34" Background="#176A8B" Margin="7,0,9,0"/>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock FontSize="22" FontWeight="Bold"><Run Text="Frame"/><Run Text="Pilot" Foreground="#06D8FB"/></TextBlock>
+                                <TextBlock Text="FRAMING PROPERTIES" Foreground="#ABD5E8" FontSize="9" Margin="0,2,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button x:Name="btn_title_help" Content="?" Width="27" MinHeight="28" Padding="0" ToolTip="FramePilot Help" Margin="0,0,3,0"/>
+                        <Button x:Name="btn_title_minimize" Content="−" Width="27" MinHeight="28" Padding="0" ToolTip="Minimize" Margin="0,0,3,0"/>
+                        <Button x:Name="btn_title_close" Content="×" Width="27" MinHeight="28" Padding="0" ToolTip="Close FramePilot"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <TextBlock x:Name="txt_project_context" Grid.Row="1" Foreground="#88ADC2" FontSize="10"
+                       TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+            <ScrollViewer x:Name="setup_scroll" Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                          Padding="0,0,3,0" Focusable="False">
+                <StackPanel>
+                    <Border Style="{StaticResource PanelCard}" Padding="11,9">
+                        <StackPanel>
+                            <TextBlock Text="FRAMING PURPOSE" Style="{StaticResource SectionHeading}" Margin="0,0,0,2"/>
+                            <ComboBox x:Name="cb_purpose" IsEditable="False" Margin="0,4,0,5" ToolTip="Roof, Flat Truss, Floor, or Ceiling"/>
+                            <TextBlock x:Name="txt_purpose_description" Style="{StaticResource MutedText}" FontSize="10"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource PanelCard}" Padding="11,9" Margin="0,6,0,0">
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,5">
+                                <Button x:Name="btn_refresh_types" DockPanel.Dock="Right" Content="↻" Width="26" MinHeight="22" Padding="0"
+                                        ToolTip="Refresh loaded framing types from this project"/>
+                                <TextBlock Text="FRAMING FAMILIES" Style="{StaticResource SectionHeading}" Margin="0" VerticalAlignment="Center"/>
+                            </DockPanel>
+                            <TextBlock Text="Framing family / type" FontSize="11" FontWeight="SemiBold"/>
+                            <ComboBox x:Name="cb_rafter_type" IsEditable="True" IsTextSearchEnabled="False" StaysOpenOnEdit="True"
+                                      Margin="0,4,0,2" ToolTip="Type to search loaded framing family and type names"/>
+                            <TextBlock x:Name="txt_rafter_count" Style="{StaticResource MutedText}" FontSize="10"/>
+                            <StackPanel x:Name="ridge_section" Margin="0,9,0,0">
+                                <TextBlock Text="Ridge board family / type" FontSize="11" FontWeight="SemiBold"/>
+                                <ComboBox x:Name="cb_ridge_type" IsEditable="True" IsTextSearchEnabled="False" StaysOpenOnEdit="True"
+                                          Margin="0,4,0,2" ToolTip="Search loaded ridge family and type names; used in Roof mode"/>
+                                <TextBlock x:Name="txt_ridge_count" Style="{StaticResource MutedText}" FontSize="10"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txt_catalog_hint" Text="Type in a dropdown to search loaded types." Style="{StaticResource MutedText}" FontSize="10" Margin="0,5,0,0"/>
+                            <Border Height="1" Background="#125675" Margin="0,9,0,8"/>
+                            <TextBlock Text="CUSTOM COMMENTS" Style="{StaticResource SectionHeading}" Margin="0,0,0,4"/>
+                            <TextBox x:Name="tb_comments" Text="ROOF" Height="40" MaxLength="1024"
+                                     TextWrapping="Wrap" AcceptsReturn="True" VerticalContentAlignment="Top" Padding="7,4"
+                                     VerticalScrollBarVisibility="Auto" ToolTip="Comments written to new structural beam systems and their beam members"/>
+                            <TextBlock x:Name="txt_comments_default" Text="Default: ROOF" Foreground="#0BE7FC" FontSize="10" Margin="0,3,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <!-- Placement and spacing follow the compact comments field. -->
+                    <Border Style="{StaticResource PanelCard}" Padding="11,9" Margin="0,6,0,0">
+                        <StackPanel>
+                            <TextBlock Text="PLACEMENT &amp; SPACING" Style="{StaticResource SectionHeading}" Margin="0,0,0,7"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="9"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="Workplane" FontSize="11" FontWeight="SemiBold"/>
+                                    <ComboBox x:Name="cb_workplane" IsEditable="True" IsTextSearchEnabled="True" StaysOpenOnEdit="True"
+                                              Margin="0,4,0,4" ToolTip="Choose or type Top or Bottom"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Z Justification" FontSize="11" FontWeight="SemiBold"/>
+                                    <ComboBox x:Name="cb_z_justification" IsEditable="True" IsTextSearchEnabled="True" StaysOpenOnEdit="True"
+                                              Margin="0,4,0,4" ToolTip="Choose or type Top, Center, Origin, or Bottom"/>
+                                </StackPanel>
+                            </Grid>
+                            <TextBlock x:Name="txt_workplane_rule" Style="{StaticResource MutedText}" FontSize="10"/>
+                            <Border Height="1" Background="#125675" Margin="0,8,0,7"/>
+                            <TextBlock Text="FRAMING SPACING" Style="{StaticResource SectionHeading}" Margin="0,0,0,3"/>
+                            <ComboBox x:Name="cb_spacing" IsEditable="False" Margin="0,3,0,2" ToolTip="12, 16, or 24 inches on centre, or Custom"/>
+                            <Grid x:Name="custom_spacing_row" Visibility="Collapsed" Margin="0,5,0,1">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="80"/></Grid.ColumnDefinitions>
+                                <TextBlock Text="Custom spacing (in)" Style="{StaticResource MutedText}" VerticalAlignment="Center"/>
+                                <TextBox x:Name="tb_custom_spacing" Grid.Column="1" Text="16" Height="30" Padding="7,4" IsEnabled="False"
+                                         ToolTip="Positive on-centre spacing in inches"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource PanelCard}" Padding="11,9" Margin="0,6,0,0">
+                        <StackPanel>
+                            <TextBlock Text="SKETCH BEAM SYSTEM" Style="{StaticResource SectionHeading}" Margin="0,0,0,7"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="122"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                <TextBlock Text="Elevation from Level" FontSize="11" VerticalAlignment="Center"/>
+                                <TextBox x:Name="tb_sketch_elevation" Grid.Column="1" Text="0" Height="30" Padding="7,4"
+                                         ToolTip="Elevation offset from the existing Revit work plane. Use project units or enter feet and inches, for example -0' 4&quot;."/>
+                            </Grid>
+                            <Button x:Name="btn_sketch_beam_system" Content="Sketch Beam System" MinHeight="31" Padding="9,5" Margin="0,8,0,0"
+                                    ToolTip="Sketch a beam system using the current FramePilot framing type, spacing, placement, elevation and Custom Comments. Choose Sketch Beam System in Revit and finish the sketch to apply these settings."/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Grid.Row="3" Margin="1,7,1,6">
+                <TextBlock x:Name="txt_next_step" Text="Select roofs in Revit, then click FRAME." Style="{StaticResource MutedText}" FontSize="10"/>
+                <TextBlock x:Name="txt_status" Text="Panel stays open while you work in Revit." Foreground="#0BE7FC" FontSize="11" TextWrapping="Wrap" Margin="0,3,0,5"/>
+                <Button x:Name="btn_select_hosts" Content="Select Roofs" MinHeight="31" Padding="9,5" ToolTip="Pick matching hosts in the Revit model"/>
+            </StackPanel>
+            <Border Grid.Row="4" BorderBrush="#09CFE9" BorderThickness="1" CornerRadius="6" Background="#09273A" Padding="6">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="85"/><ColumnDefinition Width="7"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <Button x:Name="btn_cancel" Content="Close" MinHeight="34" Padding="6,5"/>
+                    <Button x:Name="btn_ok" Grid.Column="2" Content="FRAME ROOF" MinHeight="34" Padding="8,5" Style="{StaticResource PrimaryButton}"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="5" Margin="1,6,1,6">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Created by Nataraj Devaraj." Style="{StaticResource MutedText}" FontSize="10"/>
+                    <TextBlock Text="Revit 2022–2027 | IronPython 2.7" Style="{StaticResource MutedText}" FontSize="9" Margin="0,2,0,0"/>
+                </StackPanel>
+                <Button x:Name="btn_support_github" Grid.Column="1" Content="★ GitHub" MinHeight="27" Padding="7,3" FontSize="10"
+                        ToolTip="Open the NdevTools GitHub page" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
