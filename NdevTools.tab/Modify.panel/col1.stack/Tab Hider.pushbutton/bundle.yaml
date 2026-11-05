@@ -1,0 +1,424 @@
+# Localized ribbon metadata for the 20 NdevTools languages.
+title:
+  ar: "إخفاء علامات التبويب"
+  pt_br: "Ocultar abas"
+  bg: "Скриване на раздели"
+  chinese_s: "隐藏选项卡"
+  chinese_t: "隱藏頁籤"
+  cs: "Skrýt karty"
+  nl_nl: "Tabbladen verbergen"
+  en_gb: "Tab Hider"
+  en_us: "Tab Hider"
+  fa: "پنهان‌سازی زبانه‌ها"
+  fr_fr: "Masquer les onglets"
+  de_de: "Registerkarten ausblenden"
+  hu: "Lapok elrejtése"
+  it_it: "Nascondi schede"
+  ja: "タブを非表示"
+  ko: "탭 숨기기"
+  pl: "Ukryj karty"
+  ru: "Скрыть вкладки"
+  es_es: "Ocultar pestañas"
+  uk: "Приховати вкладки"
+author: "Nataraj Devaraj"
+tooltip:
+  ar: |-
+    NDEV TOOLS | TAB HIDER
+
+    أخفِ علامات تبويب شريط Revit ولوحات الإضافات المحمّلة أو أعد إظهارها باستخدام مربعات الاختيار.
+
+    طريقة الاستخدام
+    1. افتح All Revit Tabs أو صفحة علامة تبويب إضافة محمّلة.
+    2. حدد للإظهار وألغِ التحديد للإخفاء، ثم انقر Apply.
+    3. استخدم Show All لاستعادة جميع العناصر القابلة للتعديل.
+
+    الخيارات والسلوك
+    يبقى NdevTools وModify متاحين. تظل علامات التبويب السياقية والمحمية تحت تحكم Revit.
+
+    الأمان
+    يحفظ الزرّان Apply وShow All إعدادات عرض الشريط في %APPDATA%\NdevTools\TabHider\visibility.json لاستخدامها في جلسات Revit اللاحقة دون تعديل عناصر المشروع.
+
+    التوافق
+    pyRevit | IronPython 2.7
+
+    إعداد Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | TAB HIDER
+
+    Oculte ou restaure abas da faixa de opções do Revit e painéis de complementos carregados usando caixas de seleção.
+
+    COMO USAR
+    1. Abra All Revit Tabs ou a página de uma aba de complemento carregada.
+    2. Marque para mostrar, desmarque para ocultar e clique em Apply.
+    3. Use Show All para restaurar todas as entradas editáveis.
+
+    OPÇÕES E COMPORTAMENTO
+    NdevTools e Modify permanecem acessíveis. Abas contextuais e protegidas continuam sob controle do Revit.
+
+    SEGURANÇA
+    Apply e Show All salvam suas configurações de visibilidade em %APPDATA%\NdevTools\TabHider\visibility.json para as próximas sessões do Revit. Nenhum elemento do projeto é alterado.
+
+    COMPATIBILIDADE
+    pyRevit | IronPython 2.7
+
+    Criado por Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | TAB HIDER
+
+    Скривайте или възстановявайте заредени раздели на лентата на Revit и панели на добавки чрез отметки.
+
+    НАЧИН НА ИЗПОЛЗВАНЕ
+    1. Отворете All Revit Tabs или страницата на зареден раздел на добавка.
+    2. Отметнете за показване, махнете отметката за скриване и натиснете Apply.
+    3. Използвайте Show All, за да възстановите всички редактируеми записи.
+
+    ОПЦИИ И ПОВЕДЕНИЕ
+    NdevTools и Modify остават достъпни. Контекстните и защитените раздели се управляват от Revit.
+
+    БЕЗОПАСНОСТ
+    Apply и Show All записват настройките ви за видимост в %APPDATA%\NdevTools\TabHider\visibility.json за следващите сесии на Revit. Елементите на проекта не се редактират.
+
+    СЪВМЕСТИМОСТ
+    pyRevit | IronPython 2.7
+
+    Създадено от Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | TAB HIDER
+
+    使用复选框隐藏或恢复已加载的 Revit 功能区选项卡和插件面板。
+
+    使用方法
+    1. 打开 All Revit Tabs 或已加载插件选项卡的页面。
+    2. 勾选以显示，取消勾选以隐藏，然后点击 Apply。
+    3. 使用 Show All 恢复所有可编辑条目。
+
+    选项与行为
+    NdevTools 和 Modify 始终可访问。上下文和受保护的选项卡仍由 Revit 控制。
+
+    安全
+    点击 Apply 或 Show All 后，显示设置将保存到 %APPDATA%\NdevTools\TabHider\visibility.json，并在以后的 Revit 会话中使用。项目元素不会改变。
+
+    兼容性
+    pyRevit | IronPython 2.7
+
+    作者：Nataraj Devaraj。
+  chinese_t: |-
+    NDEV TOOLS | TAB HIDER
+
+    使用核取方塊隱藏或還原已載入的 Revit 功能區頁籤和增益集面板。
+
+    使用方法
+    1. 開啟 All Revit Tabs 或已載入增益集頁籤的頁面。
+    2. 勾選以顯示、取消勾選以隱藏，然後按 Apply。
+    3. 使用 Show All 還原所有可編輯項目。
+
+    選項與行為
+    NdevTools 和 Modify 保持可用。關聯式及受保護的頁籤仍由 Revit 控制。
+
+    安全
+    按下 Apply 或 Show All 後，顯示設定會儲存至 %APPDATA%\NdevTools\TabHider\visibility.json，並在日後的 Revit 工作階段中使用。專案元素不會變更。
+
+    相容性
+    pyRevit | IronPython 2.7
+
+    作者：Nataraj Devaraj。
+  cs: |-
+    NDEV TOOLS | TAB HIDER
+
+    Pomocí zaškrtávacích polí skryjte nebo obnovte načtené karty pásu karet Revitu a panely doplňků.
+
+    JAK POUŽÍVAT
+    1. Otevřete All Revit Tabs nebo stránku načtené karty doplňku.
+    2. Zaškrtnutím zobrazíte, zrušením skryjete; poté klikněte na Apply.
+    3. Pomocí Show All obnovíte všechny upravitelné položky.
+
+    MOŽNOSTI A CHOVÁNÍ
+    NdevTools a Modify zůstávají dostupné. Kontextové a chráněné karty řídí Revit.
+
+    BEZPEČNOST
+    Tlačítka Apply a Show All uloží nastavení viditelnosti do souboru %APPDATA%\NdevTools\TabHider\visibility.json pro další relace Revitu. Prvky projektu se neupravují.
+
+    KOMPATIBILITA
+    pyRevit | IronPython 2.7
+
+    Vytvořil Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | TAB HIDER
+
+    Verberg of herstel geladen Revit-linttabbladen en invoegtoepassingspanelen met selectievakjes.
+
+    GEBRUIK
+    1. Open All Revit Tabs of de pagina van een geladen invoegtoepassingstabblad.
+    2. Vink aan om te tonen, vink uit om te verbergen en klik op Apply.
+    3. Gebruik Show All om alle bewerkbare vermeldingen te herstellen.
+
+    OPTIES EN GEDRAG
+    NdevTools en Modify blijven toegankelijk. Contextuele en beschermde tabbladen blijven onder beheer van Revit.
+
+    VEILIGHEID
+    Apply en Show All slaan uw zichtbaarheidsinstellingen op in %APPDATA%\NdevTools\TabHider\visibility.json voor volgende Revit-sessies. Projectelementen worden niet gewijzigd.
+
+    COMPATIBILITEIT
+    pyRevit | IronPython 2.7
+
+    Gemaakt door Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | TAB HIDER
+
+    Hide or restore loaded Revit ribbon tabs and add-in panels using checkboxes.
+
+    HOW TO USE
+    1. Open All Revit Tabs or the page for a loaded add-in tab.
+    2. Check to show, uncheck to hide, then click Apply.
+    3. Use Show All to restore all editable entries.
+
+    OPTIONS & BEHAVIOR
+    NdevTools and Modify remain accessible. Contextual and protected tabs stay under Revit control.
+
+    SAFETY
+    Apply and Show All save your visibility settings to %APPDATA%\NdevTools\TabHider\visibility.json for future Revit sessions. Project elements are not edited.
+
+    COMPATIBILITY
+    pyRevit | IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  en_us: |-
+    NDEV TOOLS | TAB HIDER
+
+    Hide or restore loaded Revit ribbon tabs and add-in panels using checkboxes.
+
+    HOW TO USE
+    1. Open All Revit Tabs or the page for a loaded add-in tab.
+    2. Check to show, uncheck to hide, then click Apply.
+    3. Use Show All to restore all editable entries.
+
+    OPTIONS & BEHAVIOR
+    NdevTools and Modify remain accessible. Contextual and protected tabs stay under Revit control.
+
+    SAFETY
+    Apply and Show All save your visibility settings to %APPDATA%\NdevTools\TabHider\visibility.json for future Revit sessions. Project elements are not edited.
+
+    COMPATIBILITY
+    pyRevit | IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | TAB HIDER
+
+    زبانه‌های نوار ابزار Revit و پنل‌های افزونه بارگذاری‌شده را با کادرهای انتخاب پنهان یا بازیابی کنید.
+
+    روش استفاده
+    1. All Revit Tabs یا صفحه زبانه یک افزونه بارگذاری‌شده را باز کنید.
+    2. برای نمایش علامت بزنید و برای پنهان‌سازی علامت را بردارید؛ سپس Apply را بزنید.
+    3. با Show All همه موارد قابل ویرایش را بازیابی کنید.
+
+    گزینه‌ها و رفتار
+    NdevTools و Modify در دسترس می‌مانند. زبانه‌های زمینه‌ای و محافظت‌شده همچنان تحت کنترل Revit هستند.
+
+    ایمنی
+    با زدن Apply یا Show All، تنظیمات نمایش در فایل %APPDATA%\NdevTools\TabHider\visibility.json ذخیره می‌شود تا در نشست‌های بعدی Revit اعمال شود. عناصر پروژه تغییر نمی‌کنند.
+
+    سازگاری
+    pyRevit | IronPython 2.7
+
+    ساخته‌شده توسط Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | TAB HIDER
+
+    Masquez ou restaurez les onglets du ruban Revit et les panneaux de compléments chargés à l’aide de cases à cocher.
+
+    UTILISATION
+    1. Ouvrez All Revit Tabs ou la page d’un onglet de complément chargé.
+    2. Cochez pour afficher, décochez pour masquer, puis cliquez sur Apply.
+    3. Utilisez Show All pour restaurer toutes les entrées modifiables.
+
+    OPTIONS ET COMPORTEMENT
+    NdevTools et Modify restent accessibles. Les onglets contextuels et protégés restent gérés par Revit.
+
+    SÉCURITÉ
+    Apply et Show All enregistrent vos réglages de visibilité dans %APPDATA%\NdevTools\TabHider\visibility.json pour les prochaines sessions de Revit. Aucun élément du projet n’est modifié.
+
+    COMPATIBILITÉ
+    pyRevit | IronPython 2.7
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | TAB HIDER
+
+    Blenden Sie geladene Revit-Registerkarten und Zusatzmodul-Panels mit Kontrollkästchen aus oder wieder ein.
+
+    VERWENDUNG
+    1. Öffnen Sie All Revit Tabs oder die Seite einer geladenen Zusatzmodul-Registerkarte.
+    2. Aktivieren zum Anzeigen, deaktivieren zum Ausblenden; klicken Sie dann auf Apply.
+    3. Show All stellt alle bearbeitbaren Einträge wieder her.
+
+    OPTIONEN UND VERHALTEN
+    NdevTools und Modify bleiben erreichbar. Kontextabhängige und geschützte Registerkarten steuert weiterhin Revit.
+
+    SICHERHEIT
+    Apply und Show All speichern Ihre Sichtbarkeitseinstellungen für künftige Revit-Sitzungen in der Datei %APPDATA%\NdevTools\TabHider\visibility.json. Projektelemente werden nicht bearbeitet.
+
+    KOMPATIBILITÄT
+    pyRevit | IronPython 2.7
+
+    Erstellt von Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | TAB HIDER
+
+    Jelölőnégyzetekkel elrejtheti vagy visszaállíthatja a betöltött Revit-szalaglapokat és bővítménypaneleket.
+
+    HASZNÁLAT
+    1. Nyissa meg az All Revit Tabs lapot vagy egy betöltött bővítmény lapját.
+    2. Jelölje be a megjelenítéshez, törölje a jelölést az elrejtéshez, majd kattintson az Apply gombra.
+    3. A Show All minden szerkeszthető bejegyzést visszaállít.
+
+    BEÁLLÍTÁSOK ÉS MŰKÖDÉS
+    Az NdevTools és Modify elérhető marad. A környezetfüggő és védett lapokat továbbra is a Revit kezeli.
+
+    BIZTONSÁG
+    Az Apply és a Show All gomb a %APPDATA%\NdevTools\TabHider\visibility.json fájlba menti a láthatósági beállításokat a későbbi Revit-munkamenetekhez. A projektelemek nem módosulnak.
+
+    KOMPATIBILITÁS
+    pyRevit | IronPython 2.7
+
+    Készítette: Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | TAB HIDER
+
+    Nascondi o ripristina le schede della barra multifunzione di Revit e i pannelli aggiuntivi caricati tramite caselle di controllo.
+
+    COME USARE
+    1. Apri All Revit Tabs o la pagina di una scheda aggiuntiva caricata.
+    2. Seleziona per mostrare, deseleziona per nascondere, poi premi Apply.
+    3. Usa Show All per ripristinare tutte le voci modificabili.
+
+    OPZIONI E COMPORTAMENTO
+    NdevTools e Modify restano accessibili. Le schede contestuali e protette rimangono controllate da Revit.
+
+    SICUREZZA
+    Apply e Show All salvano le impostazioni di visibilità in %APPDATA%\NdevTools\TabHider\visibility.json per le successive sessioni di Revit. Gli elementi del progetto non vengono modificati.
+
+    COMPATIBILITÀ
+    pyRevit | IronPython 2.7
+
+    Creato da Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | TAB HIDER
+
+    チェックボックスで、読み込み済みの Revit リボンタブとアドインパネルを非表示または再表示します。
+
+    使い方
+    1. All Revit Tabs、または読み込み済みアドインタブのページを開きます。
+    2. 表示する項目をオン、非表示にする項目をオフにして Apply を押します。
+    3. Show All で編集可能なすべての項目を再表示します。
+
+    オプションと動作
+    NdevTools と Modify はアクセス可能なままです。コンテキストタブと保護されたタブは引き続き Revit が制御します。
+
+    安全性
+    Apply または Show All を押すと、表示設定が %APPDATA%\NdevTools\TabHider\visibility.json に保存され、次回以降の Revit セッションで適用されます。プロジェクト要素は変更されません。
+
+    互換性
+    pyRevit | IronPython 2.7
+
+    作成者：Nataraj Devaraj。
+  ko: |-
+    NDEV TOOLS | TAB HIDER
+
+    확인란으로 로드된 Revit 리본 탭과 애드인 패널을 숨기거나 복원합니다.
+
+    사용 방법
+    1. All Revit Tabs 또는 로드된 애드인 탭의 페이지를 엽니다.
+    2. 표시하려면 선택하고 숨기려면 해제한 다음 Apply를 누릅니다.
+    3. Show All로 편집 가능한 모든 항목을 복원합니다.
+
+    옵션 및 동작
+    NdevTools와 Modify는 계속 접근할 수 있습니다. 상황별 탭과 보호된 탭은 Revit이 계속 제어합니다.
+
+    안전
+    Apply 또는 Show All을 누르면 표시 설정이 %APPDATA%\NdevTools\TabHider\visibility.json 파일에 저장되어 다음 Revit 세션부터 적용됩니다. 프로젝트 요소는 변경되지 않습니다.
+
+    호환성
+    pyRevit | IronPython 2.7
+
+    제작: Nataraj Devaraj.
+  pl: |-
+    NDEV TOOLS | TAB HIDER
+
+    Ukrywaj lub przywracaj załadowane karty wstążki Revit i panele dodatków za pomocą pól wyboru.
+
+    SPOSÓB UŻYCIA
+    1. Otwórz All Revit Tabs lub stronę załadowanej karty dodatku.
+    2. Zaznacz, aby pokazać, odznacz, aby ukryć, a następnie kliknij Apply.
+    3. Show All przywraca wszystkie edytowalne pozycje.
+
+    OPCJE I DZIAŁANIE
+    NdevTools i Modify pozostają dostępne. Karty kontekstowe i chronione nadal kontroluje Revit.
+
+    BEZPIECZEŃSTWO
+    Przyciski Apply i Show All zapisują ustawienia widoczności w pliku %APPDATA%\NdevTools\TabHider\visibility.json na kolejne sesje programu Revit. Elementy projektu nie są edytowane.
+
+    ZGODNOŚĆ
+    pyRevit | IronPython 2.7
+
+    Autor: Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | TAB HIDER
+
+    Скрывайте или восстанавливайте загруженные вкладки ленты Revit и панели дополнений с помощью флажков.
+
+    КАК ИСПОЛЬЗОВАТЬ
+    1. Откройте All Revit Tabs или страницу загруженной вкладки дополнения.
+    2. Установите флажок для отображения, снимите для скрытия и нажмите Apply.
+    3. Show All восстанавливает все редактируемые позиции.
+
+    ПАРАМЕТРЫ И ПОВЕДЕНИЕ
+    NdevTools и Modify остаются доступны. Контекстными и защищёнными вкладками по-прежнему управляет Revit.
+
+    БЕЗОПАСНОСТЬ
+    Кнопки Apply и Show All сохраняют настройки видимости в файле %APPDATA%\NdevTools\TabHider\visibility.json для следующих сеансов Revit. Элементы проекта не редактируются.
+
+    СОВМЕСТИМОСТЬ
+    pyRevit | IronPython 2.7
+
+    Создано Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | TAB HIDER
+
+    Oculta o restaura pestañas de la cinta de Revit y paneles de complementos cargados mediante casillas.
+
+    CÓMO USAR
+    1. Abre All Revit Tabs o la página de una pestaña de complemento cargada.
+    2. Marca para mostrar, desmarca para ocultar y pulsa Apply.
+    3. Usa Show All para restaurar todas las entradas editables.
+
+    OPCIONES Y COMPORTAMIENTO
+    NdevTools y Modify siguen accesibles. Revit mantiene el control de las pestañas contextuales y protegidas.
+
+    SEGURIDAD
+    Apply y Show All guardan los ajustes de visibilidad en %APPDATA%\NdevTools\TabHider\visibility.json para futuras sesiones de Revit. No se editan elementos del proyecto.
+
+    COMPATIBILIDAD
+    pyRevit | IronPython 2.7
+
+    Creado por Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | TAB HIDER
+
+    Приховуйте або відновлюйте завантажені вкладки стрічки Revit і панелі надбудов за допомогою прапорців.
+
+    ЯК КОРИСТУВАТИСЯ
+    1. Відкрийте All Revit Tabs або сторінку завантаженої вкладки надбудови.
+    2. Установіть прапорець для показу, зніміть для приховування та натисніть Apply.
+    3. Show All відновлює всі редаговані записи.
+
+    ПАРАМЕТРИ ТА ПОВЕДІНКА
+    NdevTools і Modify залишаються доступними. Контекстними та захищеними вкладками й надалі керує Revit.
+
+    БЕЗПЕКА
+    Кнопки Apply та Show All зберігають налаштування видимості у файлі %APPDATA%\NdevTools\TabHider\visibility.json для наступних сеансів Revit. Елементи проєкту не редагуються.
+
+    СУМІСНІСТЬ
+    pyRevit | IronPython 2.7
+
+    Створено Nataraj Devaraj.

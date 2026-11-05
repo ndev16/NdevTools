@@ -1,0 +1,63 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NdevTools | Match Properties" Width="440" Height="470" MinWidth="400" MinHeight="440"
+        Background="#051220" Foreground="#DEEFFB" FontFamily="Segoe UI" FontSize="12"
+        WindowStartupLocation="CenterOwner" ResizeMode="CanResize" ShowInTaskbar="False">
+  <Window.Resources>
+    <Style TargetType="TextBlock"><Setter Property="Foreground" Value="#DEEFFB"/><Setter Property="TextWrapping" Value="Wrap"/></Style>
+    <Style TargetType="Button">
+      <Setter Property="Background" Value="#09243A"/><Setter Property="Foreground" Value="#D5EDFA"/>
+      <Setter Property="BorderBrush" Value="#176282"/><Setter Property="Padding" Value="13,7"/><Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="6" Padding="{TemplateBinding Padding}">
+          <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter Property="Background" Value="#124264"/><Setter Property="BorderBrush" Value="#02D8F5"/></Trigger>
+          <Trigger Property="IsKeyboardFocused" Value="True"><Setter Property="BorderBrush" Value="#0FE0FB"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+  </Window.Resources>
+  <Grid Margin="14,12">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <Border BorderBrush="#165573" BorderThickness="0,0,0,1" Padding="0,0,0,12" Margin="0,0,0,12">
+      <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <Image x:Name="brand_image" Width="36" Height="38" Stretch="Uniform" Margin="0,0,10,0"/>
+        <StackPanel Grid.Column="1">
+          <TextBlock Text="Match Properties" FontSize="21" FontWeight="Bold" Foreground="#06D8FB"/>
+          <TextBlock Text="MODEL &amp; ANNOTATION PROPERTIES" FontSize="9" Foreground="#ABD5E8" Margin="0,2,0,0"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0,0,0">
+          <Button x:Name="github_button" Content="★ GitHub" Padding="8,4"
+                  ToolTip="Open the NdevTools GitHub repository" AutomationProperties.Name="Open NdevTools on GitHub"/>
+          <Button x:Name="help_button" Content="? Help" Padding="8,4" Margin="4,0,0,0"
+                  ToolTip="How to match properties" AutomationProperties.Name="Match Properties Help"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+      <StackPanel>
+        <Border BorderBrush="#075776" BorderThickness="1" CornerRadius="7" Padding="14,12">
+          <Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#052039" Offset="0"/><GradientStop Color="#061B2F" Offset="1"/></LinearGradientBrush></Border.Background>
+          <StackPanel>
+            <TextBlock Text="SOURCE &#8594; TARGETS" FontSize="11" FontWeight="Bold" Foreground="#0BE7FC" Margin="0,0,0,12"/>
+            <TextBlock Text="1   Pick the element to copy from." Margin="0,0,0,10"/>
+            <TextBlock Text="2   Check the properties you want to copy." Margin="0,0,0,10"/>
+            <TextBlock Text="3   Select similar target elements and click Finish."/>
+          </StackPanel>
+        </Border>
+
+        <TextBlock Text="Supports model elements, text notes, tags, dimensions and other native Revit instances. Pick a source, then choose properties and compatible targets." Foreground="#88ADC2" FontSize="11" Margin="2,8,2,0"/>
+        <TextBlock Text="Copied constraints, offsets and justification can reposition target geometry. Pinned and grouped targets are retained." Foreground="#88ADC2" FontSize="11" Margin="2,8,2,12"/>
+      </StackPanel>
+    </ScrollViewer>
+    <Grid Grid.Row="2" Margin="0,12,0,0">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <Button x:Name="start_button" Content="Start matching" Background="#0DC7E7" Foreground="#002032" FontWeight="Bold" IsDefault="True" Margin="0,0,10,0"/>
+      <Button Grid.Column="1" x:Name="cancel_button" Content="Close" IsCancel="True"/>
+    </Grid>
+    <TextBlock Grid.Row="3" Text="Created by Nataraj Devaraj." FontSize="10" Foreground="#88ADC2" Margin="1,10,0,0"/>
+  </Grid>
+</Window>

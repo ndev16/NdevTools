@@ -1,0 +1,307 @@
+title:
+  ar: "Sheet Clipboard"
+  pt_br: "Sheet Clipboard"
+  bg: "Sheet Clipboard"
+  chinese_s: "Sheet Clipboard"
+  chinese_t: "Sheet Clipboard"
+  cs: "Sheet Clipboard"
+  nl_nl: "Sheet Clipboard"
+  en_gb: "Sheet Clipboard"
+  en_us: "Sheet Clipboard"
+  fa: "Sheet Clipboard"
+  fr_fr: "Sheet Clipboard"
+  de_de: "Sheet Clipboard"
+  hu: "Sheet Clipboard"
+  it_it: "Sheet Clipboard"
+  ja: "Sheet Clipboard"
+  ko: "Sheet Clipboard"
+  pl: "Sheet Clipboard"
+  ru: "Sheet Clipboard"
+  es_es: "Sheet Clipboard"
+  uk: "Sheet Clipboard"
+author: "Nataraj Devaraj"
+tooltip:
+  ar: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    حدد المساقط والجداول وعناصر التعليق الموضوعة على لوحة المصدر. تبقى العناصر الأصلية على لوحة المصدر، ويمكن لصق نسخ منها أكثر من مرة.
+
+    1. تُنسخ المساقط، بما فيها الإنشائية ومساقط المساحات والأسقف، وكذلك القطاعات والواجهات ومساقط التفاصيل والرسم، مع عناصر التفصيل.
+    2. تُنسخ المساقط ثلاثية الأبعاد، المتعامدة والمنظورية، بأمر التكرار العادي.
+    3. ينشئ النسخ جدولًا مستقلًا يحتفظ بتقسيماته، ويضع المقاطع المحددة فقط.
+    4. لكل مفتاح رموز أو جدول أعمدة رسومي، اختر أحد خيارات المشاركة أو النسخ المتاحة، أو تخطَّ العنصر.
+    5. عند نسخ تحديد مختلط، تُلصق العناصر المدعومة ويظهر سبب تخطي كل عنصر آخر.
+    6. يُبقي القص العناصر الأصلية على لوحة المصدر إلى أن ينقلها اللصق.
+    7. انقر على لوحة الوجهة لتحديد مركز المجموعة مع الحفاظ على المسافات بين العناصر. يلغي مفتاح Esc عملية الوضع ويُبقي محتوى الحافظة.
+
+    إعداد Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Selecione as vistas, tabelas e anotações colocadas na folha de origem. Os originais permanecem na folha de origem e você pode colar novas cópias várias vezes.
+
+    1. Plantas de piso, estruturais, de área e de forro, cortes, elevações e vistas de detalhe e de desenho são duplicados com detalhamento.
+    2. Vistas 3D ortográficas e em perspectiva usam Duplicar.
+    3. A cópia cria uma tabela independente, mantém suas divisões e coloca apenas os segmentos selecionados.
+    4. Para cada legenda ou tabela gráfica de pilares, escolha uma opção disponível de compartilhamento ou duplicação, ou pule o item.
+    5. Em uma seleção mista, são colados os itens compatíveis e é informado o motivo de cada item ignorado.
+    6. Recortar mantém os originais na folha de origem até que Colar os mova.
+    7. Clique na folha de destino para definir o centro do grupo e manter o espaçamento entre os itens. Esc cancela a colocação e mantém o conteúdo da área de transferência.
+
+    Criado por Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Изберете изгледите, спецификациите и анотациите върху изходния лист. Оригиналите остават на изходния лист и можете да поставяте копия многократно.
+
+    1. Етажните, конструктивните, площните и таванните планове, разрезите, фасадите, детайлите и чертожните изгледи се дублират заедно с детайлните елементи.
+    2. За ортогонални и перспективни 3D изгледи се използва обикновено дублиране.
+    3. Създава се независима спецификация със същото разделяне. Поставят се само избраните сегменти.
+    4. За всяка легенда или графична спецификация на колони изберете наличен начин за споделяне или дублиране или пропуснете елемента.
+    5. При смесена селекция се поставят поддържаните елементи и се посочва причината за всеки пропуснат елемент.
+    6. Изрязаните оригинали остават на изходния лист до преместването им с командата за поставяне.
+    7. Щракнете върху целевия лист, за да зададете центъра на групата и да запазите разстоянията. Esc отменя поставянето и запазва съдържанието на клипборда.
+
+    Автор: Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    在源图纸上选择已放置的视图、明细表和注释。 原件保留在源图纸上，可以多次粘贴副本。
+
+    1. 楼层平面、结构平面、面积平面、天花板平面、剖面、立面、详图和绘图视图均使用“带细节复制”。
+    2. 正交和透视三维视图使用普通“复制”。
+    3. 复制会创建独立明细表，保留原有分段，只放置所选段。
+    4. 对于每个图例或图形柱明细表，可选择可用的共享或复制方式，也可跳过。
+    5. 复制混合选择时，将粘贴支持的项目，并说明跳过其他项目的原因。
+    6. 剪切后，原件保留在源图纸上，直到粘贴时才移动。
+    7. 在目标图纸上单击以指定整组的中心，项目之间的间距保持不变。按 Esc 可取消放置并保留剪贴板内容。
+
+    作者：Nataraj Devaraj。
+  chinese_t: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    在來源圖紙上選取已放置的視圖、明細表和註解。 原件會保留在來源圖紙上，可以多次貼上複本。
+
+    1. 樓層平面、結構平面、面積平面、天花板平面、剖面、立面、詳圖及製圖視圖均使用「含詳細資料複製」。
+    2. 正交與透視 3D 視圖使用一般的「複製」。
+    3. 複製會建立獨立的明細表，保留原有分段，僅放置選取的區段。
+    4. 針對每個圖例或圖形柱明細表，請選擇可用的共用或複製方式，也可以略過。
+    5. 複製混合選取的項目時，會貼上支援的項目，並說明略過其他項目的原因。
+    6. 剪下後，原件會留在來源圖紙上，直到貼上時才移動。
+    7. 在目標圖紙上按一下以指定整組的中心，保留項目之間的間距。按 Esc 可取消放置並保留剪貼簿內容。
+
+    作者：Nataraj Devaraj。
+  cs: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Na zdrojovém výkresu vyberte umístěné pohledy, výkazy a poznámky. Originály zůstanou na zdrojovém výkresu a kopie můžete vložit opakovaně.
+
+    1. Půdorysy podlaží, konstrukcí, ploch a podhledů, řezy, pohledy na fasády, detaily a pohledy kresby se duplikují včetně detailů.
+    2. Ortogonální a perspektivní 3D pohledy používají prosté duplikování.
+    3. Vznikne nezávislý výkaz se zachovaným rozdělením. Umístí se pouze vybrané části.
+    4. U každé legendy nebo grafického výkazu sloupů vyberte dostupnou možnost sdílení či duplikování, nebo položku přeskočte.
+    5. U smíšeného výběru se vloží podporované položky a u každé přeskočené položky se zobrazí důvod.
+    6. Po vyjmutí zůstanou originály na zdrojovém výkresu až do přesunutí příkazem Vložit.
+    7. Kliknutím na cílový výkres určete střed skupiny. Rozestupy zůstanou zachovány. Esc zruší umístění a ponechá obsah ve schránce.
+
+    Autor: Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Selecteer de aanzichten, tabellen en annotaties die op het bronblad zijn geplaatst. De originelen blijven op het bronblad. U kunt de kopieën meermaals plakken.
+
+    1. Plattegronden, constructie-, oppervlakte- en plafondplannen, doorsneden, gevelaanzichten, details en tekenaanzichten worden met detaillering gedupliceerd.
+    2. Orthografische en perspectivische 3D-aanzichten worden gewoon gedupliceerd.
+    3. Kopiëren maakt een onafhankelijke tabel met dezelfde segmentindeling. Alleen de geselecteerde segmenten worden geplaatst.
+    4. Kies voor elke legenda of grafische kolommenstaat een beschikbare optie om het aanzicht te delen of te dupliceren, of sla het over.
+    5. Bij een gemengde selectie worden de ondersteunde items geplakt. Voor elk overgeslagen item verschijnt de reden.
+    6. Na het knippen blijven de originelen op het bronblad totdat Plakken ze verplaatst.
+    7. Klik op het doelblad om het middelpunt van de groep te bepalen. De onderlinge afstanden blijven behouden. Esc annuleert het plaatsen en bewaart de inhoud van het klembord.
+
+    Gemaakt door Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Select views, schedules and annotations placed on the source sheet. Copy keeps the originals on the source sheet. You can paste the selection more than once.
+
+    1. Floor, structural, area and ceiling plans, sections, elevations, details and drafting views use Duplicate with Detailing.
+    2. Orthographic and perspective 3D views use Duplicate.
+    3. Copy creates an independent schedule, preserves its splits and places only the selected segments.
+    4. For each legend or graphical column schedule, choose an available sharing or duplication option, or skip it.
+    5. When copying a mixed selection, Paste places the supported items and reports why the others were skipped.
+    6. Cut keeps the originals on the source sheet until Paste moves them.
+    7. Click the destination sheet to set the group’s centre and preserve the spacing between items. Esc cancels placement and keeps the clipboard.
+
+    Created by Nataraj Devaraj.
+  en_us: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Select views, schedules, and annotations placed on the source sheet. Copy keeps the originals on the source sheet. You can paste the selection more than once.
+
+    1. Floor, structural, area, and ceiling plans, sections, elevations, details, and drafting views use Duplicate with Detailing.
+    2. Orthographic and perspective 3D views use Duplicate.
+    3. Copy creates an independent schedule, preserves its splits, and places only the selected segments.
+    4. For each legend or graphical column schedule, choose an available sharing or duplication option, or skip it.
+    5. When copying a mixed selection, Paste places the supported items and reports why the others were skipped.
+    6. Cut keeps the originals on the source sheet until Paste moves them.
+    7. Click the destination sheet to set the group’s center and preserve the spacing between items. Esc cancels placement and keeps the clipboard.
+
+    Created by Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    نماها، جدول‌ها و یادداشت‌های قرارگرفته روی شیت مبدأ را انتخاب کنید. با کپی، عناصر اصلی روی شیت مبدأ می‌مانند و می‌توانید نسخه‌ها را چند بار بچسبانید.
+
+    1. پلان‌های طبقات، سازه، مساحت و سقف کاذب، برش‌ها، نماهای ساختمان، جزئیات و نماهای ترسیمی همراه با جزئیات تکثیر می‌شوند.
+    2. برای نماهای سه‌بعدی موازی و پرسپکتیو از تکثیر ساده استفاده می‌شود.
+    3. کپی یک جدول مستقل با همان تقسیم‌بندی می‌سازد و فقط بخش‌های انتخاب‌شده را قرار می‌دهد.
+    4. برای هر راهنما یا جدول گرافیکی ستون‌ها، یکی از روش‌های موجود برای استفاده از همان نما یا تکثیر آن را انتخاب کنید، یا از آن بگذرید.
+    5. هنگام کپی یک مجموعهٔ ترکیبی، عناصر پشتیبانی‌شده چسبانده می‌شوند و دلیل رد شدن بقیه نمایش داده می‌شود.
+    6. پس از برش، عناصر اصلی روی شیت مبدأ می‌مانند تا با چسباندن جابه‌جا شوند.
+    7. روی شیت مقصد کلیک کنید تا مرکز گروه مشخص شود و فاصلهٔ عناصر حفظ شود. با Esc عملیات قرارگیری لغو می‌شود و محتوای کلیپ‌بورد باقی می‌ماند.
+
+    پدیدآورنده: Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Sélectionnez les vues, les nomenclatures et les annotations placées sur la feuille source. Les originaux restent sur la feuille source. Vous pouvez coller plusieurs fois la sélection.
+
+    1. Les plans d’étage, de structure, de surface et de plafond, les coupes, les élévations et les vues de détail et de dessin sont dupliqués avec les détails.
+    2. Les vues 3D orthographiques et en perspective utilisent la duplication simple.
+    3. La copie crée une nomenclature indépendante et conserve son découpage. Seuls les segments sélectionnés sont placés.
+    4. Pour chaque légende ou nomenclature graphique de poteaux, choisissez une option disponible de partage ou de duplication, ou ignorez l’élément.
+    5. Pour une sélection mixte, les éléments pris en charge sont collés et le motif est indiqué pour chaque élément ignoré.
+    6. Les éléments coupés restent sur la feuille source jusqu’à leur déplacement par la commande Coller.
+    7. Cliquez sur la feuille de destination pour fixer le centre du groupe. L’espacement entre les éléments est conservé. Échap annule le placement et conserve le contenu du presse-papiers.
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Wählen Sie auf dem Quellplan platzierte Ansichten, Bauteillisten und Beschriftungen aus. Die Originale bleiben auf dem Quellplan. Sie können die Auswahl mehrfach einfügen.
+
+    1. Grundrisse, Tragwerkspläne, Flächenpläne, Deckenpläne, Schnitte, Ansichten, Detail- und Zeichenansichten werden mit Detaillierung dupliziert.
+    2. Orthogonale und perspektivische 3D-Ansichten werden mit der Option Duplizieren kopiert.
+    3. Beim Kopieren entsteht eine unabhängige Bauteilliste mit derselben Unterteilung. Nur die ausgewählten Segmente werden platziert.
+    4. Wählen Sie für jede Legende oder grafische Stützenliste eine verfügbare Option zur Wiederverwendung oder zum Duplizieren aus, oder überspringen Sie den Eintrag.
+    5. Bei einer gemischten Auswahl werden die unterstützten Elemente eingefügt. Für jedes übersprungene Element wird der Grund angezeigt.
+    6. Ausgeschnittene Originale bleiben auf dem Quellplan, bis sie mit Einfügen verschoben werden.
+    7. Klicken Sie auf den Zielplan, um den Gruppenmittelpunkt festzulegen. Die Abstände bleiben erhalten. Esc bricht die Platzierung ab und erhält den Inhalt der Zwischenablage.
+
+    Erstellt von Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Jelölje ki a forrás tervlapon elhelyezett nézeteket, kimutatásokat és feliratokat. Az eredeti elemek a forrás tervlapon maradnak. A másolatok többször is beilleszthetők.
+
+    1. A szint-, tartószerkezeti, terület- és álmennyezeti alaprajzok, metszetek, homlokzatok, részletnézetek és rajznézetek a részletekkel együtt másolódnak.
+    2. Az ortografikus és perspektivikus 3D nézetek egyszerű másolással jönnek létre.
+    3. A másolás önálló kimutatást hoz létre, megtartja a felosztását, és csak a kijelölt szegmenseket helyezi el.
+    4. Minden jelmagyarázatnál és grafikus oszlopkimutatásnál válasszon a rendelkezésre álló megosztási és másolási lehetőségek közül, vagy hagyja ki az elemet.
+    5. Vegyes kijelölésnél a támogatott elemek beillesztésre kerülnek, és a program jelzi minden kihagyás okát.
+    6. Kivágás után az eredeti elemek a forrás tervlapon maradnak, amíg a Beillesztés át nem helyezi őket.
+    7. A céltervlapon kattintással jelölje ki a csoport középpontját. Az elemek közötti távolság megmarad. Az Esc megszakítja az elhelyezést, a vágólap tartalma megmarad.
+
+    Készítette: Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Selezionare le viste, gli abachi e le annotazioni posizionati sulla tavola di origine. Gli originali rimangono sulla tavola di origine. È possibile incollare più volte la selezione.
+
+    1. Le piante dei pavimenti, strutturali, delle aree e dei controsoffitti, le sezioni, i prospetti e le viste di dettaglio e di disegno vengono duplicati con i dettagli.
+    2. Le viste 3D ortogonali e prospettiche utilizzano la duplicazione semplice.
+    3. La copia crea un abaco indipendente, ne mantiene le suddivisioni e posiziona solo i segmenti selezionati.
+    4. Per ogni legenda o abaco grafico dei pilastri, scegliere un’opzione disponibile per riutilizzare o duplicare la vista, oppure ignorare l’elemento.
+    5. In una selezione mista vengono incollati gli elementi supportati e viene indicato il motivo per ciascun elemento ignorato.
+    6. Gli elementi tagliati rimangono sulla tavola di origine finché il comando Incolla non li sposta.
+    7. Fare clic sulla tavola di destinazione per fissare il centro del gruppo. Le distanze tra gli elementi vengono mantenute. Esc annulla il posizionamento e conserva il contenuto degli Appunti.
+
+    Creato da Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    元のシートに配置されているビュー、集計表、注釈を選択します。 元の項目をシートに残したまま、選択した項目のコピーを何度でも貼り付けられます。
+
+    1. 平面図、構造伏図、エリアプラン、天井伏図、断面図、立面図、詳細ビュー、製図ビューには［詳細を含めて複製］を使用します。
+    2. 正投影およびパースの 3D ビューには、通常の［複製］を使用します。
+    3. 集計表は独立した集計表として複製されます。分割を維持し、選択したセグメントだけを配置します。
+    4. 凡例とグラフィカル柱集計表では、項目ごとに選択可能な共有または複製方法を指定するか、スキップします。
+    5. 複数の種類を選択すると、対応する項目を貼り付け、スキップした項目ごとに理由を表示します。
+    6. 切り取った項目は、貼り付けて移動するまで元のシートに残ります。
+    7. 貼り付け先のシートでグループの中心をクリックします。項目間の間隔は維持されます。Esc キーで配置を取り消しても、クリップボードの内容は保持されます。
+
+    作成者: Nataraj Devaraj
+  ko: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    원본 시트에 배치된 뷰, 일람표, 주석을 선택합니다. 원본은 시트에 남으며 선택 항목의 복사본을 여러 번 붙여넣을 수 있습니다.
+
+    1. 평면도, 구조 평면도, 면적 평면도, 천장 평면도, 단면도, 입면도, 상세 뷰 및 제도 뷰는 상세 항목을 포함하여 복제합니다.
+    2. 직교 및 투시 3D 뷰에는 일반 복제를 사용합니다.
+    3. 독립적인 일람표를 만들고 기존 분할을 유지하며 선택한 세그먼트만 배치합니다.
+    4. 범례와 그래픽 기둥 일람표마다 사용 가능한 공유 또는 복제 방식을 선택하거나 해당 항목을 건너뜁니다.
+    5. 여러 종류의 항목을 복사하면 지원되는 항목을 붙여넣고 각 항목을 건너뛴 이유를 표시합니다.
+    6. 잘라낸 원본은 붙여넣기로 이동하기 전까지 원본 시트에 남습니다.
+    7. 대상 시트에서 그룹의 중심을 클릭합니다. 항목 간 간격은 유지됩니다. Esc 키를 누르면 배치가 취소되고 클립보드 내용은 유지됩니다.
+
+    작성자: Nataraj Devaraj
+  pl: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Wybierz widoki, zestawienia i opisy umieszczone na arkuszu źródłowym. Oryginały pozostają na arkuszu źródłowym. Kopie można wklejać wielokrotnie.
+
+    1. Rzuty kondygnacji, konstrukcji, powierzchni i sufitów, przekroje, elewacje oraz widoki szczegółów i widoki kreślarskie są powielane wraz ze szczegółami.
+    2. Widoki 3D ortogonalne i perspektywiczne są powielane poleceniem Powiel.
+    3. Kopia zestawienia jest niezależna i zachowuje jego podział. Na arkuszu umieszczane są tylko wybrane segmenty.
+    4. Dla każdej legendy lub graficznego zestawienia słupów wybierz dostępną opcję użycia tego samego widoku lub powielenia albo pomiń dany element.
+    5. Przy kopiowaniu różnych typów elementów wklejane są obsługiwane pozycje. Dla każdej pominiętej pozycji podawany jest powód.
+    6. Wycięte elementy pozostają na arkuszu źródłowym do chwili przeniesienia ich poleceniem Wklej.
+    7. Kliknij arkusz docelowy, aby ustalić środek grupy i zachować odstępy między elementami. Esc anuluje wstawianie i zachowuje zawartość schowka.
+
+    Autor: Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Выберите виды, спецификации и аннотации, размещённые на исходном листе. Оригиналы останутся на исходном листе. Копии можно вставлять несколько раз.
+
+    1. Планы этажей, несущих конструкций, зон и потолков, разрезы, фасады, узлы и чертёжные виды копируются с детализацией.
+    2. Для ортогональных и перспективных 3D-видов используется обычное копирование вида.
+    3. Создаётся независимая спецификация с сохранением разбивки. На лист помещаются только выбранные сегменты.
+    4. Для каждой легенды или графической спецификации колонн выберите доступный вариант повторного использования или копирования либо пропустите элемент.
+    5. При смешанной выборке вставляются поддерживаемые элементы. Для каждого пропущенного элемента указывается причина.
+    6. Вырезанные элементы остаются на исходном листе, пока команда «Вставить» не переместит их.
+    7. Щёлкните на целевом листе, чтобы задать центр группы. Расстояния между элементами сохраняются. Esc отменяет размещение и сохраняет содержимое буфера обмена.
+
+    Автор: Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Seleccione las vistas, las tablas de planificación y las anotaciones colocadas en el plano de origen. Los originales permanecen en el plano de origen y la selección se puede pegar varias veces.
+
+    1. Los planos de planta, estructurales, de área y de techo, las secciones, los alzados, las vistas de detalle y las vistas de diseño se duplican con detalles.
+    2. Las vistas 3D ortogonales y en perspectiva utilizan la opción Duplicar.
+    3. Se crea una tabla de planificación independiente que conserva sus divisiones. Solo se colocan los segmentos seleccionados.
+    4. Para cada leyenda o tabla gráfica de planificación de pilares, elija una opción disponible para reutilizar o duplicar la vista, u omita el elemento.
+    5. Al copiar una selección mixta, se pegan los elementos admitidos y se indica el motivo de cada omisión.
+    6. Los originales cortados permanecen en el plano de origen hasta que la orden Pegar los traslada.
+    7. Haga clic en el plano de destino para fijar el centro del grupo y conservar la separación entre elementos. Esc cancela la colocación y mantiene el contenido del portapapeles.
+
+    Creado por Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | SHEET CLIPBOARD
+
+    Виберіть види, специфікації та анотації, розміщені на вихідному аркуші. Оригінали залишаються на вихідному аркуші. Копії можна вставляти кілька разів.
+
+    1. Плани поверхів, конструкцій, площ і стель, розрізи, фасади, детальні та креслярські види дублюються разом з елементами деталізації.
+    2. Для ортогональних і перспективних 3D-видів використовується звичайне дублювання.
+    3. Створюється незалежна специфікація з тим самим поділом. На аркуші розміщуються лише вибрані сегменти.
+    4. Для кожної легенди або графічної специфікації колон виберіть доступний спосіб спільного використання чи дублювання або пропустіть елемент.
+    5. Якщо вибрано елементи різних типів, буде вставлено підтримувані елементи. Для кожного пропущеного елемента буде вказано причину.
+    6. Вирізані елементи залишаються на вихідному аркуші, доки команда «Вставити» їх не перемістить.
+    7. Клацніть на цільовому аркуші, щоб задати центр групи. Відстані між елементами збережуться. Esc скасовує розміщення та зберігає вміст буфера обміну.
+
+    Автор: Nataraj Devaraj.
+layout:
+  - Cut
+  - Copy
+  - Paste

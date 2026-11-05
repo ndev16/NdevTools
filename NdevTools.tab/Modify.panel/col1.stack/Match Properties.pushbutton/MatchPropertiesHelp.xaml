@@ -1,0 +1,18 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NdevTools | Match Properties - Help" Width="550" Height="470"
+        MinWidth="320" MinHeight="250" WindowStartupLocation="CenterOwner"
+        Background="#051220" Foreground="#DEEFFB" FontFamily="Segoe UI" FontSize="13"
+        ShowInTaskbar="False" UseLayoutRounding="True">
+  <Grid Margin="18">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock x:Name="heading" FontWeight="Bold" Foreground="#06D8FB" FontSize="16"
+               TextWrapping="Wrap" Margin="0,0,0,12"/>
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+      <TextBlock x:Name="instructions" TextWrapping="Wrap" LineHeight="19" Margin="0,0,8,4"/>
+    </ScrollViewer>
+    <Button Grid.Row="2" Content="Close" IsCancel="True" HorizontalAlignment="Right" MinWidth="72" Margin="0,12,0,0"/>
+  </Grid>
+</Window>

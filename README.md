@@ -1,6 +1,12 @@
 # NdevTools | Smart BIM Tools
 
-![NdevTools: 20-language support and black-and-white theme icons](media/NdevTools-20-Language-Support.png)
+## Cut and paste detail views between Revit sheets
+
+Four foundation details need to move from S501 to S502. Select their viewports on S501 and choose **Sheets → Sheet Clipboard → Cut**. Open S502, choose **Paste**, and click where the center of the group should land.
+
+> **All four original detail views move together, with their detailing and spacing intact.** One Revit **Undo** returns the whole group to S501.
+
+![Powerful tools, a more global experience. 20 languages supported.](media/NdevTools-20-Language-Support.png)
 
 **NdevTools supports 20 language options** for pyRevit ribbon button titles and bundle tooltip descriptions, with black icons for light themes and white icons for dark themes. The tool commands remain the same across languages.
 
@@ -11,7 +17,7 @@
 
 ## Multilingual support — 20 languages
 
-NdevTools includes localized **ribbon titles and bundle tooltip descriptions for all 12 commands** in the following 20 pyRevit locale options:
+NdevTools includes localized **ribbon titles and bundle tooltip descriptions for all 19 commands** in the following 20 pyRevit locale options:
 
 | Language | Locale code | Language | Locale code |
 | --- | --- | --- | --- |
@@ -28,13 +34,19 @@ NdevTools includes localized **ribbon titles and bundle tooltip descriptions for
 
 **Language selection:** An explicit **pyRevit Settings → Language** choice takes priority. With no override, NdevTools follows the active Revit interface language. Unavailable UI strings fall back to English. Revit's spelling-dictionary preference does not change its interface language.
 
-**Localization scope:** The 20-language coverage applies to button titles and bundle tooltip descriptions for all 12 commands. Some longer, dynamically generated messages and custom dialog text may remain in English. Translations, especially specialized engineering terminology and right-to-left presentation, should be reviewed by native speakers. See [Bundle translations](BUNDLE_TRANSLATIONS.md) for details.
+**Localization scope:** The 20-language coverage applies to button titles and bundle tooltip descriptions for all 19 commands. Some longer, dynamically generated messages and custom dialog text may remain in English. Translations, especially specialized engineering terminology and right-to-left presentation, should be reviewed by native speakers. See [Bundle translations](BUNDLE_TRANSLATIONS.md) for details.
 
-**Theme icons:** Each of the 12 commands includes `icon.png` (dark/black artwork for a light background) and `icon.dark.png` (white artwork for a dark background). Availability of theme switching depends on the Revit/pyRevit version.
+**Theme icons:** Each of the 19 commands includes `icon.png` (dark/black artwork for a light background) and `icon.dark.png` (white artwork for a dark background). Availability of theme switching depends on the Revit/pyRevit version.
 
 ## Ribbon layout
 
-![NdevTools ribbon layout](media/NdevTools-Ribbon.png)
+[![NdevTools ribbon with Move Views and Sheet Clipboard in Sheets, and Match Properties, Renumber and Tab Hider in Modify](media/NdevTools-Ribbon.png)](media/NdevTools-Ribbon.png)
+
+[Open the full-size ribbon](media/NdevTools-Ribbon.png)
+
+Open the **NdevTools** tab in Revit. Its six panels run from left to right: **Welcome → Annotation → Sheets → Modify → 3D Model → Handy**.
+
+In **Sheets**, the third column has **Move Views** above **Sheet Clipboard**. Open the clipboard dropdown for **Cut**, **Copy**, and **Paste**. The next panel, **Modify**, stacks **Match Properties**, **Renumber**, and **Tab Hider** from top to bottom.
 
 | Panel | Ribbon button | Purpose |
 | --- | --- | --- |
@@ -46,6 +58,13 @@ NdevTools includes localized **ribbon titles and bundle tooltip descriptions for
 | **Sheets** | Match Crop Regions | Apply one plan view's crop region to multiple compatible plan views. |
 | **Sheets** | Viewport Position Manager | Save, rename, manage and reuse named sheet viewport positions. |
 | **Sheets** | ViewPilot | Review and batch rename, duplicate, and assign compatible view settings. |
+| **Sheets** | Move Views | Arrange selected sheet items in two previews and open an item on its sheet for native Revit editing. |
+| **Sheets** | Sheet Clipboard → Cut | Cut detail views and other placed views from a sheet for pasting together on another sheet. |
+| **Sheets** | Sheet Clipboard → Copy | Record placed items to copy using the duplication rules for each view type. |
+| **Sheets** | Sheet Clipboard → Paste | Pick a point on the destination sheet to place the group. |
+| **Modify** | Match Properties | Apply selected instance properties or the source type to compatible targets. |
+| **Modify** | Renumber | Number elements in pick order with a configurable start, step and exclusions. |
+| **Modify** | Tab Hider | Choose which editable ribbon tabs and add-in panels are visible. |
 | **3D Model** | Wall Tracing | Trace supported structural walls and verified rectangular openings from an architectural link. |
 | **3D Model** | FramePilot | Create structural framing for Roof, Flat Truss, Floor and Ceiling hosts, or sketch a beam system. |
 | **Handy** | Notes | Write formatted, illustrated notes with multiple A4 portrait/landscape sheets and local saving. |
@@ -138,6 +157,26 @@ Batch rename and duplicate views with previews, compatible View Template and Sco
 
 **Typical workflow:** Check source views, configure names, copies and settings, open Review Changes, then select **Apply Checked Changes** and confirm. Common Duplication Method locks each checked compatible source to one copy; turn it off to reset copy quantities for selected or visible views. Reviewing pending changes and the Project Health Report are read-only. Revit writes use the command's undoable transaction workflow; template-controlled and dependent-view settings can be read-only.
 
+### Sheets → Move Views
+
+![Move Views showing S101 Framing Plans as the target on the left and S001 Title Sheet as the source on the right](media/screenshots/MoveViews.png)
+
+*In this example, select Central Pile on S001 — Title Sheet (right), then drag it to the spot you want on S101 — Framing Plans (left).*
+
+In **Move Views**, choose a target sheet on the left and a source sheet on the right. Ctrl-click items in the preview or open its **Views** list. Drag a selection within or between previews to set its position. **Move to target** keeps the original sheet coordinates. Double-click an item to select it on its Revit sheet for editing. **Swap** exchanges the two previews.
+
+### Sheets → Sheet Clipboard
+
+With **Sheet Clipboard → Cut**, the selected views stay on their source sheet until you paste them onto another sheet in the same project. **Paste** lets you pick the group’s center. Press **Esc** while picking a point to cancel placement and keep the cut selection available. Use **Copy** when you want to keep the originals on the source sheet and paste additional copies.
+
+Copy uses **Duplicate with Detailing** for supported plans, sections, elevations and detail or drafting views, and **Duplicate** for 3D views. Ordinary schedules get an independent copy with the original splits and only the selected segments placed. For legends and graphical column schedules, choose from the available placement or duplication options. A mixed copy reports skipped items.
+
+### Modify → Match Properties, Renumber and Tab Hider
+
+- **Match Properties.** Pick a source element, check properties to apply, select compatible targets and click **Finish**. Review the results in the report. Text notes keep their wording and tags keep their references.
+- **Renumber.** Choose the category, starting value, step and any exclusions. Click **Start picking**, select elements in sequence and press Esc to finish.
+- **Tab Hider.** Check the tabs or add-in panels to show and uncheck those to hide. Click **Apply** to keep those choices across projects and Revit restarts. **Show All** shows all loaded, editable entries and saves that choice. The header includes Help, a GitHub star button for the project, and a link to Nataraj Devaraj on LinkedIn.
+
 ### 3D Model → Wall Tracing
 
 Create supported host-model structural Basic Walls and verified rectangular openings from a selected architectural Revit link.
@@ -185,7 +224,7 @@ Embedded browsing requires an internet connection and the active Revit installat
 3. **Manual alternative:** Download this repository as a ZIP (or clone it).
 4. Extract the repository files into a folder named **`NdevTools.extension`** inside a pyRevit extensions location. The `NdevTools.tab` folder and `extension.json` must sit directly inside `NdevTools.extension`.
 5. If your folder is not already registered with pyRevit, add its parent extensions location using pyRevit's settings or extension configuration.
-6. Reload pyRevit or restart Revit. The **NdevTools** ribbon tab displays the Welcome, Annotation, Sheets, 3D Model and Handy panels.
+6. Reload pyRevit or restart Revit. The **NdevTools** ribbon tab displays the Welcome, Annotation, Sheets, Modify, 3D Model and Handy panels.
 
 **Note:** NdevTools is registered in [pyRevit's official extension package registry](https://github.com/pyrevitlabs/pyRevit/blob/develop/extensions/extensions.json), so you can install the package directly through pyRevit Extension Manager. Steps 3-5 are only needed for manual installation.
 
@@ -207,9 +246,17 @@ NdevTools.extension/
 │   │   │   ├── BulkPlaceViews.pushbutton/   # Sheet Pilot
 │   │   │   ├── Rename Sheets.pushbutton/
 │   │   │   └── ViewPilot.pushbutton/
-│   │   └── col2.stack/
-│   │       ├── Crop Extents.pushbutton/
-│   │       └── Viewport Position Manager.pushbutton/
+│   │   ├── col2.stack/
+│   │   │   ├── Crop Extents.pushbutton/
+│   │   │   └── Viewport Position Manager.pushbutton/
+│   │   └── col3.stack/
+│   │       ├── Move Views.pushbutton/
+│   │       └── Clipboard.pulldown/      # Cut, Copy, Paste
+│   ├── Modify.panel/
+│   │   └── col1.stack/
+│   │       ├── Match Properties.pushbutton/
+│   │       ├── Renumber.pushbutton/
+│   │       └── Tab Hider.pushbutton/
 │   ├── 3D Model.Panel/
 │   │   ├── Create walls and opening.pushbutton/
 │   │   └── FramePilot.pushbutton/
@@ -224,15 +271,16 @@ Each command includes its script, theme icons, bundle configuration, and any XAM
 
 ## Compatibility
 
-Commands are written for **pyRevit** and the IronPython 2.7 runtime, using Revit API patterns for **Revit 2022–2027** where supported by the individual tools. Some commands have view, family, category or loaded-link prerequisites; review each tool's usage section above.
+Commands are written for **pyRevit** and the IronPython 2.7 runtime, using Revit API patterns for **Revit 2022–2027** where supported by the individual tools. Move Views and Sheet Clipboard require Revit 2023 or later. Some commands have view, family, category or loaded-link prerequisites; review each tool's usage section above.
 
 ## What's new
 
-The current ribbon includes **12 commands across five panels**, expanding the original sheet-management-focused repository with:
+The current ribbon includes **19 commands across six panels**, expanding the original sheet-management-focused repository with:
 
 - A **Welcome** and contact/about experience.
 - **Vulcraft Deck Region** and **Auto Detail Generator** in the Annotation panel.
-- An expanded **Sheets** panel with two stacked button columns, multi-sheet Sheet Pilot placement, and viewport visibility handling.
+- A third **Sheets** column with Move Views and the Sheet Clipboard dropdown for Cut, Copy and Paste.
+- A **Modify** panel with Match Properties, Renumber and Tab Hider.
 - **Wall Tracing** with supported rectangular openings and **FramePilot** in the 3D Model panel.
 - **ViewPilot** for reviewed view management.
 - A **Handy** panel with multi-sheet Notes and embedded Useful Links.

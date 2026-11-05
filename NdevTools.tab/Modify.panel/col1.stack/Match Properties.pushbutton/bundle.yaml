@@ -1,0 +1,468 @@
+# Localized ribbon metadata for the 20 NdevTools languages.
+title:
+  ar: "مطابقة الخصائص"
+  pt_br: "Igualar propriedades"
+  bg: "Съпоставяне на свойства"
+  chinese_s: "匹配属性"
+  chinese_t: "比對屬性"
+  cs: "Přenést vlastnosti"
+  nl_nl: "Eigenschappen kopiëren"
+  en_gb: "Match Properties"
+  en_us: "Match Properties"
+  fa: "تطبیق ویژگی‌ها"
+  fr_fr: "Copier les propriétés"
+  de_de: "Eigenschaften übertragen"
+  hu: "Tulajdonságok másolása"
+  it_it: "Copia proprietà"
+  ja: "プロパティをコピー"
+  ko: "속성 맞추기"
+  pl: "Dopasuj właściwości"
+  ru: "Сопоставить свойства"
+  es_es: "Igualar propiedades"
+  uk: "Зіставити властивості"
+author: "Nataraj Devaraj"
+tooltip:
+  ar: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    طابق الأنواع والخصائص المتوافقة القابلة للتعديل لعناصر النموذج ونصوص الملاحظات والوسوم والأبعاد والتعليقات الأخرى الأصلية في Revit.
+
+    طريقة الاستخدام
+    1. انقر Start matching واختر العنصر المصدر.
+    2. حدد الخصائص ونوع العنصر اختياريًا، ثم اختر أهدافًا متوافقة وانقر Finish.
+    3. راجع التقرير واستخدم Copy Report لنسخ النتائج.
+
+    في أعلى النافذة، يفتح Help طريقة الاستخدام ويفتح زر ★ GitHub المجاور مستودع NdevTools.
+
+    الخيارات والسلوك
+    يدعم النص النوع والمحاذاة وعرض النص الملتف؛ وتدعم الوسوم النوع والقادة والاتجاه حيث يمكن تعديلها.
+
+    الأمان
+    يُحفظ محتوى النص والعناصر المضيفة للوسوم. تُبلّغ العناصر للقراءة فقط أو المثبتة أو المجمعة أو غير المتوافقة؛ وتُلغى تغييرات الهدف المرفوضة.
+
+    التوافق
+    pyRevit | IronPython 2.7
+
+    إعداد Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Iguale tipos e propriedades editáveis compatíveis de elementos nativos de modelo, notas de texto, identificadores, cotas e outras anotações.
+
+    COMO USAR
+    1. Clique em Start matching e selecione o elemento de origem.
+    2. Marque as propriedades e, opcionalmente, o tipo; selecione destinos compatíveis e clique em Finish.
+    3. Confira o relatório; use Copy Report para copiar os resultados.
+
+    No topo da janela, Help abre as instruções. O botão ★ GitHub ao lado abre o repositório NdevTools.
+
+    OPÇÕES E COMPORTAMENTO
+    Textos permitem tipo, alinhamento e largura com quebra de linha; identificadores permitem tipo, chamadas e orientação quando editáveis.
+
+    SEGURANÇA
+    O conteúdo do texto e os hospedeiros dos identificadores são mantidos. Restrições de edição, fixação, grupos ou incompatibilidade são relatadas; alterações rejeitadas são revertidas.
+
+    COMPATIBILIDADE
+    pyRevit | IronPython 2.7
+
+    Criado por Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Съпоставяйте типове и съвместими редактируеми свойства на моделни елементи, текстови бележки, етикети, размери и други собствени анотации.
+
+    НАЧИН НА ИЗПОЛЗВАНЕ
+    1. Натиснете Start matching и изберете изходния елемент.
+    2. Отметнете свойствата и по избор типа, изберете съвместими цели и натиснете Finish.
+    3. Прегледайте отчета; Copy Report копира резултатите.
+
+    В горната част на прозореца Help отваря указанията, а съседният бутон ★ GitHub отваря хранилището на NdevTools.
+
+    ОПЦИИ И ПОВЕДЕНИЕ
+    Текстът поддържа тип, подравняване и ширина при пренасяне; етикетите поддържат тип, водещи линии и ориентация, когато са редактируеми.
+
+    БЕЗОПАСНОСТ
+    Текстовото съдържание и означените елементи се запазват. Ограниченията за редактиране, закрепването, групите и несъвместимостта се отчитат; отхвърлените промени се отменят.
+
+    СЪВМЕСТИМОСТ
+    pyRevit | IronPython 2.7
+
+    Създадено от Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    匹配原生模型元素、文字注释、标记、尺寸及其他注释的类型和兼容的可编辑属性。
+
+    使用方法
+    1. 点击 Start matching，选择源元素。
+    2. 勾选属性及可选的元素类型，选择兼容目标，然后点击 Finish。
+    3. 查看报告；使用 Copy Report 复制结果。
+
+    窗口顶部的 Help 可打开使用说明，旁边的 ★ GitHub 可打开 NdevTools 代码仓库。
+
+    选项与行为
+    文字支持类型、对齐和换行宽度；标记支持可编辑的类型、引线及方向。
+
+    安全
+    保留文字内容和标记关联的主体。只读、固定、成组或不兼容的目标会在报告中说明；被拒绝的目标更改将回滚。
+
+    兼容性
+    pyRevit | IronPython 2.7
+
+    作者：Nataraj Devaraj。
+  chinese_t: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    比對原生模型元素、文字註解、標籤、尺寸及其他註解的類型與相容的可編輯屬性。
+
+    使用方法
+    1. 按 Start matching 並選取來源元素。
+    2. 勾選屬性及選用的元素類型，選取相容目標，然後按 Finish。
+    3. 檢視報告；使用 Copy Report 複製結果。
+
+    視窗頂端的 Help 可開啟使用說明，旁邊的 ★ GitHub 可開啟 NdevTools 程式碼儲存庫。
+
+    選項與行為
+    文字支援類型、對齊及換行寬度；標籤支援可編輯的類型、引線及方向。
+
+    安全
+    保留文字內容與標籤關聯的主體。唯讀、釘住、成組或不相容的目標會在報告中說明；遭拒絕的目標變更將回復。
+
+    相容性
+    pyRevit | IronPython 2.7
+
+    作者：Nataraj Devaraj。
+  cs: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Přeneste typy a kompatibilní upravitelné vlastnosti nativních modelových prvků, textových poznámek, popisků, kót a dalších anotací.
+
+    JAK POUŽÍVAT
+    1. Klikněte na Start matching a vyberte zdrojový prvek.
+    2. Zaškrtněte vlastnosti a případně typ, vyberte kompatibilní cíle a klikněte na Finish.
+    3. Zkontrolujte výkaz; Copy Report zkopíruje výsledky.
+
+    V horní části okna otevřete návod tlačítkem Help. Sousední tlačítko ★ GitHub otevře repozitář NdevTools.
+
+    MOŽNOSTI A CHOVÁNÍ
+    Text podporuje typ, zarovnání a šířku při zalamování; popisky podporují upravitelný typ, odkazové čáry a orientaci.
+
+    BEZPEČNOST
+    Textový obsah a označené prvky se zachovají. Omezení úprav, připnutí, skupiny a nekompatibilita se uvedou ve výkazu; odmítnuté změny se vrátí zpět.
+
+    KOMPATIBILITA
+    pyRevit | IronPython 2.7
+
+    Vytvořil Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Kopieer typen en compatibele bewerkbare eigenschappen van modelelementen, tekstnotities, labels, maatlijnen en andere oorspronkelijke Revit-annotaties.
+
+    GEBRUIK
+    1. Klik op Start matching en kies het bronelement.
+    2. Vink eigenschappen en eventueel het type aan, kies compatibele doelen en klik op Finish.
+    3. Controleer het rapport; gebruik Copy Report om resultaten te kopiëren.
+
+    Bovenaan opent Help de instructies. Met ★ GitHub ernaast opent u de NdevTools-repository.
+
+    OPTIES EN GEDRAG
+    Tekst ondersteunt type, uitlijning en omloopbreedte; labels ondersteunen type, verwijslijnen en oriëntatie waar bewerkbaar.
+
+    VEILIGHEID
+    Tekstinhoud en gelabelde elementen blijven behouden. Alleen-lezen, vastgezette, gegroepeerde of onverenigbare doelen worden gemeld; geweigerde wijzigingen worden teruggedraaid.
+
+    COMPATIBILITEIT
+    pyRevit | IronPython 2.7
+
+    Gemaakt door Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Match types and compatible editable properties of native model elements, text notes, tags, dimensions and other annotations.
+
+    HOW TO USE
+    1. Click Start matching and pick the source element.
+    2. Check the properties and optional element type, then select compatible targets and click Finish.
+    3. Review the report; use Copy Report to copy the results.
+
+    In the header, Help opens the matching instructions. The ★ GitHub button beside it opens the NdevTools repository.
+
+    OPTIONS & BEHAVIOR
+    Text supports type, alignment and wrapped width; tags support type, leaders and orientation where writable.
+
+    SAFETY
+    Text wording and tag hosts are retained. Read-only, pinned, grouped or incompatible targets are reported; rejected target changes roll back.
+
+    COMPATIBILITY
+    pyRevit | IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  en_us: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Match types and compatible editable properties of native model elements, text notes, tags, dimensions and other annotations.
+
+    HOW TO USE
+    1. Click Start matching and pick the source element.
+    2. Check the properties and optional element type, then select compatible targets and click Finish.
+    3. Review the report; use Copy Report to copy the results.
+
+    In the header, Help opens the matching instructions. The ★ GitHub button beside it opens the NdevTools repository.
+
+    OPTIONS & BEHAVIOR
+    Text supports type, alignment and wrapped width; tags support type, leaders and orientation where writable.
+
+    SAFETY
+    Text wording and tag hosts are retained. Read-only, pinned, grouped or incompatible targets are reported; rejected target changes roll back.
+
+    COMPATIBILITY
+    pyRevit | IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    نوع و ویژگی‌های سازگار قابل ویرایش عناصر بومی مدل، یادداشت‌های متنی، برچسب‌ها، اندازه‌ها و سایر توضیحات Revit را تطبیق دهید.
+
+    روش استفاده
+    1. Start matching را بزنید و عنصر مبدأ را انتخاب کنید.
+    2. ویژگی‌ها و در صورت نیاز نوع را انتخاب کنید، مقصدهای سازگار را برگزینید و Finish را بزنید.
+    3. گزارش را بررسی کنید؛ Copy Report نتایج را کپی می‌کند.
+
+    در بالای پنجره، Help راهنمای تطبیق ویژگی‌ها را باز می‌کند. دکمهٔ ★ GitHub در کنار آن مخزن NdevTools را باز می‌کند.
+
+    گزینه‌ها و رفتار
+    متن از نوع، تراز و عرض متن شکسته پشتیبانی می‌کند؛ برچسب‌ها از نوع، خطوط راهنما و جهت قابل ویرایش پشتیبانی می‌کنند.
+
+    ایمنی
+    محتوای متن و عناصر میزبان برچسب‌ها حفظ می‌شوند. محدودیت‌های فقط‌خواندنی، پین، گروه و ناسازگاری گزارش می‌شوند و تغییرات ردشده بازگردانده می‌شوند.
+
+    سازگاری
+    pyRevit | IronPython 2.7
+
+    ساخته‌شده توسط Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Copiez les types et propriétés modifiables compatibles des éléments de modèle natifs, notes de texte, étiquettes, cotes et autres annotations.
+
+    UTILISATION
+    1. Cliquez sur Start matching et choisissez l’élément source.
+    2. Cochez les propriétés et éventuellement le type, choisissez des cibles compatibles, puis cliquez sur Finish.
+    3. Consultez le rapport ; Copy Report copie les résultats.
+
+    En haut de la fenêtre, Help ouvre le mode d’emploi. Le bouton ★ GitHub juste à côté ouvre le dépôt NdevTools.
+
+    OPTIONS ET COMPORTEMENT
+    Le texte prend en charge type, alignement et largeur avec retour à la ligne ; les étiquettes prennent en charge type, repères et orientation si modifiables.
+
+    SÉCURITÉ
+    Le contenu du texte et les hôtes des étiquettes sont conservés. Les restrictions de lecture seule, d’épinglage, de groupe ou de compatibilité sont signalées ; les modifications refusées sont annulées.
+
+    COMPATIBILITÉ
+    pyRevit | IronPython 2.7
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Übertragen Sie Typen und kompatible bearbeitbare Eigenschaften nativer Modellelemente, Textnotizen, Beschriftungen, Bemaßungen und anderer Anmerkungen.
+
+    VERWENDUNG
+    1. Klicken Sie auf Start matching und wählen Sie das Quellelement.
+    2. Wählen Sie Eigenschaften und optional den Typ, wählen Sie kompatible Ziele und klicken Sie auf Finish.
+    3. Prüfen Sie den Bericht; Copy Report kopiert die Ergebnisse.
+
+    Oben im Fenster öffnet Help die Anleitung. Über ★ GitHub daneben gelangen Sie zum NdevTools-Repository.
+
+    OPTIONEN UND VERHALTEN
+    Text unterstützt Typ, Ausrichtung und Umbruchbreite; Beschriftungen unterstützen bearbeitbare Typen, Führungslinien und Ausrichtung.
+
+    SICHERHEIT
+    Textinhalt und beschriftete Elemente bleiben erhalten. Schreibgeschützte, fixierte, gruppierte oder inkompatible Ziele werden gemeldet; abgelehnte Änderungen werden zurückgerollt.
+
+    KOMPATIBILITÄT
+    pyRevit | IronPython 2.7
+
+    Erstellt von Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Másolja a natív modellelemek, szöveges megjegyzések, címkék, méretek és más annotációk típusát és kompatibilis szerkeszthető tulajdonságait.
+
+    HASZNÁLAT
+    1. Kattintson a Start matching gombra, és válassza ki a forráselemet.
+    2. Jelölje ki a tulajdonságokat és igény szerint a típust, válasszon kompatibilis célokat, majd kattintson a Finish gombra.
+    3. Ellenőrizze a jelentést; a Copy Report másolja az eredményeket.
+
+    Az ablak tetején a Help gomb nyitja meg az útmutatót, a mellette lévő ★ GitHub pedig az NdevTools GitHub-tárhelyét.
+
+    BEÁLLÍTÁSOK ÉS MŰKÖDÉS
+    Szövegnél a típus, igazítás és sortörési szélesség; címkéknél a típus, mutatóvonal és tájolás másolható, ha szerkeszthető.
+
+    BIZTONSÁG
+    A szövegtartalom és a címkék gazdaelemei megmaradnak. Az írásvédett, rögzített, csoportosított vagy inkompatibilis célokat jelzi a jelentés; az elutasított módosítások visszaállnak.
+
+    KOMPATIBILITÁS
+    pyRevit | IronPython 2.7
+
+    Készítette: Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Copia tipi e proprietà modificabili compatibili di elementi di modello nativi, note di testo, etichette, quote e altre annotazioni.
+
+    COME USARE
+    1. Premi Start matching e scegli l’elemento sorgente.
+    2. Seleziona le proprietà e, facoltativamente, il tipo; scegli destinazioni compatibili e premi Finish.
+    3. Controlla il report; Copy Report copia i risultati.
+
+    In alto, Help apre le istruzioni. Il pulsante ★ GitHub accanto a Help apre il repository di NdevTools.
+
+    OPZIONI E COMPORTAMENTO
+    Il testo supporta tipo, allineamento e larghezza a capo; le etichette supportano tipo, direttrici e orientamento quando modificabili.
+
+    SICUREZZA
+    Il contenuto del testo e gli elementi etichettati vengono conservati. Destinazioni di sola lettura, bloccate, raggruppate o incompatibili vengono segnalate; le modifiche rifiutate vengono annullate.
+
+    COMPATIBILITÀ
+    pyRevit | IronPython 2.7
+
+    Creato da Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Revit のネイティブなモデル要素、文字注記、タグ、寸法、その他の注釈のタイプと互換性のある編集可能なプロパティをコピーします。
+
+    使い方
+    1. Start matching を押し、コピー元の要素を選択します。
+    2. プロパティと必要に応じてタイプを選び、互換性のあるコピー先を選択して Finish を押します。
+    3. レポートを確認します。Copy Report で結果をコピーできます。
+
+    ウィンドウ上部の Help で操作手順を開けます。その隣の ★ GitHub で NdevTools のリポジトリを開けます。
+
+    オプションと動作
+    文字はタイプ、位置合わせ、折り返し幅に対応し、タグは編集可能なタイプ、引出線、方向に対応します。
+
+    安全性
+    文字内容とタグの参照先は維持します。読み取り専用、ピン固定、グループ化、非互換の対象は報告し、拒否された変更はロールバックします。
+
+    互換性
+    pyRevit | IronPython 2.7
+
+    作成者：Nataraj Devaraj。
+  ko: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    기본 모델 요소, 문자 주석, 태그, 치수 및 기타 Revit 주석의 유형과 호환되는 편집 가능 속성을 맞춥니다.
+
+    사용 방법
+    1. Start matching을 누르고 원본 요소를 선택합니다.
+    2. 속성과 필요한 경우 요소 유형을 선택한 뒤 호환 대상을 고르고 Finish를 누릅니다.
+    3. 보고서를 확인하고 Copy Report로 결과를 복사합니다.
+
+    창 상단에서 Help를 누르면 사용 방법이 열립니다. 옆의 ★ GitHub를 누르면 NdevTools 저장소가 열립니다.
+
+    옵션 및 동작
+    문자는 유형, 정렬, 줄바꿈 너비를 지원하며 태그는 편집 가능한 유형, 지시선 및 방향을 지원합니다.
+
+    안전
+    문자 내용과 태그 호스트는 유지됩니다. 읽기 전용, 고정, 그룹 또는 호환되지 않는 대상은 보고되며 거부된 대상 변경은 롤백됩니다.
+
+    호환성
+    pyRevit | IronPython 2.7
+
+    제작: Nataraj Devaraj.
+  pl: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Dopasuj typy i zgodne edytowalne właściwości natywnych elementów modelu, notatek tekstowych, oznaczeń, wymiarów i innych opisów.
+
+    SPOSÓB UŻYCIA
+    1. Kliknij Start matching i wybierz element źródłowy.
+    2. Zaznacz właściwości oraz opcjonalnie typ, wybierz zgodne cele i kliknij Finish.
+    3. Sprawdź raport; Copy Report kopiuje wyniki.
+
+    U góry okna przycisk Help otwiera instrukcję, a znajdujący się obok przycisk ★ GitHub otwiera repozytorium NdevTools.
+
+    OPCJE I DZIAŁANIE
+    Tekst obsługuje typ, wyrównanie i szerokość zawijania; oznaczenia obsługują typ, linie odniesienia i orientację, jeśli są edytowalne.
+
+    BEZPIECZEŃSTWO
+    Treść tekstu i oznaczane elementy pozostają zachowane. Cele tylko do odczytu, przypięte, zgrupowane lub niezgodne są raportowane; odrzucone zmiany są wycofywane.
+
+    ZGODNOŚĆ
+    pyRevit | IronPython 2.7
+
+    Autor: Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Сопоставляйте типы и совместимые редактируемые свойства собственных элементов модели, текстовых примечаний, марок, размеров и других аннотаций.
+
+    КАК ИСПОЛЬЗОВАТЬ
+    1. Нажмите Start matching и выберите исходный элемент.
+    2. Отметьте свойства и при необходимости тип, выберите совместимые цели и нажмите Finish.
+    3. Проверьте отчёт; Copy Report копирует результаты.
+
+    Вверху окна кнопка Help открывает инструкцию, а соседняя кнопка ★ GitHub — репозиторий NdevTools.
+
+    ПАРАМЕТРЫ И ПОВЕДЕНИЕ
+    Текст поддерживает тип, выравнивание и ширину переноса; марки поддерживают редактируемые тип, выноски и ориентацию.
+
+    БЕЗОПАСНОСТЬ
+    Содержимое текста и маркируемые элементы сохраняются. Ограничения чтения, закрепление, группы и несовместимость отражаются в отчёте; отклонённые изменения отменяются.
+
+    СОВМЕСТИМОСТЬ
+    pyRevit | IronPython 2.7
+
+    Создано Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Iguala tipos y propiedades editables compatibles de elementos nativos de modelo, notas de texto, etiquetas, cotas y otras anotaciones.
+
+    CÓMO USAR
+    1. Pulsa Start matching y selecciona el elemento de origen.
+    2. Marca propiedades y, opcionalmente, el tipo; selecciona destinos compatibles y pulsa Finish.
+    3. Revisa el informe; usa Copy Report para copiar los resultados.
+
+    En la parte superior, Help abre las instrucciones. El botón ★ GitHub situado a su lado abre el repositorio de NdevTools.
+
+    OPCIONES Y COMPORTAMIENTO
+    El texto admite tipo, alineación y ancho con ajuste de línea; las etiquetas admiten tipo, directrices y orientación cuando son editables.
+
+    SEGURIDAD
+    Se conservan el contenido del texto y los anfitriones de las etiquetas. Se informan restricciones de solo lectura, fijación, grupos o incompatibilidad; los cambios rechazados se revierten.
+
+    COMPATIBILIDAD
+    pyRevit | IronPython 2.7
+
+    Creado por Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | MATCH PROPERTIES
+
+    Зіставляйте типи та сумісні редаговані властивості власних елементів моделі, текстових приміток, марок, розмірів та інших анотацій.
+
+    ЯК КОРИСТУВАТИСЯ
+    1. Натисніть Start matching і виберіть вихідний елемент.
+    2. Позначте властивості та за потреби тип, виберіть сумісні цілі й натисніть Finish.
+    3. Перевірте звіт; Copy Report копіює результати.
+
+    Угорі вікна кнопка Help відкриває інструкцію, а розташована поруч кнопка ★ GitHub — репозиторій NdevTools.
+
+    ПАРАМЕТРИ ТА ПОВЕДІНКА
+    Текст підтримує тип, вирівнювання та ширину перенесення; марки підтримують редаговані тип, виноски й орієнтацію.
+
+    БЕЗПЕКА
+    Вміст тексту та позначені елементи зберігаються. Обмеження читання, закріплення, групи й несумісність відображаються у звіті; відхилені зміни скасовуються.
+
+    СУМІСНІСТЬ
+    pyRevit | IronPython 2.7
+
+    Створено Nataraj Devaraj.
+context: doc-project
+engine:
+  clean: false
+  persistent: true

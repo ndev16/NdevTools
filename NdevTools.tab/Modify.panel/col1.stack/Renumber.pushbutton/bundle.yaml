@@ -1,0 +1,564 @@
+# Localized ribbon metadata for the 20 NdevTools languages.
+title:
+  ar: "إعادة الترقيم"
+  pt_br: "Renumerar"
+  bg: "Преномериране"
+  chinese_s: "重新编号"
+  chinese_t: "重新編號"
+  cs: "Přečíslovat"
+  nl_nl: "Hernummeren"
+  en_gb: "Renumber"
+  en_us: "Renumber"
+  fa: "شماره‌گذاری مجدد"
+  fr_fr: "Renuméroter"
+  de_de: "Neu nummerieren"
+  hu: "Újraszámozás"
+  it_it: "Rinumera"
+  ja: "再番号付け"
+  ko: "다시 번호 매기기"
+  pl: "Zmień numerację"
+  ru: "Перенумеровать"
+  es_es: "Renumerar"
+  uk: "Перенумерувати"
+author: "Nataraj Devaraj"
+tooltip:
+  ar: |-
+    NDEV TOOLS | RENUMBER
+
+    أعد ترقيم العناصر بترتيب اختيارها من لوحة عائمة واحدة. تتبع الفئات قواعد ReNumber الأصلية والعرض النشط.
+
+    طريقة الاستخدام
+    1. اختر الفئة وقيمة البداية وIncrease/Decrease والخطوة (1 أو 2 أو 0.2 أو 0.3).
+    2. أدخل الاستثناءات مفصولة بفواصل: 5, 8-10, A to C, #. اترك الحقل فارغًا لعدم الاستبعاد.
+    3. اختر معالجة التكرار وانقر Start picking وحدد العناصر بالترتيب. اضغط Esc داخل Revit للإنهاء.
+
+    الخيارات والسلوك
+    - يتقدم Skip خطوة محددة دون تعديل أي عنصر.
+    - تُقبل الأرقام والحروف والرموز الخاصة؛ تشمل النطاقات طرفيها. استخدم علامتي اقتباس مزدوجتين للمطابقة الحرفية.
+    - الخطوات العشرية والتناقص للأرقام؛ تستخدم المعرّفات الحرفية Increase بخطوة 1.
+    - يظهر Number doors by room للأبواب فقط. تبقى أرقامها مرتبطة بالغرف وتظل الأبواب المتخطاة أو المستبعدة دون تغيير.
+    - ينقل Sweep العنصر المتعارض إلى رقم متاح. يحذر Alert ويترك العنصر المختار. يترك Skip العنصر المختار المرقم دون تغيير عند التعارض.
+
+    المساعدة
+    يعرض ? التعليمات وروابط GitHub وLinkedIn. يفتح ★ GitHub مستودع NdevTools.
+
+    الأمان
+    تعيد الأداة كتابة القيم الحالية. قد يعيد Sweep ترقيم العناصر المتعارضة أيضًا؛ راجع الخيارات قبل الاختيار.
+
+    التوافق
+    pyRevit | IronPython 2.7
+
+    إعداد Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | RENUMBER
+
+    Renumere elementos na ordem de seleção em um único painel flutuante. As categorias seguem o ReNumber original e a vista ativa.
+
+    COMO USAR
+    1. Escolha categoria, valor inicial, Increase/Decrease e passo (1, 2, 0.2 ou 0.3).
+    2. Separe as exclusões por vírgulas: 5, 8-10, A to C, #. Deixe em branco para nenhuma.
+    3. Escolha o tratamento de duplicados, clique em Start picking e selecione em ordem. Pressione Esc no Revit para concluir.
+
+    OPÇÕES E COMPORTAMENTO
+    - Skip avança um passo configurado sem alterar elementos.
+    - Aceita números, letras e símbolos; os intervalos incluem as extremidades. Use aspas duplas para correspondência literal.
+    - Passos decimais e redução aplicam-se a números; identificadores com letras usam Increase com passo 1.
+    - Number doors by room aparece apenas para portas. Os números seguem os ambientes; portas ignoradas ou excluídas não mudam.
+    - Sweep move o elemento em conflito para um número livre. Alert avisa e mantém o selecionado. Skip mantém o selecionado já numerado quando há conflito.
+
+    AJUDA
+    ? mostra instruções e links GitHub/LinkedIn. ★ GitHub abre o repositório NdevTools.
+
+    SEGURANÇA
+    A renumeração altera valores existentes. Sweep também pode renumerar elementos em conflito; confira as opções antes de selecionar.
+
+    COMPATIBILIDADE
+    pyRevit | IronPython 2.7
+
+    Criado por Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | RENUMBER
+
+    Преномерирайте елементите по реда на избиране в един плаващ панел. Категориите следват оригиналния ReNumber и активния изглед.
+
+    НАЧИН НА ИЗПОЛЗВАНЕ
+    1. Изберете категория, начална стойност, Increase/Decrease и стъпка (1, 2, 0.2 или 0.3).
+    2. Разделете изключенията със запетаи: 5, 8-10, A to C, #. Празно поле означава без изключения.
+    3. Изберете обработка на дубликати, натиснете Start picking и избирайте по ред. Esc в Revit завършва избора.
+
+    ОПЦИИ И ПОВЕДЕНИЕ
+    - Skip придвижва една зададена стъпка, без да променя елемент.
+    - Приемат се числа, букви и символи; диапазоните включват двата края. Двойните кавички задават точно текстово съвпадение.
+    - Десетични стъпки и намаляване са за числа; буквени идентификатори използват Increase със стъпка 1.
+    - Number doors by room се показва само за врати. Номерата следват стаите; пропуснатите или изключените врати не се променят.
+    - Sweep премества конфликтния елемент към свободен номер. Alert предупреждава и запазва избрания. Skip запазва вече номерирания избран елемент при конфликт.
+
+    ПОМОЩ
+    ? показва инструкции и връзки GitHub/LinkedIn. ★ GitHub отваря хранилището NdevTools.
+
+    БЕЗОПАСНОСТ
+    Преномерирането променя съществуващи стойности. Sweep може да преномерира и конфликтни елементи; проверете опциите преди избор.
+
+    СЪВМЕСТИМОСТ
+    pyRevit | IronPython 2.7
+
+    Създадено от Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | RENUMBER
+
+    在一个浮动属性面板中按选择顺序重新编号。类别遵循原版 ReNumber 的规则及当前视图。
+
+    使用方法
+    1. 选择类别、起始值、Increase/Decrease 和步长（1、2、0.2 或 0.3）。
+    2. 用逗号分隔排除项：5, 8-10, A to C, #。留空表示不排除。
+    3. 选择重复编号处理方式，单击 Start picking 并按顺序选择图元。在 Revit 中按 Esc 结束。
+
+    选项与行为
+    - Skip 前进一个设定步长，不修改任何图元。
+    - 排除项支持数字、字母和特殊字符；范围包含两端。用双引号包围条目可按原文精确匹配。
+    - 小数步长及递减适用于数字；含字母的标识符使用 Increase，步长为 1。
+    - Number doors by room 仅对门显示。编号保持与房间关联；跳过或排除的门保持不变。
+    - Sweep 将冲突图元移至可用编号。Alert 提示并保留所选图元。Skip 在冲突时保留已有编号的所选图元。
+
+    帮助
+    ? 显示说明及 GitHub/LinkedIn 链接。★ GitHub 打开 NdevTools 仓库。
+
+    安全
+    重新编号会更改现有值。Sweep 还可能重新编号冲突元素；选择前请检查选项。
+
+    兼容性
+    pyRevit | IronPython 2.7
+
+    作者：Nataraj Devaraj。
+  chinese_t: |-
+    NDEV TOOLS | RENUMBER
+
+    在單一浮動屬性面板中依選取順序重新編號。類別遵循原版 ReNumber 的規則及目前視圖。
+
+    使用方法
+    1. 選擇類別、起始值、Increase/Decrease 和步長（1、2、0.2 或 0.3）。
+    2. 以逗號分隔排除項目：5, 8-10, A to C, #。留白表示不排除。
+    3. 選擇重複編號處理方式，按 Start picking 並依序選取元素。在 Revit 中按 Esc 結束。
+
+    選項與行為
+    - Skip 前進一個設定步長，不修改任何元素。
+    - 排除項目支援數字、字母和特殊字元；範圍包含兩端。以雙引號包住項目可依原文精確比對。
+    - 小數步長及遞減適用於數字；含字母的識別碼使用 Increase，步長為 1。
+    - Number doors by room 僅對門顯示。編號維持與房間關聯；跳過或排除的門保持不變。
+    - Sweep 將衝突元素移至可用編號。Alert 提示並保留所選元素。Skip 在衝突時保留已有編號的所選元素。
+
+    說明
+    ? 顯示操作說明及 GitHub/LinkedIn 連結。★ GitHub 開啟 NdevTools 儲存庫。
+
+    安全
+    重新編號會變更現有值。Sweep 也可能重新編號衝突元素；選取前請確認選項。
+
+    相容性
+    pyRevit | IronPython 2.7
+
+    作者：Nataraj Devaraj。
+  cs: |-
+    NDEV TOOLS | RENUMBER
+
+    Přečíslujte prvky v pořadí výběru v jediném plovoucím panelu. Kategorie odpovídají původnímu ReNumber a aktivnímu pohledu.
+
+    POSTUP
+    1. Vyberte kategorii, počáteční hodnotu, Increase/Decrease a krok (1, 2, 0.2 nebo 0.3).
+    2. Vyloučení oddělte čárkami: 5, 8-10, A to C, #. Prázdné pole znamená žádná vyloučení.
+    3. Zvolte zpracování duplicit, klikněte na Start picking a vybírejte v pořadí. Esc v Revitu ukončí výběr.
+
+    MOŽNOSTI A CHOVÁNÍ
+    - Skip posune hodnotu o jeden nastavený krok bez změny prvku.
+    - Přijímá čísla, písmena a symboly; rozsahy zahrnují oba konce. Dvojité uvozovky vynutí přesnou textovou shodu.
+    - Desetinné kroky a snižování platí pro čísla; písmenné identifikátory používají Increase s krokem 1.
+    - Number doors by room se zobrazí pouze pro dveře. Čísla zůstávají navázaná na místnosti; přeskočené či vyloučené dveře se nemění.
+    - Sweep přesune kolidující prvek na volné číslo. Alert upozorní a ponechá vybraný prvek. Skip při kolizi ponechá již očíslovaný vybraný prvek.
+
+    NÁPOVĚDA
+    ? zobrazí pokyny a odkazy GitHub/LinkedIn. ★ GitHub otevře repozitář NdevTools.
+
+    BEZPEČNOST
+    Přečíslování mění existující hodnoty. Sweep může přečíslovat také kolidující prvky; před výběrem zkontrolujte možnosti.
+
+    KOMPATIBILITA
+    pyRevit | IronPython 2.7
+
+    Vytvořil Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | RENUMBER
+
+    Hernummer elementen in selectievolgorde vanuit één zwevend eigenschappenpaneel. Categorieën volgen het oorspronkelijke ReNumber en het actieve aanzicht.
+
+    GEBRUIK
+    1. Kies categorie, beginwaarde, Increase/Decrease en stap (1, 2, 0.2 of 0.3).
+    2. Scheid uitsluitingen met komma's: 5, 8-10, A to C, #. Laat leeg voor geen uitsluitingen.
+    3. Kies de afhandeling van duplicaten, klik op Start picking en selecteer op volgorde. Esc in Revit beëindigt de selectie.
+
+    OPTIES EN GEDRAG
+    - Skip gaat één ingestelde stap verder zonder een element te wijzigen.
+    - Accepteert cijfers, letters en symbolen; bereiken omvatten beide grenzen. Dubbele aanhalingstekens geven een exacte tekstmatch.
+    - Decimale stappen en afnemen gelden voor getallen; letteridentificaties gebruiken Increase met stap 1.
+    - Number doors by room verschijnt alleen bij deuren. Nummers blijven gekoppeld aan ruimten; overgeslagen of uitgesloten deuren veranderen niet.
+    - Sweep verplaatst het conflicterende element naar een vrij nummer. Alert waarschuwt en behoudt het geselecteerde. Skip behoudt bij een conflict het al genummerde geselecteerde element.
+
+    HELP
+    ? toont instructies en GitHub/LinkedIn-links. ★ GitHub opent de NdevTools-repository.
+
+    VEILIGHEID
+    Hernummeren wijzigt bestaande waarden. Sweep kan ook conflicterende elementen hernummeren; controleer de opties voor het selecteren.
+
+    COMPATIBILITEIT
+    pyRevit | IronPython 2.7
+
+    Gemaakt door Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | RENUMBER
+
+    Renumber elements in selection order from one floating properties panel. Categories follow the original ReNumber rules and the active view.
+
+    HOW TO USE
+    1. Choose a category, starting value, Increase/Decrease and step (1, 2, 0.2 or 0.3).
+    2. Enter comma-separated exclusions: 5, 8-10, A to C, #. Leave blank for none.
+    3. Choose duplicate handling, click Start picking and select elements in order. Press Esc in Revit to finish.
+
+    OPTIONS & BEHAVIOUR
+    - Skip advances one configured step without changing an element.
+    - Exclusions accept numbers, letters and special characters; ranges include both endpoints. Double-quote entries for literal matching.
+    - Decimal steps and decreasing sequences apply to numbers; letter-based identifiers use Increase by 1.
+    - Number doors by room appears only for Doors. Numbers stay tied to rooms; skipped or excluded doors remain unchanged.
+    - Sweep moves a conflicting element to a free number. Alert warns and leaves the selected element unchanged. Skip leaves an already numbered selected element unchanged when there is a conflict.
+
+    HELP
+    ? shows instructions and GitHub/LinkedIn links. ★ GitHub opens the NdevTools repository.
+
+    SAFETY
+    Renumbering changes existing values. Sweep can also renumber conflicting elements; check the selected options before picking.
+
+    COMPATIBILITY
+    pyRevit | IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  en_us: |-
+    NDEV TOOLS | RENUMBER
+
+    Renumber elements in selection order from one floating properties panel. Categories follow the original ReNumber rules and the active view.
+
+    HOW TO USE
+    1. Choose a category, starting value, Increase/Decrease and step (1, 2, 0.2 or 0.3).
+    2. Enter comma-separated exclusions: 5, 8-10, A to C, #. Leave blank for none.
+    3. Choose duplicate handling, click Start picking and select elements in order. Press Esc in Revit to finish.
+
+    OPTIONS & BEHAVIOR
+    - Skip advances one configured step without changing an element.
+    - Exclusions accept numbers, letters and special characters; ranges include both endpoints. Double-quote entries for literal matching.
+    - Decimal steps and decreasing sequences apply to numbers; letter-based identifiers use Increase by 1.
+    - Number doors by room appears only for Doors. Numbers stay tied to rooms; skipped or excluded doors remain unchanged.
+    - Sweep moves a conflicting element to a free number. Alert warns and leaves the selected element unchanged. Skip leaves an already numbered selected element unchanged when there is a conflict.
+
+    HELP
+    ? shows instructions and GitHub/LinkedIn links. ★ GitHub opens the NdevTools repository.
+
+    SAFETY
+    Renumbering changes existing values. Sweep can also renumber conflicting elements; check the selected options before picking.
+
+    COMPATIBILITY
+    pyRevit | IronPython 2.7
+
+    Created by Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | RENUMBER
+
+    عناصر را به ترتیب انتخاب در یک پنل شناور شماره‌گذاری مجدد کنید. دسته‌ها از قواعد ReNumber اصلی و نمای فعال پیروی می‌کنند.
+
+    روش استفاده
+    1. دسته، مقدار آغازین، Increase/Decrease و گام (1، 2، 0.2 یا 0.3) را انتخاب کنید.
+    2. استثناها را با ویرگول انگلیسی جدا کنید: 5, 8-10, A to C, #. خالی یعنی بدون استثنا.
+    3. روش برخورد با تکرار را انتخاب کرده، Start picking را بزنید و عناصر را به ترتیب انتخاب کنید. Esc در Revit انتخاب را پایان می‌دهد.
+
+    گزینه‌ها و رفتار
+    - Skip بدون تغییر عنصر، یک گام تنظیم‌شده پیش می‌رود.
+    - عدد، حرف و نماد پذیرفته می‌شود؛ بازه‌ها هر دو انتها را شامل می‌شوند. نقل‌قول دوتایی تطبیق دقیق متن را مشخص می‌کند.
+    - گام اعشاری و کاهش برای اعداد است؛ شناسه‌های حرفی از Increase با گام 1 استفاده می‌کنند.
+    - Number doors by room فقط برای درها نمایش داده می‌شود. شماره‌ها به اتاق وابسته می‌مانند؛ درهای ردشده یا مستثنا تغییر نمی‌کنند.
+    - Sweep عنصر متعارض را به شماره آزاد می‌برد. Alert هشدار می‌دهد و عنصر انتخابی را حفظ می‌کند. Skip هنگام تعارض، عنصر انتخابی دارای شماره را تغییر نمی‌دهد.
+
+    راهنما
+    ? دستورالعمل و پیوندهای GitHub/LinkedIn را نشان می‌دهد. ★ GitHub مخزن NdevTools را باز می‌کند.
+
+    ایمنی
+    شماره‌گذاری مجدد مقادیر موجود را تغییر می‌دهد. Sweep ممکن است عناصر متعارض را نیز تغییر شماره دهد؛ پیش از انتخاب گزینه‌ها را بررسی کنید.
+
+    سازگاری
+    pyRevit | IronPython 2.7
+
+    ساخته‌شده توسط Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | RENUMBER
+
+    Renumérotez les éléments dans l'ordre de sélection depuis un seul panneau flottant. Les catégories suivent le ReNumber d'origine et la vue active.
+
+    UTILISATION
+    1. Choisissez catégorie, valeur initiale, Increase/Decrease et pas (1, 2, 0.2 ou 0.3).
+    2. Séparez les exclusions par des virgules : 5, 8-10, A to C, #. Laissez vide pour aucune.
+    3. Choisissez le traitement des doublons, cliquez sur Start picking et sélectionnez dans l'ordre. Échap dans Revit termine la sélection.
+
+    OPTIONS ET COMPORTEMENT
+    - Skip avance d'un pas configuré sans modifier d'élément.
+    - Accepte nombres, lettres et symboles ; les intervalles incluent les bornes. Les guillemets doubles imposent une correspondance littérale.
+    - Les pas décimaux et la diminution concernent les nombres ; les identifiants alphabétiques utilisent Increase avec un pas de 1.
+    - Number doors by room apparaît uniquement pour les portes. Leurs numéros restent liés aux locaux ; les portes ignorées ou exclues ne changent pas.
+    - Sweep déplace l'élément en conflit vers un numéro libre. Alert avertit et conserve l'élément sélectionné. Skip conserve l'élément sélectionné déjà numéroté en cas de conflit.
+
+    AIDE
+    ? affiche les instructions et les liens GitHub/LinkedIn. ★ GitHub ouvre le dépôt NdevTools.
+
+    SÉCURITÉ
+    La renumérotation change les valeurs existantes. Sweep peut aussi renuméroter les éléments en conflit ; vérifiez les options avant la sélection.
+
+    COMPATIBILITÉ
+    pyRevit | IronPython 2.7
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | RENUMBER
+
+    Nummerieren Sie Elemente in Auswahlreihenfolge über ein einziges schwebendes Eigenschaftenfenster. Kategorien folgen dem ursprünglichen ReNumber und der aktiven Ansicht.
+
+    ANWENDUNG
+    1. Kategorie, Startwert, Increase/Decrease und Schrittweite (1, 2, 0.2 oder 0.3) wählen.
+    2. Ausschlüsse durch Kommas trennen: 5, 8-10, A to C, #. Leer bedeutet keine Ausschlüsse.
+    3. Behandlung von Duplikaten wählen, Start picking anklicken und Elemente nacheinander auswählen. Esc in Revit beendet die Auswahl.
+
+    OPTIONEN UND VERHALTEN
+    - Skip geht einen eingestellten Schritt weiter, ohne ein Element zu ändern.
+    - Zahlen, Buchstaben und Sonderzeichen werden akzeptiert; Bereiche schließen beide Grenzen ein. Doppelte Anführungszeichen erzwingen eine exakte Textübereinstimmung.
+    - Dezimale Schritte und absteigende Folgen gelten für Zahlen; Buchstabenkennungen verwenden Increase mit Schrittweite 1.
+    - Number doors by room erscheint nur für Türen. Nummern bleiben an Räume gebunden; übersprungene oder ausgeschlossene Türen ändern sich nicht.
+    - Sweep verschiebt das kollidierende Element auf eine freie Nummer. Alert warnt und belässt das ausgewählte Element. Skip belässt bei Konflikten ein bereits nummeriertes ausgewähltes Element.
+
+    HILFE
+    ? zeigt Anleitungen und GitHub-/LinkedIn-Links. ★ GitHub öffnet das NdevTools-Repository.
+
+    SICHERHEIT
+    Neunummerierung ändert vorhandene Werte. Sweep kann auch kollidierende Elemente umnummerieren; prüfen Sie die Optionen vor der Auswahl.
+
+    KOMPATIBILITÄT
+    pyRevit | IronPython 2.7
+
+    Erstellt von Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | RENUMBER
+
+    Számozza újra az elemeket a kijelölés sorrendjében egyetlen lebegő panelen. A kategóriák az eredeti ReNumber és az aktív nézet szabályait követik.
+
+    HASZNÁLAT
+    1. Válasszon kategóriát, kezdőértéket, Increase/Decrease irányt és lépést (1, 2, 0.2 vagy 0.3).
+    2. A kizárásokat vesszővel válassza el: 5, 8-10, A to C, #. Üres mező esetén nincs kizárás.
+    3. Válassza ki a duplikátumok kezelését, kattintson a Start picking gombra és jelöljön ki sorrendben. A Revitben az Esc befejezi a kijelölést.
+
+    BEÁLLÍTÁSOK ÉS MŰKÖDÉS
+    - A Skip egy beállított lépéssel halad elem módosítása nélkül.
+    - Számok, betűk és különleges jelek is elfogadhatók; a tartományok mindkét végpontot tartalmazzák. A dupla idézőjel pontos szöveges egyezést kér.
+    - Tizedes lépések és csökkentés számokhoz használhatók; betűs azonosítóknál Increase és 1-es lépés érvényes.
+    - A Number doors by room csak ajtóknál látható. A számok a helyiségekhez kötve maradnak; kihagyott vagy kizárt ajtók nem változnak.
+    - A Sweep szabad számra mozgatja az ütköző elemet. Az Alert figyelmeztet és megtartja a kijelöltet. A Skip ütközésnél megtartja a már számozott kijelölt elemet.
+
+    SÚGÓ
+    A ? útmutatót és GitHub-/LinkedIn-hivatkozásokat mutat. A ★ GitHub megnyitja az NdevTools tárolóját.
+
+    BIZTONSÁG
+    Az újraszámozás meglévő értékeket módosít. A Sweep az ütköző elemeket is átszámozhatja; ellenőrizze a beállításokat kiválasztás előtt.
+
+    KOMPATIBILITÁS
+    pyRevit | IronPython 2.7
+
+    Készítette: Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | RENUMBER
+
+    Rinumera gli elementi nell'ordine di selezione da un unico pannello mobile. Le categorie seguono il ReNumber originale e la vista attiva.
+
+    UTILIZZO
+    1. Scegli categoria, valore iniziale, Increase/Decrease e passo (1, 2, 0.2 o 0.3).
+    2. Separa le esclusioni con virgole: 5, 8-10, A to C, #. Lascia vuoto per nessuna.
+    3. Scegli la gestione dei duplicati, fai clic su Start picking e seleziona in ordine. Esc in Revit termina la selezione.
+
+    OPZIONI E COMPORTAMENTO
+    - Skip avanza di un passo configurato senza modificare elementi.
+    - Accetta numeri, lettere e simboli; gli intervalli includono gli estremi. Le virgolette doppie impongono una corrispondenza letterale.
+    - Passi decimali e diminuzione si applicano ai numeri; gli identificatori alfabetici usano Increase con passo 1.
+    - Number doors by room appare solo per le porte. I numeri restano legati ai locali; le porte saltate o escluse non cambiano.
+    - Sweep sposta l'elemento in conflitto a un numero libero. Alert avvisa e conserva quello selezionato. Skip conserva l'elemento selezionato già numerato in caso di conflitto.
+
+    AIUTO
+    ? mostra istruzioni e collegamenti GitHub/LinkedIn. ★ GitHub apre il repository NdevTools.
+
+    SICUREZZA
+    La rinumerazione cambia valori esistenti. Sweep può rinumerare anche elementi in conflitto; controlla le opzioni prima della selezione.
+
+    COMPATIBILITÀ
+    pyRevit | IronPython 2.7
+
+    Creato da Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | RENUMBER
+
+    1つのフローティングパネルで選択順に要素を再採番します。カテゴリは元の ReNumber の規則とアクティブビューに従います。
+
+    使い方
+    1. カテゴリ、開始値、Increase/Decrease、増減幅（1、2、0.2、0.3 など）を選択します。
+    2. 除外項目を半角カンマで区切ります：5, 8-10, A to C, #。空欄は除外なしです。
+    3. 重複処理を選び、Start picking を押して順番に選択します。Revit 上で Esc を押すと終了します。
+
+    オプションと動作
+    - Skip は要素を変更せず、設定した幅だけ進めます。
+    - 数字、文字、特殊文字を指定でき、範囲は両端を含みます。二重引用符で囲むと文字列をそのまま完全一致で照合します。
+    - 小数の増減幅と減少方向は数値に適用されます。文字を含む識別子は Increase、増分 1 を使用します。
+    - Number doors by room はドア選択時のみ表示されます。番号を部屋に対応させ、スキップまたは除外したドアは変更しません。
+    - Sweep は競合要素を空き番号に移動します。Alert は警告して選択要素を変更しません。Skip は競合時、既に番号のある選択要素を変更しません。
+
+    ヘルプ
+    ? は説明と GitHub・LinkedIn のリンクを表示します。★ GitHub は NdevTools リポジトリを開きます。
+
+    安全性
+    再番号付けは既存の値を変更します。Sweep は重複する要素も再番号付けする場合があります。選択前に設定を確認してください。
+
+    互換性
+    pyRevit | IronPython 2.7
+
+    作成者：Nataraj Devaraj。
+  ko: |-
+    NDEV TOOLS | RENUMBER
+
+    하나의 부동 패널에서 선택 순서대로 요소 번호를 다시 지정합니다. 카테고리는 원래 ReNumber 규칙과 활성 뷰를 따릅니다.
+
+    사용 방법
+    1. 카테고리, 시작값, Increase/Decrease 및 간격(1, 2, 0.2, 0.3 등)을 선택합니다.
+    2. 제외 항목을 쉼표로 구분합니다: 5, 8-10, A to C, #. 비워 두면 제외하지 않습니다.
+    3. 중복 처리 방식을 선택하고 Start picking을 누른 뒤 순서대로 선택합니다. Revit에서 Esc를 누르면 끝납니다.
+
+    옵션 및 동작
+    - Skip은 요소를 변경하지 않고 설정한 간격만큼 이동합니다.
+    - 숫자, 문자 및 특수 문자를 지원하며 범위는 양 끝을 포함합니다. 큰따옴표로 묶으면 문자열을 그대로 정확히 일치시킵니다.
+    - 소수 간격과 감소 방향은 숫자에 적용됩니다. 문자 기반 식별자는 Increase와 간격 1을 사용합니다.
+    - Number doors by room은 문을 선택할 때만 나타납니다. 번호는 실과 연동되며 건너뛰거나 제외된 문은 변경하지 않습니다.
+    - Sweep은 충돌 요소를 빈 번호로 옮깁니다. Alert는 경고하고 선택 요소를 유지합니다. Skip은 충돌 시 이미 번호가 있는 선택 요소를 그대로 둡니다.
+
+    도움말
+    ?는 안내와 GitHub/LinkedIn 링크를 표시합니다. ★ GitHub는 NdevTools 저장소를 엽니다.
+
+    안전
+    번호 변경은 기존 값을 수정합니다. Sweep은 충돌 요소의 번호도 바꿀 수 있으므로 선택 전에 옵션을 확인하세요.
+
+    호환성
+    pyRevit | IronPython 2.7
+
+    제작: Nataraj Devaraj.
+  pl: |-
+    NDEV TOOLS | RENUMBER
+
+    Zmieniaj numerację elementów w kolejności wyboru w jednym pływającym panelu. Kategorie odpowiadają oryginalnemu ReNumber i aktywnemu widokowi.
+
+    SPOSÓB UŻYCIA
+    1. Wybierz kategorię, wartość początkową, Increase/Decrease i krok (1, 2, 0.2 lub 0.3).
+    2. Oddziel wykluczenia przecinkami: 5, 8-10, A to C, #. Puste pole oznacza brak wykluczeń.
+    3. Wybierz obsługę duplikatów, kliknij Start picking i wybieraj w kolejności. Esc w Revit kończy wybieranie.
+
+    OPCJE I DZIAŁANIE
+    - Skip przesuwa wartość o jeden ustawiony krok bez zmiany elementu.
+    - Przyjmuje liczby, litery i symbole; zakresy obejmują oba końce. Podwójny cudzysłów wymusza dokładne dopasowanie tekstu.
+    - Kroki dziesiętne i zmniejszanie dotyczą liczb; identyfikatory literowe używają Increase z krokiem 1.
+    - Number doors by room pojawia się tylko dla drzwi. Numery pozostają powiązane z pomieszczeniami; pominięte lub wykluczone drzwi nie zmieniają się.
+    - Sweep przenosi kolidujący element na wolny numer. Alert ostrzega i pozostawia wybrany element. Skip przy konflikcie pozostawia już ponumerowany wybrany element.
+
+    POMOC
+    ? wyświetla instrukcje i łącza GitHub/LinkedIn. ★ GitHub otwiera repozytorium NdevTools.
+
+    BEZPIECZEŃSTWO
+    Zmiana numeracji modyfikuje istniejące wartości. Sweep może też zmieniać numery elementów powodujących konflikt; sprawdź opcje przed wyborem.
+
+    ZGODNOŚĆ
+    pyRevit | IronPython 2.7
+
+    Autor: Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | RENUMBER
+
+    Перенумеровывайте элементы в порядке выбора в одной плавающей панели. Категории соответствуют исходному ReNumber и активному виду.
+
+    КАК ИСПОЛЬЗОВАТЬ
+    1. Выберите категорию, начальное значение, Increase/Decrease и шаг (1, 2, 0.2 или 0.3).
+    2. Разделите исключения запятыми: 5, 8-10, A to C, #. Пустое поле означает отсутствие исключений.
+    3. Выберите обработку дубликатов, нажмите Start picking и выбирайте элементы по порядку. Esc в Revit завершает выбор.
+
+    ПАРАМЕТРЫ И ПОВЕДЕНИЕ
+    - Skip продвигает значение на один заданный шаг без изменения элемента.
+    - Принимаются числа, буквы и спецсимволы; диапазоны включают обе границы. Двойные кавычки задают точное текстовое совпадение.
+    - Десятичные шаги и уменьшение применяются к числам; буквенные идентификаторы используют Increase с шагом 1.
+    - Number doors by room отображается только для дверей. Номера остаются привязаны к помещениям; пропущенные или исключённые двери не меняются.
+    - Sweep переносит конфликтующий элемент на свободный номер. Alert предупреждает и сохраняет выбранный элемент. Skip при конфликте сохраняет уже пронумерованный выбранный элемент.
+
+    СПРАВКА
+    ? показывает инструкции и ссылки GitHub/LinkedIn. ★ GitHub открывает репозиторий NdevTools.
+
+    БЕЗОПАСНОСТЬ
+    Перенумерация изменяет существующие значения. Sweep может также перенумеровать конфликтующие элементы; проверьте параметры перед выбором.
+
+    СОВМЕСТИМОСТЬ
+    pyRevit | IronPython 2.7
+
+    Создано Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | RENUMBER
+
+    Renumera elementos en el orden de selección desde un único panel flotante. Las categorías siguen el ReNumber original y la vista activa.
+
+    CÓMO USAR
+    1. Elige categoría, valor inicial, Increase/Decrease y paso (1, 2, 0.2 o 0.3).
+    2. Separa las exclusiones con comas: 5, 8-10, A to C, #. Déjalo vacío para ninguna.
+    3. Elige el tratamiento de duplicados, pulsa Start picking y selecciona en orden. Esc en Revit termina la selección.
+
+    OPCIONES Y COMPORTAMIENTO
+    - Skip avanza un paso configurado sin modificar elementos.
+    - Admite números, letras y símbolos; los intervalos incluyen ambos extremos. Las comillas dobles fuerzan una coincidencia literal.
+    - Los pasos decimales y la disminución se aplican a números; los identificadores con letras usan Increase con paso 1.
+    - Number doors by room solo aparece para puertas. Los números siguen vinculados a las habitaciones; las puertas omitidas o excluidas no cambian.
+    - Sweep mueve el elemento en conflicto a un número libre. Alert avisa y conserva el seleccionado. Skip conserva el elemento seleccionado ya numerado cuando hay conflicto.
+
+    AYUDA
+    ? muestra instrucciones y enlaces GitHub/LinkedIn. ★ GitHub abre el repositorio NdevTools.
+
+    SEGURIDAD
+    La renumeración cambia valores existentes. Sweep también puede renumerar elementos en conflicto; comprueba las opciones antes de seleccionar.
+
+    COMPATIBILIDAD
+    pyRevit | IronPython 2.7
+
+    Creado por Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | RENUMBER
+
+    Перенумеровуйте елементи в порядку вибору в одній плавучій панелі. Категорії відповідають оригінальному ReNumber та активному виду.
+
+    ЯК КОРИСТУВАТИСЯ
+    1. Виберіть категорію, початкове значення, Increase/Decrease і крок (1, 2, 0.2 або 0.3).
+    2. Розділіть винятки комами: 5, 8-10, A to C, #. Порожнє поле означає відсутність винятків.
+    3. Виберіть обробку дублікатів, натисніть Start picking і вибирайте за порядком. Esc у Revit завершує вибір.
+
+    ПАРАМЕТРИ ТА ПОВЕДІНКА
+    - Skip пересуває значення на один заданий крок без зміни елемента.
+    - Приймаються числа, літери та спецсимволи; діапазони включають обидві межі. Подвійні лапки задають точний текстовий збіг.
+    - Десяткові кроки та зменшення застосовуються до чисел; літерні ідентифікатори використовують Increase із кроком 1.
+    - Number doors by room відображається лише для дверей. Номери залишаються пов'язаними з приміщеннями; пропущені або виключені двері не змінюються.
+    - Sweep переносить конфліктний елемент на вільний номер. Alert попереджає та зберігає вибраний елемент. Skip за конфлікту зберігає вже пронумерований вибраний елемент.
+
+    ДОВІДКА
+    ? показує інструкції та посилання GitHub/LinkedIn. ★ GitHub відкриває репозиторій NdevTools.
+
+    БЕЗПЕКА
+    Перенумерація змінює наявні значення. Sweep також може перенумерувати конфліктні елементи; перевірте параметри перед вибором.
+
+    СУМІСНІСТЬ
+    pyRevit | IronPython 2.7
+
+    Створено Nataraj Devaraj.

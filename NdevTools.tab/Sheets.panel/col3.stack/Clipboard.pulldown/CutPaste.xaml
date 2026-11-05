@@ -1,0 +1,62 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="650" Height="590" MinWidth="500" MinHeight="460" WindowStartupLocation="CenterOwner"
+        Background="#051220" Foreground="#DEEFFB" FontFamily="Segoe UI" FontSize="13" ShowInTaskbar="False">
+  <Window.Resources>
+    <Style TargetType="Button">
+      <Setter Property="Background" Value="#09243A"/><Setter Property="Foreground" Value="#DEEFFB"/>
+      <Setter Property="BorderBrush" Value="#21536A"/><Setter Property="Padding" Value="13,6"/>
+      <Setter Property="MinHeight" Value="32"/>
+      <Setter Property="Template"><Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Frame" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="1" CornerRadius="4" Padding="{TemplateBinding Padding}">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Frame" Property="BorderBrush" Value="#05D5EC"/></Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="Frame" Property="BorderBrush" Value="White"/></Trigger>
+            <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value=".44"/></Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value></Setter>
+    </Style>
+    <Style x:Key="Primary" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+      <Setter Property="Foreground" Value="#002032"/><Setter Property="Background" Value="#0DC7E7"/>
+      <Setter Property="BorderBrush" Value="#0FE0FB"/><Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    <Style TargetType="ListBoxItem">
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="Foreground" Value="#DEEFFB"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ListBoxItem">
+        <Border x:Name="Row" Padding="9,6"><ContentPresenter/></Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Row" Property="Background" Value="#124264"/></Trigger>
+          <Trigger Property="IsSelected" Value="True"><Setter TargetName="Row" Property="Background" Value="#116175"/><Setter Property="Foreground" Value="White"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+  </Window.Resources>
+  <DockPanel Margin="18">
+    <StackPanel DockPanel.Dock="Top" Margin="0,0,0,12">
+      <TextBlock x:Name="Heading" FontSize="25" FontWeight="SemiBold" Foreground="#06D8FB"/>
+      <TextBlock x:Name="SheetName" Margin="0,5,0,0" TextWrapping="Wrap"/>
+    </StackPanel>
+    <StackPanel DockPanel.Dock="Bottom" Margin="0,12,0,0">
+      <Border Background="#09243A" BorderBrush="#21536A" BorderThickness="1" CornerRadius="4" Padding="12,9">
+        <TextBlock x:Name="Hint" Foreground="#AED1DF" TextWrapping="Wrap"/>
+      </Border>
+      <WrapPanel HorizontalAlignment="Right" Margin="0,10,0,0">
+        <Button x:Name="DismissButton" Margin="0,0,6,0" IsCancel="True"/>
+        <Button x:Name="ChooseButton" Style="{StaticResource Primary}"/>
+      </WrapPanel>
+    </StackPanel>
+    <DockPanel>
+      <DockPanel DockPanel.Dock="Top" Margin="0,0,0,6">
+        <Button x:Name="SelectAllButton" DockPanel.Dock="Right"/>
+        <TextBlock x:Name="Count" VerticalAlignment="Center" Foreground="#AED1DF"/>
+      </DockPanel>
+      <ListBox x:Name="Placements" SelectionMode="Multiple" Background="#092940" Foreground="#DEEFFB"
+               BorderBrush="#21536A" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+    </DockPanel>
+  </DockPanel>
+</Window>

@@ -1,0 +1,224 @@
+title:
+  ar: "قص"
+  pt_br: "Recortar"
+  bg: "Изрежи"
+  chinese_s: "剪切"
+  chinese_t: "剪下"
+  cs: "Vyjmout"
+  nl_nl: "Knippen"
+  en_gb: "Cut"
+  en_us: "Cut"
+  fa: "برش"
+  fr_fr: "Couper"
+  de_de: "Ausschneiden"
+  hu: "Kivágás"
+  it_it: "Taglia"
+  ja: "切り取り"
+  ko: "잘라내기"
+  pl: "Wytnij"
+  ru: "Вырезать"
+  es_es: "Cortar"
+  uk: "Вирізати"
+author: "Nataraj Devaraj"
+tooltip:
+  ar: |-
+    NDEV TOOLS | SHEET CLIPBOARD | قص
+
+    حدد المساقط والجداول وعناصر التعليق الموضوعة على لوحة المصدر.
+
+    يُبقي القص العناصر الأصلية على لوحة المصدر إلى أن ينقلها اللصق.
+
+    انقر على لوحة الوجهة لتحديد مركز المجموعة مع الحفاظ على المسافات بين العناصر. يلغي مفتاح Esc عملية الوضع ويُبقي محتوى الحافظة.
+
+    إعداد Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Recortar
+
+    Selecione as vistas, tabelas e anotações colocadas na folha de origem.
+
+    Recortar mantém os originais na folha de origem até que Colar os mova.
+
+    Clique na folha de destino para definir o centro do grupo e manter o espaçamento entre os itens. Esc cancela a colocação e mantém o conteúdo da área de transferência.
+
+    Criado por Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Изрежи
+
+    Изберете изгледите, спецификациите и анотациите върху изходния лист.
+
+    Изрязаните оригинали остават на изходния лист до преместването им с командата за поставяне.
+
+    Щракнете върху целевия лист, за да зададете центъра на групата и да запазите разстоянията. Esc отменя поставянето и запазва съдържанието на клипборда.
+
+    Автор: Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | SHEET CLIPBOARD | 剪切
+
+    在源图纸上选择已放置的视图、明细表和注释。
+
+    剪切后，原件保留在源图纸上，直到粘贴时才移动。
+
+    在目标图纸上单击以指定整组的中心，项目之间的间距保持不变。按 Esc 可取消放置并保留剪贴板内容。
+
+    作者：Nataraj Devaraj。
+  chinese_t: |-
+    NDEV TOOLS | SHEET CLIPBOARD | 剪下
+
+    在來源圖紙上選取已放置的視圖、明細表和註解。
+
+    剪下後，原件會留在來源圖紙上，直到貼上時才移動。
+
+    在目標圖紙上按一下以指定整組的中心，保留項目之間的間距。按 Esc 可取消放置並保留剪貼簿內容。
+
+    作者：Nataraj Devaraj。
+  cs: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Vyjmout
+
+    Na zdrojovém výkresu vyberte umístěné pohledy, výkazy a poznámky.
+
+    Po vyjmutí zůstanou originály na zdrojovém výkresu až do přesunutí příkazem Vložit.
+
+    Kliknutím na cílový výkres určete střed skupiny. Rozestupy zůstanou zachovány. Esc zruší umístění a ponechá obsah ve schránce.
+
+    Autor: Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Knippen
+
+    Selecteer de aanzichten, tabellen en annotaties die op het bronblad zijn geplaatst.
+
+    Na het knippen blijven de originelen op het bronblad totdat Plakken ze verplaatst.
+
+    Klik op het doelblad om het middelpunt van de groep te bepalen. De onderlinge afstanden blijven behouden. Esc annuleert het plaatsen en bewaart de inhoud van het klembord.
+
+    Gemaakt door Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Cut
+
+    Select views, schedules and annotations placed on the source sheet.
+
+    Cut keeps the originals on the source sheet until Paste moves them.
+
+    Click the destination sheet to set the group’s centre and preserve the spacing between items. Esc cancels placement and keeps the clipboard.
+
+    Created by Nataraj Devaraj.
+  en_us: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Cut
+
+    Select views, schedules, and annotations placed on the source sheet.
+
+    Cut keeps the originals on the source sheet until Paste moves them.
+
+    Click the destination sheet to set the group’s center and preserve the spacing between items. Esc cancels placement and keeps the clipboard.
+
+    Created by Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | SHEET CLIPBOARD | برش
+
+    نماها، جدول‌ها و یادداشت‌های قرارگرفته روی شیت مبدأ را انتخاب کنید.
+
+    پس از برش، عناصر اصلی روی شیت مبدأ می‌مانند تا با چسباندن جابه‌جا شوند.
+
+    روی شیت مقصد کلیک کنید تا مرکز گروه مشخص شود و فاصلهٔ عناصر حفظ شود. با Esc عملیات قرارگیری لغو می‌شود و محتوای کلیپ‌بورد باقی می‌ماند.
+
+    پدیدآورنده: Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Couper
+
+    Sélectionnez les vues, les nomenclatures et les annotations placées sur la feuille source.
+
+    Les éléments coupés restent sur la feuille source jusqu’à leur déplacement par la commande Coller.
+
+    Cliquez sur la feuille de destination pour fixer le centre du groupe. L’espacement entre les éléments est conservé. Échap annule le placement et conserve le contenu du presse-papiers.
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Ausschneiden
+
+    Wählen Sie auf dem Quellplan platzierte Ansichten, Bauteillisten und Beschriftungen aus.
+
+    Ausgeschnittene Originale bleiben auf dem Quellplan, bis sie mit Einfügen verschoben werden.
+
+    Klicken Sie auf den Zielplan, um den Gruppenmittelpunkt festzulegen. Die Abstände bleiben erhalten. Esc bricht die Platzierung ab und erhält den Inhalt der Zwischenablage.
+
+    Erstellt von Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Kivágás
+
+    Jelölje ki a forrás tervlapon elhelyezett nézeteket, kimutatásokat és feliratokat.
+
+    Kivágás után az eredeti elemek a forrás tervlapon maradnak, amíg a Beillesztés át nem helyezi őket.
+
+    A céltervlapon kattintással jelölje ki a csoport középpontját. Az elemek közötti távolság megmarad. Az Esc megszakítja az elhelyezést, a vágólap tartalma megmarad.
+
+    Készítette: Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Taglia
+
+    Selezionare le viste, gli abachi e le annotazioni posizionati sulla tavola di origine.
+
+    Gli elementi tagliati rimangono sulla tavola di origine finché il comando Incolla non li sposta.
+
+    Fare clic sulla tavola di destinazione per fissare il centro del gruppo. Le distanze tra gli elementi vengono mantenute. Esc annulla il posizionamento e conserva il contenuto degli Appunti.
+
+    Creato da Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | SHEET CLIPBOARD | 切り取り
+
+    元のシートに配置されているビュー、集計表、注釈を選択します。
+
+    切り取った項目は、貼り付けて移動するまで元のシートに残ります。
+
+    貼り付け先のシートでグループの中心をクリックします。項目間の間隔は維持されます。Esc キーで配置を取り消しても、クリップボードの内容は保持されます。
+
+    作成者: Nataraj Devaraj
+  ko: |-
+    NDEV TOOLS | SHEET CLIPBOARD | 잘라내기
+
+    원본 시트에 배치된 뷰, 일람표, 주석을 선택합니다.
+
+    잘라낸 원본은 붙여넣기로 이동하기 전까지 원본 시트에 남습니다.
+
+    대상 시트에서 그룹의 중심을 클릭합니다. 항목 간 간격은 유지됩니다. Esc 키를 누르면 배치가 취소되고 클립보드 내용은 유지됩니다.
+
+    작성자: Nataraj Devaraj
+  pl: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Wytnij
+
+    Wybierz widoki, zestawienia i opisy umieszczone na arkuszu źródłowym.
+
+    Wycięte elementy pozostają na arkuszu źródłowym do chwili przeniesienia ich poleceniem Wklej.
+
+    Kliknij arkusz docelowy, aby ustalić środek grupy i zachować odstępy między elementami. Esc anuluje wstawianie i zachowuje zawartość schowka.
+
+    Autor: Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Вырезать
+
+    Выберите виды, спецификации и аннотации, размещённые на исходном листе.
+
+    Вырезанные элементы остаются на исходном листе, пока команда «Вставить» не переместит их.
+
+    Щёлкните на целевом листе, чтобы задать центр группы. Расстояния между элементами сохраняются. Esc отменяет размещение и сохраняет содержимое буфера обмена.
+
+    Автор: Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Cortar
+
+    Seleccione las vistas, las tablas de planificación y las anotaciones colocadas en el plano de origen.
+
+    Los originales cortados permanecen en el plano de origen hasta que la orden Pegar los traslada.
+
+    Haga clic en el plano de destino para fijar el centro del grupo y conservar la separación entre elementos. Esc cancela la colocación y mantiene el contenido del portapapeles.
+
+    Creado por Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | SHEET CLIPBOARD | Вирізати
+
+    Виберіть види, специфікації та анотації, розміщені на вихідному аркуші.
+
+    Вирізані елементи залишаються на вихідному аркуші, доки команда «Вставити» їх не перемістить.
+
+    Клацніть на цільовому аркуші, щоб задати центр групи. Відстані між елементами збережуться. Esc скасовує розміщення та зберігає вміст буфера обміну.
+
+    Автор: Nataraj Devaraj.
+min_revit_version: "2023"

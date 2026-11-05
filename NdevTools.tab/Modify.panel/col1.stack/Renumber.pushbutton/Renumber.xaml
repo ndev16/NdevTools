@@ -1,0 +1,308 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="NdevTools | Renumber" Width="400" Height="780" MinWidth="340" MaxWidth="560" MinHeight="540"
+        Background="#051220" Foreground="#DEEFFB" FontFamily="Segoe UI" FontSize="12"
+        WindowStartupLocation="Manual" ResizeMode="CanResize" WindowStyle="SingleBorderWindow"
+        ShowInTaskbar="False" Closing="closing">
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="0" ResizeBorderThickness="6"
+                            GlassFrameThickness="0" UseAeroCaptionButtons="False"/>
+    </shell:WindowChrome.WindowChrome>
+    <Window.Resources>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#DEEFFB"/>
+        </Style>
+        <Style x:Key="SectionHeading" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#0BE7FC"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+        </Style>
+        <Style x:Key="MutedText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#88ADC2"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style x:Key="PanelCard" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#075776"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Padding" Value="16,14"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#052039" Offset="0"/>
+                        <GradientStop Color="#061B2F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#09243A"/>
+            <Setter Property="Foreground" Value="#D5EDFA"/>
+            <Setter Property="BorderBrush" Value="#176282"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="13,7"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#124264"/>
+                                <Setter Property="BorderBrush" Value="#02D8F5"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#0FE0FB"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#0A354B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#0DC7E7"/>
+            <Setter Property="Foreground" Value="#002032"/>
+            <Setter Property="BorderBrush" Value="#0FE0FB"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#6DEFFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#092940"/>
+            <Setter Property="Foreground" Value="#E5F4FF"/>
+            <Setter Property="BorderBrush" Value="#21536A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CaretBrush" Value="#06D8FB"/>
+            <Setter Property="Padding" Value="9,6"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="FieldBorder" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4" Padding="0">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter TargetName="FieldBorder" Property="BorderBrush" Value="#05D5EC"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Padding" Value="9,7"/>
+            <Setter Property="Foreground" Value="#E5F4FF"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter Property="Background" Value="#124264"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#0A3950"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="MaxDropDownHeight" Value="260"/>
+            <Setter Property="Foreground" Value="#E5F4FF"/>
+            <Setter Property="Background" Value="#092940"/>
+            <Setter Property="BorderBrush" Value="#21536A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,6,0,6"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <Border x:Name="ComboBorder" Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="4"/>
+                            <ToggleButton Focusable="False" ClickMode="Press"
+                                          IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border Background="Transparent">
+                                            <Path Data="M 0 0 L 5 5 L 10 0 Z" Fill="#ABD5E8"
+                                                  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter x:Name="SelectedContent" Margin="10,0,34,0"
+                                              VerticalAlignment="Center" IsHitTestVisible="False"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                            <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Visibility="Hidden"
+                                     Margin="10,1,34,1" Padding="0" BorderThickness="0"
+                                     Background="Transparent" Foreground="{TemplateBinding Foreground}"
+                                     CaretBrush="#06D8FB" VerticalContentAlignment="Center"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}" FocusVisualStyle="{x:Null}">
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"
+                                                      HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                            <Popup x:Name="PART_Popup" Placement="Bottom" AllowsTransparency="True"
+                                   Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" PopupAnimation="None">
+                                <Border Background="#08243B" BorderBrush="#176282" BorderThickness="1"
+                                        CornerRadius="4" Padding="4"
+                                        MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto"
+                                                  HorizontalScrollBarVisibility="Auto">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEditable" Value="True">
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="SelectedContent" Property="Visibility" Value="Hidden"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter TargetName="ComboBorder" Property="BorderBrush" Value="#05D5EC"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ComboBorder" Property="BorderBrush" Value="#02D8F5"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border BorderBrush="#165573" BorderThickness="1" Background="#051220">
+    <Grid Margin="10,0,10,8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#165573" BorderThickness="0,0,0,1" Margin="0,0,0,10" Padding="0,10">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <Border Background="Transparent" MouseLeftButtonDown="drag_title">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image x:Name="brand_image" Width="36" Height="38" Stretch="Uniform"/>
+                        <Border Width="1" Height="34" Background="#176A8B" Margin="7,0,9,0"/>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Renumber" FontSize="21" FontWeight="Bold" Foreground="#06D8FB"/>
+                            <TextBlock Text="NUMBERING PROPERTIES" FontSize="9" Foreground="#ABD5E8" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="?" Width="25" MinHeight="28" Padding="0" Margin="0,0,3,0" Click="help_clicked" ToolTip="Help and creator links"/>
+                    <Button Content="−" Width="25" MinHeight="28" Padding="0" Margin="0,0,3,0" Click="minimize_clicked" ToolTip="Minimize"/>
+                    <Button Content="×" Width="25" MinHeight="28" Padding="0" Click="close_clicked" ToolTip="Close Renumber"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Focusable="False">
+          <StackPanel>
+            <Border x:Name="help_panel" Visibility="Collapsed" Background="#09273A" BorderBrush="#176282" BorderThickness="1" CornerRadius="6" Padding="10" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="HELP &amp; CONTACT" FontWeight="SemiBold" Foreground="#06D8FB"/>
+                    <TextBlock Text="Choose a category and sequence, then Start picking. Skip advances without changing an element. Press Esc in Revit to finish picking." TextWrapping="Wrap" Margin="0,7,0,8"/>
+                    <TextBlock Text="Created by Nataraj Devaraj." Foreground="#88ADC2" FontSize="11"/>
+                    <Button Content="GitHub  |  NdevTools" Click="github_clicked" Margin="0,8,0,5"/>
+                    <Button Content="LinkedIn  |  Nataraj Devaraj" Click="linkedin_clicked"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource PanelCard}" Padding="11,9">
+            <StackPanel x:Name="setup_panel">
+                <TextBlock Text="Category" Margin="0,0,0,5"/>
+                <ComboBox x:Name="category_cb" MinHeight="32" SelectionChanged="category_changed"/>
+                <CheckBox x:Name="room_checkbox" Content="Number doors by room" Visibility="Collapsed"
+                          Margin="0,10,0,0" Checked="mode_changed" Unchecked="mode_changed"/>
+                <Grid x:Name="sequence_settings" Margin="0,14,0,0">
+                    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="14"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <TextBlock Text="Starting number" Grid.ColumnSpan="3" Margin="0,0,0,5"/>
+                    <TextBox x:Name="start_tb" Grid.Row="1" Grid.ColumnSpan="3" Text="1" MinHeight="32"/>
+                    <TextBlock Text="Direction" Grid.Row="2" Margin="0,12,0,5"/>
+                    <TextBlock Text="Step" Grid.Row="2" Grid.Column="2" Margin="0,12,0,5"/>
+                    <ComboBox x:Name="direction_cb" Grid.Row="3" MinHeight="32"/>
+                    <TextBox x:Name="step_tb" Grid.Row="3" Grid.Column="2" Text="1" MinHeight="32" ToolTip="Positive magnitude, for example 1, 2, 0.2 or 0.3. Direction controls the sign."/>
+                </Grid>
+                <TextBlock Text="Excluded identifiers / ranges" Margin="0,14,0,5"/>
+                <TextBox x:Name="exclusions_tb" MinHeight="32" ToolTip="Examples: 5, 8-10, A to C, A01-A05, #, Room@1. Quote an entry to treat it literally, including commas or range punctuation."/>
+                <TextBlock Text="Example: 5, 8-10, A to C, #   ·   blank = none" Foreground="#88ADC2" FontSize="11" Margin="0,5,0,0" TextWrapping="Wrap"/>
+                <TextBlock Text="Duplicate numbers" Margin="0,14,0,5"/>
+                <ComboBox x:Name="duplicate_cb" MinHeight="32"/>
+                <TextBlock x:Name="mode_hint" TextWrapping="Wrap" Foreground="#88ADC2" FontSize="11" Margin="0,10,0,8"/>
+            </StackPanel>
+            </Border>
+          </StackPanel>
+        </ScrollViewer>
+        <Border Grid.Row="2" Background="#052039" BorderBrush="#075776" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,14,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="NEXT NUMBER" Foreground="#88ADC2" FontSize="10"/>
+                    <TextBlock x:Name="next_value" Text="—" FontSize="23" FontWeight="SemiBold" Foreground="#0DC7E7" TextWrapping="Wrap"/>
+                </StackPanel>
+                <Button x:Name="skip_button" Grid.Column="1" Content="Skip" IsEnabled="False" MinWidth="78" Margin="12,0,0,0" VerticalAlignment="Center" Click="skip_clicked"/>
+            </Grid>
+        </Border>
+        <TextBlock x:Name="status_text" Grid.Row="3" Text="Ready. Set up a sequence and choose Start picking." TextWrapping="Wrap" Foreground="#0BE7FC" MinHeight="38" Margin="0,12,0,8"/>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <Button x:Name="run_button" Content="Start picking" Style="{StaticResource PrimaryButton}" MinHeight="36" Click="start_clicked"/>
+            <Button x:Name="close_button" Grid.Column="2" Content="Close" MinWidth="96" MinHeight="36" Click="close_clicked"/>
+        </Grid>
+        <Grid Grid.Row="5" Margin="1,9,1,0">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Text="Created by Nataraj Devaraj." FontSize="10" Foreground="#88ADC2" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Content="★ GitHub" Click="github_clicked" MinHeight="27" Padding="7,3" FontSize="10" ToolTip="Open the NdevTools GitHub page"/>
+        </Grid>
+    </Grid>
+    </Border>
+</Window>

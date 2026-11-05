@@ -193,6 +193,19 @@ def _normalized_title(value):
         return u''
 
 
+def _ribbon_items(container, parent=None):
+    """Yield buttons and their menu names, including children of pulldowns."""
+    try:
+        items = container.GetItems()
+    except Exception:
+        return
+    for item in items:
+        yield item, parent
+        if callable(getattr(item, 'GetItems', None)):
+            for child in _ribbon_items(item, _normalized_title(item.Name)):
+                yield child
+
+
 def sync_ribbon_to_revit_language(uiapp=None):
     """Localize ONLY the NdevTools tab; do not change pyRevit preferences.
 
@@ -273,11 +286,7 @@ def sync_ribbon_to_revit_language(uiapp=None):
                 panel.Title = panel_titles[name].get(lang, name)
         except Exception:
             pass
-        try:
-            items = list(panel.GetItems())
-        except Exception:
-            continue
-        for item in items:
+        for item, parent in _ribbon_items(panel):
             try:
                 current = _normalized_title(item.ItemText)
                 name = unicode(item.Name).lower()
@@ -285,9 +294,12 @@ def sync_ribbon_to_revit_language(uiapp=None):
                 continue
             # Resolve internal names across the full registry before using
             # display text. Different commands can share translated labels.
-            name_matches = [spec for spec in registry
+            scope = [spec for spec in registry
+                     if _normalized_title(spec.get('parent', '')) == (parent or '')]
+            exact = [spec for spec in scope if _normalized_title(spec['folder']) == name]
+            name_matches = exact or [spec for spec in scope
                             if unicode(spec['folder']).lower() in name]
-            for spec in (name_matches or registry):
+            for spec in (name_matches or scope):
                 # Prefer matching the internal bundle name, then the current
                 # display text against any locale (covers older pyRevit builds).
                 hint = unicode(spec['folder']).lower()

@@ -1,5 +1,13 @@
 # Changelog
 
+## November 6, 2026 — Sheet transfers and Modify tools
+
+- Added **Sheet Clipboard** to cut and paste placed detail views and other views between sheets in the same project. Paste moves the original views together to the point you pick, preserving their detailing and spacing. One Revit Undo restores the group. Copy keeps the originals on the source sheet.
+- Added **Move Views** above Sheet Clipboard in the third Sheets column. Arrange views in two sheet previews or double-click a view to select it on its Revit sheet. The README shows the source and target side by side.
+- Added Match Properties, Renumber and Tab Hider to the NdevTools Modify panel. The updated 20-language banner and full-size ribbon screenshot in the README show the current six-panel layout.
+- Tab Hider remembers both hidden and visible tabs and add-in panels across Revit restarts. Apply and Show All save per-user preferences. The header includes translated Help, a GitHub star button and a link to Nataraj Devaraj on LinkedIn.
+- The extension now lists 19 commands across six panels, with ribbon titles and tooltips for 20 locales.
+
 ## October 19, 2026 — Current ribbon and local testing sync
 
 - Synced the current local testing extension: 12 commands across Welcome, Annotation, Sheets, 3D Model and Handy.

@@ -41,3 +41,28 @@ try:
 except Exception:
     # Localization must never interfere with core NdevTools loading.
     pass
+
+# Optional Sheet Clipboard shortcut on the native Modify tab (Revit 2023+).
+import imp
+
+try:
+    app = getattr(__revit__, 'Application', None) or getattr(__revit__, 'ControlledApplication', None)
+    if app is not None and int(app.VersionNumber) >= 2023:
+        folder = os.path.join(os.path.dirname(__file__), 'NdevTools.tab', 'Sheets.panel',
+                              'col3.stack', 'Clipboard.pulldown')
+        module = imp.load_source('ndev_main_sheet_modify_clipboard', os.path.join(folder, 'modify_ribbon.py'))
+        module.install(__revit__)
+except Exception as error:
+    # The Sheets commands are independent of Modify-tab hosting.
+    from pyrevit.coreutils.logger import get_logger
+    get_logger('NdevSheetClipboard').debug('Modify shortcut startup: {}'.format(error))
+
+# Restore saved Tab Hider choices after the ribbon is ready.
+try:
+    folder = os.path.join(os.path.dirname(__file__), 'NdevTools.tab', 'Modify.panel',
+                          'col1.stack', 'Tab Hider.pushbutton')
+    module = imp.load_source('ndev_tab_hider_startup', os.path.join(folder, 'visibility_startup.py'))
+    module.install(__revit__)
+except Exception as error:
+    from pyrevit.coreutils.logger import get_logger
+    get_logger('NdevTabHider').warning('Could not register ribbon restoration: {}'.format(error))

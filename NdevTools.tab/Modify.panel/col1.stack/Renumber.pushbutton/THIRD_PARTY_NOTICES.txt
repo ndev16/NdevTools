@@ -1,0 +1,5 @@
+NdevTools Renumber adapts pyRevit ReNumber.
+Source: https://github.com/pyrevitlabs/pyRevit/tree/0ec3c5fa8b5088b435552c454dab4bad59d684cc/extensions/pyRevitTools.extension/pyRevit.tab/Modify.panel/edit2.stack/ReNumber.pushbutton
+Copyright: pyRevit contributors.
+Distributed under GNU GPL version 3; see LICENSE-pyRevit.txt.
+Modifications: consolidated NdevTools UI, Skip, exclusions and exact numeric steps.

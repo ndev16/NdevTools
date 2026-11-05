@@ -1,6 +1,6 @@
 # NdevTools translated ribbon metadata
 
-All **12 command bundles** contain titles and tooltip descriptions for these 20
+All **19 command bundles** contain titles and tooltip descriptions for these 20
 pyRevit locale options: `ar`, `pt_br`, `bg`, `chinese_s`, `chinese_t`, `cs`,
 `nl_nl`, `en_gb`, `en_us`, `fa`, `fr_fr`, `de_de`, `hu`, `it_it`, `ja`, `ko`,
 `pl`, `ru`, `es_es`, and `uk`. Product names such as ViewPilot and FramePilot
@@ -8,8 +8,7 @@ remain unchanged where appropriate.
 
 ![Current 20-language support banner](media/NdevTools-20-Language-Support.png)
 
-The ribbon contains Welcome, two Annotation tools, five Sheets tools, two
-3D Model tools and two Handy tools. Each command includes `icon.png` for a light
+The six ribbon panels contain one Welcome command, two Annotation commands, nine Sheets commands, three Modify commands, two 3D Model commands and two Handy commands. The Sheets count includes Cut, Copy and Paste in the localized Sheet Clipboard dropdown. Each command includes `icon.png` for a light
 background and `icon.dark.png` for a dark background.
 
 An explicit **pyRevit Settings → Language** choice takes priority. Otherwise,
@@ -29,4 +28,4 @@ does not mean every dialog is fully localized. Native-speaker review remains
 useful for engineering terminology and right-to-left presentation.
 
 See [localization details](media/docs/LOCALIZATION.md) and the
-[current ribbon overview](media/NdevTools-Ribbon.png).
+[current ribbon overview](README.md#ribbon-layout).

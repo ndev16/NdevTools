@@ -1,0 +1,427 @@
+title:
+  ar: "نقل المساقط"
+  pt_br: "Mover vistas"
+  bg: "Преместване на изгледи"
+  chinese_s: "移动视图"
+  chinese_t: "移動視圖"
+  cs: "Přesunout pohledy"
+  nl_nl: "Aanzichten verplaatsen"
+  en_gb: "Move Views"
+  en_us: "Move Views"
+  fa: "جابه‌جایی نماها"
+  fr_fr: "Déplacer les vues"
+  de_de: "Ansichten verschieben"
+  hu: "Nézetek áthelyezése"
+  it_it: "Sposta viste"
+  ja: "ビューを移動"
+  ko: "뷰 이동"
+  pl: "Przenieś widoki"
+  ru: "Переместить виды"
+  es_es: "Mover vistas"
+  uk: "Перемістити види"
+author: "Nataraj Devaraj"
+min_revit_version: "2023"
+engine:
+  persistent: true
+tooltip:
+  ar: |-
+    NDEV TOOLS | نقل المساقط
+
+    رتّب المساقط ووسائل الإيضاح والجداول والتعليقات الموضوعة على اللوحات باستخدام معاينتين متجاورتين.
+
+    طريقة الاستخدام
+    1. اختر لوحة المصدر على اليمين ولوحة الوجهة على اليسار.
+    2. حدد العناصر من القائمة لرؤية مواضعها في المعاينة. استخدم Ctrl مع النقر لتحديد عدة عناصر.
+    3. اسحب العناصر داخل المعاينة أو إلى اللوحة الأخرى. يحافظ زر Move to target على إحداثياتها الأصلية.
+    4. انقر نقراً مزدوجاً على عنصر في المعاينة لتحديده على لوحته واستخدم أدوات Revit بينما تظل المعاينتان ظاهرتين.
+    5. اضغط على Swap لتبديل لوحتي المصدر والوجهة مع إبقاء لوحة Revit النشطة محددة.
+
+    سلوك النقل
+    - تحتفظ المجموعة بالتباعد بين عناصرها. يحدّث كل إفلات أو نقل النموذج ويمكن التراجع عنه بخطوة واحدة في Revit.
+    - يُسمح بالتداخل وبالنقل خارج حدود اللوحة. استخدم Show all لإظهار العناصر الواقعة خارجها.
+
+    في أعلى النافذة، يفتح Help دليل الاستخدام ويفتح ★ GitHub بجانبه مستودع NdevTools.
+    في أسفل النافذة، فعّل BIM Humor لعرض نكتة أو أوقفه لإخفائها. اضغط على Next joke لعرض نكتة أخرى.
+
+    إعداد Nataraj Devaraj.
+  pt_br: |-
+    NDEV TOOLS | MOVER VISTAS
+
+    Organize vistas, legendas, tabelas e anotações em folhas usando duas prévias lado a lado.
+
+    COMO USAR
+    1. Escolha a folha de origem à direita e a de destino à esquerda.
+    2. Selecione os itens na lista para destacá-los na prévia. Use Ctrl+clique para selecionar vários.
+    3. Arraste os itens dentro da prévia ou para a outra folha. Use Move to target para manter as coordenadas originais.
+    4. Clique duas vezes em um item da prévia para selecioná-lo na folha e usar as ferramentas do Revit. As duas prévias continuam visíveis.
+    5. Clique em Swap para trocar a origem e o destino e manter a folha atual ativa no Revit.
+
+    POSICIONAMENTO
+    - O grupo mantém o espaçamento entre os itens. Cada movimento concluído atualiza o modelo e pode ser desfeito em uma etapa no Revit.
+    - São permitidas sobreposições e posições fora da folha. Use Show all para ver os itens fora da borda.
+
+    No topo da janela, Help abre as instruções. Ao lado, ★ GitHub abre o repositório NdevTools.
+    No rodapé, use BIM Humor para mostrar ou ocultar a piada. Clique em Next joke para ler outra.
+
+    Criado por Nataraj Devaraj.
+  bg: |-
+    NDEV TOOLS | ПРЕМЕСТВАНЕ НА ИЗГЛЕДИ
+
+    Подреждайте изгледи, легенди, спецификации и анотации върху листове чрез два съседни прегледа.
+
+    НАЧИН НА УПОТРЕБА
+    1. Изберете изходния лист вдясно и целевия лист вляво.
+    2. Изберете елементи от списъка, за да ги откроите в прегледа. Използвайте Ctrl и щракване за множествен избор.
+    3. Плъзнете избраното в същия преглед или на другия лист. Move to target запазва първоначалните координати.
+    4. Щракнете двукратно върху елемент в прегледа, за да го изберете на листа и да използвате инструментите на Revit. И двата прегледа остават видими.
+    5. Със Swap разменяте изходния и целевия лист. Активният лист в Revit се запазва.
+
+    РАЗПОЛАГАНЕ
+    - Разстоянията в групата се запазват. Всяко завършено преместване обновява модела и може да се отмени с една стъпка в Revit.
+    - Допускат се застъпване и разполагане извън листа. С Show all се виждат и елементите извън рамката.
+
+    В горната част на прозореца Help отваря указанията, а ★ GitHub до него отваря хранилището на NdevTools.
+    В долната част с BIM Humor показвате или скривате шегата. Натиснете Next joke за следващата.
+
+    Автор Nataraj Devaraj.
+  chinese_s: |-
+    NDEV TOOLS | 移动视图
+
+    通过并排的两份图纸预览，调整视图、图例、明细表和图纸注释的位置。
+
+    使用方法
+    1. 在右侧选择源图纸，在左侧选择目标图纸。
+    2. 在列表中选择项目，即可在预览中看到高亮位置。按住 Ctrl 单击可多选。
+    3. 在预览中拖动选定项目，或将其拖到另一张图纸。单击 Move to target 可保留原图纸坐标。
+    4. 双击预览中的项目即可在实际图纸上选中它。使用 Revit 工具时，两侧预览仍然可见。
+    5. 单击 Swap 可交换源图纸和目标图纸，Revit 仍停留在当前图纸上。
+
+    放置规则
+    - 成组移动时保留项目间距。每次拖放或移动都会更新模型，并可在 Revit 中一步撤销。
+    - 允许重叠和放置在图纸边界之外。单击 Show all 可查看边界外的项目。
+
+    窗口顶部的 Help 可打开使用说明，旁边的 ★ GitHub 可打开 NdevTools 代码仓库。
+    在窗口底部勾选或取消勾选 BIM Humor 可显示或隐藏笑话。单击 Next joke 可查看下一条。
+
+    作者 Nataraj Devaraj。
+  chinese_t: |-
+    NDEV TOOLS | 移動視圖
+
+    透過並排的兩個圖紙預覽，調整視圖、圖例、明細表及圖紙註解的位置。
+
+    使用方式
+    1. 在右側選擇來源圖紙，在左側選擇目標圖紙。
+    2. 從清單選取項目即可在預覽中反白顯示其位置。按住 Ctrl 並點選可選取多個項目。
+    3. 在預覽內拖曳選取的項目，或將其拖曳至另一張圖紙。按下 Move to target 可保留原圖紙座標。
+    4. 按兩下預覽中的項目，即可在實際圖紙上選取該項目。使用 Revit 工具時，兩側預覽仍然可見。
+    5. 按一下 Swap 可交換來源圖紙和目標圖紙，Revit 仍停留在目前的圖紙。
+
+    放置規則
+    - 整組移動時會保留項目間距。每次拖放或移動都會更新模型，並可在 Revit 中一步復原。
+    - 允許項目重疊或放在圖紙邊界以外。按下 Show all 可查看邊界外的項目。
+
+    視窗頂端的 Help 可開啟使用說明，旁邊的 ★ GitHub 可開啟 NdevTools 程式碼儲存庫。
+    在視窗底部勾選或取消勾選 BIM Humor 可顯示或隱藏笑話。點選 Next joke 可查看下一則。
+
+    作者 Nataraj Devaraj。
+  cs: |-
+    NDEV TOOLS | PŘESUNOUT POHLEDY
+
+    Uspořádejte pohledy, legendy, výkazy a poznámky na výkresech ve dvou náhledech vedle sebe.
+
+    POSTUP
+    1. Vpravo vyberte zdrojový výkres a vlevo cílový výkres.
+    2. Vyberte položky v seznamu a jejich poloha se v náhledu zvýrazní. Více položek vyberete kliknutím se stisknutou klávesou Ctrl.
+    3. Přetáhněte výběr v náhledu nebo na druhý výkres. Tlačítko Move to target zachová původní souřadnice.
+    4. Dvakrát klikněte na položku v náhledu. Vybere se na výkresu a při práci s nástroji Revitu zůstanou oba náhledy viditelné.
+    5. Tlačítkem Swap prohodíte zdrojový a cílový výkres. Aktivní výkres v Revitu zůstane stejný.
+
+    UMÍSTĚNÍ
+    - Rozestupy ve skupině zůstanou zachovány. Každý dokončený přesun aktualizuje model a lze jej v Revitu vrátit jedním krokem.
+    - Překrytí i umístění mimo výkres jsou povolena. Volba Show all zobrazí i položky za okrajem.
+
+    V horní části okna otevřete návod tlačítkem Help. Vedle něj je ★ GitHub pro otevření repozitáře NdevTools.
+    Dole můžete pomocí BIM Humor zobrazit nebo skrýt vtip. Kliknutím na Next joke zobrazíte další.
+
+    Autor Nataraj Devaraj.
+  nl_nl: |-
+    NDEV TOOLS | AANZICHTEN VERPLAATSEN
+
+    Rangschik aanzichten, legenda’s, tabellen en annotaties op tekenbladen in twee voorbeelden naast elkaar.
+
+    WERKWIJZE
+    1. Kies rechts het bronblad en links het doelblad.
+    2. Selecteer onderdelen in de lijst om ze in het voorbeeld te markeren. Gebruik Ctrl+klik voor meerdere onderdelen.
+    3. Sleep de selectie binnen het voorbeeld of naar het andere blad. Met Move to target behoud je de oorspronkelijke bladcoördinaten.
+    4. Dubbelklik op een onderdeel in een voorbeeld om het op het werkblad te selecteren. Beide voorbeelden blijven zichtbaar terwijl u de Revit-gereedschappen gebruikt.
+    5. Klik op Swap om bron en doel om te wisselen. In Revit blijft hetzelfde werkblad actief.
+
+    PLAATSING
+    - De onderlinge afstanden blijven behouden. Elke voltooide verplaatsing werkt het model bij en kan in Revit in één stap ongedaan worden gemaakt.
+    - Onderdelen mogen overlappen of buiten het blad liggen. Met Show all worden ook onderdelen buiten de rand zichtbaar.
+
+    Bovenaan opent Help de instructies. Met ★ GitHub ernaast opent u de NdevTools-repository.
+    Onderaan kunt u met BIM Humor de grap tonen of verbergen. Klik op Next joke voor de volgende grap.
+
+    Gemaakt door Nataraj Devaraj.
+  en_gb: |-
+    NDEV TOOLS | MOVE VIEWS
+
+    Arrange placed views, legends, schedules, and sheet annotations in two side-by-side sheet previews.
+
+    HOW TO USE
+    1. Choose the source sheet on the right and the target sheet on the left.
+    2. Select items in the list to highlight them in the preview. Ctrl-click to select several.
+    3. Drag the selection within a preview or onto the other sheet. Choose Move to target to keep the original sheet coordinates.
+    4. Double-click a preview item to select it on its sheet. Both previews stay visible while you use the Revit ribbon.
+    5. Click Swap to exchange source and target while keeping the current Revit sheet active.
+
+    PLACEMENT
+    - Items keep their spacing as a group. Each completed drop or move updates the model in one Revit Undo step.
+    - Overlaps and positions outside the sheet border are allowed. Choose Show all to see off-sheet items.
+
+    In the header, Help opens the instructions. The ★ GitHub button beside it opens the NdevTools repository.
+    In the footer, use BIM Humor to show or hide the joke. Choose Next joke to read another.
+
+    Created by Nataraj Devaraj.
+  en_us: |-
+    NDEV TOOLS | MOVE VIEWS
+
+    Arrange placed views, legends, schedules, and sheet annotations in two side-by-side sheet previews.
+
+    HOW TO USE
+    1. Choose the source sheet on the right and the target sheet on the left.
+    2. Select items in the list to highlight them in the preview. Ctrl-click to select several.
+    3. Drag the selection within a preview or onto the other sheet. Choose Move to target to keep the original sheet coordinates.
+    4. Double-click a preview item to select it on its sheet. Both previews stay visible while you use the Revit ribbon.
+    5. Click Swap to exchange source and target while keeping the current Revit sheet active.
+
+    PLACEMENT
+    - Items keep their spacing as a group. Each completed drop or move updates the model in one Revit Undo step.
+    - Overlaps and positions outside the sheet border are allowed. Choose Show all to see off-sheet items.
+
+    In the header, Help opens the instructions. The ★ GitHub button beside it opens the NdevTools repository.
+    In the footer, use BIM Humor to show or hide the joke. Choose Next joke to read another.
+
+    Created by Nataraj Devaraj.
+  fa: |-
+    NDEV TOOLS | جابه‌جایی نماها
+
+    نماها، راهنماها، جدول‌ها و یادداشت‌های روی شیت را در دو پیش‌نمایش کنار هم مرتب کنید.
+
+    روش استفاده
+    1. شیت مبدأ را در سمت راست و شیت مقصد را در سمت چپ انتخاب کنید.
+    2. با انتخاب هر مورد از فهرست، جای آن در پیش‌نمایش مشخص می‌شود. برای انتخاب چند مورد، کلید Ctrl را نگه دارید و کلیک کنید.
+    3. انتخاب را در همان پیش‌نمایش یا روی شیت دیگر بکشید. برای حفظ مختصات اولیهٔ شیت، Move to target را بزنید.
+    4. روی یک مورد در پیش‌نمایش دوبار کلیک کنید تا روی شیت آن انتخاب شود. هنگام استفاده از ابزارهای Revit، هر دو پیش‌نمایش همچنان دیده می‌شوند.
+    5. با کلیک روی Swap جای شیت مبدأ و مقصد عوض می‌شود و همان شیت در Revit فعال می‌ماند.
+
+    نحوهٔ قرارگیری
+    - فاصلهٔ اعضای گروه حفظ می‌شود. هر جابه‌جایی کامل، مدل را به‌روزرسانی می‌کند و با یک مرحله واگرد در Revit قابل بازگشت است.
+    - هم‌پوشانی و قرارگیری بیرون از کادر شیت مجاز است. برای دیدن موارد بیرون از کادر، Show all را بزنید.
+
+    در بالای پنجره، Help راهنما را باز می‌کند. دکمهٔ ★ GitHub در کنار آن مخزن NdevTools را باز می‌کند.
+    در پایین پنجره، با BIM Humor می‌توانید لطیفه را نمایش دهید یا پنهان کنید. برای خواندن لطیفهٔ بعدی روی Next joke کلیک کنید.
+
+    سازنده Nataraj Devaraj.
+  fr_fr: |-
+    NDEV TOOLS | DÉPLACER LES VUES
+
+    Organisez les vues, légendes, nomenclatures et annotations de feuille dans deux aperçus côte à côte.
+
+    MODE D’EMPLOI
+    1. Choisissez la feuille source à droite et la feuille cible à gauche.
+    2. Sélectionnez des éléments dans la liste pour les mettre en évidence dans l’aperçu. Utilisez Ctrl+clic pour en sélectionner plusieurs.
+    3. Faites glisser la sélection dans l’aperçu ou vers l’autre feuille. Move to target conserve les coordonnées d’origine sur la feuille.
+    4. Double-cliquez sur un élément de l’aperçu pour le sélectionner sur sa feuille. Les deux aperçus restent visibles pendant que vous utilisez le ruban Revit.
+    5. Cliquez sur Swap pour permuter la source et la destination. La même feuille reste active dans Revit.
+
+    POSITIONNEMENT
+    - Le groupe conserve les distances entre les éléments. Chaque déplacement terminé met à jour le modèle et peut être annulé en une seule opération dans Revit.
+    - Les chevauchements et les positions hors du cadre sont autorisés. Show all affiche aussi les éléments hors du cadre.
+
+    En haut de la fenêtre, Help ouvre le mode d’emploi. Le bouton ★ GitHub juste à côté ouvre le dépôt NdevTools.
+    En bas de la fenêtre, cochez ou décochez BIM Humor pour afficher ou masquer la blague. Cliquez sur Next joke pour en lire une autre.
+
+    Créé par Nataraj Devaraj.
+  de_de: |-
+    NDEV TOOLS | ANSICHTEN VERSCHIEBEN
+
+    Ordnen Sie Ansichten, Legenden, Bauteillisten und Planbeschriftungen in zwei nebeneinanderliegenden Planvorschauen an.
+
+    ANLEITUNG
+    1. Wählen Sie rechts den Quellplan und links den Zielplan.
+    2. Wählen Sie Einträge in der Liste aus, um sie in der Vorschau hervorzuheben. Mit Strg+Klick wählen Sie mehrere Einträge aus.
+    3. Ziehen Sie die Auswahl innerhalb der Vorschau oder auf den anderen Plan. Mit Move to target behalten Sie die ursprünglichen Plankoordinaten bei.
+    4. Doppelklicken Sie in der Vorschau auf ein Element, um es auf dem Plan auszuwählen. Beide Vorschauen bleiben beim Arbeiten mit den Revit-Werkzeugen sichtbar.
+    5. Mit Swap tauschen Sie Quell- und Zielplan. Der aktuelle Plan bleibt in Revit aktiv.
+
+    PLATZIERUNG
+    - Die Abstände innerhalb der Gruppe bleiben erhalten. Jeder abgeschlossene Verschiebevorgang aktualisiert das Modell und lässt sich in Revit in einem Schritt rückgängig machen.
+    - Überlappungen und Positionen außerhalb des Planrahmens sind zulässig. Show all zeigt auch Elemente außerhalb des Rahmens an.
+
+    Oben im Fenster öffnet Help die Anleitung. Über ★ GitHub daneben gelangen Sie zum NdevTools-Repository.
+    Unten im Fenster blenden Sie mit BIM Humor den Witz ein oder aus. Mit Next joke lesen Sie den nächsten.
+
+    Erstellt von Nataraj Devaraj.
+  hu: |-
+    NDEV TOOLS | NÉZETEK ÁTHELYEZÉSE
+
+    Rendezze el a nézeteket, jelmagyarázatokat, konszignációkat és lapfeliratokat két egymás melletti lapelőnézetben.
+
+    HASZNÁLAT
+    1. A jobb oldalon válassza ki a forráslapot, a bal oldalon pedig a céllapot.
+    2. A listában kiválasztott elemek kiemelve jelennek meg az előnézetben. Ctrl+kattintással több elemet is kijelölhet.
+    3. Húzza a kijelölést az előnézeten belül vagy a másik lapra. A Move to target megtartja az eredeti lapkoordinátákat.
+    4. Kattintson duplán egy elemre az előnézetben, hogy kijelölje a tervlapon. A Revit eszközeinek használata közben mindkét előnézet látható marad.
+    5. A Swap gombbal felcserélheti a forrás- és céltervlapot. A Revitben az aktuális tervlap marad aktív.
+
+    ELHELYEZÉS
+    - A csoport elemei közötti távolság megmarad. Minden befejezett áthelyezés frissíti a modellt, és a Revitben egy lépésben visszavonható.
+    - Az elemek átfedhetik egymást vagy a lapkereten kívülre kerülhetnek. A Show all a kereten kívüli elemeket is megjeleníti.
+
+    Az ablak tetején a Help gomb nyitja meg az útmutatót, a mellette lévő ★ GitHub pedig az NdevTools GitHub-tárhelyét.
+    Az ablak alján a BIM Humor jelölőnégyzettel megjelenítheti vagy elrejtheti a viccet. A Next joke gombbal olvashatja a következőt.
+
+    Készítette Nataraj Devaraj.
+  it_it: |-
+    NDEV TOOLS | SPOSTA VISTE
+
+    Disponi viste, legende, abachi e annotazioni di tavola in due anteprime affiancate.
+
+    COME SI USA
+    1. Scegli la tavola di origine a destra e quella di destinazione a sinistra.
+    2. Seleziona gli elementi nell’elenco per evidenziarli nell’anteprima. Usa Ctrl+clic per selezionarne più di uno.
+    3. Trascina la selezione all’interno dell’anteprima o sull’altra tavola. Move to target mantiene le coordinate originali sulla tavola.
+    4. Fai doppio clic su un elemento dell’anteprima per selezionarlo sulla tavola. Entrambe le anteprime restano visibili mentre usi gli strumenti di Revit.
+    5. Fai clic su Swap per scambiare origine e destinazione. La tavola corrente resta attiva in Revit.
+
+    POSIZIONAMENTO
+    - Gli elementi mantengono le distanze reciproche. Ogni spostamento completato aggiorna il modello e può essere annullato in Revit con una sola operazione.
+    - Sono consentite sovrapposizioni e posizioni esterne al bordo. Show all mostra anche gli elementi fuori dalla tavola.
+
+    In alto, Help apre le istruzioni. Il pulsante ★ GitHub accanto a Help apre il repository di NdevTools.
+    In basso, usa BIM Humor per mostrare o nascondere la battuta. Fai clic su Next joke per leggerne un’altra.
+
+    Creato da Nataraj Devaraj.
+  ja: |-
+    NDEV TOOLS | ビューを移動
+
+    並べて表示した 2 つのシートプレビューで、配置済みのビュー、凡例、集計表、シート注釈の位置を調整します。
+
+    使い方
+    1. 右側で移動元のシートを、左側で移動先のシートを選択します。
+    2. 一覧で項目を選択すると、プレビュー内の位置が強調表示されます。Ctrl キーを押しながらクリックすると複数選択できます。
+    3. 選択した項目をプレビュー内または別のシートへドラッグします。元のシート座標を維持するには Move to target を選びます。
+    4. プレビュー内の項目をダブルクリックすると、実際のシートでその項目が選択されます。Revit のリボンを使用している間も、両方のプレビューが表示されます。
+    5. Swap をクリックすると、Revit のアクティブなシートを保持したまま、移動元と移動先のシートを入れ替えられます。
+
+    配置の動作
+    - グループ内の間隔は維持されます。ドロップまたは移動が完了するとモデルが更新され、Revit の元に戻す操作 1 回で取り消せます。
+    - 重なりやシート枠外への配置も可能です。枠外の項目を確認するには Show all を選択します。
+
+    ウィンドウ上部の Help で操作手順を開きます。その隣の ★ GitHub で NdevTools のリポジトリを開きます。
+    ウィンドウ下部の BIM Humor でジョークの表示を切り替えます。Next joke を選ぶと、次のジョークを読めます。
+
+    作成者 Nataraj Devaraj。
+  ko: |-
+    NDEV TOOLS | 뷰 이동
+
+    나란히 표시되는 두 시트 미리보기에서 배치된 뷰, 범례, 일람표 및 시트 주석의 위치를 조정합니다.
+
+    사용 방법
+    1. 오른쪽에서 원본 시트를, 왼쪽에서 대상 시트를 선택합니다.
+    2. 목록에서 항목을 선택하면 미리보기에서 해당 위치가 강조됩니다. Ctrl 키를 누른 채 클릭하면 여러 항목을 선택할 수 있습니다.
+    3. 선택한 항목을 미리보기 안에서 또는 다른 시트로 끕니다. 원래 시트 좌표를 유지하려면 Move to target을 선택합니다.
+    4. 미리보기에서 항목을 두 번 클릭하면 해당 시트에서 선택됩니다. Revit 리본을 사용하는 동안에도 두 미리보기가 모두 표시됩니다.
+    5. Swap을 클릭하면 원본 시트와 대상 시트가 서로 바뀝니다. Revit에서는 현재 시트가 활성 상태로 유지됩니다.
+
+    배치 방식
+    - 그룹 내 항목 간격이 유지됩니다. 끌어놓기나 이동이 완료될 때마다 모델이 업데이트되며 Revit에서 한 번에 실행 취소할 수 있습니다.
+    - 항목을 겹치거나 시트 경계 밖에 배치할 수 있습니다. Show all을 선택하면 경계 밖의 항목도 볼 수 있습니다.
+
+    창 상단에서 Help를 누르면 사용 방법이 열립니다. 옆의 ★ GitHub를 누르면 NdevTools 저장소가 열립니다.
+    창 하단에서 BIM Humor를 선택하거나 해제하여 농담을 표시하거나 숨길 수 있습니다. Next joke를 누르면 다음 농담을 볼 수 있습니다.
+
+    제작 Nataraj Devaraj.
+  pl: |-
+    NDEV TOOLS | PRZENIEŚ WIDOKI
+
+    Rozmieszczaj widoki, legendy, zestawienia i opisy na arkuszach za pomocą dwóch podglądów obok siebie.
+
+    INSTRUKCJA
+    1. Po prawej wybierz arkusz źródłowy, a po lewej arkusz docelowy.
+    2. Zaznacz pozycje na liście, aby wyróżnić je na podglądzie. Ctrl+kliknięcie pozwala zaznaczyć kilka pozycji.
+    3. Przeciągnij zaznaczenie w podglądzie lub na drugi arkusz. Opcja Move to target zachowuje pierwotne współrzędne arkusza.
+    4. Kliknij dwukrotnie element w podglądzie, aby zaznaczyć go na arkuszu. Oba podglądy pozostają widoczne podczas korzystania z narzędzi programu Revit.
+    5. Kliknij Swap, aby zamienić miejscami arkusz źródłowy i docelowy. W programie Revit aktywny pozostaje ten sam arkusz.
+
+    ROZMIESZCZENIE
+    - Odstępy między elementami grupy są zachowane. Każde zakończone przesunięcie aktualizuje model i można je cofnąć w programie Revit jednym poleceniem.
+    - Elementy mogą się nakładać lub znaleźć poza obrysem arkusza. Opcja Show all pokazuje także elementy poza obrysem.
+
+    U góry okna przycisk Help otwiera instrukcję, a znajdujący się obok przycisk ★ GitHub otwiera repozytorium NdevTools.
+    U dołu okna opcja BIM Humor pokazuje lub ukrywa żart. Kliknij Next joke, aby przeczytać kolejny.
+
+    Autor Nataraj Devaraj.
+  ru: |-
+    NDEV TOOLS | ПЕРЕМЕСТИТЬ ВИДЫ
+
+    Размещайте виды, легенды, спецификации и аннотации на листах с помощью двух расположенных рядом окон предпросмотра.
+
+    ПОРЯДОК РАБОТЫ
+    1. Выберите исходный лист справа и целевой лист слева.
+    2. Выделите элементы в списке, чтобы увидеть их положение на листе. Для выбора нескольких элементов удерживайте Ctrl.
+    3. Перетащите выделенные элементы в пределах листа или на другой лист. Команда Move to target сохраняет исходные координаты на листе.
+    4. Дважды щёлкните элемент в окне предпросмотра, чтобы выбрать его на листе. При работе с лентой Revit оба окна предпросмотра остаются видны.
+    5. Нажмите Swap, чтобы поменять местами исходный и целевой листы. В Revit останется активным текущий лист.
+
+    РАЗМЕЩЕНИЕ
+    - Расстояния между элементами группы сохраняются. Каждое завершённое перемещение обновляет модель и отменяется в Revit одним действием.
+    - Допускаются наложение элементов и размещение за границей листа. Команда Show all показывает в том числе элементы за рамкой.
+
+    В верхней части окна кнопка Help открывает инструкцию, а соседняя кнопка ★ GitHub — репозиторий NdevTools.
+    Внизу окна флажок BIM Humor позволяет показать или скрыть шутку. Нажмите Next joke, чтобы прочитать следующую.
+
+    Автор Nataraj Devaraj.
+  es_es: |-
+    NDEV TOOLS | MOVER VISTAS
+
+    Organice vistas, leyendas, tablas de planificación y anotaciones de plano en dos vistas previas contiguas.
+
+    INSTRUCCIONES
+    1. Elija el plano de origen a la derecha y el plano de destino a la izquierda.
+    2. Seleccione elementos en la lista para resaltarlos en la vista previa. Use Ctrl+clic para seleccionar varios.
+    3. Arrastre la selección dentro de la vista previa o al otro plano. Use Move to target para conservar las coordenadas originales del plano.
+    4. Haga doble clic en un elemento de la vista previa para seleccionarlo en el plano. Ambas vistas previas permanecen visibles mientras utiliza la cinta de Revit.
+    5. Pulse Swap para intercambiar el plano de origen y el de destino. El plano actual sigue activo en Revit.
+
+    COLOCACIÓN
+    - Se mantiene la separación entre los elementos del grupo. Cada desplazamiento completado actualiza el modelo y se puede deshacer en Revit en un solo paso.
+    - Se permiten solapamientos y posiciones fuera del borde. Show all también muestra los elementos situados fuera del plano.
+
+    En la parte superior, Help abre las instrucciones. El botón ★ GitHub situado a su lado abre el repositorio de NdevTools.
+    En la parte inferior, marque o desmarque BIM Humor para mostrar u ocultar el chiste. Pulse Next joke para leer otro.
+
+    Creado por Nataraj Devaraj.
+  uk: |-
+    NDEV TOOLS | ПЕРЕМІСТИТИ ВИДИ
+
+    Розташовуйте види, легенди, специфікації та анотації на аркушах за допомогою двох суміжних вікон попереднього перегляду.
+
+    ПОРЯДОК РОБОТИ
+    1. Праворуч виберіть вихідний аркуш, а ліворуч — цільовий.
+    2. Виберіть елементи зі списку, щоб підсвітити їх на аркуші. Щоб вибрати кілька елементів, утримуйте Ctrl під час клацання.
+    3. Перетягніть вибране в межах аркуша або на інший аркуш. Команда Move to target зберігає вихідні координати на аркуші.
+    4. Двічі клацніть елемент у вікні попереднього перегляду, щоб вибрати його на аркуші. Під час роботи зі стрічкою Revit обидва вікна попереднього перегляду залишаються видимими.
+    5. Натисніть Swap, щоб поміняти місцями вихідний і цільовий аркуші. У Revit активним залишиться поточний аркуш.
+
+    РОЗМІЩЕННЯ
+    - Відстані між елементами групи зберігаються. Кожне завершене переміщення оновлює модель і скасовується в Revit однією дією.
+    - Елементи можуть перекриватися або розташовуватися за межами аркуша. Команда Show all показує також елементи поза рамкою.
+
+    Угорі вікна кнопка Help відкриває інструкцію, а розташована поруч кнопка ★ GitHub — репозиторій NdevTools.
+    Унизу вікна прапорець BIM Humor дає змогу показати або приховати жарт. Натисніть Next joke, щоб прочитати наступний.
+
+    Автор Nataraj Devaraj.
+icon: "icon.png"

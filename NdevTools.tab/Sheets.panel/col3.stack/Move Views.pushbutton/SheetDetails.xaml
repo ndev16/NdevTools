@@ -1,0 +1,301 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NdevTools | Move Views" Width="1030" Height="620" MinWidth="650" MinHeight="390"
+        WindowStartupLocation="CenterOwner" ShowActivated="False" Background="#051220" Foreground="#DEEFFB"
+        FontFamily="Segoe UI" FontSize="12" UseLayoutRounding="True">
+  <Window.Resources>
+    <BooleanToVisibilityConverter x:Key="ShowWhenOpen"/>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#DEEFFB"/>
+        </Style>
+        <Style x:Key="SectionHeading" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#0BE7FC"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+        </Style>
+        <Style x:Key="MutedText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#88ADC2"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style x:Key="PanelCard" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#075776"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Padding" Value="16,14"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#052039" Offset="0"/>
+                        <GradientStop Color="#061B2F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#09243A"/>
+            <Setter Property="Foreground" Value="#D5EDFA"/>
+            <Setter Property="BorderBrush" Value="#176282"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,5"/><Setter Property="Margin" Value="0,0,5,0"/>
+            <Setter Property="MinHeight" Value="27"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#124264"/>
+                                <Setter Property="BorderBrush" Value="#02D8F5"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#0FE0FB"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#0A354B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#0DC7E7"/>
+            <Setter Property="Foreground" Value="#002032"/>
+            <Setter Property="BorderBrush" Value="#0FE0FB"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#6DEFFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Padding" Value="9,7"/>
+            <Setter Property="Foreground" Value="#E5F4FF"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter Property="Background" Value="#124264"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#0A3950"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="29"/>
+            <Setter Property="MaxDropDownHeight" Value="260"/>
+            <Setter Property="Foreground" Value="#E5F4FF"/>
+            <Setter Property="Background" Value="#092940"/>
+            <Setter Property="BorderBrush" Value="#21536A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,6,0,6"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <Border x:Name="ComboBorder" Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="4"/>
+                            <ToggleButton Focusable="False" ClickMode="Press"
+                                          IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border Background="Transparent">
+                                            <Path Data="M 0 0 L 5 5 L 10 0 Z" Fill="#ABD5E8"
+                                                  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter x:Name="SelectedContent" Margin="10,0,34,0"
+                                              VerticalAlignment="Center" IsHitTestVisible="False"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                            <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Visibility="Hidden"
+                                     Margin="10,1,34,1" Padding="0" BorderThickness="0"
+                                     Background="Transparent" Foreground="{TemplateBinding Foreground}"
+                                     CaretBrush="#06D8FB" VerticalContentAlignment="Center"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}" FocusVisualStyle="{x:Null}">
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"
+                                                      HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                            <Popup x:Name="PART_Popup" Placement="Bottom" AllowsTransparency="True"
+                                   Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" PopupAnimation="None">
+                                <Border Background="#08243B" BorderBrush="#176282" BorderThickness="1"
+                                        CornerRadius="4" Padding="4"
+                                        MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto"
+                                                  HorizontalScrollBarVisibility="Auto">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEditable" Value="True">
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="SelectedContent" Property="Visibility" Value="Hidden"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter TargetName="ComboBorder" Property="BorderBrush" Value="#05D5EC"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ComboBorder" Property="BorderBrush" Value="#02D8F5"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.38"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    <Style TargetType="ListBoxItem">
+      <Setter Property="Foreground" Value="#DEEFFB"/>
+      <Setter Property="Padding" Value="7,3"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ListBoxItem">
+            <Border x:Name="row" Background="Transparent" CornerRadius="2" Padding="{TemplateBinding Padding}">
+              <ContentPresenter/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="row" Property="Background" Value="#124264"/></Trigger>
+              <Trigger Property="IsSelected" Value="True"><Setter TargetName="row" Property="Background" Value="#087090"/><Setter Property="Foreground" Value="White"/></Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <ControlTemplate x:Key="SheetPane" TargetType="ContentControl">
+      <Border Style="{StaticResource PanelCard}" Padding="8">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/><RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <DockPanel Margin="0,0,0,4">
+            <TextBlock x:Name="counts" DockPanel.Dock="Right" VerticalAlignment="Center" Foreground="#88ADC2"/>
+            <TextBlock x:Name="title" FontWeight="Bold" FontSize="14" Foreground="#0BE7FC"/>
+          </DockPanel>
+          <Grid Grid.Row="1" Margin="0,0,0,5">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <ComboBox x:Name="sheets" Margin="0" ToolTip="Choose a drawing sheet."/>
+        <ToggleButton x:Name="views" Grid.Column="1" Padding="8,3" Margin="4,0,0,0"
+                      VerticalContentAlignment="Center" Foreground="#DEEFFB" Cursor="Hand"
+                      AutomationProperties.Name="Views on this sheet"
+                      ToolTip="Show the list of views, schedules and annotations on this sheet.">
+          <ToggleButton.Template>
+            <ControlTemplate TargetType="ToggleButton">
+              <Border x:Name="border" Background="#09243A" BorderBrush="#176282" BorderThickness="1"
+                      CornerRadius="4" Padding="{TemplateBinding Padding}">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                  <TextBlock Text="Views" Foreground="{TemplateBinding Foreground}"/>
+                  <Path x:Name="arrow" Data="M0,0 L4,4 L8,0 Z" Fill="#ABD5E8"
+                        VerticalAlignment="Center" Margin="5,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                </StackPanel>
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="border" Property="BorderBrush" Value="#02D8F5"/></Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="border" Property="BorderBrush" Value="#02D8F5"/></Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                  <Setter TargetName="border" Property="Background" Value="#124264"/>
+                  <Setter TargetName="arrow" Property="RenderTransform"><Setter.Value><RotateTransform Angle="180"/></Setter.Value></Setter>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.45"/></Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </ToggleButton.Template>
+        </ToggleButton>
+          </Grid>
+          <DockPanel Grid.Row="2" LastChildFill="True" Margin="0,0,0,5"
+                     Visibility="{Binding IsChecked, ElementName=views, Converter={StaticResource ShowWhenOpen}}">
+            <Button x:Name="selectAll" DockPanel.Dock="Right" Content="Select all" Margin="4,0,0,0"
+                    VerticalAlignment="Top" ToolTip="Select all items listed for this sheet."/>
+            <ListBox x:Name="details" SelectionMode="Extended" MaxHeight="112" MinHeight="28"
+                     ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     Background="#09243A" Foreground="#DEEFFB" BorderBrush="#21536A" BorderThickness="1" Padding="2"/>
+          </DockPanel>
+          <Grid Grid.Row="3" ClipToBounds="True" Background="#102A3B">
+            <Canvas x:Name="surface" ClipToBounds="True" Background="#102A3B" Focusable="True"/>
+            <Canvas x:Name="ghost" ClipToBounds="True" IsHitTestVisible="False"/>
+          </Grid>
+          <DockPanel Grid.Row="4" Margin="0,5,0,0" LastChildFill="False">
+            <Button x:Name="editNative" DockPanel.Dock="Right" Content="Edit in Revit" Margin="0"
+                    ToolTip="Select these items on their sheet and use Revit tools while both previews stay open."/>
+            <Button x:Name="fit" Content="Fit sheet" ToolTip="Fit the sheet border into this preview."/>
+            <Button x:Name="showAll" Content="Show all" ToolTip="Fit the sheet and items outside its border."/>
+          </DockPanel>
+        </Grid>
+      </Border>
+    </ControlTemplate>
+  </Window.Resources>
+  <Grid Margin="10">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <DockPanel Margin="0,0,0,6">
+      <Button x:Name="help" DockPanel.Dock="Right" Content="? Help" Padding="8,3" Margin="4,0,0,0"
+              VerticalAlignment="Center" ToolTip="Move Views Help" AutomationProperties.Name="Move Views Help"/>
+      <Button x:Name="githubHeader" DockPanel.Dock="Right" Content="★ GitHub" Padding="8,3" Margin="4,0,0,0"
+              VerticalAlignment="Center" ToolTip="Open the NdevTools GitHub repository" AutomationProperties.Name="Star NdevTools on GitHub"/>
+      <Button x:Name="refresh" DockPanel.Dock="Right" Content="Refresh" Margin="4,0,0,0" VerticalAlignment="Center"
+              ToolTip="Refresh the visible sheet previews."/>
+      <Button x:Name="swap" DockPanel.Dock="Right" Content="Swap" Margin="4,0,0,0" VerticalAlignment="Center"
+              ToolTip="Exchange the source and target previews. Your active Revit sheet and its selection stay in place."/>
+      <TextBlock DockPanel.Dock="Left" FontSize="19" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,12,0">
+        <Run Text="Move "/><Run Text="Views" Foreground="#06D8FB"/>
+      </TextBlock>
+      <TextBlock Text="Ctrl-click to select several items. Drag to place them. Double-click an item to edit it in Revit."
+                 VerticalAlignment="Center" Foreground="#88ADC2" TextWrapping="Wrap"/>
+    </DockPanel>
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="8"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+      <ContentControl x:Name="target" Template="{StaticResource SheetPane}" AutomationProperties.Name="Target sheet"/>
+      <ContentControl x:Name="source" Grid.Column="2" Template="{StaticResource SheetPane}" AutomationProperties.Name="Source sheet"/>
+    </Grid>
+    <DockPanel Grid.Row="2" Margin="0,7,0,0">
+      <Button x:Name="move" DockPanel.Dock="Left" Content="Move to target" Margin="0,0,8,0" Style="{StaticResource PrimaryButton}"
+              ToolTip="Move selected source items to the target at the same sheet coordinates."/>
+      <TextBlock x:Name="credit" DockPanel.Dock="Right" Foreground="#88ADC2" FontSize="10" Margin="8,0,0,0" VerticalAlignment="Center"/>
+      <TextBlock x:Name="notice" Foreground="#ABD5E8" VerticalAlignment="Center" TextWrapping="Wrap" />
+    </DockPanel>
+    <Border Grid.Row="3" Margin="0,5,0,0" Padding="8,3" Background="#061E31"
+            BorderBrush="#136080" BorderThickness="1" CornerRadius="6">
+      <DockPanel>
+        <Button x:Name="nextJoke" DockPanel.Dock="Right" Content="Next joke" Padding="7,2" MinHeight="23" Margin="8,0,0,0"
+                IsEnabled="{Binding IsChecked, ElementName=humorEnabled}"/>
+        <CheckBox x:Name="humorEnabled" DockPanel.Dock="Right" Content="BIM Humor" Foreground="#0BE7FC" VerticalAlignment="Center"/>
+        <TextBlock x:Name="joke" VerticalAlignment="Center" Foreground="#B7D8E7" Margin="0,0,8,0" TextWrapping="Wrap"
+                   Visibility="{Binding IsChecked, ElementName=humorEnabled, Converter={StaticResource ShowWhenOpen}}"/>
+      </DockPanel>
+    </Border>
+  </Grid>
+</Window>
