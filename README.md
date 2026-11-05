@@ -275,18 +275,14 @@ Commands are written for **pyRevit** and the IronPython 2.7 runtime, using Revit
 
 ## What's new
 
-The current ribbon includes **19 commands across six panels**, expanding the original sheet-management-focused repository with:
+### November 6, 2026 — Cut and paste placed views between sheets
 
-- A **Welcome** and contact/about experience.
-- **Vulcraft Deck Region** and **Auto Detail Generator** in the Annotation panel.
-- A third **Sheets** column with Move Views and the Sheet Clipboard dropdown for Cut, Copy and Paste.
-- A **Modify** panel with Match Properties, Renumber and Tab Hider.
-- **Wall Tracing** with supported rectangular openings and **FramePilot** in the 3D Model panel.
-- **ViewPilot** for reviewed view management.
-- A **Handy** panel with multi-sheet Notes and embedded Useful Links.
-- Updated ribbon layout, icons, and documentation.
+- **Sheet Clipboard** lets you cut several placed detail views on one sheet and paste them together on another. Click the destination point to move the original views with their detailing and relative spacing intact. One Revit Undo returns the group. Choose **Copy** when you want to keep the originals.
+- **Move Views** shows the source and target sheets side by side. Drag items between the previews, or double-click an item to select it on its sheet and continue editing in Revit.
+- **Match Properties** applies selected properties to compatible elements. **Renumber** numbers elements in the order you pick them. Both are in the new **Modify** panel.
+- **Tab Hider** remembers which ribbon tabs and add-in panels you show or hide. Click **Apply** to keep your choices across Revit restarts.
 
-See [CHANGELOG.md](CHANGELOG.md) for the summary of this update.
+**Move Views** and **Sheet Clipboard** require Revit 2023 or later. The ribbon now has 19 commands across six panels, with titles and tooltips in 20 languages. [Full changelog](CHANGELOG.md)
 
 ## Support and feedback
 
