@@ -1,4 +1,7 @@
 {
+  "help": "說明",
+  "help_select": "選取所需的圖紙項目，或按一下「{0}」以選取所有可用項目。接著按一下「{1}」。",
+  "credit": "作者：Nataraj Devaraj。",
   "cut_title": "剪下圖紙項目",
   "copy_title": "複製圖紙項目",
   "cut_selected": "剪下選取的項目",

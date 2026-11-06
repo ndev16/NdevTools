@@ -1,4 +1,7 @@
 {
+  "help": "Help",
+  "help_select": "Select the sheet items you want, or click “{0}” to include all eligible items. Then click “{1}”.",
+  "credit": "Created by Nataraj Devaraj.",
   "cut_title": "Cut sheet items",
   "copy_title": "Copy sheet items",
   "cut_selected": "Cut selected",

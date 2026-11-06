@@ -1,4 +1,7 @@
 {
+  "help": "Nápověda",
+  "help_select": "Vyberte požadované položky výkresu nebo klikněte na „{0}“ pro výběr všech dostupných položek. Pak klikněte na „{1}“.",
+  "credit": "Autor: Nataraj Devaraj.",
   "cut_title": "Vyjmout prvky z výkresu",
   "copy_title": "Kopírovat prvky z výkresu",
   "cut_selected": "Vyjmout vybrané",

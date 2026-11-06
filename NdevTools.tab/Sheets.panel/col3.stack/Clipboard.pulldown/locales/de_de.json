@@ -1,4 +1,7 @@
 {
+  "help": "Hilfe",
+  "help_select": "Wählen Sie die gewünschten Planelemente aus oder klicken Sie auf „{0}“, um alle verfügbaren Elemente auszuwählen. Klicken Sie anschließend auf „{1}“.",
+  "credit": "Erstellt von Nataraj Devaraj.",
   "cut_title": "Planelemente ausschneiden",
   "copy_title": "Planelemente kopieren",
   "cut_selected": "Auswahl ausschneiden",

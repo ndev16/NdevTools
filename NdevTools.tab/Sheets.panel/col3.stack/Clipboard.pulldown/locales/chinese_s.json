@@ -1,4 +1,7 @@
 {
+  "help": "帮助",
+  "help_select": "选择所需的图纸项目，或点击“{0}”以选择所有可用项目。然后点击“{1}”。",
+  "credit": "作者：Nataraj Devaraj。",
   "cut_title": "剪切图纸项目",
   "copy_title": "复制图纸项目",
   "cut_selected": "剪切选定项目",

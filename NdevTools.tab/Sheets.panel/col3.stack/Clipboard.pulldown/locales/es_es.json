@@ -1,4 +1,7 @@
 {
+  "help": "Ayuda",
+  "help_select": "Selecciona los elementos de plano que quieras o pulsa «{0}» para incluir todos los disponibles. Luego pulsa «{1}».",
+  "credit": "Creado por Nataraj Devaraj.",
   "cut_title": "Cortar elementos de plano",
   "copy_title": "Copiar elementos de plano",
   "cut_selected": "Cortar selección",

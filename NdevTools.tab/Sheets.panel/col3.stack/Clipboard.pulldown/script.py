@@ -4,12 +4,16 @@ import imp
 import os
 
 from pyrevit import DB, UI
+from System import Uri
 from System.Collections.Generic import List
+from System.Diagnostics import Process, ProcessStartInfo
 from System.IO import File
-from System.Windows import FlowDirection, TextWrapping
+from System.Windows import FlowDirection, MessageBox, TextWrapping
+from System.Windows.Automation import AutomationProperties
 from System.Windows.Controls import ListBoxItem, TextBlock
 from System.Windows.Interop import WindowInteropHelper
 from System.Windows.Markup import XamlReader
+from System.Windows.Media.Imaging import BitmapCacheOption, BitmapImage
 
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -37,7 +41,23 @@ class Dialog(object):
         self.chosen = []
         self.blocked = set(row['uid'] for row in rows if row.get('blocked'))
         self.operation = operation
-        self.window.Title = self.Heading.Text = tr(operation + '_title')
+        self.Heading.Text = tr(operation + '_title')
+        self.window.Title = u'NdevTools | ' + self.Heading.Text
+        logo = BitmapImage()
+        logo.BeginInit()
+        logo.CacheOption = BitmapCacheOption.OnLoad
+        logo.UriSource = Uri(os.path.join(ROOT, 'assets', 'ndevtools-logo.png'))
+        logo.EndInit()
+        logo.Freeze()
+        self.window.FindName('BrandLogo').Source = self.window.Icon = logo
+        self.window.FindName('Credit').Text = tr('credit')
+        help_button = self.window.FindName('HelpButton')
+        help_button.ToolTip = tr('help')
+        AutomationProperties.SetName(help_button, tr('help'))
+        help_button.Click += self.show_help
+        close_button = self.window.FindName('CloseButton')
+        close_button.ToolTip = tr('cancel')
+        AutomationProperties.SetName(close_button, tr('cancel'))
         self.ChooseButton.Content = tr(operation + '_selected')
         self.DismissButton.Content = tr('cancel')
         self.SelectAllButton.Content = tr('select_all')
@@ -67,6 +87,32 @@ class Dialog(object):
     def activate(self, sender, event):
         self.window.Activate()
         self.Placements.Focus()
+
+    def show_help(self, sender, event):
+        help_window = XamlReader.Parse(File.ReadAllText(os.path.join(ROOT, 'ClipboardHelp.xaml')))
+        help_window.Owner = self.window
+        help_window.Icon = self.window.Icon
+        help_window.FlowDirection = self.window.FlowDirection
+        help_window.Resources.MergedDictionaries.Add(self.window.Resources)
+        title = u'{} · {}'.format(self.Heading.Text, tr('help'))
+        help_window.Title = u'NdevTools | ' + title
+        help_window.FindName('HelpHeading').Text = title
+        help_window.FindName('SelectStep').Text = tr('help_select', tr('select_all'), self.ChooseButton.Content)
+        help_window.FindName('PasteStep').Text = self.Hint.Text
+        help_window.FindName('HelpCredit').Text = tr('credit')
+        for name in ('GitHubButton', 'LinkedInButton'):
+            button = help_window.FindName(name)
+            button.ToolTip = button.Tag
+            button.Click += self.open_link
+        help_window.ShowDialog()
+
+    def open_link(self, sender, event):
+        start = ProcessStartInfo(sender.Tag)
+        start.UseShellExecute = True
+        try:
+            Process.Start(start)
+        except Exception as error:
+            MessageBox.Show(unicode(error), sender.Content)
 
     def select_all(self, sender, event):
         for item in self.Placements.Items:

@@ -1,4 +1,7 @@
 {
+  "help": "Pomoc",
+  "help_select": "Wybierz elementy arkusza lub kliknij „{0}”, aby zaznaczyć wszystkie dostępne elementy. Następnie kliknij „{1}”.",
+  "credit": "Autor: Nataraj Devaraj.",
   "cut_title": "Wytnij elementy arkusza",
   "copy_title": "Kopiuj elementy arkusza",
   "cut_selected": "Wytnij zaznaczone",

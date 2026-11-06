@@ -1,4 +1,7 @@
 {
+  "help": "Aide",
+  "help_select": "Sélectionnez les éléments de la feuille ou cliquez sur « {0} » pour inclure tous les éléments disponibles. Cliquez ensuite sur « {1} ».",
+  "credit": "Créé par Nataraj Devaraj.",
   "cut_title": "Couper des éléments de feuille",
   "copy_title": "Copier des éléments de feuille",
   "cut_selected": "Couper la sélection",

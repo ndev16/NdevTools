@@ -1,4 +1,7 @@
 {
+  "help": "Ajuda",
+  "help_select": "Selecione os itens da folha ou clique em “{0}” para incluir todos os itens disponíveis. Em seguida, clique em “{1}”.",
+  "credit": "Criado por Nataraj Devaraj.",
   "cut_title": "Recortar itens da folha",
   "copy_title": "Copiar itens da folha",
   "cut_selected": "Recortar seleção",

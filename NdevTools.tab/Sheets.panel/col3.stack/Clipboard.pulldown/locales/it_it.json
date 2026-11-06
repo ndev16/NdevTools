@@ -1,4 +1,7 @@
 {
+  "help": "Guida",
+  "help_select": "Seleziona gli elementi della tavola desiderati oppure fai clic su «{0}» per includere tutti gli elementi disponibili. Poi fai clic su «{1}».",
+  "credit": "Creato da Nataraj Devaraj.",
   "cut_title": "Taglia elementi della tavola",
   "copy_title": "Copia elementi della tavola",
   "cut_selected": "Taglia selezione",

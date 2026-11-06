@@ -1,4 +1,7 @@
 {
+  "help": "Help",
+  "help_select": "Selecteer de gewenste onderdelen op het blad of klik op ‘{0}’ om alle beschikbare onderdelen te selecteren. Klik daarna op ‘{1}’.",
+  "credit": "Gemaakt door Nataraj Devaraj.",
   "cut_title": "Bladonderdelen knippen",
   "copy_title": "Bladonderdelen kopiëren",
   "cut_selected": "Selectie knippen",

@@ -1,4 +1,7 @@
 {
+  "help": "Súgó",
+  "help_select": "Jelölje ki a kívánt lapelemeket, vagy kattintson a(z) „{0}” gombra az összes elérhető elem kijelöléséhez. Ezután kattintson a(z) „{1}” gombra.",
+  "credit": "Készítette: Nataraj Devaraj.",
   "cut_title": "Tervlapelemek kivágása",
   "copy_title": "Tervlapelemek másolása",
   "cut_selected": "Kijelöltek kivágása",
