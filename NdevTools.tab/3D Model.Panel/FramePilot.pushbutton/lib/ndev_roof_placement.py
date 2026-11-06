@@ -34,7 +34,7 @@ class BaseFramingEngine(object):
     def place_members(self, members, host_info):
         """Place calculated framing members in Revit."""
         from Autodesk.Revit.DB import Line
-        from Autodesk.Revit.DB.Structure import StructuralType
+        from Autodesk.Revit.DB.Structure import StructuralInstanceUsage, StructuralType
 
         try:
             from Autodesk.Revit.DB.Structure import StructuralFramingUtils
@@ -43,11 +43,16 @@ class BaseFramingEngine(object):
 
         level = self.doc.GetElement(host_info.level_id)
         placed = []
+        girders = []
         self._last_placed_pairs = []
 
         for member in members:
+            is_girder = member.member_type in ("RIDGE_BOARD", "RIDGE_BOARD_V2")
             symbol = self._resolve_symbol(member)
             if symbol is None:
+                if is_girder:
+                    raise ValueError("Cannot find the selected ridge board: {0} : {1}.".format(
+                        member.family_name, member.type_name))
                 continue
 
             activate_symbol(self.doc, symbol)
@@ -72,13 +77,21 @@ class BaseFramingEngine(object):
                         line, symbol, level, stype
                     )
                 except Exception:
+                    if is_girder:
+                        raise
                     instance = None
 
             if instance is None:
+                if is_girder:
+                    raise ValueError("Revit could not place the ridge board {0} : {1}.".format(
+                        member.family_name, member.type_name))
                 continue
 
             # Center cross-section and apply the requested rotation.
-            self._center_on_curve(instance)
+            self._center_on_curve(instance, is_girder)
+            if is_girder:
+                instance.StructuralUsage = StructuralInstanceUsage.Girder
+                girders.append(instance)
             if is_col:
                 self._rotate_vertical_member(
                     instance,
@@ -105,6 +118,10 @@ class BaseFramingEngine(object):
             placed.append(instance)
             self._last_placed_pairs.append((member, instance))
 
+        if girders:
+            self.doc.Regenerate()
+            for girder in girders:
+                self._check_girder_settings(girder)
         return placed
 
     # ------------------------------------------------------------------
@@ -286,21 +303,38 @@ class BaseFramingEngine(object):
             return False
         return dz > MIN_MEMBER_LENGTH and dx < 1e-6 and dy < 1e-6
 
-    def _center_on_curve(self, instance):
-        """Apply centered Y and the user's chosen Z justification.
+    @staticmethod
+    def _check_girder_settings(girder):
+        """Revit may recalculate framing properties when it joins the new beams."""
+        from Autodesk.Revit.DB import BuiltInParameter as BIP
+        from Autodesk.Revit.DB.Structure import StructuralInstanceUsage, YJustification, ZJustification
 
-        Preserve the existing zero-offset placement workflow.
-        """
+        if girder.StructuralUsage != StructuralInstanceUsage.Girder:
+            raise ValueError("Beam {0}: Revit did not retain Structural Usage = Girder.".format(girder.Id))
+        for setting, expected in ((BIP.YZ_JUSTIFICATION, 0),
+                                  (BIP.Y_JUSTIFICATION, int(YJustification.Center)),
+                                  (BIP.Z_JUSTIFICATION, int(ZJustification.Top))):
+            param = girder.get_Parameter(setting)
+            if param is None or param.AsInteger() != expected:
+                raise ValueError("Girder {0}: Revit could not apply {1}.".format(girder.Id, setting))
+        for setting in (BIP.Y_OFFSET_VALUE, BIP.Z_OFFSET_VALUE):
+            param = girder.get_Parameter(setting)
+            if param is None or abs(param.AsDouble()) > 1e-8:
+                raise ValueError("Girder {0}: Revit could not clear {1}.".format(girder.Id, setting))
+
+    def _center_on_curve(self, instance, is_girder=False):
+        """Girders follow the roof edge at their top. Other members use the panel setting."""
         from Autodesk.Revit.DB import BuiltInParameter
+        from Autodesk.Revit.DB.Structure import YJustification, ZJustification
 
         # Uniform mode -- both ends share the same justification.
         _set_int(instance, BuiltInParameter.YZ_JUSTIFICATION, 0)
 
-        # Keep Y centered (2); select Z independently below.
-        _set_int(instance, BuiltInParameter.Y_JUSTIFICATION, 2)
-        # Revit 2022 ZJustification: Top=0, Center=1, Origin=2, Bottom=3.
-        _set_int(instance, BuiltInParameter.Z_JUSTIFICATION,
-                 z_justification_value(getattr(self.config, 'z_justification', 'bottom')))
+        y = YJustification.Center if is_girder else YJustification.Origin
+        z = (int(ZJustification.Top) if is_girder else
+             z_justification_value(getattr(self.config, 'z_justification', 'bottom')))
+        _set_int(instance, BuiltInParameter.Y_JUSTIFICATION, int(y))
+        _set_int(instance, BuiltInParameter.Z_JUSTIFICATION, z)
 
         # Zero all offset values.
         for pid in (

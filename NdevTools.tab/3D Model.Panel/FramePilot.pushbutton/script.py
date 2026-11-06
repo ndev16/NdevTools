@@ -66,7 +66,7 @@ try:
         _sketch_module = reload(_sketch_module)
     NativeBeamSystemSketch = _sketch_module.NativeBeamSystemSketch
     from ndev_roof_multi import RoofFramingEngineV2
-    from ndev_roof_tracking import (delete_tracked_members_for_hosts,
+    from ndev_roof_tracking import (delete_tracked_members_for_hosts, element_id_value,
                                 ensure_private_tracking)
 except Exception as import_error:
     forms.alert(
@@ -114,7 +114,7 @@ PURPOSE_HOST_LABELS = {u'Roof': u'roofs', u'Flat Truss': u'flat roofs',
 SPACING_OPTIONS = (u'12" OC', u'16" OC', u'24" OC', u'Custom')
 SPACING_VALUES = {u'12" OC': 12.0, u'16" OC': SPACING_16OC, u'24" OC': SPACING_24OC}
 SESSION_KEY = '_ndevtools_framepilot_properties_panel'
-SESSION_BUILD = '2026-10-18-sketch-settings-5'
+SESSION_BUILD = '2026-11-07-girder-alignment-1'
 
 
 def _placement_choice(combo, choices):
@@ -128,7 +128,7 @@ def _is_ceiling(element):
         return isinstance(element, DB.Ceiling)
     except AttributeError:
         try:
-            return element.Category.Id.IntegerValue == int(DB.BuiltInCategory.OST_Ceilings)
+            return element_id_value(element.Category.Id) == int(DB.BuiltInCategory.OST_Ceilings)
         except Exception:
             return False
 
@@ -580,7 +580,7 @@ def _write_new_member_comments(placed_elements, text_value):
             skipped += 1
             continue
         element_id = getattr(element, 'Id', None)
-        key = getattr(element_id, 'IntegerValue', None)
+        key = element_id_value(element_id)
         if key is not None and key in seen_ids:
             continue
         if key is not None:
@@ -600,10 +600,7 @@ def _write_new_member_comments(placed_elements, text_value):
 
 
 def _roof_id(roof):
-    element_id = getattr(roof, 'Id', None)
-    if element_id is None:
-        return '?'
-    return getattr(element_id, 'IntegerValue', getattr(element_id, 'Value', '?'))
+    return element_id_value(getattr(roof, 'Id', None), '?')
 
 
 def _selected_hosts(doc, purpose, uidoc, force_pick=False):

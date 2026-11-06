@@ -172,7 +172,7 @@ def delete_tracked_members_for_hosts(doc, hosts, allowed_kinds=None):
             element_id = getattr(element, 'Id', None)
             if element_id is None:
                 continue
-            id_value = _element_id_value(element_id)
+            id_value = element_id_value(element_id)
             if id_value in seen_ids:
                 continue
             seen_ids.add(id_value)
@@ -197,13 +197,13 @@ def host_key_for_element(element):
     from Autodesk.Revit.DB import BuiltInCategory, Floor, RoofBase, Wall
 
     if isinstance(element, Wall):
-        return ("wall", str(_element_id_value(element.Id)))
+        return ("wall", str(element_id_value(element.Id)))
     if isinstance(element, Floor):
-        return ("floor", str(_element_id_value(element.Id)))
+        return ("floor", str(element_id_value(element.Id)))
     if _category_matches(element, BuiltInCategory.OST_Ceilings):
-        return ("ceiling", str(_element_id_value(element.Id)))
+        return ("ceiling", str(element_id_value(element.Id)))
     if isinstance(element, RoofBase):
-        return ("roof", str(_element_id_value(element.Id)))
+        return ("roof", str(element_id_value(element.Id)))
     return None
 
 
@@ -246,7 +246,7 @@ def _build_tracking_line(host_info, member):
     """Create a single-line tracking record."""
     values = [
         ("kind", getattr(member, "host_kind", None) or getattr(host_info, "kind", None)),
-        ("host", _element_id_value(getattr(member, "host_id", None) or getattr(host_info, "element_id", None))),
+        ("host", element_id_value(getattr(member, "host_id", None) or getattr(host_info, "element_id", None))),
         ("member", member.member_type),
         ("layer", getattr(member, "layer_index", None)),
     ]
@@ -277,7 +277,7 @@ def _category_matches(element, category_id):
     if category is None:
         return False
 
-    current_id = getattr(category.Id, "IntegerValue", getattr(category.Id, "Value", None))
+    current_id = element_id_value(category.Id)
     target_id = int(category_id)
     return current_id == target_id
 
@@ -307,14 +307,15 @@ def _tracked_delete_categories(built_in_category):
     return categories
 
 
-def _element_id_value(element_id):
-    """Return a numeric id for an ElementId or raw integer."""
+def element_id_value(element_id, default=None):
+    """Read the 64-bit ID on Revit 2024+ or the 32-bit ID on older hosts."""
     if element_id is None:
-        return None
+        return default
     try:
         integer_types = (int, long)
     except NameError:
         integer_types = (int,)
     if isinstance(element_id, integer_types):
         return element_id
-    return getattr(element_id, "IntegerValue", getattr(element_id, "Value", None))
+    value = getattr(element_id, "Value", None)
+    return value if value is not None else getattr(element_id, "IntegerValue", default)

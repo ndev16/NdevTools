@@ -9,12 +9,13 @@ from pyrevit import DB, revit
 
 from ndev_roof_config import FramingConfig
 from ndev_roof_host import (
+    _get_element_by_any_id as _get_element_by_id,
     analyze_ceiling_host,
     analyze_floor_host,
     analyze_roof_host,
     analyze_wall_host,
 )
-from ndev_roof_tracking import get_tracking_data
+from ndev_roof_tracking import element_id_value, get_tracking_data
 
 
 BOM_SCHEDULE_NAME = "Ndev Roof - BOM by Host"
@@ -1302,20 +1303,6 @@ def _is_ceiling(element):
     return False
 
 
-def _get_element_by_id(doc, raw_id):
-    if raw_id is None:
-        return None
-    try:
-        if hasattr(raw_id, "IntegerValue") or hasattr(raw_id, "Value"):
-            return doc.GetElement(raw_id)
-    except Exception:
-        pass
-    try:
-        return doc.GetElement(DB.ElementId(int(raw_id)))
-    except Exception:
-        return None
-
-
 def _element_id_string(raw_id):
     if raw_id is None:
         return ""
@@ -1325,11 +1312,7 @@ def _element_id_string(raw_id):
 
 
 def _category_id_int(raw_id):
-    if raw_id is None:
-        return -1
-    if isinstance(raw_id, int):
-        return raw_id
-    return getattr(raw_id, "IntegerValue", getattr(raw_id, "Value", -1))
+    return element_id_value(raw_id, -1)
 
 
 def _collection_get(collection, name):

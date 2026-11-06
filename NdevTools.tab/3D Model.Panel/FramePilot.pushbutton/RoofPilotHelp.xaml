@@ -58,7 +58,7 @@
             <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"
                        Text="1. Choose Roof, Flat Truss, Floor or Ceiling in the thin properties panel. Keep working in Revit while the panel stays open."/>
             <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"
-                       Text="2. Search framing types directly in the dropdown. Ridge type is available for Roof mode."/>
+                       Text="2. In Roof mode, choose a rafter type and a ridge board type. FramePilot uses the ridge board type for girders along ridges, hips, and valleys. Each girder's top follows its roof edge. The Z Justification setting controls the rafters."/>
             <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"
                        Text="3. Choose or type Workplane (Top/Bottom) and Z Justification (Top/Center/Origin/Bottom). These choices are independent and are saved for next time. Switching purpose restores that purpose's defaults."/>
             <TextBlock Foreground="#DEEFFB" TextWrapping="Wrap" Margin="0,0,0,5"

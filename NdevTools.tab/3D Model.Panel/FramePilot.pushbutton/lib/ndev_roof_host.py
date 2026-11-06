@@ -5,6 +5,7 @@ import math
 
 from ndev_roof_geometry import analyze_wall, find_openings, height_at_position
 from ndev_roof_config import WALL_BASE_MODE_WALL, WALL_BASE_MODE_SUPPORT_TOP
+from ndev_roof_tracking import element_id_value
 
 
 LAYER_MODE_CORE_CENTER = "core_center"
@@ -228,16 +229,14 @@ def _get_element_by_any_id(doc, raw_id):
         return None
 
     try:
-        # Already an ElementId-like object.
-        if hasattr(raw_id, "IntegerValue") or hasattr(raw_id, "Value"):
-            return doc.GetElement(raw_id)
-    except Exception:
-        pass
-
-    try:
         from Autodesk.Revit.DB import ElementId
+        from System import Int32, Int64
 
-        return doc.GetElement(ElementId(int(raw_id)))
+        if not isinstance(raw_id, ElementId):
+            # An explicit CLR type selects the numeric overload in IronPython.
+            number_type = Int64 if hasattr(ElementId.InvalidElementId, "Value") else Int32
+            raw_id = ElementId(number_type(int(raw_id)))
+        return doc.GetElement(raw_id)
     except Exception:
         return None
 
@@ -1110,7 +1109,7 @@ def _material_name(doc, material_id):
     if material_id is None:
         return None
     try:
-        value = getattr(material_id, "IntegerValue", getattr(material_id, "Value", -1))
+        value = element_id_value(material_id, -1)
         if value < 0:
             return None
     except Exception:

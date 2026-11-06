@@ -14,7 +14,7 @@ from ndev_roof_config import LUMBER_ACTUAL
 from ndev_roof_geometry import FramingMember, inches_to_feet
 from ndev_roof_host import analyze_roof_host, _scanline_intervals
 from ndev_roof_placement import BaseFramingEngine
-from ndev_roof_tracking import tag_instance
+from ndev_roof_tracking import element_id_value, tag_instance
 
 
 FLAT_THRESHOLD = 0.9998
@@ -1175,24 +1175,10 @@ class RoofFramingEngineV2(BaseFramingEngine):
         seen = set()
         host_kind = getattr(plan.roof_info, "kind", "roof")
         host_id = getattr(plan.roof_info, "element_id", None)
-        sloped = _sloped_planes(getattr(plan.roof_info, "planes", []) or [])
 
         for bay in plan.bays:
-            plane = None
-            if 0 <= bay.plane_a_index < len(sloped):
-                plane = sloped[bay.plane_a_index]
-            elif 0 <= bay.plane_b_index < len(sloped):
-                plane = sloped[bay.plane_b_index]
-
-            control_depth = self._resolve_board_center_depth(
-                plane,
-                self._ridge_family_name(),
-                self._ridge_type_name(),
-            )
-
-            from Autodesk.Revit.DB import XYZ
-            ridge_start = XYZ(bay.ridge_start.X, bay.ridge_start.Y, bay.ridge_start.Z - control_depth)
-            ridge_end = XYZ(bay.ridge_end.X, bay.ridge_end.Y, bay.ridge_end.Z - control_depth)
+            # Top justification places the upper face on this shared roof edge.
+            ridge_start, ridge_end = bay.ridge_start, bay.ridge_end
             if _dist(ridge_start, ridge_end) < MIN_MEMBER_LENGTH:
                 continue
             key = (_pt_key(ridge_start), _pt_key(ridge_end))
@@ -1679,7 +1665,7 @@ class RoofFramingEngineV2(BaseFramingEngine):
                 if not _set_beam_z_justification(r, self.config.z_justification):
                     self._justification_warnings.append(
                         'Beam {0}: could not change Z Justification in Revit.'.format(
-                            r.Id.IntegerValue))
+                            element_id_value(r.Id)))
 
                 add_coping = getattr(r, "AddCoping", None)
                 if add_coping is None:

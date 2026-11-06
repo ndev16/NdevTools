@@ -9,7 +9,7 @@ any previously owned framing that would otherwise be replaced.
 from ndev_roof_geometry import FramingMember
 from ndev_roof_placement import BaseFramingEngine
 from ndev_roof_families import activate_symbol
-from ndev_roof_tracking import tag_instance
+from ndev_roof_tracking import element_id_value, tag_instance
 from ndev_roof_config import WORKPLANE_FACES, z_justification_value
 
 # Local-profile distance tolerance in Revit internal feet.
@@ -142,7 +142,7 @@ class FlatRoofBeamSystemEngine(BaseFramingEngine):
                 if not _set_beam_z_justification(beam, self.config.z_justification):
                     self._justification_warnings.append(
                         'Beam {0}: Revit does not permit setting Z Justification; '
-                        'check the member in Properties.'.format(beam.Id.IntegerValue))
+                        'check the member in Properties.'.format(element_id_value(beam.Id)))
                 if StructuralFramingUtils is not None:
                     for end_index in (0, 1):
                         try:

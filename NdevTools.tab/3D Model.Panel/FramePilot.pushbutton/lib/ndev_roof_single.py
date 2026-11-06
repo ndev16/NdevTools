@@ -33,7 +33,7 @@ from ndev_roof_host import (
     analyze_roof_host,
 )
 from ndev_roof_placement import BaseFramingEngine
-from ndev_roof_tracking import get_tracking_data
+from ndev_roof_tracking import element_id_value, get_tracking_data
 
 
 MIN_MEMBER_LENGTH = inches_to_feet(1.0)
@@ -1217,8 +1217,8 @@ class RoofFramingEngine(BaseFramingEngine):
             cache = {}
             self._roof_solids_cache = cache
 
-        key = getattr(getattr(roof, "Id", None), "IntegerValue", None)
-        if key in cache:
+        key = element_id_value(getattr(roof, "Id", None))
+        if key is not None and key in cache:
             return cache[key]
 
         solids = []
@@ -1246,7 +1246,8 @@ class RoofFramingEngine(BaseFramingEngine):
                         if isinstance(sub_obj, Solid) and sub_obj.Volume > 0:
                             solids.append(sub_obj)
 
-        cache[key] = solids
+        if key is not None:
+            cache[key] = solids
         return solids
 
     def _clip_member_axis_to_roof(self, roof, start_point, end_point):

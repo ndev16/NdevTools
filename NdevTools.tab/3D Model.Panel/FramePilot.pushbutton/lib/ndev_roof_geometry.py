@@ -6,6 +6,8 @@ All distance values are in FEET (Revit internal units) unless noted.
 
 import math
 
+from ndev_roof_tracking import element_id_value
+
 
 def inches_to_feet(inches):
     """Convert inches to feet."""
@@ -206,7 +208,7 @@ def find_openings(doc, wall, wall_info):
             if host is None or host.Id != wall.Id:
                 continue
 
-            cat_id = getattr(cat.Id, "IntegerValue", getattr(cat.Id, "Value", None))
+            cat_id = element_id_value(cat.Id)
             is_door = (cat_id == int(BuiltInCategory.OST_Doors))
             is_window = (cat_id == int(BuiltInCategory.OST_Windows))
             if not (is_door or is_window):
