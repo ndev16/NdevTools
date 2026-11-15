@@ -1,4 +1,7 @@
 {
+  "paste_result": "Risultato dell’incolla",
+  "close": "Chiudi",
+  "structural_plan_skip": "È possibile copiare questa pianta strutturale su un’altra tavola dello stesso progetto. Per copiare tra progetti, scegliere una vista di disegno, una sezione o una vista di dettaglio.",
   "help": "Guida",
   "help_select": "Seleziona gli elementi della tavola desiderati oppure fai clic su «{0}» per includere tutti gli elementi disponibili. Poi fai clic su «{1}».",
   "credit": "Creato da Nataraj Devaraj.",

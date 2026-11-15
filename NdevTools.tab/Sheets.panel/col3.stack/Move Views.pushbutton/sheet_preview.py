@@ -71,6 +71,11 @@ def _placement(doc, sheet, element, moves):
             title, kind = view.Name, 'Schedule'
             if view.GetSegmentCount() > 1:
                 title += u' · Segment {}'.format(element.SegmentIndex + 1)
+        elif isinstance(element, DB.DetailCurve):
+            title = u'{} · {}'.format(element.LineStyle.Name, element.Id)
+        elif moves.is_title_block(element):
+            type_name = element.Symbol.get_Parameter(DB.BuiltInParameter.SYMBOL_NAME_PARAM).AsString()
+            title = u'{} · {}'.format(element.Symbol.FamilyName, type_name)
         elif isinstance(element, DB.TextNote):
             title = (element.Text or '').splitlines()
             title = title[0].strip() if title else kind

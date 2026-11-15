@@ -44,7 +44,7 @@ class Strings(object):
     def reason(self, message):
         # Preserve Revit's own diagnostic and all project names when no match exists.
         for key in ('deleted', 'wrong_sheet', 'pinned', 'grouped', 'revision',
-                    'source_gone', 'changed', 'skipped_choice'):
+                    'source_gone', 'changed', 'skipped_choice', 'structural_plan_skip'):
             if message == catalog(DEFAULT)[key]:
                 return self(key)
         prefix = 'Unsupported sheet item ('

@@ -1,4 +1,7 @@
 {
+  "paste_result": "Beillesztés eredménye",
+  "close": "Bezárás",
+  "structural_plan_skip": "Ez a tartószerkezeti alaprajz ugyanazon projekt másik tervlapjára másolható. Projektek közötti másoláshoz válasszon rajznézetet, metszetet vagy részletnézetet.",
   "help": "Súgó",
   "help_select": "Jelölje ki a kívánt lapelemeket, vagy kattintson a(z) „{0}” gombra az összes elérhető elem kijelöléséhez. Ezután kattintson a(z) „{1}” gombra.",
   "credit": "Készítette: Nataraj Devaraj.",

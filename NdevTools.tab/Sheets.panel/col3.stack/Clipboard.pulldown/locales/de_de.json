@@ -1,4 +1,7 @@
 {
+  "paste_result": "Einfügeergebnis",
+  "close": "Schließen",
+  "structural_plan_skip": "Dieser Tragwerksplan kann auf einen anderen Plan desselben Projekts kopiert werden. Wählen Sie zum projektübergreifenden Kopieren eine Zeichenansicht, einen Schnitt oder eine Detailansicht.",
   "help": "Hilfe",
   "help_select": "Wählen Sie die gewünschten Planelemente aus oder klicken Sie auf „{0}“, um alle verfügbaren Elemente auszuwählen. Klicken Sie anschließend auf „{1}“.",
   "credit": "Erstellt von Nataraj Devaraj.",

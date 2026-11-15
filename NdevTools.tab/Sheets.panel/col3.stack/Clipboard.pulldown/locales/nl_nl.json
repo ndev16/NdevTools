@@ -1,4 +1,7 @@
 {
+  "paste_result": "Plakresultaat",
+  "close": "Sluiten",
+  "structural_plan_skip": "Deze constructieve plattegrond kan naar een ander blad in hetzelfde project worden gekopieerd. Kies voor kopiëren tussen projecten een tekenaanzicht, doorsnede of detailaanzicht.",
   "help": "Help",
   "help_select": "Selecteer de gewenste onderdelen op het blad of klik op ‘{0}’ om alle beschikbare onderdelen te selecteren. Klik daarna op ‘{1}’.",
   "credit": "Gemaakt door Nataraj Devaraj.",

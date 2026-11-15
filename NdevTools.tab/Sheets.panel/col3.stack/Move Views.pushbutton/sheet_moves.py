@@ -19,12 +19,25 @@ def _sheet_id(element):
     return element.SheetId if isinstance(element, DB.Viewport) else element.OwnerViewId
 
 
-def supported(doc, element):
+def is_title_block(element):
+    return (isinstance(element, DB.FamilyInstance) and element.Category is not None and
+            _id_value(element.Category.Id) == int(DB.BuiltInCategory.OST_TitleBlocks))
+
+
+def supported(doc, element, copying=False):
     if element is None or not element.IsValidObject or not doc.Equals(element.Document):
         return False
-    if element.Pinned or element.GroupId != DB.ElementId.InvalidElementId:
+    if element.GroupId != DB.ElementId.InvalidElementId:
         return False
     if not isinstance(doc.GetElement(_sheet_id(element)), DB.ViewSheet):
+        return False
+    if copying and isinstance(element, DB.ImageInstance):
+        return True
+    if copying and isinstance(element, DB.DetailCurve):
+        return element.Category is not None and _id_value(element.Category.Id) == int(DB.BuiltInCategory.OST_Lines)
+    if copying and is_title_block(element):
+        return element.SuperComponent is None
+    if element.Pinned:
         return False
     if isinstance(element, DB.Viewport):
         return isinstance(doc.GetElement(element.ViewId), DB.View)
@@ -43,6 +56,10 @@ def supported(doc, element):
 
 
 def item_anchor(element):
+    if isinstance(element, DB.ImageInstance):
+        return element.GetLocation(DB.BoxPlacement.Center)
+    if is_title_block(element):
+        return element.GetTransform().Origin
     if isinstance(element, DB.Viewport):
         return element.GetBoxCenter()
     if isinstance(element, DB.ScheduleSheetInstance):
@@ -175,17 +192,39 @@ def _copy_view_id(doc, view, target, choices):
     return _duplicate_view(doc, view, option)
 
 
+def _prepare_view_position(doc, viewport, point, view_id=None, keep_source=False):
+    """Release only a relocated view from its native saved-position constraint."""
+    view = doc.GetElement(viewport.ViewId if view_id is None else view_id)
+    saved_id = getattr(view, 'ViewPositionId', None)
+    if saved_id is None or saved_id == DB.ElementId.InvalidElementId:
+        return False
+    current = viewport.GetBoxCenter()
+    if abs(current.X-point.X) <= TOLERANCE and abs(current.Y-point.Y) <= TOLERANCE:
+        return False
+    if keep_source and view.Id == viewport.ViewId:
+        # Shared legends/column schedules must not lose their source constraint.
+        raise ValueError('This view uses a saved View Position. Choose Duplicate to paste it at another position.')
+    view.ViewPositionId = DB.ElementId.InvalidElementId
+    if view.ViewPositionId != DB.ElementId.InvalidElementId:
+        raise ValueError('Cannot release the moved view from its saved View Position.')
+    return True
+
+
 def _transfer_viewport(doc, old, target, point, choices=None):
     view_id, type_id = old.ViewId, old.GetTypeId()
     rotation, label_offset, label_length = old.Rotation, old.LabelOffset, old.LabelLineLength
-    positioning = old.ViewportPositioning
-    # Before Revit 2026 the swap positioning setting exists without a ViewAnchor.
+    # Revit 2027 removed ViewportPositioning; ViewAnchor replaces it from 2026.
+    # Retain the legacy swap setting only on hosts that still expose it.
+    positioning = getattr(old, 'ViewportPositioning', None)
     anchor = getattr(old, 'ViewAnchor', None)
     number = _detail(old).AsString()
     data = _placement_data(old)
     if choices is not None:
         view_id = _copy_view_id(doc, doc.GetElement(view_id), target, choices)
-    else:
+    # Saved View Positions (2026+) otherwise snap a recreated viewport back to
+    # the saved coordinates on regeneration, ignoring the requested paste point.
+    _prepare_view_position(doc, old, point, view_id, choices is not None)
+    if choices is None:
         _safe_delete(doc, old)
         doc.Regenerate()
     if not DB.Viewport.CanAddViewToSheet(doc, target.Id, view_id):
@@ -199,7 +238,7 @@ def _transfer_viewport(doc, old, target, point, choices=None):
             placed = doc.GetElement(changed)
     if placed.Rotation != rotation:
         placed.Rotation = rotation
-    if placed.ViewportPositioning != positioning:
+    if positioning is not None and placed.ViewportPositioning != positioning:
         placed.ViewportPositioning = positioning
     if anchor is not None and placed.ViewAnchor != anchor:
         placed.SetViewAnchorAndPosition(anchor, placed.GetPositionAtViewAnchor(anchor))
@@ -209,7 +248,8 @@ def _transfer_viewport(doc, old, target, point, choices=None):
     doc.Regenerate()
     placed.SetBoxCenter(point)
     if (placed.ViewId != view_id or placed.GetTypeId() != type_id or placed.Rotation != rotation or
-            placed.ViewportPositioning != positioning or (anchor is not None and placed.ViewAnchor != anchor) or
+            (positioning is not None and placed.ViewportPositioning != positioning) or
+            (anchor is not None and placed.ViewAnchor != anchor) or
             placed.LabelOffset.DistanceTo(label_offset) > TOLERANCE or
             abs(placed.LabelLineLength - label_length) > TOLERANCE):
         raise ValueError('Revit could not preserve the viewport settings.')
@@ -239,6 +279,17 @@ def _transfer_schedule(doc, old, target, point):
     return placed
 
 
+def position_sheet_copy(placed, point, pinned):
+    anchor = item_anchor(placed)
+    delta = DB.XYZ(point.X - anchor.X, point.Y - anchor.Y, 0)
+    if not delta.IsZeroLength():
+        if placed.Pinned:
+            placed.Pinned = False
+        DB.ElementTransformUtils.MoveElement(placed.Document, placed.Id, delta)
+    if placed.Pinned != pinned:
+        placed.Pinned = pinned
+
+
 def _transfer_annotation(doc, old, source, target, point, keep_source=False):
     ids = List[DB.ElementId]()
     ids.Add(old.Id)
@@ -263,8 +314,7 @@ def _transfer_annotation(doc, old, source, target, point, keep_source=False):
         if (not before_axes.BasisX.IsAlmostEqualTo(after_axes.BasisX) or
                 not before_axes.BasisY.IsAlmostEqualTo(after_axes.BasisY)):
             raise ValueError('The copied annotation has a different orientation.')
-    before = item_anchor(placed)
-    DB.ElementTransformUtils.MoveElement(doc, placed.Id, DB.XYZ(point.X-before.X, point.Y-before.Y, 0))
+    position_sheet_copy(placed, point, old.Pinned)
     if not keep_source:
         _safe_delete(doc, old)
     return placed
@@ -405,9 +455,9 @@ def _transfer(doc, source_uid, target_uid, item_uids, dx, dy, transaction_name, 
                 raise ValueError('The selected placement no longer exists.')
             if _sheet_id(element) != source.Id:
                 raise ValueError('The selected placement belongs to another sheet.')
-            if element.Pinned or element.GroupId != DB.ElementId.InvalidElementId:
+            if (element.Pinned and not copying) or element.GroupId != DB.ElementId.InvalidElementId:
                 raise ValueError('The selected placement is pinned or belongs to a model group.')
-            if not supported(doc, element):
+            if not supported(doc, element, copying):
                 raise ValueError('Unsupported sheet item: {}.'.format(element.GetType().Name))
             plans.append((uid, element, item_anchor(element) + delta))
         except Exception as error:

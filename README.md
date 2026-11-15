@@ -1,10 +1,10 @@
 # NdevTools | Smart BIM Tools
 
-## Cut and paste detail views between Revit sheets
+## Sheet Clipboard — Cut, Copy, and Paste
 
-Four foundation details need to move from S501 to S502. Select their viewports on S501 and choose **Sheets → Sheet Clipboard → Cut**. Open S502, choose **Paste**, and click where the center of the group should land.
+**Copy and Paste between two open projects.** Open both projects in the same Revit session. Copy detail views, title blocks, lines, or images from a sheet in one project and paste them onto a sheet in the other. You can also copy selected details from a section into a section or drafting view in the other project.
 
-> **All four original detail views move together, with their detailing and spacing intact.** One Revit **Undo** returns the whole group to S501.
+**Cut and Paste within one project.** To move four detail views from S501 to S502, select their viewports, choose **Cut**, open S502, and choose **Paste**. Click to place the group with its spacing intact. One Revit **Undo** returns it to S501.
 
 ![Powerful tools, a more global experience. 20 languages supported.](media/NdevTools-20-Language-Support.png)
 
@@ -59,9 +59,9 @@ In **Sheets**, the third column has **Move Views** above **Sheet Clipboard**. Op
 | **Sheets** | Viewport Position Manager | Save, rename, manage and reuse named sheet viewport positions. |
 | **Sheets** | ViewPilot | Review and batch rename, duplicate, and assign compatible view settings. |
 | **Sheets** | Move Views | Arrange selected sheet items in two previews and open an item on its sheet for native Revit editing. |
-| **Sheets** | Sheet Clipboard → Cut | Cut detail views and other placed views from a sheet for pasting together on another sheet. |
-| **Sheets** | Sheet Clipboard → Copy | Record placed items to copy using the duplication rules for each view type. |
-| **Sheets** | Sheet Clipboard → Paste | Pick a point on the destination sheet to place the group. |
+| **Sheets** | Sheet Clipboard → Cut | Move selected sheet items together to another sheet in the same project. |
+| **Sheets** | Sheet Clipboard → Copy | Copy placed views, sheet graphics, title blocks, or selected detail elements from a section. |
+| **Sheets** | Sheet Clipboard → Paste | Place the copied group on a sheet or paste section details into a destination view in either open project. |
 | **Modify** | Match Properties | Apply selected instance properties or the source type to compatible targets. |
 | **Modify** | Renumber | Number elements in pick order with a configurable start, step and exclusions. |
 | **Modify** | Tab Hider | Choose which editable ribbon tabs and add-in panels are visible. |
@@ -167,9 +167,21 @@ In **Move Views**, choose a target sheet on the left and a source sheet on the r
 
 ### Sheets → Sheet Clipboard
 
-With **Sheet Clipboard → Cut**, the selected views stay on their source sheet until you paste them onto another sheet in the same project. **Paste** lets you pick the group’s center. Press **Esc** while picking a point to cancel placement and keep the cut selection available. Use **Copy** when you want to keep the originals on the source sheet and paste additional copies.
+**Copy between projects.** Open both projects in the same Revit session and keep the source project open. Choose **Sheets → Sheet Clipboard → Copy** after selecting the source items.
 
-Copy uses **Duplicate with Detailing** for supported plans, sections, elevations and detail or drafting views, and **Duplicate** for 3D views. Ordinary schedules get an independent copy with the original splits and only the selected segments placed. For legends and graphical column schedules, choose from the available placement or duplication options. A mixed copy reports skipped items.
+| What you want to copy | Select in the source project | Where to use Paste |
+| --- | --- | --- |
+| Detailing inside a section | Select detail lines, text notes, filled regions, detail components, or imported or linked raster images in the open section. | Open a section or drafting view in the destination project. |
+| A whole detail view | Select the viewport of a drafting view, section, or detail view on its sheet. | Open the destination sheet. Paste creates a view with its supported detailing and places it on the sheet. |
+| Sheet graphics or a title block | Select sheet lines, arcs, annotations, raster images, or title blocks directly on the sheet. | Open the destination sheet. You can also paste on the same sheet or another sheet in the source project. |
+
+Choose **Paste** and click where the center of the group should land. Items keep their relative spacing. Raster images retain their dimensions, rotation, and pin state. You can paste the same copy again or press **Esc** while picking a point to keep it for later.
+
+If Revit opens tabs for newly pasted views, Sheet Clipboard closes those tabs. For a mixed selection, the paste result lists each skipped item and its reason. To duplicate a structural plan viewport or schedule, use sheets in the same project.
+
+**Move items within one project.** With **Sheet Clipboard → Cut**, the selected views stay on their source sheet until you paste them onto another sheet in the same project. One Revit **Undo** restores the group.
+
+Within the same project, Copy uses **Duplicate with Detailing** for supported plans, sections, elevations and detail or drafting views, and **Duplicate** for 3D views. Ordinary schedules get an independent copy with the original splits and only the selected segments placed. For legends and graphical column schedules, choose from the available placement or duplication options.
 
 ### Modify → Match Properties, Renumber and Tab Hider
 
@@ -274,6 +286,10 @@ Each command includes its script, theme icons, bundle configuration, and any XAM
 Commands are written for **pyRevit** and the IronPython 2.7 runtime, using Revit API patterns for **Revit 2022–2027** where supported by the individual tools. Move Views and Sheet Clipboard require Revit 2023 or later. Some commands have view, family, category or loaded-link prerequisites; review each tool's usage section above.
 
 ## What's new
+
+### November 16, 2026 — Copy sheet and section details between projects
+
+Copy a whole detail view between sheets, or copy just the lines, notes, and images inside a section into another project’s section or drafting view. Sheet graphics and title blocks can also travel between projects. These workflows passed in Revit 2023 through 2027.
 
 ### November 6, 2026 — Cut and paste placed views between sheets
 

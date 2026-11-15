@@ -23,7 +23,7 @@ tested_modes = {}
 native_mode_dialog = command.choose_mode
 
 
-def capture_report(result, skipped, data):
+def capture_report(result, skipped, data, owner=None):
     labels = dict((r['uid'], r['label']) for r in data['rows'])
     reports.append((len(result), [(labels[uid], reason) for uid, reason in skipped]))
 

@@ -22,6 +22,8 @@ The catalog uses current bundle names, including `Create walls and opening`,
 ViewPilot, FramePilot, Notes and Useful Links. It no longer restores old wall
 descriptions or the printed Notes/Useful Links developer profile URLs.
 
+Sheet Clipboard has catalog entries for `Clipboard`, `Cut`, `Copy` and `Paste`. Each entry has a title and tooltip in all 20 locales. The dropdown, Copy and Paste tooltips describe cross-project transfers of sheet graphics and section details. The picker and paste result use the JSON files in the [Sheet Clipboard locale folder](NdevTools.tab/Sheets.panel/col3.stack/Clipboard.pulldown/locales).
+
 Layout-only tab, panel and stack bundles do not need tooltip translations.
 Custom dialogs and dynamic messages may still contain English; ribbon coverage
 does not mean every dialog is fully localized. Native-speaker review remains

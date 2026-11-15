@@ -8,6 +8,6 @@ if __name__ == '__main__':
     group = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     try:
         command = imp.load_source('ndev_main_sheet_clipboard_command', os.path.join(group, 'script.py'))
-        command.main(__revit__, 'paste')
+        command.paste_on_sheet(__revit__)
     except Exception as error:
         UI.TaskDialog.Show('Sheet Clipboard', unicode(error))

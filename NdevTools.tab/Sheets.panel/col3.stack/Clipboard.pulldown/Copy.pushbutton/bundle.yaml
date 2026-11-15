@@ -24,6 +24,10 @@ tooltip:
   ar: |-
     NDEV TOOLS | SHEET CLIPBOARD | نسخ
 
+    افتح المشروعين في جلسة Revit واحدة. في المقطع المصدر، حدد الصور النقطية المستوردة أو المرتبطة أو خطوط التفاصيل أو الملاحظات النصية أو المناطق المملوءة أو مكونات التفاصيل، ثم اختر «نسخ». في المشروع الآخر، افتح مقطعًا أو مسقط رسم، ثم اختر «لصق» وانقر لتحديد موضع مركز المجموعة. تحتفظ الصور بحجمها وزاوية دورانها وحالة تثبيتها.
+
+    يمكن نسخ خطوط اللوحة وأقواسها وصورها النقطية وخانات العنوان ولصقها على اللوحة نفسها أو على لوحة أخرى، حتى في مشروع مفتوح آخر.
+
     حدد المساقط والجداول وعناصر التعليق الموضوعة على لوحة المصدر. تبقى العناصر الأصلية على لوحة المصدر، ويمكن لصق نسخ منها أكثر من مرة.
 
     1. تُنسخ المساقط، بما فيها الإنشائية ومساقط المساحات والأسقف، وكذلك القطاعات والواجهات ومساقط التفاصيل والرسم، مع عناصر التفصيل.
@@ -35,6 +39,10 @@ tooltip:
     إعداد Nataraj Devaraj.
   pt_br: |-
     NDEV TOOLS | SHEET CLIPBOARD | Copiar
+
+    Abra os dois projetos na mesma sessão do Revit. No corte de origem, selecione imagens raster importadas ou vinculadas, linhas de detalhe, notas de texto, regiões preenchidas ou componentes de detalhe e escolha Copiar. No outro projeto, abra um corte ou uma vista de desenho, escolha Colar e clique onde deseja posicionar o centro do conjunto. As imagens mantêm o tamanho, a rotação e o estado de fixação.
+
+    Copie linhas, arcos, imagens raster e carimbos da folha para a mesma folha ou para outra, inclusive em outro projeto aberto.
 
     Selecione as vistas, tabelas e anotações colocadas na folha de origem. Os originais permanecem na folha de origem e você pode colar novas cópias várias vezes.
 
@@ -48,6 +56,10 @@ tooltip:
   bg: |-
     NDEV TOOLS | SHEET CLIPBOARD | Копирай
 
+    Отворете двата проекта в една сесия на Revit. В изходния разрез изберете импортирани или свързани растерни изображения, детайлни линии, текстови бележки, запълнени области или детайлни компоненти и натиснете „Копирай“. В другия проект отворете разрез или чертожен изглед, натиснете „Постави“ и щракнете там, където искате да е центърът на избраните елементи. Размерът, завъртането и състоянието на фиксиране на изображенията се запазват.
+
+    Можете да копирате линии, дъги, растерни изображения и основни надписи от лист и да ги поставите на същия или друг лист, включително в друг отворен проект.
+
     Изберете изгледите, спецификациите и анотациите върху изходния лист. Оригиналите остават на изходния лист и можете да поставяте копия многократно.
 
     1. Етажните, конструктивните, площните и таванните планове, разрезите, фасадите, детайлите и чертожните изгледи се дублират заедно с детайлните елементи.
@@ -59,6 +71,10 @@ tooltip:
     Автор: Nataraj Devaraj.
   chinese_s: |-
     NDEV TOOLS | SHEET CLIPBOARD | 复制
+
+    在同一个 Revit 会话中打开两个项目。在源剖面视图中选择导入或链接的光栅图像、详图线、文字注释、填充区域或详图构件，然后选择“复制”。在另一个项目中打开剖面视图或绘图视图，选择“粘贴”，再单击要放置所选元素中心的位置。图像的尺寸、旋转角度和锁定状态均会保留。
+
+    可复制图纸上的线、圆弧、光栅图像和标题栏，并粘贴到同一张图纸、其他图纸或另一个已打开项目的图纸上。
 
     在源图纸上选择已放置的视图、明细表和注释。 原件保留在源图纸上，可以多次粘贴副本。
 
@@ -72,6 +88,10 @@ tooltip:
   chinese_t: |-
     NDEV TOOLS | SHEET CLIPBOARD | 複製
 
+    在同一個 Revit 工作階段中開啟兩個專案。在來源剖面視圖中選取匯入或連結的點陣影像、詳圖線、文字註解、填滿區域或詳圖元件，然後選擇「複製」。在另一個專案中開啟剖面視圖或製圖視圖，選擇「貼上」，再按一下要放置所選元素中心的位置。影像的尺寸、旋轉角度和固定狀態都會保留。
+
+    可複製圖紙上的線、圓弧、點陣影像和圖框，並貼到同一張圖紙、其他圖紙或另一個已開啟專案的圖紙上。
+
     在來源圖紙上選取已放置的視圖、明細表和註解。 原件會保留在來源圖紙上，可以多次貼上複本。
 
     1. 樓層平面、結構平面、面積平面、天花板平面、剖面、立面、詳圖及製圖視圖均使用「含詳細資料複製」。
@@ -83,6 +103,10 @@ tooltip:
     作者：Nataraj Devaraj。
   cs: |-
     NDEV TOOLS | SHEET CLIPBOARD | Kopírovat
+
+    Otevřete oba projekty ve stejné relaci Revitu. Ve zdrojovém řezu vyberte importované nebo připojené rastrové obrázky, čáry detailu, textové poznámky, vyplněné oblasti nebo komponenty detailu a zvolte Kopírovat. V druhém projektu otevřete řez nebo pohled kresby, zvolte Vložit a klikněte na místo, kde má být střed výběru. U obrázků se zachová velikost, natočení i stav připnutí.
+
+    Čáry, oblouky, rastrové obrázky a rohová razítka můžete kopírovat na stejný nebo jiný výkres, a to i v jiném otevřeném projektu.
 
     Na zdrojovém výkresu vyberte umístěné pohledy, výkazy a poznámky. Originály zůstanou na zdrojovém výkresu a kopie můžete vložit opakovaně.
 
@@ -96,6 +120,10 @@ tooltip:
   nl_nl: |-
     NDEV TOOLS | SHEET CLIPBOARD | Kopiëren
 
+    Open beide projecten in dezelfde Revit-sessie. Selecteer in de brondoorsnede geïmporteerde of gekoppelde rasterafbeeldingen, detaillijnen, tekstnotities, gevulde gebieden of detailcomponenten en kies Kopiëren. Open in het andere project een doorsnede of tekenaanzicht, kies Plakken en klik waar het middelpunt van de selectie moet komen. De afmetingen, rotatie en vastzetstatus van de afbeeldingen blijven behouden.
+
+    U kunt lijnen, bogen, rasterafbeeldingen en titelblokken op hetzelfde of een ander blad plakken, ook in een ander geopend project.
+
     Selecteer de aanzichten, tabellen en annotaties die op het bronblad zijn geplaatst. De originelen blijven op het bronblad. U kunt de kopieën meermaals plakken.
 
     1. Plattegronden, constructie-, oppervlakte- en plafondplannen, doorsneden, gevelaanzichten, details en tekenaanzichten worden met detaillering gedupliceerd.
@@ -108,8 +136,15 @@ tooltip:
   en_gb: |-
     NDEV TOOLS | SHEET CLIPBOARD | Copy
 
+    Open both projects in the same Revit session. In the source section, select imported or linked raster images, detail lines, text notes, filled regions or detail components and choose Copy. In the other project, open a section or drafting view, choose Paste and click where you want the centre of the selection. Images keep their size, rotation and pin state.
+
+    Copy sheet lines, arcs, raster images and title blocks to the same sheet or another sheet, including one in another open project.
+
     Select views, schedules and annotations placed on the source sheet. Copy keeps the originals on the source sheet. You can paste the selection more than once.
 
+    You can also transfer sheet annotations, drafting views, sections and detail views between projects. Keep the source project open until you paste.
+
+    Within the same project:
     1. Floor, structural, area and ceiling plans, sections, elevations, details and drafting views use Duplicate with Detailing.
     2. Orthographic and perspective 3D views use Duplicate.
     3. Copy creates an independent schedule, preserves its splits and places only the selected segments.
@@ -120,8 +155,15 @@ tooltip:
   en_us: |-
     NDEV TOOLS | SHEET CLIPBOARD | Copy
 
+    Open both projects in the same Revit session. In the source section, select imported or linked raster images, detail lines, text notes, filled regions, or detail components and choose Copy. In the other project, open a section or drafting view, choose Paste, and click where you want the center of the selection. Images keep their size, rotation, and pin state.
+
+    Copy sheet lines, arcs, raster images, and title blocks to the same sheet or another sheet, including one in another open project.
+
     Select views, schedules, and annotations placed on the source sheet. Copy keeps the originals on the source sheet. You can paste the selection more than once.
 
+    You can also transfer sheet annotations, drafting views, sections and detail views between projects. Keep the source project open until you paste.
+
+    Within the same project:
     1. Floor, structural, area, and ceiling plans, sections, elevations, details, and drafting views use Duplicate with Detailing.
     2. Orthographic and perspective 3D views use Duplicate.
     3. Copy creates an independent schedule, preserves its splits, and places only the selected segments.
@@ -131,6 +173,10 @@ tooltip:
     Created by Nataraj Devaraj.
   fa: |-
     NDEV TOOLS | SHEET CLIPBOARD | کپی
+
+    هر دو پروژه را در یک نشست Revit باز کنید. در برش مبدأ، تصاویر پیکسلی واردشده یا پیوندشده، خطوط جزئیات، یادداشت‌های متنی، نواحی پُرشده یا اجزای جزئیات را انتخاب کنید و «کپی» را بزنید. در پروژهٔ دیگر، یک برش یا نمای ترسیمی باز کنید، «چسباندن» را بزنید و جایی کلیک کنید که می‌خواهید مرکز عناصر انتخاب‌شده قرار بگیرد. اندازه، زاویهٔ چرخش و وضعیت سنجاق‌شدن تصاویر حفظ می‌شود.
+
+    خطوط، کمان‌ها، تصاویر پیکسلی و کادرهای عنوان شیت را می‌توانید کپی کنید و در همان شیت یا شیتی دیگر، حتی در پروژه‌ای دیگر که باز است، بچسبانید.
 
     نماها، جدول‌ها و یادداشت‌های قرارگرفته روی شیت مبدأ را انتخاب کنید. با کپی، عناصر اصلی روی شیت مبدأ می‌مانند و می‌توانید نسخه‌ها را چند بار بچسبانید.
 
@@ -144,6 +190,10 @@ tooltip:
   fr_fr: |-
     NDEV TOOLS | SHEET CLIPBOARD | Copier
 
+    Ouvrez les deux projets dans la même session Revit. Dans la coupe source, sélectionnez des images raster importées ou liées, des lignes de détail, des notes textuelles, des zones remplies ou des composants de détail, puis choisissez Copier. Dans l’autre projet, ouvrez une coupe ou une vue de dessin, choisissez Coller et cliquez à l’endroit où vous souhaitez placer le centre de la sélection. Les images conservent leurs dimensions, leur rotation et leur état de verrouillage.
+
+    Vous pouvez copier les lignes, les arcs, les images raster et les cartouches d’une feuille sur la même feuille ou sur une autre, y compris dans un autre projet ouvert.
+
     Sélectionnez les vues, les nomenclatures et les annotations placées sur la feuille source. Les originaux restent sur la feuille source. Vous pouvez coller plusieurs fois la sélection.
 
     1. Les plans d’étage, de structure, de surface et de plafond, les coupes, les élévations et les vues de détail et de dessin sont dupliqués avec les détails.
@@ -155,6 +205,10 @@ tooltip:
     Créé par Nataraj Devaraj.
   de_de: |-
     NDEV TOOLS | SHEET CLIPBOARD | Kopieren
+
+    Öffnen Sie beide Projekte in derselben Revit-Sitzung. Wählen Sie im Quellschnitt importierte oder verknüpfte Rasterbilder, Detaillinien, Textnotizen, gefüllte Bereiche oder Detailbauteile aus und klicken Sie auf „Kopieren“. Öffnen Sie im anderen Projekt einen Schnitt oder eine Zeichenansicht, wählen Sie „Einfügen“ und klicken Sie auf den gewünschten Mittelpunkt der Auswahl. Größe, Drehung und Fixierungszustand der Bilder bleiben erhalten.
+
+    Linien, Bögen, Rasterbilder und Planköpfe lassen sich auf denselben oder einen anderen Plan kopieren, auch in einem anderen geöffneten Projekt.
 
     Wählen Sie auf dem Quellplan platzierte Ansichten, Bauteillisten und Beschriftungen aus. Die Originale bleiben auf dem Quellplan. Sie können die Auswahl mehrfach einfügen.
 
@@ -168,6 +222,10 @@ tooltip:
   hu: |-
     NDEV TOOLS | SHEET CLIPBOARD | Másolás
 
+    Nyissa meg mindkét projektet ugyanabban a Revit-munkamenetben. A forrásmetszetben jelölje ki az importált vagy csatolt raszterképeket, részletvonalakat, szöveges megjegyzéseket, kitöltött területeket vagy részletkomponenseket, majd válassza a Másolás parancsot. A másik projektben nyisson meg egy metszetet vagy rajznézetet, válassza a Beillesztés parancsot, és kattintson oda, ahová a kijelölés középpontját szeretné helyezni. A képek mérete, elforgatási szöge és rögzítési állapota megmarad.
+
+    A lap vonalai, ívei, raszterképei és tervpecsétjei ugyanarra vagy másik lapra is átmásolhatók, akár egy másik megnyitott projektbe is.
+
     Jelölje ki a forrás tervlapon elhelyezett nézeteket, kimutatásokat és feliratokat. Az eredeti elemek a forrás tervlapon maradnak. A másolatok többször is beilleszthetők.
 
     1. A szint-, tartószerkezeti, terület- és álmennyezeti alaprajzok, metszetek, homlokzatok, részletnézetek és rajznézetek a részletekkel együtt másolódnak.
@@ -179,6 +237,10 @@ tooltip:
     Készítette: Nataraj Devaraj.
   it_it: |-
     NDEV TOOLS | SHEET CLIPBOARD | Copia
+
+    Aprire entrambi i progetti nella stessa sessione di Revit. Nella sezione di origine, selezionare immagini raster importate o collegate, linee di dettaglio, note di testo, campiture o componenti di dettaglio e scegliere Copia. Nell’altro progetto, aprire una sezione o una vista di disegno, scegliere Incolla e fare clic nel punto in cui posizionare il centro della selezione. Le immagini mantengono le dimensioni, la rotazione e lo stato di blocco.
+
+    È possibile copiare linee, archi, immagini raster e cartigli sulla stessa tavola o su un’altra, anche in un altro progetto aperto.
 
     Selezionare le viste, gli abachi e le annotazioni posizionati sulla tavola di origine. Gli originali rimangono sulla tavola di origine. È possibile incollare più volte la selezione.
 
@@ -192,6 +254,10 @@ tooltip:
   ja: |-
     NDEV TOOLS | SHEET CLIPBOARD | コピー
 
+    両方のプロジェクトを同じ Revit セッションで開きます。コピー元の断面図で読み込みまたはリンクしたラスター イメージ、詳細線分、文字注記、塗り潰し領域、または詳細コンポーネントを選択し、［コピー］をクリックします。もう一方のプロジェクトで断面図または製図ビューを開き、［貼り付け］を選択して、選択した要素の中心を配置する位置をクリックします。画像のサイズ、回転角度、ピンの状態は保持されます。
+
+    シート上の線分、円弧、ラスター イメージ、図面枠をコピーし、同じシートや別のシートに貼り付けられます。開いている別のプロジェクトのシートにも貼り付けられます。
+
     元のシートに配置されているビュー、集計表、注釈を選択します。 元の項目をシートに残したまま、選択した項目のコピーを何度でも貼り付けられます。
 
     1. 平面図、構造伏図、エリアプラン、天井伏図、断面図、立面図、詳細ビュー、製図ビューには［詳細を含めて複製］を使用します。
@@ -203,6 +269,10 @@ tooltip:
     作成者: Nataraj Devaraj
   ko: |-
     NDEV TOOLS | SHEET CLIPBOARD | 복사
+
+    같은 Revit 세션에서 두 프로젝트를 엽니다. 원본 단면도에서 가져오거나 링크한 래스터 이미지, 상세 선, 문자 참고, 채워진 영역 또는 상세 구성요소를 선택하고 복사를 누릅니다. 다른 프로젝트에서 단면도 또는 제도 뷰를 열고 붙여넣기를 선택한 다음, 선택한 요소의 중심을 놓을 위치를 클릭합니다. 이미지의 크기, 회전 각도 및 고정 상태가 유지됩니다.
+
+    시트의 선, 호, 래스터 이미지, 제목 블록을 복사하여 같은 시트나 다른 시트에 붙여넣을 수 있습니다. 열려 있는 다른 프로젝트의 시트에도 붙여넣을 수 있습니다.
 
     원본 시트에 배치된 뷰, 일람표, 주석을 선택합니다. 원본은 시트에 남으며 선택 항목의 복사본을 여러 번 붙여넣을 수 있습니다.
 
@@ -216,6 +286,10 @@ tooltip:
   pl: |-
     NDEV TOOLS | SHEET CLIPBOARD | Kopiuj
 
+    Otwórz oba projekty w tej samej sesji programu Revit. W przekroju źródłowym zaznacz zaimportowane lub podłączone obrazy rastrowe, linie szczegółu, notatki tekstowe, obszary wypełnienia lub komponenty szczegółu i wybierz Kopiuj. W drugim projekcie otwórz przekrój lub widok kreślarski, wybierz Wklej i kliknij tam, gdzie ma się znaleźć środek zaznaczenia. Obrazy zachowują rozmiar, kąt obrotu i stan przypięcia.
+
+    Linie, łuki, obrazy rastrowe i tabelki rysunkowe można kopiować na ten sam lub inny arkusz, również w innym otwartym projekcie.
+
     Wybierz widoki, zestawienia i opisy umieszczone na arkuszu źródłowym. Oryginały pozostają na arkuszu źródłowym. Kopie można wklejać wielokrotnie.
 
     1. Rzuty kondygnacji, konstrukcji, powierzchni i sufitów, przekroje, elewacje oraz widoki szczegółów i widoki kreślarskie są powielane wraz ze szczegółami.
@@ -227,6 +301,10 @@ tooltip:
     Autor: Nataraj Devaraj.
   ru: |-
     NDEV TOOLS | SHEET CLIPBOARD | Копировать
+
+    Откройте оба проекта в одном сеансе Revit. На исходном разрезе выберите импортированные или связанные растровые изображения, линии детализации, текстовые примечания, области заливки или компоненты узлов и нажмите «Копировать». В другом проекте откройте разрез или чертёжный вид, нажмите «Вставить» и укажите, где должен находиться центр выбранных элементов. Размер, угол поворота и состояние закрепления изображений сохраняются.
+
+    Линии, дуги, растровые изображения и основные надписи можно копировать на тот же или другой лист, в том числе в другом открытом проекте.
 
     Выберите виды, спецификации и аннотации, размещённые на исходном листе. Оригиналы останутся на исходном листе. Копии можно вставлять несколько раз.
 
@@ -240,6 +318,10 @@ tooltip:
   es_es: |-
     NDEV TOOLS | SHEET CLIPBOARD | Copiar
 
+    Abra ambos proyectos en la misma sesión de Revit. En la sección de origen, seleccione imágenes ráster importadas o vinculadas, líneas de detalle, notas de texto, regiones rellenadas o componentes de detalle y elija Copiar. En el otro proyecto, abra una sección o una vista de diseño, elija Pegar y haga clic donde quiera situar el centro de la selección. Las imágenes conservan su tamaño, su rotación y su estado de fijación.
+
+    Puede copiar líneas, arcos, imágenes ráster y cuadros de rotulación al mismo plano o a otro, incluso en otro proyecto abierto.
+
     Seleccione las vistas, las tablas de planificación y las anotaciones colocadas en el plano de origen. Los originales permanecen en el plano de origen y la selección se puede pegar varias veces.
 
     1. Los planos de planta, estructurales, de área y de techo, las secciones, los alzados, las vistas de detalle y las vistas de diseño se duplican con detalles.
@@ -251,6 +333,10 @@ tooltip:
     Creado por Nataraj Devaraj.
   uk: |-
     NDEV TOOLS | SHEET CLIPBOARD | Копіювати
+
+    Відкрийте обидва проєкти в одному сеансі Revit. На вихідному розрізі виберіть імпортовані або зв’язані растрові зображення, лінії деталізації, текстові примітки, області заливки або компоненти вузлів і натисніть «Копіювати». В іншому проєкті відкрийте розріз або креслярський вид, натисніть «Вставити» та вкажіть, де має бути центр вибраних елементів. Розмір, кут повороту й стан закріплення зображень зберігаються.
+
+    Лінії, дуги, растрові зображення й основні написи можна копіювати на той самий або інший аркуш, зокрема в іншому відкритому проєкті.
 
     Виберіть види, специфікації та анотації, розміщені на вихідному аркуші. Оригінали залишаються на вихідному аркуші. Копії можна вставляти кілька разів.
 

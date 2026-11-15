@@ -1,4 +1,7 @@
 {
+  "paste_result": "貼上結果",
+  "close": "關閉",
+  "structural_plan_skip": "可以將此結構平面視圖複製到同一專案的其他圖紙上。跨專案複製時，請選擇製圖視圖、剖面視圖或詳圖視圖。",
   "help": "說明",
   "help_select": "選取所需的圖紙項目，或按一下「{0}」以選取所有可用項目。接著按一下「{1}」。",
   "credit": "作者：Nataraj Devaraj。",

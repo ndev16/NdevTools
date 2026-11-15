@@ -1,4 +1,7 @@
 {
+  "paste_result": "Résultat du collage",
+  "close": "Fermer",
+  "structural_plan_skip": "Ce plan de structure peut être copié sur une autre feuille du même projet. Pour une copie entre projets, choisissez une vue de dessin, une coupe ou une vue de détail.",
   "help": "Aide",
   "help_select": "Sélectionnez les éléments de la feuille ou cliquez sur « {0} » pour inclure tous les éléments disponibles. Cliquez ensuite sur « {1} ».",
   "credit": "Créé par Nataraj Devaraj.",

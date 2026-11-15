@@ -4,15 +4,15 @@ import imp
 import os
 
 from pyrevit import DB, UI
-from System import Uri
-from System.Collections.Generic import List
+from System import String, Uri
+from System.Collections.Generic import KeyValuePair, List
 from System.Diagnostics import Process, ProcessStartInfo
 from System.IO import File
-from System.Windows import FlowDirection, MessageBox, TextWrapping
+from System.Windows import FlowDirection, MessageBox, SystemParameters, TextWrapping
 from System.Windows.Automation import AutomationProperties
 from System.Windows.Controls import ListBoxItem, TextBlock
 from System.Windows.Interop import WindowInteropHelper
-from System.Windows.Markup import XamlReader
+from System.Windows.Markup import ParserContext, XamlReader
 from System.Windows.Media.Imaging import BitmapCacheOption, BitmapImage
 
 
@@ -28,28 +28,41 @@ def load_modules():
     return load(ROOT, 'sheet_clip'), load(SHARED, 'sheet_moves'), load(SHARED, 'sheet_preview')
 
 
+def clipboard_window(filename, heading, owner):
+    path = os.path.join(ROOT, filename)
+    context = ParserContext()
+    context.BaseUri = Uri(path)
+    stream = File.OpenRead(path)
+    try:
+        window = XamlReader.Load(stream, context)
+    finally:
+        stream.Dispose()
+    if owner:
+        WindowInteropHelper(window).Owner = owner
+    if tr.code in locale.RTL:
+        window.FlowDirection = FlowDirection.RightToLeft
+    window.Title = u'NdevTools | ' + heading
+    logo = BitmapImage()
+    logo.BeginInit()
+    logo.CacheOption = BitmapCacheOption.OnLoad
+    logo.UriSource = Uri(os.path.join(ROOT, 'assets', 'ndevtools-logo.png'))
+    logo.EndInit()
+    logo.Freeze()
+    window.FindName('BrandLogo').Source = window.Icon = logo
+    return window
+
+
 class Dialog(object):
     def __init__(self, sheet_name, rows, preselected, operation, owner):
-        self.window = XamlReader.Parse(File.ReadAllText(os.path.join(ROOT, 'CutPaste.xaml')))
-        if owner:
-            WindowInteropHelper(self.window).Owner = owner
-        if tr.code in locale.RTL:
-            self.window.FlowDirection = FlowDirection.RightToLeft
+        heading = tr(operation + '_title')
+        self.window = clipboard_window('CutPaste.xaml', heading, owner)
         for name in ('SheetName', 'Placements', 'Count', 'Heading', 'Hint', 'ChooseButton',
                      'SelectAllButton', 'DismissButton'):
             setattr(self, name, self.window.FindName(name))
         self.chosen = []
         self.blocked = set(row['uid'] for row in rows if row.get('blocked'))
         self.operation = operation
-        self.Heading.Text = tr(operation + '_title')
-        self.window.Title = u'NdevTools | ' + self.Heading.Text
-        logo = BitmapImage()
-        logo.BeginInit()
-        logo.CacheOption = BitmapCacheOption.OnLoad
-        logo.UriSource = Uri(os.path.join(ROOT, 'assets', 'ndevtools-logo.png'))
-        logo.EndInit()
-        logo.Freeze()
-        self.window.FindName('BrandLogo').Source = self.window.Icon = logo
+        self.Heading.Text = heading
         self.window.FindName('Credit').Text = tr('credit')
         help_button = self.window.FindName('HelpButton')
         help_button.ToolTip = tr('help')
@@ -142,35 +155,51 @@ def main(uiapp, action):
     if uidoc is None:
         raise ValueError(tr('open_sheet'))
     doc, sheet = uidoc.Document, uidoc.ActiveView
-    if doc.IsFamilyDocument or doc.IsReadOnly:
+    if doc.IsFamilyDocument or (doc.IsReadOnly and action != 'copy'):
         raise ValueError(tr('open_sheet'))
     clip, moves, preview = load_modules()
-    entry = clip.current(doc)
-    if not isinstance(sheet, DB.ViewSheet) or sheet.IsPlaceholder:
-        raise ValueError(tr('open_sheet'))
+    on_sheet = isinstance(sheet, DB.ViewSheet) and not sheet.IsPlaceholder
+    if action == 'copy' and sheet.ViewType in (DB.ViewType.Section, DB.ViewType.Detail) and not sheet.IsTemplate:
+        details = imp.load_source('ndev_main_clipboard_view_details', os.path.join(ROOT, 'view_details.py'))
+        return details.copy(uidoc, clip)
     if action == 'paste':
+        entry = clip.for_paste(doc)
         if entry is None:
             raise ValueError(tr('empty'))
         data = clip.info(entry)
-        prompt = tr('point', data['label'], preview.sheet_label(sheet))
+        source_label = data['label']
+        if not entry['document'].Equals(doc):
+            source_label = u'{} / {}'.format(entry['document'].Title, source_label)
         skipped = []
-        result = clip.paste(doc, sheet, entry['token'], moves, preview, lambda: uidoc.Selection.PickPoint(prompt),
-                            lambda item: choose_mode(item, preview.sheet_label(sheet)), skipped)
+        view_details = entry['kind'] == 'view-details'
+        if view_details:
+            details = imp.load_source('ndev_main_clipboard_view_details', os.path.join(ROOT, 'view_details.py'))
+            result = details.paste(uidoc, entry, clip, moves, tr('point', source_label, sheet.Name), skipped)
+        else:
+            if not on_sheet:
+                raise ValueError(tr('open_sheet'))
+            destination = preview.sheet_label(sheet)
+            prompt = tr('point', source_label, destination)
+            result = clip.paste(doc, sheet, entry['token'], moves, preview, lambda: uidoc.Selection.PickPoint(prompt),
+                                lambda item: choose_mode(item, destination), skipped)
         if result:
             ids = List[DB.ElementId]()
-            for uid in result.values():
+            for uid in (result if view_details else result.values()):
                 ids.Add(doc.GetElement(uid).Id)
             try:
                 uidoc.Selection.SetElementIds(ids)
             except Exception:
                 UI.TaskDialog.Show(tr('paste'), tr('selection_failed'))
         if result is not None and skipped:
-            report_skips(result, skipped, data)
+            report_skips(result, skipped, data, owner=uiapp.MainWindowHandle)
         return result
+    if not on_sheet:
+        raise ValueError(tr('open_sheet'))
     selected = clip.selected_placements(doc, sheet, uidoc.Selection.GetElementIds())
-    supported = [e.UniqueId for e in selected if clip.eligible(doc, sheet, e, moves)]
+    copying = action == 'copy'
+    supported = [e.UniqueId for e in selected if clip.eligible(doc, sheet, e, moves, copying)]
     if not selected or len(supported) != len(selected):
-        rows = clip.sheet_items(doc, sheet, moves, preview)
+        rows = clip.sheet_items(doc, sheet, moves, preview, copying)
         blocked = [clip.rejected_row(doc, sheet, e, preview) for e in selected if e is not None and e.UniqueId not in supported]
         rows.extend(blocked)
         if not rows:
@@ -180,6 +209,42 @@ def main(uiapp, action):
         supported = dialog.show()
     if supported:
         return clip.store(doc, sheet, supported, action, moves, preview)
+
+
+def paste_on_sheet(uiapp):
+    uidoc = uiapp.ActiveUIDocument
+    sheet = uidoc.ActiveView if uidoc else None
+    before = set(tab.ViewId for tab in uidoc.GetOpenUIViews()) if isinstance(sheet, DB.ViewSheet) else set()
+    result = main(uiapp, 'paste')
+    if not result or not isinstance(sheet, DB.ViewSheet):
+        return result
+
+    doc = sheet.Document
+    items = [doc.GetElement(uid) for uid in result.values()]
+    close_ids = set(item.ViewId for item in items if isinstance(item, DB.Viewport)) - before
+    if close_ids:
+        # Revit can open copied views after the ribbon command has returned.
+        sheet_id = sheet.Id
+
+        def close_pasted_tabs(sender, args):
+            uiapp.Idling -= close_pasted_tabs
+            active = uiapp.ActiveUIDocument
+            if active is None or not doc.IsValidObject or not active.Document.Equals(doc):
+                return
+            try:
+                active_id = active.ActiveView.Id
+                tabs = [tab for tab in active.GetOpenUIViews() if tab.ViewId in close_ids]
+                # Close the foreground tab last to avoid cycling through the others.
+                for tab in sorted(tabs, key=lambda tab: tab.ViewId == active_id):
+                    tab.Close()
+                if active_id in close_ids and active.ActiveView.Id != sheet_id:
+                    active.RequestViewChange(doc.GetElement(sheet_id))
+            except Exception as error:
+                from pyrevit.coreutils.logger import get_logger
+                get_logger('NdevSheetClipboard').warning('Could not close pasted view tabs: {}'.format(error))
+
+        uiapp.Idling += close_pasted_tabs
+    return result
 
 
 def choose_mode(item, destination, show=None):
@@ -201,17 +266,19 @@ def choose_mode(item, destination, show=None):
             dialog.Dispose()
 
 
-def report_skips(placed, skipped, data, show=None):
+def report_skips(placed, skipped, data, show=None, owner=None):
     names = dict((r['uid'], r['label']) for r in data['rows'])
-    dialog = UI.TaskDialog(tr('paste'))
-    try:
-        dialog.MainInstruction = tr('summary', len(placed), len(skipped))
-        dialog.MainContent = u'\n'.join(u'{} — {}'.format(names.get(uid, uid), tr.reason(reason))
-                                        for uid, reason in skipped)
-        if show:
-            show(dialog)
-        else:
-            dialog.Show()
-    finally:
-        if hasattr(dialog, 'Dispose'):
-            dialog.Dispose()
+    heading = tr('paste_result')
+    window = clipboard_window('PasteReport.xaml', heading, owner)
+    window.MaxHeight = SystemParameters.WorkArea.Height * 0.8
+    window.FindName('ReportHeading').Text = heading
+    window.FindName('Summary').Text = tr('summary', len(placed), len(skipped))
+    rows = window.FindName('SkippedItems')
+    for uid, reason in skipped:
+        rows.Items.Add(KeyValuePair[String, String](names.get(uid, uid), tr.reason(reason)))
+    close = window.FindName('DismissButton')
+    close.Content = tr('close')
+    if show:
+        show(window)
+    else:
+        window.ShowDialog()

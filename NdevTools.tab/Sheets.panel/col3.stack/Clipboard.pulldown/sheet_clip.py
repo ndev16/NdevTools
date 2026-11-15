@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""A project-bound clipboard for cut and repeatable copy on drawing sheets."""
+"""Per-project Cut and repeatable Copy between sheets in open projects."""
 from System import AppDomain, Array, Double, Guid
 from System.Collections import ArrayList, Hashtable
 from Autodesk.Revit.Exceptions import ArgumentException, InvalidOperationException, OperationCanceledException
@@ -7,6 +7,7 @@ from pyrevit import DB
 
 
 KEY = 'NdevTools.Main.SheetCutPaste.Clipboard.v1'
+LAST_COPY = KEY + '.LastCopy'
 TOLERANCE = 1e-6
 
 
@@ -28,12 +29,24 @@ def current(doc):
     return None
 
 
+def for_paste(doc):
+    # A fresh Copy takes precedence even when the destination has an older
+    # local clipboard. Holding the token avoids confusing two copies of an RVT.
+    token = AppDomain.CurrentDomain.GetData(LAST_COPY)
+    if token:
+        for entry in _entries():
+            if entry['token'] == token and entry['operation'] == 'copy':
+                return entry
+        raise ValueError('The source project for this copy was closed. Open it and copy the details again.')
+    return current(doc)
+
+
 def _sheet_element(element):
     return element.SheetId if isinstance(element, DB.Viewport) else element.OwnerViewId
 
 
-def eligible(doc, sheet, element, moves):
-    return moves.supported(doc, element) and _sheet_element(element) == sheet.Id
+def eligible(doc, sheet, element, moves, copying=False):
+    return moves.supported(doc, element, copying) and _sheet_element(element) == sheet.Id
 
 
 def selected_placements(doc, sheet, element_ids):
@@ -88,8 +101,8 @@ def unavailable(doc, sheet, element):
     return u'Unsupported sheet item ({0}).'.format(element.GetType().Name)
 
 
-def _record(doc, sheet, element, moves, preview):
-    if not eligible(doc, sheet, element, moves):
+def _record(doc, sheet, element, moves, preview, copying=False):
+    if not eligible(doc, sheet, element, moves, copying):
         raise ValueError(unavailable(doc, sheet, element))
     row = preview._placement(doc, sheet, element, moves)
     if row is None:
@@ -98,7 +111,7 @@ def _record(doc, sheet, element, moves, preview):
     return row
 
 
-def sheet_items(doc, sheet, moves, preview):
+def sheet_items(doc, sheet, moves, preview, copying=False):
     if not isinstance(sheet, DB.ViewSheet) or sheet.IsPlaceholder:
         raise ValueError('Open the source drawing sheet before selecting placements.')
     collector = DB.FilteredElementCollector(doc).OwnedByView(sheet.Id).WhereElementIsNotElementType()
@@ -110,8 +123,8 @@ def sheet_items(doc, sheet, moves, preview):
     rows = []
     for eid in unique:
         element = doc.GetElement(eid)
-        if moves.supported(doc, element):
-            rows.append(_record(doc, sheet, element, moves, preview))
+        if moves.supported(doc, element, copying):
+            rows.append(_record(doc, sheet, element, moves, preview, copying))
     return sorted(rows, key=lambda row: (row['label'].lower(), row['uid']))
 
 
@@ -132,7 +145,7 @@ def store(doc, sheet, uids, operation, moves, preview):
     for uid in uids:
         element = doc.GetElement(uid)
         try:
-            rows.append(_record(doc, sheet, element, moves, preview))
+            rows.append(_record(doc, sheet, element, moves, preview, operation == 'copy'))
         except ValueError as error:
             if operation == 'cut' or element is None:
                 raise
@@ -140,20 +153,25 @@ def store(doc, sheet, uids, operation, moves, preview):
     rects = [row['rect'] for row in rows if row['rect']]
     center = [(min(r[axis] for r in rects) + max(r[axis+2] for r in rects)) * .5
               for axis in (0, 1)] if rects else [0., 0.]
+    return store_rows(doc, sheet, preview.sheet_label(sheet), rows, center, operation, 'sheet')
+
+
+def store_rows(doc, source, label, rows, center, operation, kind):
     entry = Hashtable()
     entry['document'] = doc
     entry['token'] = str(Guid.NewGuid())
     entry['operation'] = operation
-    entry['source'] = sheet.UniqueId
-    entry['label'] = preview.sheet_label(sheet)
+    entry['kind'] = kind
+    entry['source'] = source.UniqueId
+    entry['label'] = label
     entry['center'] = Array[Double](center)
     held = ArrayList()
     for row in rows:
         item = Hashtable()
         item['uid'], item['version'] = row['uid'], row['version']
         item['label'], item['blocked'] = row['label'], row.get('blocked', '')
-        item['rect'] = Array[Double](row['rect'])
-        item['anchor'] = Array[Double](row['anchor'])
+        item['rect'] = Array[Double](row.get('rect', []))
+        item['anchor'] = Array[Double](row.get('anchor', []))
         held.Add(item)
     entry['rows'] = held
     entries = _entries()
@@ -161,6 +179,7 @@ def store(doc, sheet, uids, operation, moves, preview):
     if previous is not None:
         entries.Remove(previous)
     entries.Add(entry)
+    AppDomain.CurrentDomain.SetData(LAST_COPY, entry['token'] if operation == 'copy' else None)
     return entry
 
 
@@ -183,10 +202,11 @@ def discard(doc, token):
 
 
 def _validate(doc, token, moves, preview, skipped):
-    entry = current(doc)
+    entry = for_paste(doc)
     if entry is None or entry['token'] != token:
         raise ValueError('This selection has been replaced or already pasted.')
     data = info(entry)
+    doc = entry['document']
     source = doc.GetElement(data['source'])
     available = []
     for saved in data['rows']:
@@ -195,7 +215,7 @@ def _validate(doc, token, moves, preview, skipped):
                 raise ValueError(saved['blocked'])
             if not isinstance(source, DB.ViewSheet) or source.IsPlaceholder:
                 raise ValueError('The source sheet is unavailable.')
-            row = _record(doc, source, doc.GetElement(saved['uid']), moves, preview)
+            row = _record(doc, source, doc.GetElement(saved['uid']), moves, preview, data['operation'] == 'copy')
             old = saved['rect'] + saved['anchor']
             new = row['rect'] + row['anchor']
             if saved['version'] != row['version'] or any(abs(a - b) > TOLERANCE for a, b in zip(old, new)):
@@ -266,8 +286,20 @@ def paste(doc, destination, token, moves, preview, pick, choose=None, skipped=No
     if skipped is None:
         skipped = []
     entry, data, uids = _validate(doc, token, moves, preview, skipped)
+    source_doc = entry['document']
+    external = not source_doc.Equals(doc)
     choices = {}
-    if data['operation'] == 'copy':
+    if external:
+        import imp, os
+        transfer = imp.load_source('ndev_main_sheet_project_copy', os.path.join(os.path.dirname(__file__), 'project_copy.py'))
+        for uid in list(uids):
+            reason = transfer.unsupported(source_doc, source_doc.GetElement(uid))
+            if reason:
+                skipped.append((uid, reason))
+                uids.remove(uid)
+        if not uids:
+            return {}
+    elif data['operation'] == 'copy':
         for prompt in _special_views(doc, destination, uids):
             if choose is None:
                 raise ValueError('A legend or graphical column schedule requires a paste choice.')
@@ -297,6 +329,8 @@ def paste(doc, destination, token, moves, preview, pick, choose=None, skipped=No
     skipped.extend(item for item in new_skips if item not in skipped)
     uids = [uid for uid in uids if uid in available]
     dx, dy = point.X - data['center'][0], point.Y - data['center'][1]
+    if external:
+        return transfer.paste(source_doc.GetElement(data['source']), destination, uids, dx, dy, moves, skipped)
     if data['operation'] == 'copy':
         if not uids:
             return {}

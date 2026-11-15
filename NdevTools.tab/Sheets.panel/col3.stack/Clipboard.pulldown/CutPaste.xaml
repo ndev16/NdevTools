@@ -7,38 +7,21 @@
     <shell:WindowChrome CaptionHeight="61" ResizeBorderThickness="6" GlassFrameThickness="0" UseAeroCaptionButtons="False"/>
   </shell:WindowChrome.WindowChrome>
   <Window.Resources>
-    <Style TargetType="Button">
-      <Setter Property="Background" Value="#09243A"/><Setter Property="Foreground" Value="#DEEFFB"/>
-      <Setter Property="BorderBrush" Value="#21536A"/><Setter Property="Padding" Value="13,6"/>
-      <Setter Property="MinHeight" Value="32"/>
-      <Setter Property="Template"><Setter.Value>
-        <ControlTemplate TargetType="Button">
-          <Border x:Name="Frame" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="1" CornerRadius="4" Padding="{TemplateBinding Padding}">
-            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
-          </Border>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ClipboardButtons.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+      <Style TargetType="ListBoxItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="Foreground" Value="#DEEFFB"/>
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ListBoxItem">
+          <Border x:Name="Row" Padding="9,6"><ContentPresenter/></Border>
           <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Frame" Property="BorderBrush" Value="#05D5EC"/></Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="Frame" Property="BorderBrush" Value="White"/></Trigger>
-            <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value=".44"/></Trigger>
+            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Row" Property="Background" Value="#124264"/></Trigger>
+            <Trigger Property="IsSelected" Value="True"><Setter TargetName="Row" Property="Background" Value="#116175"/><Setter Property="Foreground" Value="White"/></Trigger>
           </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value></Setter>
-    </Style>
-    <Style x:Key="Primary" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-      <Setter Property="Foreground" Value="#002032"/><Setter Property="Background" Value="#0DC7E7"/>
-      <Setter Property="BorderBrush" Value="#0FE0FB"/><Setter Property="FontWeight" Value="SemiBold"/>
-    </Style>
-    <Style TargetType="ListBoxItem">
-      <Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="Foreground" Value="#DEEFFB"/>
-      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ListBoxItem">
-        <Border x:Name="Row" Padding="9,6"><ContentPresenter/></Border>
-        <ControlTemplate.Triggers>
-          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Row" Property="Background" Value="#124264"/></Trigger>
-          <Trigger Property="IsSelected" Value="True"><Setter TargetName="Row" Property="Background" Value="#116175"/><Setter Property="Foreground" Value="White"/></Trigger>
-        </ControlTemplate.Triggers>
-      </ControlTemplate></Setter.Value></Setter>
-    </Style>
+        </ControlTemplate></Setter.Value></Setter>
+      </Style>
+    </ResourceDictionary>
   </Window.Resources>
   <Border BorderBrush="#165573" BorderThickness="1">
   <DockPanel Margin="16,0,16,12">

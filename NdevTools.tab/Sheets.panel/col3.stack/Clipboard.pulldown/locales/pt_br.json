@@ -1,4 +1,7 @@
 {
+  "paste_result": "Resultado da colagem",
+  "close": "Fechar",
+  "structural_plan_skip": "Esta planta estrutural pode ser copiada para outra folha do mesmo projeto. Para copiar entre projetos, selecione uma vista de desenho, um corte ou uma vista de detalhe.",
   "help": "Ajuda",
   "help_select": "Selecione os itens da folha ou clique em “{0}” para incluir todos os itens disponíveis. Em seguida, clique em “{1}”.",
   "credit": "Criado por Nataraj Devaraj.",

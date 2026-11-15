@@ -1,5 +1,12 @@
 # Changelog
 
+## November 16, 2026 — Copy sheet and section details between projects
+
+- Copy selected detail lines, text notes, filled regions, detail components, and imported or linked raster images from a section into a section or drafting view in another open project. Images retain their size, rotation, and pin state.
+- Copy sheet lines, arcs, title blocks, and raster images between sheets. Across projects, Sheet Clipboard also copies placed drafting, section, and detail views with their supported detailing.
+- Paste closes tabs that Revit opens for newly pasted views and preserves previously open tabs. The NdevTools paste result shows counts and explains skipped items, including structural plan views selected for a cross-project paste.
+- Verified sheet graphics, section-to-section and section-to-drafting transfers, whole detail views, and the paste result in disposable projects in Revit 2023, 2024, 2025, 2026, and 2027.
+
 ## November 6, 2026 — Sheet transfers and Modify tools
 
 - Added **Sheet Clipboard** to cut and paste placed detail views and other views between sheets in the same project. Paste moves the original views together to the point you pick, preserving their detailing and spacing. One Revit Undo restores the group. Copy keeps the originals on the source sheet.
