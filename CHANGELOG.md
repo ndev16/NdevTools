@@ -1,5 +1,9 @@
 # Changelog
 
+## November 24, 2026 — CAD Tools
+
+- Added CAD Tools with CAD to Walls and CAD to Grids.
+
 ## November 23, 2026 — Bug fixes
 
 - Updated Sheet Clipboard to follow Revit API copy-and-paste behavior.

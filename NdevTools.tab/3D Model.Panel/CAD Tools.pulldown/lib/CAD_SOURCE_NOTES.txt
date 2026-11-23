@@ -1,0 +1,44 @@
+NdevTools CAD commands are independent Python code using the Revit API.
+They do not load Horizun DLLs, call MCP, or require a Horizun installation.
+
+Reference reviewed:
+https://github.com/HorizunGroup/horizun-revit-mcp/tree/v4.0.0
+Commit: 00fe15b515db895d8626867b038b43335ed61ad2
+Copyright: Horizun Group. Apache License, Version 2.0.
+See LICENSE-Horizun-Apache-2.0.txt for the license.
+
+Adapted reference: CadTopologyRules.FindDoubleLines projection and overlap
+calculations. Implemented independently in Python in ndev_cad_math.py with
+internal-foot inputs, fixed selected-type width, and conservative refusal of
+ambiguous assignments. This is a modified subset, not the complete original.
+Original concepts/tests reviewed: CadWallPairingTests, CadNamingTests,
+CadStoreyPlacementTests, CadCatalogPreflight and DWG-TO-BIM documentation.
+Also adapted midpoint clustering from ClusterPoints/FromPointClusters and
+base-level constraint verification from GovernedBaseZ; these are Python
+implementations, not calls into the original compiled code.
+
+Current differences: no composite/hatch wall interpretation, no automatic
+family inference, no curved element conversion, no full provenance/audit
+engine or revision tracking. Native Revit 2027 creation/repeat tests passed
+against the L1 DWG in unsaved temporary projects at 0 ft and 30 ft base levels.
+Tests exercised centerlines, paired wall faces, symbol columns and named grids.
+They check command mechanics and placement, not complete DWG interpretation
+or automatic structural design. Other Revit years have not been live tested.
+
+Mapping update: Walls and Beams now open a single native WPF mapping window.
+With Layers scans within each selected layer; Without Layers scans across
+layers. Explicit loaded-type mappings, None, strict below-cutoff exclusions,
+metric/imperial measurements, saved profiles and Place are supported. Walls
+use base/top constraints and offsets; beams use level plus offset. Native
+Revit 2027 disposable elevated placement/repeat tests passed. Columns and
+grids retain their earlier command workflows. New type creation and CAD
+text-based inference remain outside this mapping update.
+
+Repair update: shared CAD faces may support disjoint intervals. Full-width
+pairs with a drawn longitudinal midline suppress half-width alternatives.
+Remaining competing intervals stay withheld. The L1 scan now reports 18
+candidates, 17 unresolved pairs, and 6 half-width alternatives resolved.
+Placement rolls back on Revit wall-overlap warnings. Native 2027 temporary
+project tests verified creation, repeats and rejection without extra walls.
+The modeless window dispatches API actions through ExternalEvent and checks
+that the active project and CAD geometry still match before placement.

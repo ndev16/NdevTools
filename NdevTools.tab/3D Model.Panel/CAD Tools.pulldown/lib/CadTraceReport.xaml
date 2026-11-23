@@ -1,0 +1,14 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="NdevTools | Wall Trace Report" Width="880" Height="620" MinWidth="450" MinHeight="300"
+ WindowStartupLocation="CenterOwner" Background="#051522" Foreground="#E9F6FF">
+ <DockPanel Margin="16">
+  <TextBlock x:Name="report_heading" DockPanel.Dock="Top" Text="WALL TRACE REPORT" FontSize="20" Foreground="#00C6E8" Margin="0,0,0,12"/>
+  <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+   <TextBlock x:Name="copy_status" VerticalAlignment="Center" Foreground="#92B5C8" Margin="0,0,12,0"/>
+   <Button Content="Copy report" Click="copy_click" Padding="14,5"/>
+   <Button Content="Close" Click="close_click" Padding="14,5" Margin="8,0,0,0"/>
+  </StackPanel>
+  <TextBox x:Name="body" IsReadOnly="True" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+   FontFamily="Consolas" Padding="8" Background="#0B2536" Foreground="#E9F6FF" BorderBrush="#285269"/>
+ </DockPanel>
+</Window>

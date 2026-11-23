@@ -1,0 +1,135 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="NdevTools | CAD Mapping" Width="1240" Height="880" MinWidth="960" MinHeight="730"
+ WindowStartupLocation="CenterScreen" Background="#051522" Foreground="#E9F6FF" FontFamily="Segoe UI" FontSize="13">
+ <Window.Resources>
+    <SolidColorBrush x:Key="Cyan" Color="#00C6E8"/>
+    <Style TargetType="TextBlock"><Setter Property="Foreground" Value="#E9F6FF"/><Setter Property="VerticalAlignment" Value="Center"/></Style>
+    <Style TargetType="Button">
+      <Setter Property="Background" Value="#092536"/><Setter Property="Foreground" Value="#00D9F4"/>
+      <Setter Property="BorderBrush" Value="#00BBDC"/><Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Padding" Value="14,7"/><Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="chrome" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="5" Padding="{TemplateBinding Padding}">
+          <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="chrome" Property="Opacity" Value="0.8"/></Trigger>
+          <Trigger Property="IsEnabled" Value="False"><Setter TargetName="chrome" Property="Opacity" Value="0.4"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="TextBox"><Setter Property="Background" Value="#0B2536"/><Setter Property="Foreground" Value="#E9F6FF"/><Setter Property="CaretBrush" Value="#00D9F4"/><Setter Property="BorderBrush" Value="#285269"/><Setter Property="Padding" Value="8,5"/></Style>
+    <Style TargetType="CheckBox">
+      <Setter Property="Foreground" Value="#E9F6FF"/><Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Margin" Value="6,4"/><Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="CheckBox">
+        <Grid Background="Transparent"><Grid.ColumnDefinitions><ColumnDefinition Width="14"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+          <Grid Width="14" Height="14" VerticalAlignment="Center">
+            <Border x:Name="checkBorder" Background="#0B2536" BorderBrush="#41677B" BorderThickness="1" CornerRadius="3"/>
+            <Path x:Name="checkGlyph" Data="M 3,7 L 6,10 L 11,4" Stroke="#031A28" StrokeThickness="1.8" Visibility="Collapsed"/>
+          </Grid>
+          <ContentPresenter Grid.Column="1" Margin="6,0,0,0" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsChecked" Value="True"><Setter TargetName="checkBorder" Property="Background" Value="#00C6E8"/><Setter TargetName="checkBorder" Property="BorderBrush" Value="#00C6E8"/><Setter TargetName="checkGlyph" Property="Visibility" Value="Visible"/></Trigger>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="checkBorder" Property="BorderBrush" Value="#8CE8F5"/></Trigger>
+          <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.45"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="ComboBoxItem"><Setter Property="Foreground" Value="#E9F6FF"/><Setter Property="Background" Value="#0B2536"/><Setter Property="Padding" Value="8,5"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ComboBoxItem"><Border x:Name="itemBorder" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"><ContentPresenter/></Border><ControlTemplate.Triggers><Trigger Property="IsHighlighted" Value="True"><Setter TargetName="itemBorder" Property="Background" Value="#175570"/></Trigger><Trigger Property="IsSelected" Value="True"><Setter TargetName="itemBorder" Property="Background" Value="#14536A"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="ComboBox">
+      <Setter Property="Foreground" Value="#E9F6FF"/><Setter Property="Background" Value="#0B2536"/>
+      <Setter Property="BorderBrush" Value="#285269"/><Setter Property="MinHeight" Value="32"/>
+      <Setter Property="MaxDropDownHeight" Value="300"/><Setter Property="IsTextSearchEnabled" Value="True"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ComboBox">
+        <Grid>
+          <ToggleButton Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+            <ToggleButton.Template><ControlTemplate TargetType="ToggleButton"><Border Background="#0B2536" BorderBrush="#285269" BorderThickness="1" CornerRadius="3"><TextBlock Text="⌄" Foreground="#00D9F4" HorizontalAlignment="Right" Margin="0,0,10,0"/></Border></ControlTemplate></ToggleButton.Template>
+          </ToggleButton>
+          <ContentPresenter Margin="9,4,30,4" IsHitTestVisible="False" VerticalAlignment="Center" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"/>
+          <Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
+            <Border Background="#0B2536" BorderBrush="#00A6C6" BorderThickness="1" MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}">
+              <ScrollViewer MaxHeight="300" CanContentScroll="True"><ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/></ScrollViewer>
+            </Border>
+          </Popup>
+        </Grid>
+        <ControlTemplate.Triggers><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.45"/></Trigger></ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="Card" TargetType="Border"><Setter Property="Background" Value="#071E2D"/><Setter Property="BorderBrush" Value="#19465B"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="7"/><Setter Property="Padding" Value="14"/></Style>
+    <ControlTemplate x:Key="SearchableTypeTemplate" TargetType="ComboBox">
+        <Grid>
+          <ToggleButton Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+            <ToggleButton.Template><ControlTemplate TargetType="ToggleButton"><Border Background="#0B2536" BorderBrush="#285269" BorderThickness="1" CornerRadius="3"><TextBlock Text="⌄" Foreground="#00D9F4" HorizontalAlignment="Right" Margin="0,0,10,0"/></Border></ControlTemplate></ToggleButton.Template>
+          </ToggleButton>
+          <ContentPresenter Margin="9,4,30,4" IsHitTestVisible="False" VerticalAlignment="Center" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"/>
+          <Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
+            <Border Background="#0B2536" BorderBrush="#00A6C6" BorderThickness="1" MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}">
+              <DockPanel><StackPanel DockPanel.Dock="Top" Margin="8"><TextBlock Text="Search types" Foreground="#8DB6CC" Margin="0,0,0,4"/><TextBox x:Name="PART_TypeSearch" ToolTip="Type a family, type or size to filter this list."/></StackPanel><ScrollViewer MaxHeight="260" CanContentScroll="True"><ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/></ScrollViewer></DockPanel>
+            </Border>
+          </Popup>
+        </Grid>
+        <ControlTemplate.Triggers><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.45"/></Trigger></ControlTemplate.Triggers>
+      </ControlTemplate>
+  </Window.Resources>
+ <Grid Margin="18">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <DockPanel Margin="0,0,0,12"><Button DockPanel.Dock="Right" Content="? Help" Click="help_click" Width="68" Height="30" Padding="10,4" FontSize="12" VerticalAlignment="Center"/><Button DockPanel.Dock="Right" Content="&#9733; Star NdevTools on GitHub" Click="github_click" Height="30" Padding="10,4" FontSize="12" VerticalAlignment="Center" Margin="0,0,8,0"/><Image x:Name="brand_logo" DockPanel.Dock="Left" Width="65" Height="65" Stretch="Uniform" Margin="0,0,16,0"/><Border DockPanel.Dock="Left" Width="1" Background="#176A8B" Margin="0,5,16,5"/><StackPanel><TextBlock x:Name="heading" Text="CAD WALL MAPPING" FontSize="25" FontWeight="SemiBold" Foreground="#00C6E8"/><TextBlock Text="Select the drawing, inspect thicknesses, then map the groups you want to trace." Foreground="#8DB6CC" Margin="0,4,0,0"/></StackPanel></DockPanel>
+  <Border Grid.Row="1" Style="{StaticResource Card}" Margin="0,0,0,10"><StackPanel Orientation="Horizontal">
+   <CheckBox x:Name="with_layers" Content="With Layers" IsChecked="True" Click="mode_click"/>
+   <CheckBox x:Name="without_layers" Content="Without Layers" Click="mode_click"/>
+   <TextBlock Text="Units" Margin="20,0,8,0"/><ComboBox x:Name="unit_choice" Width="180" SelectionChanged="units_changed"/><TextBlock x:Name="mode_hint" Text="Choose the CAD layers to inspect." Foreground="#8DB6CC" Margin="20,0,0,0"/>
+  </StackPanel></Border>
+  <Grid Grid.Row="2" Margin="0,0,0,10"><Grid.ColumnDefinitions><ColumnDefinition Width="90"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <TextBlock Text="CAD drawing"/><ComboBox x:Name="cad_choice" Grid.Column="1" SelectionChanged="cad_changed"/>
+   <Button Grid.Column="2" Content="Refresh types" Click="refresh_click" Margin="8,0,0,0"/>
+  </Grid>
+  <Grid Grid.Row="3"><Grid.ColumnDefinitions><ColumnDefinition x:Name="layer_column" Width="260"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <Border x:Name="layer_card" Style="{StaticResource Card}" Margin="0,0,10,0"><DockPanel>
+    <StackPanel DockPanel.Dock="Top"><TextBlock x:Name="layer_heading" Text="WALL LAYERS" Foreground="#00C6E8" FontWeight="SemiBold"/><TextBlock Text="Check the layers containing member faces." TextWrapping="Wrap" Foreground="#8DB6CC" Margin="0,6,0,8"/><TextBlock Text="Search layers" Foreground="#8DB6CC"/><TextBox x:Name="layer_search" TextChanged="layer_search_changed" Margin="0,4,0,8" ToolTip="Filters the list; checked layers stay selected when hidden."/><WrapPanel><Button Content="All shown" Click="all_layers" Padding="10,4"/><Button Content="None shown" Click="no_layers" Padding="10,4" Margin="6,0,0,0"/></WrapPanel></StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,10,0,0"><StackPanel x:Name="layer_checks"/></ScrollViewer>
+   </DockPanel></Border>
+   <Border Grid.Column="1" Style="{StaticResource Card}"><Grid>
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <WrapPanel><TextBlock x:Name="spacing_label" Text="Scan spacing (mm)"/><TextBox x:Name="minimum_width" LostFocus="measurement_lost_focus" Text="1.00" Width="65" Margin="8,0,0,0" TextChanged="scan_setting_changed"/><TextBlock Text="to" Margin="8,0"/><TextBox x:Name="maximum_width" LostFocus="measurement_lost_focus" Text="914.4" Width="65" TextChanged="scan_setting_changed"/><TextBlock x:Name="overlap_label" Text="Min overlap (mm)" Margin="14,0,0,0"/><TextBox x:Name="minimum_overlap" LostFocus="measurement_lost_focus" Text="300" Width="70" Margin="8,0,0,0" TextChanged="scan_setting_changed"/></WrapPanel>
+    <WrapPanel Grid.Row="1" Margin="0,10,0,10"><CheckBox x:Name="exclude_below" Content="Exclude wall thickness below" Click="filter_changed"/><TextBox x:Name="cutoff_width" LostFocus="measurement_lost_focus" Width="80" Text="100" Margin="8,0,0,0" TextChanged="filter_changed"/><TextBlock x:Name="cutoff_unit" Text="mm" Margin="6,0"/></WrapPanel>
+    <Grid Grid.Row="2" Margin="0,0,0,8"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><Grid.ColumnDefinitions><ColumnDefinition Width="130"/><ColumnDefinition Width="100"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><TextBlock Grid.Row="1" Text="THICKNESS" Foreground="#00C6E8"/><TextBlock Grid.Row="1" Grid.Column="1" Text="CANDIDATES" Foreground="#00C6E8"/><TextBlock Grid.Row="1" Grid.Column="2" Text="REVIT TYPE / SIZE" Foreground="#00C6E8"/></Grid>
+    <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto"><StackPanel x:Name="mapping_rows"/></ScrollViewer>
+    <TextBlock Grid.Row="4" x:Name="scan_notes" Text="Select source layers to detect thickness groups automatically. Every group starts as None - do not trace." Foreground="#8DB6CC" TextWrapping="Wrap" Margin="0,10,0,0"/>
+   </Grid></Border>
+  </Grid>
+  <Border Grid.Row="4" Style="{StaticResource Card}" Margin="0,10,0,10"><StackPanel>
+   <DockPanel Margin="0,0,0,8">
+    <TextBlock Text="LEVELS &amp; OFFSETS" Foreground="#00C6E8" FontWeight="SemiBold" VerticalAlignment="Center"/>
+    <StackPanel x:Name="opening_choices" Orientation="Horizontal" HorizontalAlignment="Right">
+     <CheckBox x:Name="create_doors" Content="Door openings" IsChecked="True" ToolTip="Cut door openings at gaps in the traced wall."/>
+     <CheckBox x:Name="create_windows" Content="Window openings" IsChecked="True" Margin="14,0,0,0" ToolTip="Cut window openings at lines inside the wall faces."/>
+    </StackPanel>
+   </DockPanel>
+   <WrapPanel>
+    <StackPanel x:Name="bottom_level_panel" Width="260" Margin="0,0,10,0"><TextBlock Text="Bottom level"/><ComboBox x:Name="bottom_level" SelectionChanged="bottom_level_changed" Margin="0,4,0,0"/></StackPanel>
+    <StackPanel x:Name="bottom_offset_panel" Width="120" Margin="0,0,14,0"><TextBlock x:Name="bottom_offset_label" Text="Bottom offset (mm)"/><TextBox x:Name="bottom_offset" LostFocus="measurement_lost_focus" Text="0" Margin="0,4,0,0"/></StackPanel>
+    <StackPanel Width="260" Margin="0,0,10,0"><DockPanel><TextBlock x:Name="top_level_label" Text="Top level"/><CheckBox x:Name="same_level" Content="Same as bottom" HorizontalAlignment="Right" Click="same_level_click"/></DockPanel><ComboBox x:Name="top_level" Margin="0,4,0,0"/></StackPanel>
+    <StackPanel Width="120"><TextBlock x:Name="top_offset_label" Text="Top offset (mm)"/><TextBox x:Name="top_offset" LostFocus="measurement_lost_focus" Text="0" Margin="0,4,0,0" ToolTip="Measured from the selected top level."/></StackPanel>
+   </WrapPanel>
+  </StackPanel></Border>
+  <Grid Grid.Row="5"><Grid.ColumnDefinitions><ColumnDefinition Width="1.2*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <StackPanel Margin="0,0,16,0" VerticalAlignment="Center"><TextBlock x:Name="status" Text="Choose a CAD drawing to begin." TextWrapping="Wrap" Foreground="#8DB6CC"/><TextBlock Text="Created by Nataraj Devaraj" Foreground="#8DB6CC" Margin="0,4,0,0"/></StackPanel>
+   <Border Grid.Column="1" Background="#0B3044" BorderBrush="#00C6E8" BorderThickness="0.5" CornerRadius="5" Padding="8,4" VerticalAlignment="Center" Margin="0,0,12,0"><TextBlock x:Name="joke_text" TextWrapping="Wrap" Foreground="#BDEFFA" FontSize="12" VerticalAlignment="Center"/></Border>
+   <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,12,0"><CheckBox x:Name="humor_enabled" Content="BIM Humor" Foreground="#00D9F4" FontWeight="SemiBold" IsChecked="True" Click="humor_click"/><Button x:Name="next_joke" Content="Next Joke" Click="next_joke_click" Height="26" FontSize="11" Padding="6,3" Margin="4,0,0,0"/></StackPanel>
+   <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center"><Button x:Name="trace_report_button" Content="Trace report" Click="report_click" Margin="0,0,6,0"/><Button Content="Cancel" Click="cancel_click"/><Button x:Name="save_button" Content="Save mapping" Click="save_click" Margin="8,0,0,0"/><Button x:Name="place_button" Content="Place" Click="place_click" IsEnabled="False" Margin="8,0,0,0"/></StackPanel>
+  </Grid>
+  <Border x:Name="activity_overlay" Grid.RowSpan="6" Panel.ZIndex="50" Background="#C0051522" Visibility="Collapsed" Cursor="Wait">
+   <Border Background="#092536" BorderBrush="#00C6E8" BorderThickness="1" CornerRadius="8" Padding="24,20" MaxWidth="490" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel>
+     <TextBlock x:Name="activity_message" Text="NdevTools is scanning wall thickness..." FontSize="18" FontWeight="SemiBold" Foreground="#00D9F4" TextWrapping="Wrap"/>
+     <TextBlock x:Name="activity_hint" Text="Preparing thicknesses, candidates and Revit types." Foreground="#B5D4E5" TextWrapping="Wrap" Margin="0,8,0,14"/>
+     <ProgressBar IsIndeterminate="True" Height="4" Foreground="#00C6E8" Background="#153E50" BorderThickness="0"/>
+    </StackPanel>
+   </Border>
+  </Border>
+ </Grid>
+</Window>

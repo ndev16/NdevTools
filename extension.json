@@ -2,7 +2,7 @@
   "builtin": "False",
   "type": "extension",
   "name": "NdevTools",
-  "description": "19 pyRevit commands across six panels for detailing, sheet layout and clipboard transfers, property matching, renumbering, ribbon visibility, linked-wall tracing, structural framing, notes and web tools. Ribbon metadata is available in 20 locales.",
+  "description": "21 pyRevit commands across six panels for detailing, sheet layout and clipboard transfers, property matching, renumbering, ribbon visibility, linked-wall tracing, CAD wall and grid mapping, structural framing, notes and web tools. Ribbon metadata is available in 20 locales.",
   "author": "Nataraj Devaraj",
   "dependencies": []
 }

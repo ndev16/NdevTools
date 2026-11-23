@@ -1,5 +1,9 @@
 # NdevTools | Smart BIM Tools
 
+## CAD Tools — CAD to Walls and CAD to Grids
+
+Turn linked or imported CAD linework into Revit walls and grids. **CAD to Walls** scans wall thicknesses automatically and lets you map them to loaded wall types before placement. **CAD to Grids** reads grid labels where available, suggests missing names, and lets you create horizontal, vertical and sloped grids together. Open either command from **NdevTools → 3D Model → CAD Tools**.
+
 ## Sheet Clipboard — Cut, Copy, and Paste
 
 **Copy and Paste between two open projects.** Open both projects in the same Revit session. Copy detail views, title blocks, lines, or images from a sheet in one project and paste them onto a sheet in the other. You can also copy selected details from a section into a section or drafting view in the other project.
@@ -12,14 +16,14 @@ Detail groups are included with their filled regions, lines, and notes. Matching
 
 **NdevTools supports 20 language options** for pyRevit ribbon button titles and bundle tooltip descriptions, with black icons for light themes and white icons for dark themes. The tool commands remain the same across languages.
 
-**NdevTools** is a collection of Autodesk Revit productivity commands built for **pyRevit**. The extension combines model-based detailing, view and sheet management, linked-model wall/opening tracing, structural framing, and personal productivity tools in one ribbon tab. It is developed by **Nataraj Devaraj**.
+**NdevTools** is a collection of Autodesk Revit productivity commands built for **pyRevit**. The extension combines model-based detailing, view and sheet management, linked-model wall/opening tracing, CAD wall and grid mapping, structural framing, and personal productivity tools in one ribbon tab. It is developed by **Nataraj Devaraj**.
 
 **GitHub:** [ndev16/NdevTools](https://github.com/ndev16/NdevTools)  
 **Feedback and feature requests:** [GitHub Issues](https://github.com/ndev16/NdevTools/issues)
 
 ## Multilingual support — 20 languages
 
-NdevTools includes localized **ribbon titles and bundle tooltip descriptions for all 19 commands** in the following 20 pyRevit locale options:
+NdevTools includes localized **ribbon titles and bundle tooltip descriptions for all 21 commands** in the following 20 pyRevit locale options:
 
 | Language | Locale code | Language | Locale code |
 | --- | --- | --- | --- |
@@ -36,19 +40,19 @@ NdevTools includes localized **ribbon titles and bundle tooltip descriptions for
 
 **Language selection:** An explicit **pyRevit Settings → Language** choice takes priority. With no override, NdevTools follows the active Revit interface language. Unavailable UI strings fall back to English. Revit's spelling-dictionary preference does not change its interface language.
 
-**Localization scope:** The 20-language coverage applies to button titles and bundle tooltip descriptions for all 19 commands. Some longer, dynamically generated messages and custom dialog text may remain in English. Translations, especially specialized engineering terminology and right-to-left presentation, should be reviewed by native speakers. See [Bundle translations](BUNDLE_TRANSLATIONS.md) for details.
+**Localization scope:** The 20-language coverage applies to button titles and bundle tooltip descriptions for all 21 commands. Some longer, dynamically generated messages and custom dialog text may remain in English. Translations, especially specialized engineering terminology and right-to-left presentation, should be reviewed by native speakers. See [Bundle translations](BUNDLE_TRANSLATIONS.md) for details.
 
-**Theme icons:** Each of the 19 commands includes `icon.png` (dark/black artwork for a light background) and `icon.dark.png` (white artwork for a dark background). Availability of theme switching depends on the Revit/pyRevit version.
+**Theme icons:** Each of the 21 commands includes `icon.png` (dark/black artwork for a light background) and `icon.dark.png` (white artwork for a dark background). Availability of theme switching depends on the Revit/pyRevit version.
 
 ## Ribbon layout
 
-[![NdevTools ribbon with Move Views and Sheet Clipboard in Sheets, and Match Properties, Renumber and Tab Hider in Modify](media/NdevTools-Ribbon.png)](media/NdevTools-Ribbon.png)
+[![NdevTools ribbon with CAD Tools in 3D Model, Sheet Clipboard in Sheets, and Match Properties, Renumber and Tab Hider in Modify](media/NdevTools-Ribbon.png)](media/NdevTools-Ribbon.png)
 
 [Open the full-size ribbon](media/NdevTools-Ribbon.png)
 
 Open the **NdevTools** tab in Revit. Its six panels run from left to right: **Welcome → Annotation → Sheets → Modify → 3D Model → Handy**.
 
-In **Sheets**, the third column has **Move Views** above **Sheet Clipboard**. Open the clipboard dropdown for **Cut**, **Copy**, and **Paste**. The next panel, **Modify**, stacks **Match Properties**, **Renumber**, and **Tab Hider** from top to bottom.
+In **Sheets**, the third column has **Move Views** above **Sheet Clipboard**. Open the clipboard dropdown for **Cut**, **Copy**, and **Paste**. The next panel, **Modify**, stacks **Match Properties**, **Renumber**, and **Tab Hider** from top to bottom. In **3D Model**, **CAD Tools** follows **Wall Tracing** and **FramePilot** and contains **CAD to Walls** and **CAD to Grids**.
 
 | Panel | Ribbon button | Purpose |
 | --- | --- | --- |
@@ -69,6 +73,8 @@ In **Sheets**, the third column has **Move Views** above **Sheet Clipboard**. Op
 | **Modify** | Tab Hider | Choose which editable ribbon tabs and add-in panels are visible. |
 | **3D Model** | Wall Tracing | Trace supported structural walls and verified rectangular openings from an architectural link. |
 | **3D Model** | FramePilot | Create structural framing for Roof, Flat Truss, Floor and Ceiling hosts, or sketch a beam system. |
+| **3D Model** | CAD Tools → CAD to Walls | Automatically scan CAD wall thicknesses, map loaded wall types, and place walls with optional door/window openings. |
+| **3D Model** | CAD Tools → CAD to Grids | Review CAD grid names, edit proposed names, and create horizontal, vertical and sloped grids together. |
 | **Handy** | Notes | Write formatted, illustrated notes with multiple A4 portrait/landscape sheets and local saving. |
 | **Handy** | Useful Links | Use Image to Text and Convert Case in a modeless embedded browser. |
 
@@ -209,6 +215,35 @@ For roof hosts, beam-system boundaries follow the actual selected top or bottom 
 
 **Sketch Beam System** uses Revit's native sketch mode. Enter Elevation from Level in project units or feet/inches; this is an offset from the existing Revit work plane, not a level reassignment. After finishing the sketch, FramePilot applies the current framing settings where Revit permits it. Flat Truss creates Structural Framing beam systems rather than native Revit Truss families. Tracked framing is replaced only after a valid plan; failed host transactions roll back. Review warnings and member properties.
 
+### 3D Model → CAD Tools → CAD to Walls
+
+Create Revit walls from the faces in a linked or imported CAD drawing. The mapping window stays open while you work in Revit.
+
+**Typical workflow:** Choose the **CAD drawing**, select **With Layers** and check the wall layers, or use **Without Layers**. Source changes scan automatically; there is no Scan button. Review the measured **Thickness**, **Candidates** and **Revit type / size** rows, set the bottom/top levels and offsets, then click **Place**.
+
+**Mapping and placement options:**
+
+- **Wall types:** Each thickness group has a searchable dropdown of loaded Revit wall types. Available width matches are suggested automatically; review the choice before placing. **None - do not trace** skips that group. **Refresh types** updates the list after you add or change types in the project.
+- **Scan settings and units:** Adjust scan spacing, minimum overlap and the optional minimum wall-thickness exclusion. Imperial is the startup default, with level elevations in feet and inches and wall thicknesses in inches; metric units are also available.
+- **Levels and offsets:** Set **Bottom level**, **Bottom offset**, **Top level** and **Top offset**. **Same as bottom** uses one level reference, with the offsets defining wall height.
+- **Opening controls:** Separate **Door openings** and **Window openings** checkboxes enable or skip cuts. Both start checked. Walls are created before openings. Walls seven feet or shorter stay solid; on taller walls, detected doors extend from the actual wall bottom to seven feet, and detected windows from three to seven feet above that bottom.
+- **Save and review:** **Save mapping** remembers the mappings and opening choices. **Trace report** shows created elements, skipped candidates and failure reasons, with a copy option. Matching previously traced elements are detected on repeat placement to avoid duplicates.
+
+The window displays **NdevTools is scanning wall thickness...** while scanning and **Wall Tracing is placing your walls...** during placement. Review the proposed types, CAD-derived opening locations and trace report before using the result in production.
+
+### 3D Model → CAD Tools → CAD to Grids
+
+Create all mapped grid directions in one operation, retaining sloped CAD axes at their original angles. The modeless window lets you continue editing Revit before placement.
+
+**Typical workflow:** Choose the **CAD drawing** and its **Grid layers**. Review **Horizontal grids** from bottom to top and **Vertical grids** from left to right, edit the proposed names, then click **Create grids** once to place both lists together.
+
+**Naming and review options:**
+
+- **Readable grids:** The read-only **Actual CAD name** shows the detected label. **Proposed Revit name** starts with that same value and is editable.
+- **Unreadable grids:** Rows are grouped under neighboring labels, such as **Between B and C**. Missing names receive editable suggestions such as **B.1**, **B.2** and **B.3**. If a direction has no readable labels, horizontal names start at **A** and vertical names at **1**.
+- **Source DWG:** Linked drawings supply the source file for reading bubble text. For an imported drawing, use **Source DWG…** to choose the original file. Review suggested names when labels cannot be read.
+- **Existing grids:** Detected existing grids are shown read-only. Placement rechecks the model, and matching grids are retained on reruns to avoid duplicates.
+
 ### Handy → Notes
 
 **Your notebook, inside Revit.**
@@ -275,7 +310,11 @@ NdevTools.extension/
 │   │       └── Tab Hider.pushbutton/
 │   ├── 3D Model.Panel/
 │   │   ├── Create walls and opening.pushbutton/
-│   │   └── FramePilot.pushbutton/
+│   │   ├── FramePilot.pushbutton/
+│   │   └── CAD Tools.pulldown/
+│   │       ├── CAD to Walls.pushbutton/
+│   │       ├── CAD to Grids.pushbutton/
+│   │       └── lib/
 │   └── Handy.panel/
 │       ├── Notes.pushbutton/
 │       └── Useful Links.pushbutton/
@@ -287,9 +326,13 @@ Each command includes its script, theme icons, bundle configuration, and any XAM
 
 ## Compatibility
 
-Commands are written for **pyRevit** and the IronPython 2.7 runtime, using Revit API patterns for **Revit 2022–2027** where supported by the individual tools. Move Views and Sheet Clipboard require Revit 2023 or later. Some commands have view, family, category or loaded-link prerequisites; review each tool's usage section above.
+Commands are written for **pyRevit** and the IronPython 2.7 runtime, using Revit API patterns for **Revit 2022–2027** where supported by the individual tools. Move Views, Sheet Clipboard, CAD to Walls and CAD to Grids require Revit 2023 or later. The packaged CAD commands were tested in Revit 2025; this release has not been retested in the other supported Revit versions. Some commands have view, family, category or loaded-link prerequisites; review each tool's usage section above.
 
 ## What's new
+
+### November 24, 2026 — CAD Tools
+
+Added **CAD Tools** with **CAD to Walls** and **CAD to Grids**, including automatic wall-thickness scanning, editable mappings, grid-name review, and ribbon titles and tooltips in 20 language options.
 
 ### November 16, 2026 — Copy sheet and section details between projects
 
@@ -302,7 +345,7 @@ Copy a whole detail view between sheets, or copy just the lines, notes, and imag
 - **Match Properties** applies selected properties to compatible elements. **Renumber** numbers elements in the order you pick them. Both are in the new **Modify** panel.
 - **Tab Hider** remembers which ribbon tabs and add-in panels you show or hide. Click **Apply** to keep your choices across Revit restarts.
 
-**Move Views** and **Sheet Clipboard** require Revit 2023 or later. The ribbon now has 19 commands across six panels, with titles and tooltips in 20 languages. [Full changelog](CHANGELOG.md)
+**Move Views**, **Sheet Clipboard**, **CAD to Walls** and **CAD to Grids** require Revit 2023 or later. The ribbon now has 21 commands across six panels, with titles and tooltips in 20 languages. [Full changelog](CHANGELOG.md)
 
 ## Support and feedback
 
