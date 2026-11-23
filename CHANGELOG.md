@@ -1,11 +1,9 @@
 # Changelog
 
-## November 23, 2026 — Sheet Clipboard detail groups and FramePilot roof boundaries
+## November 23, 2026 — Bug fixes
 
-- Sheet Clipboard now includes detail groups when copying whole detail views between projects, preserving their filled regions, lines, and notes. Paste verification checks the contents of each group, while matching destination type names are reused and missing types are copied.
-- Verified the CMU detail in Revit 2025 using rollback-only pastes: all eight detail groups and 23 filled regions were retained, with matching geometry, view scale, and sheet position. The disposable-project regression also checks grouped details, existing and missing region types, and repeated paste.
-- Synced the current R&D FramePilot roof-face planning: native beam systems use actual top or bottom face boundaries, including openings and cuts at joins. The command refreshes older cached planners, verifies the expected number of profiles, and reports committed results.
-- Preserved the main extension's Clipboard identifiers, ribbon layout, icons, and 20-language bundle metadata. This sync does not add a new live FramePilot validation claim.
+- Updated Sheet Clipboard to follow Revit API copy-and-paste behavior.
+- Fixed FramePilot bugs affecting multiple roof profiles placement.
 
 ## November 16, 2026 — Copy sheet and section details between projects
 
