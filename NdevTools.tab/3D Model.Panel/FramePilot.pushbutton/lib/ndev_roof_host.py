@@ -450,7 +450,7 @@ def analyze_roof_host(doc, roof, config):
     layer_mode = getattr(config, "roof_layer_mode", LAYER_MODE_STRUCTURAL)
     target_layer = _select_target_layer(layers, layer_mode)
 
-    faces = _get_top_faces(roof)
+    faces = get_roof_faces(roof)
     for index, face in enumerate(faces):
         plane = _build_planar_host_info(
             doc,
@@ -720,30 +720,36 @@ def _make_core_center_layer(layers):
     return layer
 
 
-def _get_top_faces(host):
-    """Get all major top faces on a host object."""
+def get_roof_faces(host, bottom=False):
+    """Get the actual upper or lower shell of this roof, including cuts at joins."""
     from Autodesk.Revit.DB import HostObjectUtils, Options
 
     faces = []
+    sign = -1.0 if bottom else 1.0
     try:
-        refs = HostObjectUtils.GetTopFaces(host)
+        refs = (HostObjectUtils.GetBottomFaces(host) if bottom
+                else HostObjectUtils.GetTopFaces(host))
     except Exception:
         refs = []
 
+    missing_reference = False
     for reference in refs:
         try:
             face = host.GetGeometryObjectFromReference(reference)
         except Exception:
             face = None
-        if face is not None:
-            normal = _face_normal(face)
-            if normal is not None and normal.Z > 0.01:
-                faces.append(face)
+        if face is None:
+            missing_reference = True
+            continue
+        normal = _face_normal(face)
+        if normal is not None and sign * normal.Z > 0.01:
+            faces.append(face)
 
-    if faces:
+    if faces and not missing_reference:
         return faces
 
-    # Fallback for hosts where GetTopFaces is unavailable.
+    # Use one complete shell when Revit can only resolve some face references.
+    faces = []
     try:
         opt = Options()
         opt.ComputeReferences = True
@@ -769,9 +775,11 @@ def _get_top_faces(host):
                         solids.append(inst_obj)
 
         for solid in solids:
+            if solid.Volume <= 0.0:
+                continue
             for face in solid.Faces:
                 normal = _face_normal(face)
-                if normal is not None and normal.Z > 0.01:
+                if normal is not None and sign * normal.Z > 0.01:
                     faces.append(face)
 
     return faces

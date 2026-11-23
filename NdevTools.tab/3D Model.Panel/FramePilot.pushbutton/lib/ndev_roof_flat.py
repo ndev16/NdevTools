@@ -11,10 +11,65 @@ from ndev_roof_placement import BaseFramingEngine
 from ndev_roof_families import activate_symbol
 from ndev_roof_tracking import element_id_value, tag_instance
 from ndev_roof_config import WORKPLANE_FACES, z_justification_value
+from ndev_roof_host import (HostKind, get_roof_faces, _downhill_direction,
+                            _longest_edge_direction, _extract_face_loops)
 
 # Local-profile distance tolerance in Revit internal feet.
 PROFILE_TOL = 0.0001
 MIN_AREA_SF = 0.01
+
+
+def roof_profile_members(host_info, config, role, require_flat=False):
+    """Snapshot each face's native sketch curves before replacing existing framing."""
+    from Autodesk.Revit.DB import PlanarFace
+
+    side = config.workplane_face
+    if side not in WORKPLANE_FACES:
+        raise ValueError('Choose Top or Bottom for the framing workplane.')
+    if require_flat and any(plane.normal.Z < 0.9998 for plane in host_info.planes):
+        raise ValueError('Flat Truss mode requires a level roof face.')
+    faces = get_roof_faces(host_info.element, bottom=(side == 'bottom'))
+    if not faces:
+        raise ValueError('No {0} roof faces found.'.format(side))
+    members = []
+    for index, face in enumerate(faces):
+        if not isinstance(face, PlanarFace):
+            raise ValueError('Roof {0} face {1} is curved and needs a non-planar layout.'.format(side, index))
+        normal = face.FaceNormal
+        if normal.Z < 0:
+            normal = normal.Negate()
+        if require_flat and normal.Z < 0.9998:
+            raise ValueError('Flat Truss mode requires a level roof face.')
+        curves = [curve.Clone() for loop in face.GetEdgesAsCurveLoops() for curve in loop]
+        if not curves:
+            raise ValueError('Roof {0} face {1} has no sketch boundary.'.format(side, index))
+        direction = _downhill_direction(normal)
+        if direction is None:
+            direction = _longest_edge_direction(_extract_face_loops(face), normal)
+        if direction is None:
+            raise ValueError('Cannot determine a framing direction for roof face {0}.'.format(index))
+        origin = face.Origin
+        member = FramingMember(role, origin, origin + direction)
+        member.family_name = config.stud_family_name
+        member.type_name = config.stud_type_name
+        member.host_kind = host_info.kind
+        member.host_id = host_info.element_id
+        member.profile_curves = curves
+        member.profile_normal = normal
+        member.profile_origin = origin
+        member.direction = direction
+        member.spacing = config.stud_spacing_ft
+        members.append(member)
+    return members
+
+
+def create_roof_system(doc, member):
+    from Autodesk.Revit.DB import BeamSystem, Curve, Plane, SketchPlane
+    from System.Collections.Generic import List
+
+    sketch = SketchPlane.Create(doc, Plane.CreateByNormalAndOrigin(
+        member.profile_normal, member.profile_origin))
+    return BeamSystem.Create(doc, List[Curve](member.profile_curves), sketch, member.direction, False)
 
 
 def _flat_profile_points(plane):
@@ -48,6 +103,8 @@ class FlatRoofBeamSystemEngine(BaseFramingEngine):
     """Plan each flat face and create a true native Revit BeamSystem."""
 
     def calculate_members_from_info(self, host_info, require_flat=False):
+        if host_info.kind == HostKind.ROOF:
+            return roof_profile_members(host_info, self.config, 'FLAT_BEAM_SYSTEM', require_flat)
         planes = getattr(host_info, 'planes', None) or [host_info]
         if not planes:
             raise ValueError('No supported top faces were found for this host.')
@@ -95,29 +152,28 @@ class FlatRoofBeamSystemEngine(BaseFramingEngine):
         for member in members:
             if member.member_type != 'FLAT_BEAM_SYSTEM':
                 raise ValueError('Flat beam-system engine received an unexpected framing role.')
-            plane = member.plane
-            # Flattening the roof geometry here would be wrong: use its actual
-            # planar top face as the 2D sketch plane.
-            profile = List[Curve]()
-            world_points = [
-                plane.point_at(x, y, member.workplane_depth - plane.target_layer_depth)
-                for x, y in member.field_loop_local
-            ]
-            for i, start in enumerate(world_points):
-                end = world_points[(i+1) % len(world_points)]
-                if start.DistanceTo(end) <= PROFILE_TOL:
-                    raise ValueError('Flat roof beam-system profile contains a zero-length edge.')
-                profile.Add(Line.CreateBound(start, end))
-            revit_plane = Plane.CreateByNormalAndOrigin(plane.normal, world_points[0])
-            sketch = SketchPlane.Create(self.doc, revit_plane)
-            direction = plane.y_axis.Normalize()  # same axis as former scanline rafters
             symbol = self._resolve_symbol(member)
             if symbol is None:
                 raise ValueError('Selected rafter Structural Framing family/type is not loaded.')
             activate_symbol(self.doc, symbol)
 
-            # Native Revit 2022 BeamSystem.Create, not NewFamilyInstance.
-            system = BeamSystem.Create(self.doc, profile, sketch, direction, False)
+            if host_info.kind == HostKind.ROOF:
+                system = create_roof_system(self.doc, member)
+            else:
+                plane = member.plane
+                world_points = [
+                    plane.point_at(x, y, member.workplane_depth - plane.target_layer_depth)
+                    for x, y in member.field_loop_local
+                ]
+                profile = List[Curve]()
+                for i, start in enumerate(world_points):
+                    end = world_points[(i+1) % len(world_points)]
+                    if start.DistanceTo(end) <= PROFILE_TOL:
+                        raise ValueError('Beam-system profile contains a zero-length edge.')
+                    profile.Add(Line.CreateBound(start, end))
+                sketch = SketchPlane.Create(self.doc, Plane.CreateByNormalAndOrigin(
+                    plane.normal, world_points[0]))
+                system = BeamSystem.Create(self.doc, profile, sketch, plane.y_axis.Normalize(), False)
             if system is None:
                 raise RuntimeError('Revit did not create the flat roof Structural Beam System.')
             system.BeamType = symbol

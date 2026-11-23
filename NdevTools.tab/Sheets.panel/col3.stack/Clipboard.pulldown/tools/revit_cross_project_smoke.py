@@ -74,6 +74,15 @@ def sample(doc, details):
                 loops=List[DB.CurveLoop](); loops.Add(loop)
                 region=next(iter(DB.FilteredElementCollector(doc).OfClass(DB.FilledRegionType)))
                 DB.FilledRegion.Create(doc,region.Id,view.Id,loops)
+                # The CMU reproduction lost entire detail groups because their
+                # category is Internal. Include a group with a source-only type.
+                group_region_type = region.Duplicate('Clipboard grouped region')
+                group_region = DB.FilledRegion.Create(doc,group_region_type.Id,view.Id,loops)
+                group_line = doc.Create.NewDetailCurve(view, DB.Line.CreateBound(DB.XYZ(4,0,0), DB.XYZ(4,2,0)))
+                group_note = DB.TextNote.Create(doc,view.Id,DB.XYZ(4,3,0),'Keep the grouped detail',note_type)
+                group_ids = List[DB.ElementId]()
+                for element in (group_region, group_line, group_note): group_ids.Add(element.Id)
+                doc.Create.NewGroup(group_ids)
             owned.append(DB.Viewport.Create(doc, sheet.Id, view.Id, DB.XYZ(.5+idx,.4,0)))
         owned.append(DB.TextNote.Create(doc,sheet.Id,DB.XYZ(.2,.8,0),'Sheet note',note_type))
         tx.Commit()
@@ -92,6 +101,8 @@ def run(app):
         dest = app.NewProjectDocument(DB.UnitSystem.Imperial)
         a, originals = sample(source, True)
         b, _ = sample(dest, False)
+        existing_regions = dict((DB.Element.Name.GetValue(t),t.Id)
+                                for t in DB.FilteredElementCollector(dest).OfClass(DB.FilledRegionType))
         from_sheet, to_sheet = Context(source,a), Context(dest,b)
         source_uids = set(e.UniqueId for e in originals)
         from_sheet.ids = [e.Id for e in originals]
@@ -115,10 +126,27 @@ def run(app):
                     original_view = source.GetElement(old.ViewId)
                     expected_notes = [n.Text for n in DB.FilteredElementCollector(source).OwnedByView(original_view.Id)
                                       if isinstance(n, DB.TextNote)]
-                    assert expected_notes and notes == expected_notes, (str(v.ViewType),repr(notes),repr(expected_notes))
+                    assert expected_notes and sorted(notes) == sorted(expected_notes), (str(v.ViewType),repr(notes),repr(expected_notes))
                     assert any(isinstance(n,DB.DetailCurve) for n in contents)
                     if v.ViewType == DB.ViewType.DraftingView:
-                        assert any(isinstance(n,DB.FilledRegion) for n in contents)
+                        groups = [n for n in contents if isinstance(n,DB.Group)]
+                        regions = [n for n in contents if isinstance(n,DB.FilledRegion)]
+                        assert len(groups) == 1 and len(regions) == 2, (len(groups),len(regions))
+                        original_group = next(n for n in DB.FilteredElementCollector(source).OwnedByView(original_view.Id)
+                                              if isinstance(n,DB.Group))
+                        # Revit adds the filled region's sketch dependencies to
+                        # the group as well as the three selected elements.
+                        expected_members = sorted(source.GetElement(eid).GetType().FullName
+                                                  for eid in original_group.GetMemberIds())
+                        copied_members = sorted(dest.GetElement(eid).GetType().FullName
+                                                for eid in groups[0].GetMemberIds())
+                        assert copied_members == expected_members, (copied_members,expected_members)
+                        for region in regions:
+                            name = DB.Element.Name.GetValue(dest.GetElement(region.GetTypeId()))
+                            if name in existing_regions:
+                                assert region.GetTypeId() == existing_regions[name]
+                            else:
+                                assert name == 'Clipboard grouped region', name
                 else:
                     assert new.Text == old.Text
         assert len(set(results)) == 8 and len(b.GetAllViewports()) == 6

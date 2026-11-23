@@ -63,7 +63,8 @@ def _content(view, check_references=False):
         if (not element.ViewSpecific or element.Category is None or element.Id in sketch_members
                 or element.GroupId != DB.ElementId.InvalidElementId
                 or isinstance(element, (DB.Sketch, DB.SketchPlane, DB.SunAndShadowSettings))
-                or element.Category.CategoryType == DB.CategoryType.Internal):
+                or (element.Category.CategoryType == DB.CategoryType.Internal
+                    and not isinstance(element, DB.Group))):
             continue
         if element.GetType().Name == 'Element':
             # Revit represents its built-in work-plane grid, sun path and crop
@@ -74,7 +75,18 @@ def _content(view, check_references=False):
 
 
 def _signature(elements):
-    return Counter((e.GetType().FullName, e.Text if isinstance(e, DB.TextNote) else '') for e in elements)
+    # Detail Groups are an Internal category, but are copyable view content.
+    # Verify their members too: counting only the group container could report
+    # a complete paste even when its filled regions or detail lines are missing.
+    signature = Counter()
+    for element in elements:
+        members = ()
+        if isinstance(element, DB.Group):
+            contents = [element.Document.GetElement(eid) for eid in element.GetMemberIds()]
+            members = tuple(sorted(_signature(contents).items()))
+        signature[(element.GetType().FullName,
+                   element.Text if isinstance(element, DB.TextNote) else '', members)] += 1
+    return signature
 
 
 def _viewport_type(old, placed, options):

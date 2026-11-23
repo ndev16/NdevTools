@@ -4,6 +4,8 @@
 
 **Copy and Paste between two open projects.** Open both projects in the same Revit session. Copy detail views, title blocks, lines, or images from a sheet in one project and paste them onto a sheet in the other. You can also copy selected details from a section into a section or drafting view in the other project.
 
+Detail groups are included with their filled regions, lines, and notes. Matching destination type names are reused; missing types are copied.
+
 **Cut and Paste within one project.** To move four detail views from S501 to S502, select their viewports, choose **Cut**, open S502, and choose **Paste**. Click to place the group with its spacing intact. One Revit **Undo** returns it to S501.
 
 ![Powerful tools, a more global experience. 20 languages supported.](media/NdevTools-20-Language-Support.png)
@@ -202,6 +204,8 @@ Wall creation precedes openings in one undo group, with per-item rollback and a 
 ### 3D Model → FramePilot
 
 Create structural framing for **Roof, Flat Truss, Floor and Ceiling** hosts. Search loaded framing types, choose roof ridge framing when applicable, set Workplane and Z Justification independently, then choose **12, 16, 24 inches or Custom** spacing and edit Comments. Click **FRAME**, select matching hosts, and review the report.
+
+For roof hosts, beam-system boundaries follow the actual selected top or bottom planar faces, including roof openings and cuts at joins. The report lists committed beam-system profiles; a failed host rolls back its replacement framing.
 
 **Sketch Beam System** uses Revit's native sketch mode. Enter Elevation from Level in project units or feet/inches; this is an offset from the existing Revit work plane, not a level reassignment. After finishing the sketch, FramePilot applies the current framing settings where Revit permits it. Flat Truss creates Structural Framing beam systems rather than native Revit Truss families. Tracked framing is replaced only after a valid plan; failed host transactions roll back. Review warnings and member properties.
 

@@ -15,6 +15,7 @@ from ndev_roof_geometry import FramingMember, inches_to_feet
 from ndev_roof_host import analyze_roof_host, _scanline_intervals
 from ndev_roof_placement import BaseFramingEngine
 from ndev_roof_tracking import element_id_value, tag_instance
+from ndev_roof_flat import create_roof_system, roof_profile_members
 
 
 FLAT_THRESHOLD = 0.9998
@@ -27,7 +28,7 @@ RAFTER_TIE_FRACTION = 1.0 / 3.0
 COLLAR_TIE_FRACTION = 1.0 / 3.0
 MAX_COLLAR_TIE_SPACING = inches_to_feet(48.0)
 KICKER_FRACTION = 0.25
-V2_BUILD_TAG = "2026-04-22-tie-full-rewrite-1"
+V2_BUILD_TAG = "2026-11-22-face-profiles"
 
 
 class RoofBayPlan(object):
@@ -731,44 +732,6 @@ def _field_loop_local_for_ridge(plane, ridge_start, ridge_end):
     return None
 
 
-def _field_loop_local_from_support_edge(field, plane, ridge_start, ridge_end):
-    support_edge = _longest_edge(
-        list(getattr(field, "eave_edges", []) or getattr(field, "ledger_edges", []) or [])
-    )
-    if support_edge is None:
-        return None
-
-    ridge_start_local = _to_plane_local(ridge_start, plane)
-    ridge_end_local = _to_plane_local(ridge_end, plane)
-    support_start_local = _to_plane_local(support_edge[0], plane)
-    support_end_local = _to_plane_local(support_edge[1], plane)
-
-    direct_score = (
-        _dist_2d(ridge_start_local, support_start_local)
-        + _dist_2d(ridge_end_local, support_end_local)
-    )
-    flipped_score = (
-        _dist_2d(ridge_start_local, support_end_local)
-        + _dist_2d(ridge_end_local, support_start_local)
-    )
-    if flipped_score < direct_score:
-        support_start_local, support_end_local = support_end_local, support_start_local
-
-    return [
-        ridge_start_local,
-        ridge_end_local,
-        support_end_local,
-        support_start_local,
-    ]
-
-
-def _resolved_field_loop_local(field, plane, ridge_start, ridge_end):
-    field_loop_local = getattr(field, "loop_local_override", None)
-    if not field_loop_local:
-        field_loop_local = _field_loop_local_for_ridge(plane, ridge_start, ridge_end)
-    if not field_loop_local:
-        field_loop_local = _field_loop_local_from_support_edge(field, plane, ridge_start, ridge_end)
-    return field_loop_local
 
 
 def _transform_loop_2d(loop_local, axis_u, axis_v):
@@ -991,17 +954,11 @@ class RoofFramingPlannerV2(object):
             "Handle ridge boards, ties, fascia, and openings after the beam-system fields are stable."
         )
 
-        if len(sloped) <= 1:
-            plan.warnings.append(
-                "This roof is not a multi-slope candidate. Use Single-Slope Roof Framing for shed roofs."
-            )
+        if len(planes) < 2 or not sloped:
+            plan.warnings.append("Use the flat or single-slope engine for this roof.")
             return plan
-
         if not ridges:
-            plan.warnings.append(
-                "No ridge segments were detected. Start by validating roof host analysis before any placement work."
-            )
-            return plan
+            plan.warnings.append("No shared ridge detected. Framing each roof face independently.")
 
         plan.supported = True
         plane_index_by_id = {}
@@ -1013,7 +970,6 @@ class RoofFramingPlannerV2(object):
             plane_ridge_counts[id(plane_a)] = plane_ridge_counts.get(id(plane_a), 0) + 1
             plane_ridge_counts[id(plane_b)] = plane_ridge_counts.get(id(plane_b), 0) + 1
 
-        warning_set = set()
         field_index = 0
         for ridge_index, ridge in enumerate(ridges):
             ridge_start, ridge_end, plane_a, plane_b = ridge
@@ -1054,17 +1010,6 @@ class RoofFramingPlannerV2(object):
                 ridge_touch_count = plane_ridge_counts.get(id(plane), 0)
                 if ridge_touch_count > 1:
                     field.split_required = True
-                    field.notes.append(
-                        "This plane touches multiple framing supports; V2 currently picks one primary support per plane until true subfield splitting exists."
-                    )
-                    warning_text = (
-                        "Plane {0} touches multiple framing supports. V2 is temporarily selecting one primary support region for this plane.".format(
-                            plane_index,
-                        )
-                    )
-                    if warning_text not in warning_set:
-                        warning_set.add(warning_text)
-                        plan.warnings.append(warning_text)
 
                 if not field.eave_edges:
                     field.notes.append(
@@ -1117,9 +1062,7 @@ class RoofFramingEngineV2(BaseFramingEngine):
     def _members_from_plan(self, plan):
         members = []
         members.extend(self._make_ridge_boards_from_plan(plan))
-        seen = set()
-        for field in _placement_fields_for_plan(plan):
-            members.extend(self._make_field_members(plan, field, seen))
+        members.extend(roof_profile_members(plan.roof_info, self.config, "BEAM_SYSTEM_V2"))
         # Requested production scope: rafters, ridge boards, and border members only.
         # Rafter ties are intentionally disabled for now.
         self._record_skipped_secondary_members(plan)
@@ -1260,43 +1203,6 @@ class RoofFramingEngineV2(BaseFramingEngine):
 
         return members
 
-    def _make_field_members(self, plan, field, seen):
-        spacing = self.config.stud_spacing_ft
-        if spacing <= 0.0:
-            return []
-
-        sloped = _sloped_planes(getattr(plan.roof_info, "planes", []) or [])
-        if field.plane_index < 0 or field.plane_index >= len(sloped):
-            return []
-        if field.ridge_index < 0 or field.ridge_index >= len(plan.bays):
-            return []
-
-        plane = sloped[field.plane_index]
-        bay = plan.bays[field.ridge_index]
-        ridge_start = bay.ridge_start
-        ridge_end = bay.ridge_end
-        field_loop_local = _resolved_field_loop_local(field, plane, ridge_start, ridge_end)
-        if not field_loop_local or len(field_loop_local) < 3:
-            return []
-
-        axis_u, axis_v = _field_direction_axes(field, plane, ridge_start, ridge_end)
-        if axis_u is None or axis_v is None:
-            return []
-
-        # Instead of creating line segments...
-        # Just create one FramingMember acting as a proxy for BeamSystem
-        member = FramingMember(FramingMember.STUD, ridge_start, ridge_end) # dummy points
-        member.member_type = "BEAM_SYSTEM_V2"
-        member.family_name = self.config.stud_family_name
-        member.type_name = self.config.stud_type_name
-        member.plane = plane
-        member.field_loop_local = field_loop_local
-        member.direction_local = axis_u
-        member.spacing = self.config.stud_spacing_ft
-        member.host_kind = plane.kind
-        member.host_id = plane.element_id
-        
-        return [member]
 
     def _field_for_bay_side(self, plan, bay_index, plane_index):
         for field in getattr(plan, "fields", []) or []:
@@ -1550,13 +1456,9 @@ class RoofFramingEngineV2(BaseFramingEngine):
     # ------------------------------------------------------------------
 
     def place_members(self, members, host_info):
-        from System.Collections.Generic import List
-        from Autodesk.Revit.DB import (
-            Curve, Line, SketchPlane, Plane, BeamSystem,
-            LayoutRuleFixedDistance, BeamSystemJustifyType,
-        )
+        from Autodesk.Revit.DB import LayoutRuleFixedDistance, BeamSystemJustifyType
         from ndev_roof_families import activate_symbol
-        from ndev_roof_flat import _workplane_depth, _set_beam_z_justification
+        from ndev_roof_flat import _set_beam_z_justification
         self._justification_warnings = []
         try:
             from Autodesk.Revit.DB.Structure import StructuralFramingUtils
@@ -1576,64 +1478,12 @@ class RoofFramingEngineV2(BaseFramingEngine):
 
         # 3. Create BeamSystems
         for member in bs_members:
-            plane = member.plane
-            if plane is None:
-                continue
-
-            # Convert loop onto the chosen top or bottom reference face.
-            workplane_depth = _workplane_depth(plane, getattr(self.config, 'workplane_face', 'bottom'))
-            world_pts = []
-            for lx, ly in member.field_loop_local:
-                # Cancel the host depth offset so the profile sits on plane.origin.
-                world_pts.append(
-                    plane.point_at(lx, ly, workplane_depth-plane.target_layer_depth)
-                )
-
-            # Filter consecutive duplicate points to maintain loop contiguity
-            valid_pts = []
-            for p in world_pts:
-                if not valid_pts:
-                    valid_pts.append(p)
-                elif _dist(p, valid_pts[-1]) > 0.005:
-                    valid_pts.append(p)
-
-            # Ensure the start and end points aren't duplicated
-            if len(valid_pts) > 1 and _dist(valid_pts[0], valid_pts[-1]) <= 0.005:
-                valid_pts.pop()
-
-            if len(valid_pts) < 3:
-                continue
-
-            profile = List[Curve]()
-            invalid_profile = False
-            for i in range(len(valid_pts)):
-                p1 = valid_pts[i]
-                p2 = valid_pts[(i + 1) % len(valid_pts)]
-                if _dist(p1, p2) <= 0.005:
-                    invalid_profile = True
-                    break
-                profile.Add(Line.CreateBound(p1, p2))
-
-            if invalid_profile or profile.Count < 3:
-                continue
-
-            # create SketchPlane
-            revit_plane = Plane.CreateByNormalAndOrigin(plane.normal, world_pts[0])
-            sketch_plane = SketchPlane.Create(self.doc, revit_plane)
-
-            # direction
-            dir_x, dir_y = member.direction_local
-            pt0 = plane.point_at(0.0, 0.0, -plane.target_layer_depth)
-            pt1 = plane.point_at(dir_x, dir_y, -plane.target_layer_depth)
-            b_dir = _normalize(pt1 - pt0)
-            if b_dir is None:
-                continue
-
-            bs = BeamSystem.Create(self.doc, profile, sketch_plane, b_dir, False)
             symbol = self._resolve_symbol(member)
-            if symbol:
-                activate_symbol(self.doc, symbol)
-                bs.BeamType = symbol
+            if symbol is None:
+                raise ValueError('Selected rafter Structural Framing type is not loaded.')
+            activate_symbol(self.doc, symbol)
+            bs = create_roof_system(self.doc, member)
+            bs.BeamType = symbol
             bs.LayoutRule = LayoutRuleFixedDistance(
                 member.spacing,
                 BeamSystemJustifyType.DirectionLine,
@@ -1648,6 +1498,8 @@ class RoofFramingEngineV2(BaseFramingEngine):
             self.doc.Regenerate()
             rafter_ids = bs.GetBeamIds()
             rafters = [self.doc.GetElement(i) for i in rafter_ids]
+            if not rafters:
+                raise ValueError('Beam system produced no rafters on a roof face.')
 
             self._set_coping_distance_zero(created_regular)
             self._set_coping_distance_zero(rafters)
